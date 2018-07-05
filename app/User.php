@@ -13,6 +13,10 @@ class User extends Authenticatable
     protected $guarded = [];
     protected $hidden = ['password', 'remember_token'];
 
+    function apps()
+    {
+        return $this->belongsToMany(App::class);
+    }
     function programmatic_unit()
     {
         return $this->belongsTo(ProgrammaticUnit::class);
