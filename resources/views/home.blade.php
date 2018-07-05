@@ -8,13 +8,11 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <ul>
+                        @foreach(auth()->user()->apps as $app)
+                            <a class="btn btn-primary btn-lg btn-block" href="{{ url($app->url) }}">{{ $app->name }}</a>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ class AppsTableSeeder extends Seeder
     {
         $regions = [
             ['name' => 'SISE', 'url' => 'sise'],
-            ['name' => 'pagriWeb', 'url' => 'pagriweb'],
+            ['name' => 'pagriWeb', 'url' => 'pagri'],
             ['name' => '4-H', 'url' => '4h'],
             ['name' => 'CFC', 'url' => 'cfc'],
             ['name' => 'DRC', 'url' => 'drc'],
