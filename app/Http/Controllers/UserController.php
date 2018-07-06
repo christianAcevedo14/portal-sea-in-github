@@ -71,16 +71,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(User $user, Request $request)
     {
-        $user = User::findOrFail($id);
         $user->update($request->except('app_id'));
         $user->apps()->sync($request->app_id);
-
         return redirect()->route('home');
     }
 
