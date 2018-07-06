@@ -8,7 +8,10 @@
     <div class="card">
         <h5 class="card-header">{{ $user->full_name }}</h5>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('users.update', $user) }}" id="update_user" method="post">
+
+                @csrf
+                <input type="hidden" name="_method" value="put">
 
                 <div class="form-group row">
                     <div class="col-sm-6">
@@ -61,6 +64,10 @@
                 @endforeach
             </form>
 
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary float-right" onclick="document.getElementById('update_user').submit();">Actualizar</button>
         </div>
     </div>
 @endsection
