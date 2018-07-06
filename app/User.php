@@ -13,6 +13,11 @@ class User extends Authenticatable
     protected $guarded = [];
     protected $hidden = ['password', 'remember_token'];
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->surname}";
+    }
+
     function apps()
     {
         return $this->belongsToMany(App::class);
