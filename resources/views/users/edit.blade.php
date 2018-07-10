@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select name="title_id" class="form-control">
+                                    <select name="title_id" class="custom-select">
                                         <option selected>Título</option>
                                         @foreach($titles as $title)
                                             <option value="{{ $title->id }}" {{ (old("title_id", $user->title->id) == $title->id ? "selected":"") }}>{{ $title->description }}</option>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select name="programmatic_unit_id" class="form-control">
+                                    <select name="programmatic_unit_id" class="custom-select">
                                         <option selected>Unidad Programática</option>
                                         @foreach($programmatic_units as $programmatic_unit)
                                             <option value="{{ $programmatic_unit->id }}" {{ (old("programmatic_unit_id", $user->programmatic_unit->id) == $programmatic_unit->id ? "selected":"") }}>{{ $programmatic_unit->description }}</option>
