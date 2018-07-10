@@ -13,7 +13,7 @@ class CreateAppsTable extends Migration
      */
     public function up()
     {
-        Schema::create('apps', function (Blueprint $table) {
+        Schema::connection('portal')->create('apps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('url');

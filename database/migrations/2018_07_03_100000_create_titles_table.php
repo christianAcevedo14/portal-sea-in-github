@@ -13,7 +13,7 @@ class CreateTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('titles', function (Blueprint $table) {
+        Schema::connection('portal')->create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
             $table->timestamps();

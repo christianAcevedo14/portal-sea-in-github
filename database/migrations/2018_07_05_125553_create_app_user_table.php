@@ -13,7 +13,7 @@ class CreateAppUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('app_user', function (Blueprint $table) {
+        Schema::connection('portal')->create('app_user', function (Blueprint $table) {
             $table->integer('app_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();

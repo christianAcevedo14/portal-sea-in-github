@@ -13,7 +13,7 @@ class CreateProgrammaticUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programmatic_units', function (Blueprint $table) {
+        Schema::connection('portal')->create('programmatic_units', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('region_id')->unsigned();
             $table->string('description');
