@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="d-flex">
                     <a class="header-brand" href="./index.html">
-                        <img src="./demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
+                        <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         @include('layouts.includes.notifications')
@@ -57,7 +57,7 @@
         </div>
         <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
             <div class="container">
-                {{--top_menu--}}
+                @include('layouts.includes.top_menu')
             </div>
         </div>
         <div class="my-3 my-md-5">
