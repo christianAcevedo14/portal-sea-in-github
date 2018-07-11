@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('top-menu')
+    @include('layouts.includes.top_menu')
+@endsection
+
 @section('content')
     <div class="container">
         <div class="page-header">

@@ -57,7 +57,7 @@
         </div>
         <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
             <div class="container">
-                @include('layouts.includes.top_menu')
+                @yield('top-menu')
             </div>
         </div>
         <div class="my-3 my-md-5">
