@@ -7,6 +7,9 @@
         </span>
     </a>
     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+        <a class="dropdown-item" href="{{ route('home') }}">
+            <i class="dropdown-icon fe fe-grid"></i> My Apps
+        </a>
         <a class="dropdown-item" href="#">
             <i class="dropdown-icon fe fe-user"></i> Profile
         </a>
