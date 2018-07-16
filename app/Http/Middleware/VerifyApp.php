@@ -15,7 +15,7 @@ class VerifyApp
      */
     public function handle($request, Closure $next)
     {
-        $url = $request->path();
+        $url = $request->segment(1);
         $app = auth()->user()->apps()->where('url', $url)->first();
 
         if ($app) {
