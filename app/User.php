@@ -30,4 +30,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Title::class);
     }
+
+    public function getIsAdminAttribute(){
+
+        return $this->title_id == 1;
+
+    }
+
+    public function getIsExtensionistAttribute(){
+        return $this->title_id > 1;
+    }
 }
