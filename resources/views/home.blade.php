@@ -21,7 +21,7 @@
                       <i class="fa fa-chevron-right"></i>
                     </span>
                             <div>
-                                <h4 class="m-0"><a href="{{ url($app->url) }}">{{ $app->name }}</a></h4>
+                                <h4 class="m-0"><a href="{{ url($app->url) }}">{{$app->name}}</a></h4>
                                 <small class="text-muted">{{ url($app->url) }}</small>
                             </div>
                         </div>

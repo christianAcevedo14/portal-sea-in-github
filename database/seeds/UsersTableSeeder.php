@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('123456'),
             ],
             [
-                'title_id' => 1,
+                'title_id' => 2,
                 'programmatic_unit_id' => 680,
                 'first_name' => 'Ramón',
                 'initial' => 'F',
