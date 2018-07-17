@@ -30,6 +30,6 @@ class CreateProgrammaticUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programmatic_units');
+        Schema::connection('portal')->dropIfExists('programmatic_units');
     }
 }

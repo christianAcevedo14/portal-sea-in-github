@@ -27,6 +27,6 @@ class CreateTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('titles');
+        Schema::connection('portal')->dropIfExists('titles');
     }
 }

@@ -28,6 +28,6 @@ class CreateAppsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apps');
+        Schema::connection('portal')->dropIfExists('apps');
     }
 }
