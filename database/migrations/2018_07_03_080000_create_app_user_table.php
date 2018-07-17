@@ -30,6 +30,6 @@ class CreateAppUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app_user');
+        Schema::connection('portal')->dropIfExists('app_user');
     }
 }
