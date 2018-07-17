@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '(787)-241-0507',
                 'email' => 'francisco.colon4@upr.edu',
                 'password' => Hash::make('123456'),
+                'avatar' => 'assets/images/avatars/1.jpg'
             ],
             [
                 'title_id' => 2,
@@ -30,10 +31,11 @@ class UsersTableSeeder extends Seeder
                 'first_name' => 'Ramón',
                 'initial' => 'F',
                 'surname' => 'Nieves',
-                'second_surname' => '',
+                'second_surname' => 'Alvarez',
                 'phone' => '(787) 207-6759',
                 'email' => 'ramonf.nieves@upr.edu',
                 'password' => Hash::make('123456'),
+                'avatar' => 'assets/images/avatars/2.jpg'
             ],
         ];
 
