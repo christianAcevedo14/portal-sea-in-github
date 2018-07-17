@@ -1,6 +1,6 @@
 <div class="dropdown">
     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-        <span class="avatar" style="background-image: url({{ asset('demo/faces/male/2.jpg') }})"></span>
+        <span class="avatar" style="background-image: url({{ asset(auth()->user()->avatar) }})"></span>
         <span class="ml-2 d-none d-lg-block">
             <span class="text-default">{{ auth()->user()->full_name }}</span>
             <small class="text-muted d-block mt-1">{{ auth()->user()->title->description }}</small>
