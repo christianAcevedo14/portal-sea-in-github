@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->belongsTo(Title::class);
     }
 
+    function scopeAgents($query)
+    {
+        return $query->where('title_id', 2);
+    }
+
     public function getIsAdminAttribute(){
 
         return $this->title_id == 1;
