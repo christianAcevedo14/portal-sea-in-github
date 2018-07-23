@@ -12,11 +12,8 @@ function loadZips(select)
             type: 'GET',
             dataType: 'json',
             beforeSend: function(){
-                waitingDialog.show('', {
-                    headerText: 'Cargando códigos postales',
-                    dialogSize: 'sm',
-                    progressType: 'success'
-                });
+                zipcode_select.empty();
+                zipcode_select.append('<option selected disabled>Cargado...</option>');
             },
             success:function(data) {
                 zipcode_select.empty();
@@ -24,14 +21,9 @@ function loadZips(select)
                 $.each(data, function (key, value) {
                     zipcode_select.append('<option value="' + value.id + '">' + value.description + '</option>');
                 });
-                zipcode_select.selectpicker('refresh');
             },
-            complete: function(){
-                waitingDialog.hide();
-            }
         });
     } else {
         zipcode_select.empty();
-        zipcode_select.selectpicker('refresh');
     }
 }
