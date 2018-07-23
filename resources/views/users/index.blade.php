@@ -6,18 +6,18 @@
 
 @section('content')
     <div class="container">
-        <div class="page-header">
-            <h1 class="page-title">
-                Usuarios
-            </h1>
-        </div>
-
-        <div class="row row-cards">
+        <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <h5 class="card-header">Usuarios</h5>
+                    <div class="card-header">
+                        <h3 class="card-title">Lista de usuarios</h3>
+                        <div class="card-options">
+                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>
+                            {{--<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>--}}
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="users">
                             <thead>
                             <tr>
                                 <th scope="col"></th>
@@ -53,7 +53,10 @@
         </div>
     </div>
 
-
-
+    <script>
+        $(document).ready( function () {
+            $('#users').DataTable();
+        } );
+    </script>
 
 @endsection

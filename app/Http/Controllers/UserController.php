@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\App;
+use App\Http\Requests\StoreUser;
 use App\ProgrammaticUnit;
 use App\Title;
 use App\User;
@@ -28,18 +29,21 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $apps = App::select('id', 'name')->get();
+        $titles = Title::select('id', 'description')->get();
+        $programmatic_units = ProgrammaticUnit::select('id', 'description')->get();
+        return view('users.create', compact('apps', 'titles', 'programmatic_units'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreUser $user
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreUser $user)
     {
-        //
+        $new_user = User::create($user->except('app_id'));
+        $new_user->apps()->attach($user->app_id);
+        return redirect()->route('users.index');
     }
 
     /**
