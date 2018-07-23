@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="container">
-
         <div class="row row-cards">
             <div class="col-sm-12">
                 <form action="{{ route('users.store') }}" class="card" method="post">
@@ -65,7 +64,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" placeholder="Teléfono" value="{{ old('phone') }}">
+                                    <input type="text" name="phone" class="form-control" placeholder="Teléfono" data-mask="(000) 000-0000" data-mask-clearifnotmatch="true" value="{{ old('phone') }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -96,6 +95,9 @@
                 </form>
             </div>
         </div>
-
     </div>
+
+    <script>
+        require(['input-mask']);
+    </script>
 @endsection
