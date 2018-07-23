@@ -77,6 +77,7 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
+
         $user->update($request->except('app_id'));
         $user->apps()->sync($request->app_id);
         return redirect()->route('home');
