@@ -36,6 +36,8 @@ class UserController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
      * @param StoreUser $user
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -44,17 +46,6 @@ class UserController extends Controller
         $new_user = User::create($user->except('app_id'));
         $new_user->apps()->attach($user->app_id);
         return redirect()->route('users.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
