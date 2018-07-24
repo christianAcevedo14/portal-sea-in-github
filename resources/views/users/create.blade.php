@@ -96,8 +96,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-scripts')
 
     <script>
         require(['input-mask']);
     </script>
+
 @endsection

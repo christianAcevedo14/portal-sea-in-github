@@ -23,53 +23,58 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Dashboard Core -->
+    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet" />
+    <!-- c3.js Charts Plugin -->
+    <link href="{{ asset('assets/plugins/charts-c3/plugin.css') }}" rel="stylesheet" />
+    <!-- Google Maps Plugin -->
+    <link href="{{ asset('assets/plugins/maps-google/plugin.css') }}" rel="stylesheet" />
+</head>
+<body class="">
+    <div class="page">
+        <div class="page-main">
+            <div class="header py-4">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="header-brand" href="./index.html">
+                            <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
+                        </a>
+                        <div class="d-flex order-lg-2 ml-auto">
+                            @include('layouts.includes.notifications')
+                            @include('layouts.includes.user_menu')
+                        </div>
+                        <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                            <span class="header-toggler-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                <div class="container">
+                    @yield('top-menu')
+                </div>
+            </div>
+            <div class="my-3 my-md-5">
+                @yield('content')
+            </div>
+        </div>
+        {{--footer--}}
+    </div>
+
     <script src="{{ asset('assets/js/require.min.js') }}"></script>
     <script>
         requirejs.config({
-            baseUrl: '../'
+            baseUrl: '/'
         });
     </script>
     <!-- Dashboard Core -->
-    <link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- c3.js Charts Plugin -->
-    <link href="{{ asset('assets/plugins/charts-c3/plugin.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/plugins/charts-c3/plugin.js') }}"></script>
     <!-- Google Maps Plugin -->
-    <link href="{{ asset('assets/plugins/maps-google/plugin.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
-</head>
-<body class="">
-<div class="page">
-    <div class="page-main">
-        <div class="header py-4">
-            <div class="container">
-                <div class="d-flex">
-                    <a class="header-brand" href="./index.html">
-                        <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
-                    </a>
-                    <div class="d-flex order-lg-2 ml-auto">
-                        @include('layouts.includes.notifications')
-                        @include('layouts.includes.user_menu')
-                    </div>
-                    <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
-                        <span class="header-toggler-icon"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
-            <div class="container">
-                @yield('top-menu')
-            </div>
-        </div>
-        <div class="my-3 my-md-5">
-            @yield('content')
-        </div>
-    </div>
-    {{--footer--}}
-</div>
+    @yield('custom-scripts')
 </body>
 </html>

@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes;
 
+    protected $connection = 'portal';
     protected $guarded = [];
     protected $hidden = ['password', 'remember_token'];
 
@@ -29,6 +30,11 @@ class User extends Authenticatable
     function title()
     {
         return $this->belongsTo(Title::class);
+    }
+
+    function scopeAgents($query)
+    {
+        return $query->where('title_id', 2);
     }
 
     public function getIsAdminAttribute(){
