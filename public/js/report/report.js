@@ -23,13 +23,5 @@ function onSelectCriticalIssueChange() {
         }
 
             });
-
-   /* $.get('/api/issue/'+critical_issue_id+'/materias', function (data) {
-        var html_select = '<option value="">Seleccione Materia</option>';
-        for (var i = 0; i < data.length; ++i)
-            html_select+='<option value="+data[i].id+">'+data[i].name+'</option>';
-        console.log(html_select);l
-        $('#select-materia').html(html_select);
-    });*/
 }
 
