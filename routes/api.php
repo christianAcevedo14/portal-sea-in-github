@@ -1,5 +1,6 @@
 <?php
 
+use App\City;
 use Illuminate\Http\Request;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'api'], function () {
+
+    Route::get('cities/{id}/zipcodes', function($id) {
+        $zipcodes = City::findOrFail($id)->zipcodes;
+        return response()->json($zipcodes, 200);
+    });
+
 });
+

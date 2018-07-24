@@ -8,10 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $fillable = ['title_id', 'programmatic_unit_id', 'first_name', 'initial', 'surname', 'second_surname', 'phone', 'email', 'password'];
-
     use Notifiable, SoftDeletes;
 
+    protected $connection = 'portal';
     protected $guarded = [];
     protected $hidden = ['password', 'remember_token'];
 
@@ -31,6 +30,11 @@ class User extends Authenticatable
     function title()
     {
         return $this->belongsTo(Title::class);
+    }
+
+    function scopeAgents($query)
+    {
+        return $query->where('title_id', 2);
     }
 
     public function getIsAdminAttribute(){
