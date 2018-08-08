@@ -98,6 +98,21 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+
+        '4h' => [
+            'driver' => 'mysql',
+            'host' => env('4H_DB_HOST', '127.0.0.1'),
+            'port' => env('4H_DB_PORT', '3306'),
+            'database' => env('4H_DB_DATABASE', 'forge'),
+            'username' => env('4H_DB_USERNAME', 'forge'),
+            'password' => env('4H_DB_PASSWORD', ''),
+            'unix_socket' => env('4H_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
     ],
 
     /*
