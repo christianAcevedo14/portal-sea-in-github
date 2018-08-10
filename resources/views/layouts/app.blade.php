@@ -32,6 +32,12 @@
     <link href="{{ asset('assets/plugins/charts-c3/plugin.css') }}" rel="stylesheet" />
     <!-- Google Maps Plugin -->
     <link href="{{ asset('assets/plugins/maps-google/plugin.css') }}" rel="stylesheet" />
+    <script src="{{ asset('assets/js/require.min.js') }}"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '/'
+        });
+    </script>
 </head>
 <body class="">
     <div class="page">
@@ -63,13 +69,6 @@
         </div>
         {{--footer--}}
     </div>
-
-    <script src="{{ asset('assets/js/require.min.js') }}"></script>
-    <script>
-        requirejs.config({
-            baseUrl: '/'
-        });
-    </script>
     <!-- Dashboard Core -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- c3.js Charts Plugin -->
