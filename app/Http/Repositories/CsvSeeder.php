@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Log;
  * Taken from http://laravelsnippets.com/snippets/seeding-database-with-csv-files-cleanly
  * and modified to include insert chunking
  */
-class CustomCsvSeeder extends Seeder
+class CsvSeeder extends Seeder
 {
 
     /**
@@ -101,9 +102,9 @@ class CustomCsvSeeder extends Seeder
      * @param  string $text
      * @return string       String with BOM stripped
      */
-    public function stripUtf8Bom( $text )
+    public function stripUtf8Bom($text)
     {
-        $bom = pack('H*','EFBBBF');
+        $bom = pack('H*', 'EFBBBF');
         $text = preg_replace("/^$bom/", '', $text);
 
         return $text;
@@ -117,8 +118,7 @@ class CustomCsvSeeder extends Seeder
      */
     public function openCSV($filename)
     {
-        if ( !file_exists($filename) || !is_readable($filename) )
-        {
+        if (!file_exists($filename) || !is_readable($filename)) {
             Log::error("CSV insert failed: CSV " . $filename . " does not exist or is not readable.");
             return FALSE;
         }
@@ -146,7 +146,7 @@ class CustomCsvSeeder extends Seeder
         $handle = $this->openCSV($filename);
 
         // CSV doesn't exist or couldn't be read from.
-        if ( $handle === FALSE )
+        if ($handle === FALSE)
             return [];
 
         $header = NULL;
@@ -155,42 +155,36 @@ class CustomCsvSeeder extends Seeder
         $mapping = $this->mapping ?: [];
         $offset = $this->offset_rows;
 
-        while ( ($row = fgetcsv($handle, 0, $deliminator)) !== FALSE )
-        {
+        while (($row = fgetcsv($handle, 0, $deliminator)) !== FALSE) {
             // Offset the specified number of rows
 
-            while ( $offset > 0 )
-            {
+            while ($offset > 0) {
                 $offset--;
                 continue 2;
             }
 
             // No mapping specified - grab the first CSV row and use it
-            if ( !$mapping )
-            {
+            if (!$mapping) {
                 $mapping = $row;
                 $mapping[0] = $this->stripUtf8Bom($mapping[0]);
 
                 // skip csvs columns that don't exist in the database
-                foreach($mapping  as $index => $fieldname){
-                    if (!DB::connection($this->connection)->getSchemaBuilder()->hasColumn($this->table, $fieldname)){
+                foreach ($mapping as $index => $fieldname) {
+                    if (!DB::connection($this->connection)->getSchemaBuilder()->hasColumn($this->table, $fieldname)) {
                         array_pull($mapping, $index);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 $row = $this->readRow($row, $mapping);
 
                 // insert only non-empty rows from the csvs file
-                if ( !$row )
+                if (!$row)
                     continue;
 
                 $data[$row_count] = $row;
 
                 // Chunk size reached, insert
-                if ( ++$row_count == $this->insert_chunk_size )
-                {
+                if (++$row_count == $this->insert_chunk_size) {
                     $this->insert($data);
                     $row_count = 0;
                     // clear the data array explicitly when it was inserted so
@@ -203,7 +197,7 @@ class CustomCsvSeeder extends Seeder
 
         // Insert any leftover rows
         //check if the data array explicitly if there are any values left to be inserted, if insert them
-        if ( count($data)  )
+        if (count($data))
             $this->insert($data);
 
         fclose($handle);
@@ -214,25 +208,27 @@ class CustomCsvSeeder extends Seeder
     /**
      * Read a CSV row into a DB insertable array
      *
-     * @param array $row        List of CSV columns
-     * @param array $mapping    Array of csvCol => dbCol
+     * @param array $row List of CSV columns
+     * @param array $mapping Array of csvCol => dbCol
      * @return array
      */
-    public function readRow( array $row, array $mapping )
+    public function readRow(array $row, array $mapping)
     {
         $row_values = [];
 
         foreach ($mapping as $csvCol => $dbCol) {
             if (!isset($row[$csvCol]) || $row[$csvCol] === '') {
                 $row_values[$dbCol] = NULL;
-            }
-            else {
+            } else {
                 $row_values[$dbCol] = $row[$csvCol];
             }
+
+            $row_values['created_at'] = Carbon::now();
+            $row_values['updated_at'] = Carbon::now();
         }
 
         if ($this->hashable && isset($row_values[$this->hashable])) {
-            $row_values[$this->hashable] =  Hash::make($row_values[$this->hashable]);
+            $row_values[$this->hashable] = Hash::make($row_values[$this->hashable]);
         }
 
         return $row_values;
@@ -244,7 +240,7 @@ class CustomCsvSeeder extends Seeder
      * @param array $seedData
      * @return bool   TRUE on success else FALSE
      */
-    public function insert( array $seedData )
+    public function insert(array $seedData)
     {
         try {
             DB::connection($this->connection)->table($this->table)->insert($seedData);
