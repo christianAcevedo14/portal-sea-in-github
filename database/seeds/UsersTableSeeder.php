@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
         foreach ($users as $user)
         {
             $new = User::create($user);
-            $new->apps()->attach([1, 2]);
+            $new->apps()->attach([1, 2, 6]);
         }
     }
 }

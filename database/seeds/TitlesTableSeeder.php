@@ -33,6 +33,7 @@ class TitlesTableSeeder extends Seeder
             ['id' => 25, 'description' => 'Especialista de Planificación y Evaluación'],
             ['id' => 26, 'description' => 'Director Auxiliar de Planificación y Evaluación'],
             ['id' => 27, 'description' => 'Líder de Área Programática (Agricultura)'],
+            ['id' => 28, 'description' => 'Especialista SEA'],
             ['id' => 29, 'description' => 'Especialista de Medios Educativos e Información (MEI)'],
 
             ['id' => 30, 'description' => 'Especialista en Evaluación'],

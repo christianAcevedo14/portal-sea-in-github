@@ -13,11 +13,12 @@ class AppsTableSeeder extends Seeder
     public function run()
     {
         $regions = [
-            ['name' => 'SISE', 'url' => 'sise'],
-            ['name' => 'pagriWeb', 'url' => 'pagri'],
-            ['name' => '4-H', 'url' => '4h'],
-            ['name' => 'CFC', 'url' => 'cfc'],
-            ['name' => 'DRC', 'url' => 'drc'],
+            ['name' => 'pagriWeb', 'url' => 'pagri', 'icon' => 'fa fa-tree'],
+            ['name' => 'SISE', 'url' => 'sise', 'icon' => 'fa fa-file-text'],
+            ['name' => '4-H', 'url' => '4h', 'icon' => 'fa fa-odnoklassniki'],
+            ['name' => 'CFC', 'url' => 'cfc', 'icon' => ''],
+            ['name' => 'DRC', 'url' => 'drc', 'icon' => ''],
+            ['name' => 'Usuarios', 'url' => 'users', 'icon' => 'fa fa-users'],
         ];
 
         foreach ($regions as $region)
