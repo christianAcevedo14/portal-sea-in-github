@@ -47685,7 +47685,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47750,37 +47750,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "Pow",
     data: function data() {
         return {
-            rows: [],
+            plan_programs: [],
             nextId: 2
         };
     },
 
     methods: {
         addRow: function addRow() {
-            this.rows.push({
+            this.plan_programs.push({
                 id: this.nextId,
                 program_id: null,
-                matter_id: [],
-                years: []
+                matters: [],
+                enterprises: [],
+                ftes: []
             });
             this.nextId++;
         },
         removeRow: function removeRow(index) {
             confirm('Esta seguro?');
-            this.$delete(this.rows, index);
+            this.$delete(this.plan_programs, index);
         },
         submitPlan: function submitPlan() {
-            axios.get('api/plans', this.rows).then(function (response) {
-                console.log(response);
+            axios.post('api/plans', this.plan_programs).then(function (response) {
+                console.log(response.data);
             });
         }
     },
     mounted: function mounted() {
-        this.rows.push({
+        this.plan_programs.push({
             id: 1,
             program_id: null,
-            matter_id: [],
-            years: []
+            matters: [],
+            enterprises: [],
+            ftes: []
         });
     }
 });
@@ -47802,10 +47804,10 @@ var render = function() {
       _c(
         "div",
         { staticClass: "card-body" },
-        _vm._l(_vm.rows, function(row, index) {
+        _vm._l(_vm.plan_programs, function(plan_program, index) {
           return _c("pow-row", {
-            key: row.id,
-            attrs: { index: index, row: row },
+            key: plan_program.id,
+            attrs: { index: index, row: plan_program },
             on: {
               addRow: _vm.addRow,
               removeRow: function($event) {
@@ -47925,7 +47927,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47975,6 +47977,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "PowRow.vue",
@@ -47983,7 +47997,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             form_elements: {
                 years: [],
                 programs: [],
-                matters: []
+                matters: [],
+                enterprises: []
             }
         };
     },
@@ -47998,12 +48013,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getObjectives: function getObjectives(event) {
             var objectives = this.form_elements.programs[event.target.selectedOptions[0].index - 1].objectives;
             var matters = [];
+            var enterprises = [];
             objectives.forEach(function (objective) {
                 if (objective.code !== 'EA') {
                     objective.matters.forEach(function (matter) {
                         if (matter.enterprises.length) {
                             matter.enterprises.forEach(function (enterprise) {
-                                matters.push(enterprise);
+                                enterprises.push(enterprise);
                             });
                         } else {
                             matters.push(matter);
@@ -48012,6 +48028,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             this.form_elements.matters.push(matters);
+            this.form_elements.enterprises.push(enterprises);
         },
         setDates: function setDates() {
             var date = new Date();
@@ -48161,19 +48178,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.row.years[index],
-                      expression: "row.years[index]"
+                      value: _vm.row.ftes[index],
+                      expression: "row.ftes[index]"
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number" },
-                  domProps: { value: _vm.row.years[index] },
+                  attrs: { type: "number", min: "0" },
+                  domProps: { value: _vm.row.ftes[index] },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.row.years, index, $event.target.value)
+                      _vm.$set(_vm.row.ftes, index, $event.target.value)
                     }
                   }
                 })
@@ -48188,6 +48205,78 @@ var render = function() {
         _c(
           "div",
           { staticClass: "form-group" },
+          _vm._l(_vm.form_elements.enterprises[0], function(enterprise, index) {
+            return _c("div", { key: index, staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.row.enterprises,
+                    expression: "row.enterprises"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "checkbox", id: "defaultCheck1" },
+                domProps: {
+                  value: enterprise.id,
+                  checked: Array.isArray(_vm.row.enterprises)
+                    ? _vm._i(_vm.row.enterprises, enterprise.id) > -1
+                    : _vm.row.enterprises
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.row.enterprises,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = enterprise.id,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.row, "enterprises", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.row,
+                            "enterprises",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.row, "enterprises", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "defaultCheck1" }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(enterprise.code) +
+                      " - " +
+                      _vm._s(enterprise.description) +
+                      "\n                    "
+                  )
+                ]
+              )
+            ])
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
           _vm._l(_vm.form_elements.matters[0], function(matter, index) {
             return _c("div", { key: index, staticClass: "form-check" }, [
               _c("input", {
@@ -48195,39 +48284,39 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.row.matter_id,
-                    expression: "row.matter_id"
+                    value: _vm.row.matters,
+                    expression: "row.matters"
                   }
                 ],
                 staticClass: "form-check-input",
                 attrs: { type: "checkbox", id: "defaultCheck1" },
                 domProps: {
-                  value: index,
-                  checked: Array.isArray(_vm.row.matter_id)
-                    ? _vm._i(_vm.row.matter_id, index) > -1
-                    : _vm.row.matter_id
+                  value: matter.id,
+                  checked: Array.isArray(_vm.row.matters)
+                    ? _vm._i(_vm.row.matters, matter.id) > -1
+                    : _vm.row.matters
                 },
                 on: {
                   change: function($event) {
-                    var $$a = _vm.row.matter_id,
+                    var $$a = _vm.row.matters,
                       $$el = $event.target,
                       $$c = $$el.checked ? true : false
                     if (Array.isArray($$a)) {
-                      var $$v = index,
+                      var $$v = matter.id,
                         $$i = _vm._i($$a, $$v)
                       if ($$el.checked) {
                         $$i < 0 &&
-                          _vm.$set(_vm.row, "matter_id", $$a.concat([$$v]))
+                          _vm.$set(_vm.row, "matters", $$a.concat([$$v]))
                       } else {
                         $$i > -1 &&
                           _vm.$set(
                             _vm.row,
-                            "matter_id",
+                            "matters",
                             $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                           )
                       }
                     } else {
-                      _vm.$set(_vm.row, "matter_id", $$c)
+                      _vm.$set(_vm.row, "matters", $$c)
                     }
                   }
                 }
