@@ -15,7 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue'));
+Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue'));
 
 const app = new Vue({
     el: '#app'
