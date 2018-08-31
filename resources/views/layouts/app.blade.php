@@ -15,6 +15,10 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon"/>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <!-- Generated: 2018-04-16 09:29:05 +0200 -->
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -39,8 +43,8 @@
         });
     </script>
 </head>
-<body class="">
-    <div class="page">
+<body>
+    <div id="app" class="page">
         <div class="page-main">
             <div class="header py-4">
                 <div class="container">
@@ -77,6 +81,8 @@
     <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+    <!-- App.js -->
+    <script src="{{ mix('js/app.js') }}"></script>
     @yield('custom-scripts')
 </body>
 </html>

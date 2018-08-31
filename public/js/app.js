@@ -47656,7 +47656,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47716,6 +47716,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "Pow",
@@ -47742,7 +47746,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$delete(this.plan_programs, index);
         },
         submitPlan: function submitPlan() {
-            axios.post('api/plans', this.plan_programs).then(function (response) {
+            axios.post('/sise/plans', this.plan_programs).then(function (response) {
                 console.log(response.data);
             });
         }
@@ -47767,42 +47771,50 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header text-white bg-success" }, [
-        _vm._v("\n            Crear plan de trabajo\n        ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        _vm._l(_vm.plan_programs, function(plan_program, index) {
-          return _c("pow-row", {
-            key: plan_program.id,
-            attrs: { index: index, row: plan_program },
-            on: {
-              addRow: _vm.addRow,
-              removeRow: function($event) {
-                _vm.removeRow(index)
-              }
-            }
-          })
-        })
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-footer" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success float-right",
-            on: { click: _vm.submitPlan }
-          },
-          [_vm._v("Crear plan")]
-        )
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            _vm._l(_vm.plan_programs, function(plan_program, index) {
+              return _c("pow-row", {
+                key: plan_program.id,
+                attrs: { index: index, row: plan_program },
+                on: {
+                  addRow: _vm.addRow,
+                  removeRow: function($event) {
+                    _vm.removeRow(index)
+                  }
+                }
+              })
+            })
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer text-right" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.submitPlan } },
+              [_vm._v("Guardar")]
+            )
+          ])
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Crear plan de trabajo")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -48126,7 +48138,7 @@ var render = function() {
                   }
                 }
               },
-              [_c("i", { staticClass: "fas fa-plus" })]
+              [_c("i", { staticClass: "fe fe-plus" })]
             )
           : _c(
               "button",
@@ -48138,7 +48150,7 @@ var render = function() {
                   }
                 }
               },
-              [_c("i", { staticClass: "fas fa-trash-alt" })]
+              [_c("i", { staticClass: "fe fe-trash" })]
             )
       ])
     ]),
