@@ -47898,7 +47898,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47960,7 +47960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "PowRow.vue",
+    name: "PowRow",
     data: function data() {
         return {
             form_elements: {
@@ -47994,16 +47994,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (objective.code !== 'EA') {
                     objective.matters.forEach(function (matter) {
                         if (matter.enterprises.length) {
+                            matters.push(matter);
                             matter.enterprises.forEach(function (enterprise) {
                                 enterprises.push(enterprise);
                             });
                         } else {
-                            matters.push(matter);
+                            var found = matters.find(function (obj) {
+                                return obj.id === matter.id;
+                            });
+                            if (!found) matters.push(matter);
                         }
                     });
                 }
             });
-
             this.form_elements.matters.push(matters);
             this.form_elements.enterprises.push(enterprises);
             this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
@@ -48201,7 +48204,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-check-input",
-                  attrs: { type: "checkbox", id: "defaultCheck1" },
+                  attrs: { type: "checkbox", id: "enterprises" },
                   domProps: {
                     value: enterprise.id,
                     checked: Array.isArray(_vm.row.enterprises)
@@ -48238,7 +48241,7 @@ var render = function() {
                   "label",
                   {
                     staticClass: "form-check-label",
-                    attrs: { for: "defaultCheck1" }
+                    attrs: { for: "enterprises" }
                   },
                   [
                     _vm._v(
@@ -48272,7 +48275,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-check-input",
-                attrs: { type: "checkbox", id: "defaultCheck1" },
+                attrs: { type: "checkbox", id: "matters" },
                 domProps: {
                   value: matter.id,
                   checked: Array.isArray(_vm.row.matters)
@@ -48307,10 +48310,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "label",
-                {
-                  staticClass: "form-check-label",
-                  attrs: { for: "defaultCheck1" }
-                },
+                { staticClass: "form-check-label", attrs: { for: "matters" } },
                 [
                   _vm._v(
                     "\n                        " +
