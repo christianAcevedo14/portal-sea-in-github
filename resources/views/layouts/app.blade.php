@@ -74,7 +74,7 @@
         {{--footer--}}
     </div>
     <!-- Dashboard Core -->
-    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    {{--<script src="{{ asset('assets/js/dashboard.js') }}"></script>--}}
     <!-- c3.js Charts Plugin -->
     <script src="{{ asset('assets/plugins/charts-c3/plugin.js') }}"></script>
     <!-- Google Maps Plugin -->
