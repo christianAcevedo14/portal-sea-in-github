@@ -47747,7 +47747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         submitPlan: function submitPlan() {
             axios.post('/sise/plans', this.plan_programs).then(function (response) {
-                console.log(response.data);
+                location.href = window.location.protocol + '//' + window.location.hostname + response.data.redirect;
             });
         }
     },
@@ -47811,7 +47811,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Crear plan de trabajo")])
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Creación CE-9")])
     ])
   }
 ]
