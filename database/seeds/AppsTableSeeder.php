@@ -18,7 +18,7 @@ class AppsTableSeeder extends Seeder
             ['name' => '4-H', 'url' => '4h', 'icon' => 'fa fa-odnoklassniki'],
             ['name' => 'CFC', 'url' => 'cfc', 'icon' => ''],
             ['name' => 'DRC', 'url' => 'drc', 'icon' => ''],
-            ['name' => 'Usuarios', 'url' => 'users', 'icon' => 'fa fa-users'],
+            ['name' => 'Usuarios', 'url' => 'users', 'icon' => 'fa fa-user'],
         ];
 
         foreach ($regions as $region)
