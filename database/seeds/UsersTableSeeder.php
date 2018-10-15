@@ -37,6 +37,18 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('123456'),
                 'avatar' => 'assets/images/avatars/2.jpg'
             ],
+            [
+                'title_id' => 1,
+                'programmatic_unit_id' => 680,
+                'first_name' => 'Mabeline',
+                'initial' => '',
+                'surname' => 'Ramos',
+                'second_surname' => 'Vélez',
+                'phone' => '',
+                'email' => 'madeline.ramos4@upr.edu',
+                'password' => Hash::make('123456'),
+                'avatar' => 'assets/images/avatars/ope6.jpg'
+            ],
         ];
 
         foreach ($users as $user)
