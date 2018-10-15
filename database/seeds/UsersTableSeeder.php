@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Repositories\CsvSeeder;
 use App\User;
-use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class UsersTableSeeder extends CsvSeeder
 {
+    public function __construct()
+    {
+        $this->connection = 'portal';
+        $this->table = 'users';
+        $this->filename = __DIR__ . '/csvs/users.csv';
+    }
     /**
      * Run the database seeds.
      *
@@ -56,5 +62,7 @@ class UsersTableSeeder extends Seeder
             $new = User::create($user);
             $new->apps()->attach([2, 1, 3, 4, 5, 6]);
         }
+
+        parent::run();
     }
 }
