@@ -47656,7 +47656,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47720,13 +47720,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "Pow",
     data: function data() {
         return {
             plan_programs: [],
-            nextId: 2
+            nextId: 2,
+            users: [],
+            user: ''
         };
     },
 
@@ -47753,6 +47766,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
+        var _this = this;
+
+        var domain = window.location.protocol + '//' + window.location.hostname;
+        axios.get(domain + '/sise/api/users').then(function (response) {
+            _this.users = response.data;
+        });
         this.plan_programs.push({
             id: 1,
             program_id: null,
@@ -47780,18 +47799,84 @@ var render = function() {
           _c(
             "div",
             { staticClass: "card-body" },
-            _vm._l(_vm.plan_programs, function(plan_program, index) {
-              return _c("pow-row", {
-                key: plan_program.id,
-                attrs: { index: index, row: plan_program },
-                on: {
-                  addRow: _vm.addRow,
-                  removeRow: function($event) {
-                    _vm.removeRow(index)
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Escoja usuario")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user,
+                            expression: "user"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "user_id", name: "user_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.user = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { value: "", selected: "", disabled: "" } },
+                          [_vm._v("Selecciona un Usuario")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.users, function(user) {
+                          return _c(
+                            "option",
+                            { key: user.id, domProps: { value: user.id } },
+                            [
+                              _vm._v(
+                                _vm._s(user.first_name) +
+                                  " " +
+                                  _vm._s(user.surname) +
+                                  " " +
+                                  _vm._s(user.second_surname)
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.plan_programs, function(plan_program, index) {
+                return _c("pow-row", {
+                  key: plan_program.id,
+                  attrs: { index: index, row: plan_program },
+                  on: {
+                    addRow: _vm.addRow,
+                    removeRow: function($event) {
+                      _vm.removeRow(index)
+                    }
                   }
-                }
+                })
               })
-            })
+            ],
+            2
           ),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer text-right" }, [
