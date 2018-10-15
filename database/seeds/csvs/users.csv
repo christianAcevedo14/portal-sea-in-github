@@ -1,4 +1,4 @@
-﻿id,title_id,programmatic_unit_id,first_name,initial,surname,second_surname,phone,email,password,avatar
+﻿title_id,programmatic_unit_id,first_name,initial,surname,second_surname,phone,email,password,avatar
 ,1,680,Francisco,J.,Colón,Rodríguez,(787)241-0507,francisco.colon4@upr.edu,123123,assets/images/avatars/1.jpg
 ,1,680,Ramón,F,Nieves,Álvarez,(787)207-6759,ramonf.nieves@upr.edu,123123,assets/images/avatars/2.jpg
 ,1,580,Ada I.,,Acosta,Rodríguez,,ada.acosta@upr.edu,123123,
