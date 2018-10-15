@@ -1,7 +1,7 @@
 <?php
 
 use App\City;
-use Illuminate\Http\Request;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +21,15 @@ Route::group(['middleware' => 'api'], function () {
         return response()->json($zipcodes, 200);
     });
 
+    Route::get('/users', function () {
+        return User::where('title_id', 2)
+            ->orWhere('title_id', 12)
+            ->orWhere('title_id', 14)
+            ->orWhere('title_id', 23)
+            ->orWhere('title_id', 24)
+            ->orWhere('title_id', 27)
+            ->orWhere('title_id', 40)
+            ->get();
+    });
 });
 
