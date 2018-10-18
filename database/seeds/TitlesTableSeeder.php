@@ -43,8 +43,8 @@ class TitlesTableSeeder extends Seeder
             ['id' => 40, 'description' => 'Decano Auxiliar a/c Programa Educativo del SEA'],
             ['id' => 41, 'description' => 'Especialista en Educación en Computadoras'],
             ['id' => 42, 'description' => 'Decano Asociado y Subdirector del SEA'],
-            ['id' => 43, 'description' => 'Docente Facultad'],
-            ['id' => 44, 'description' => 'Docente EEA'],
+            ['id' => 45, 'description' => 'Administrador Edificio Huyke'],
+            ['id' => 46, 'description' => 'Directores de Departamente'],
         ];
 
         foreach ($titles as $title)

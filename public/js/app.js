@@ -47656,7 +47656,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47736,16 +47736,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "Pow",
     data: function data() {
         return {
-            plan_programs: [],
+            plan: {
+                user_id: '',
+                plan_programs: []
+            },
             nextId: 2,
-            users: [],
-            user: ''
+            users: []
         };
     },
 
     methods: {
         addRow: function addRow() {
-            this.plan_programs.push({
+            this.plan.plan_programs.push({
                 id: this.nextId,
                 program_id: null,
                 matters: [],
@@ -47756,11 +47758,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         removeRow: function removeRow(index) {
             confirm('Esta seguro?');
-            this.$delete(this.plan_programs, index);
+            this.$delete(this.plan.plan_programs, index);
         },
         submitPlan: function submitPlan() {
             var domain = window.location.protocol + '//' + window.location.hostname;
-            axios.post(domain + '/sise/plans', this.plan_programs).then(function (response) {
+            axios.post(domain + '/sise/plans', this.plan).then(function (response) {
                 location.href = domain + response.data.redirect;
             });
         }
@@ -47772,7 +47774,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.get(domain + '/sise/api/users').then(function (response) {
             _this.users = response.data;
         });
-        this.plan_programs.push({
+        this.plan.plan_programs.push({
             id: 1,
             program_id: null,
             matters: [],
@@ -47812,8 +47814,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user,
-                            expression: "user"
+                            value: _vm.plan.user_id,
+                            expression: "plan.user_id"
                           }
                         ],
                         staticClass: "form-control",
@@ -47828,9 +47830,13 @@ var render = function() {
                                 var val = "_value" in o ? o._value : o.value
                                 return val
                               })
-                            _vm.user = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                            _vm.$set(
+                              _vm.plan,
+                              "user_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
@@ -47863,7 +47869,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._l(_vm.plan_programs, function(plan_program, index) {
+              _vm._l(_vm.plan.plan_programs, function(plan_program, index) {
                 return _c("pow-row", {
                   key: plan_program.id,
                   attrs: { index: index, row: plan_program },
