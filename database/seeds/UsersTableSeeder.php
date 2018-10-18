@@ -2,6 +2,7 @@
 
 use App\Http\Repositories\CsvSeeder;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 
 class UsersTableSeeder extends CsvSeeder
 {
@@ -9,7 +10,7 @@ class UsersTableSeeder extends CsvSeeder
     {
         $this->connection = 'portal';
         $this->table = 'users';
-        $this->filename = __DIR__ . '/csvs/users.csv';
+        $this->filename = __DIR__ . '/csvs/imported_users.csv';
     }
     /**
      * Run the database seeds.
@@ -53,7 +54,7 @@ class UsersTableSeeder extends CsvSeeder
                 'phone' => '',
                 'email' => 'madeline.ramos4@upr.edu',
                 'password' => Hash::make('123456'),
-                'avatar' => 'assets/images/avatars/ope6.jpg'
+                'avatar' => 'assets/images/avatars/3.jpg'
             ],
         ];
 
@@ -62,6 +63,8 @@ class UsersTableSeeder extends CsvSeeder
             $new = User::create($user);
             $new->apps()->attach([2, 1, 3, 4, 5, 6]);
         }
+
+        Model::unguard();
 
         parent::run();
     }
