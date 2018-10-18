@@ -22,13 +22,8 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::get('/users', function () {
-        return User::where('title_id', 2)
-            ->orWhere('title_id', 12)
-            ->orWhere('title_id', 14)
-            ->orWhere('title_id', 23)
-            ->orWhere('title_id', 24)
-            ->orWhere('title_id', 27)
-            ->orWhere('title_id', 40)
+        return User::whereIn('title_id', [2, 12, 13, 14, 40])
+            ->orderBy('first_name')
             ->get();
     });
 });
