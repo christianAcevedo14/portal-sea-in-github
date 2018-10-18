@@ -47771,7 +47771,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         var domain = window.location.protocol + '//' + window.location.hostname;
-        axios.get(domain + '/sise/api/users').then(function (response) {
+        axios.get(domain + '/api/users').then(function (response) {
             _this.users = response.data;
         });
         this.plan.plan_programs.push({
