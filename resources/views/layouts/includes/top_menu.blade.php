@@ -12,9 +12,11 @@
             <li class="nav-item">
                 <a href="{{ route('home') }}" class="nav-link"><i class="fe fe-home"></i> Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link"><i class="fe fe-users"></i> Usuarios</a>
-            </li>
+            @if(Auth::user()->isAdmin)
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link"><i class="fe fe-users"></i> Usuarios</a>
+                </li>
+            @endif
             {{--<li class="nav-item">--}}
                 {{--<a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Interface</a>--}}
                 {{--<div class="dropdown-menu dropdown-menu-arrow">--}}
