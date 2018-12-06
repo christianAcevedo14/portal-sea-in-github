@@ -15,11 +15,6 @@ class User extends Authenticatable
     protected $guarded = [];
     protected $hidden = ['password', 'remember_token'];
 
-    public function getFullNameAttribute()
-    {
-        return "{$this->first_name} {$this->surname}";
-    }
-
     function apps()
     {
         return $this->belongsToMany(App::class);
@@ -45,13 +40,24 @@ class User extends Authenticatable
         return $query->where('title_id', 2);
     }
 
-    public function getIsAdminAttribute(){
-
+    public function getIsAdminAttribute()
+    {
         return $this->title_id == 1;
-
     }
 
-    public function getIsExtensionistAttribute(){
-        return $this->title_id > 1;
+    public function getIsCoordAttribute()
+    {
+        if ($this->title_id == 23 || $this->title_id == 24)
+            return true;
+    }
+
+    public function getRegionAttribute()
+    {
+        return substr($this->programmatic_unit->region_id, 0, 1);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->surname}";
     }
 }
