@@ -21,5 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('users', 'UserController');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    Route::get('loggedUser', function() {
+        return auth()->user();
+    });
 });
 
