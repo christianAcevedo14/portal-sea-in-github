@@ -45,7 +45,7 @@ class UsersTableSeeder extends CsvSeeder
                 'avatar' => 'assets/images/avatars/2.jpg'
             ],
             [
-                'title_id' => 1,
+                'title_id' => 4,
                 'programmatic_unit_id' => 680,
                 'first_name' => 'Mabeline',
                 'initial' => '',
