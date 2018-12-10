@@ -47779,19 +47779,16 @@ var render = function() {
                     staticClass: "avatar mr-3 align-self-center",
                     style: {
                       backgroundImage:
-                        "url(" + notification.data.plan.user.avatar + ")"
+                        "url(" + notification.data.user_avatar + ")"
                     }
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _c("strong", [
-                      _vm._v(
-                        _vm._s(notification.data.plan.user.first_name) +
-                          " " +
-                          _vm._s(notification.data.plan.user.surname)
-                      )
-                    ]),
-                    _vm._v(" a sometido su plan de trabajo.\n                "),
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(notification.data.message) +
+                        "\n                "
+                    ),
                     _c("div", { staticClass: "small text-muted" }, [
                       _c("strong", [_vm._v("Fecha:")]),
                       _vm._v(

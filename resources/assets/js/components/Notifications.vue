@@ -6,9 +6,9 @@
         </a>
         <div v-if="notifications.length > 0" class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
             <a class="dropdown-item d-flex" href="#" v-for="notification in notifications">
-                <span :style="{ backgroundImage: 'url(' + notification.data.plan.user.avatar + ')' }" class="avatar mr-3 align-self-center"></span>
+                <span :style="{ backgroundImage: 'url(' + notification.data.user_avatar + ')' }" class="avatar mr-3 align-self-center"></span>
                 <div>
-                    <strong>{{ notification.data.plan.user.first_name}} {{ notification.data.plan.user.surname }}</strong> a sometido su plan de trabajo.
+                    {{ notification.data.message }}
                     <div class="small text-muted"><strong>Fecha:</strong> {{ new Date(notification.created_at).toLocaleDateString('es-ES', {month: 'long', day: 'numeric', year: 'numeric'}) }}</div>
                 </div>
             </a>
