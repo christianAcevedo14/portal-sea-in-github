@@ -4,7 +4,7 @@
             <i class="fe fe-bell"></i>
             <span class="nav-unread" v-if="notifications.length > 0"></span>
         </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+        <div v-if="notifications.length > 0" class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
             <a class="dropdown-item d-flex" href="#" v-for="notification in notifications">
                 <span :style="{ backgroundImage: 'url(' + notification.data.plan.user.avatar + ')' }" class="avatar mr-3 align-self-center"></span>
                 <div>
@@ -14,6 +14,9 @@
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item text-center text-muted-dark" href="#">Mark all as read</a>
+        </div>
+        <div v-else class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+            <span class="dropdown-item text-center text-muted-dark">No hay notificaciones</span>
         </div>
     </div>
 </template>
