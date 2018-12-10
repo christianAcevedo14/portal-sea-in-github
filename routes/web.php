@@ -24,5 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('loggedUser', function() {
         return auth()->user();
     });
+    Route::get('notifications/get', function () {
+        return auth()->user()->unreadNotifications;
+    });
 });
 

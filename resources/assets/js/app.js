@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('notifications', require('./components/Notifications'));
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue'));
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue'));
 

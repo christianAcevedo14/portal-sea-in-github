@@ -53,7 +53,8 @@
                             <img src="{{ asset('demo/brand/tabler.svg') }}" class="header-brand-img" alt="tabler logo">
                         </a>
                         <div class="d-flex order-lg-2 ml-auto">
-                            @include('layouts.includes.notifications')
+                            <notifications></notifications>
+                            {{--@include('layouts.includes.notifications')--}}
                             @include('layouts.includes.user_menu')
                         </div>
                         <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
