@@ -47657,7 +47657,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47721,6 +47721,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "Notifications",
@@ -47760,62 +47763,81 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "dropdown-menu dropdown-menu-right dropdown-menu-arrow" },
-      [
-        _vm._l(_vm.notifications, function(notification) {
-          return _c(
-            "a",
-            { staticClass: "dropdown-item d-flex", attrs: { href: "#" } },
-            [
-              _c("span", {
-                staticClass: "avatar mr-3 align-self-center",
-                style: {
-                  backgroundImage:
-                    "url(" + notification.data.plan.user.avatar + ")"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("strong", [
-                  _vm._v(
-                    _vm._s(notification.data.plan.user.first_name) +
-                      " " +
-                      _vm._s(notification.data.plan.user.surname)
-                  )
-                ]),
-                _vm._v(" a sometido su plan de trabajo.\n                "),
-                _c("div", { staticClass: "small text-muted" }, [
-                  _c("strong", [_vm._v("Fecha:")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(
-                        new Date(notification.created_at).toLocaleDateString(
-                          "es-ES",
-                          { month: "long", day: "numeric", year: "numeric" }
-                        )
-                      )
-                  )
-                ])
-              ])
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "dropdown-divider" }),
-        _vm._v(" "),
-        _c(
-          "a",
+    _vm.notifications.length > 0
+      ? _c(
+          "div",
           {
-            staticClass: "dropdown-item text-center text-muted-dark",
-            attrs: { href: "#" }
+            staticClass: "dropdown-menu dropdown-menu-right dropdown-menu-arrow"
           },
-          [_vm._v("Mark all as read")]
+          [
+            _vm._l(_vm.notifications, function(notification) {
+              return _c(
+                "a",
+                { staticClass: "dropdown-item d-flex", attrs: { href: "#" } },
+                [
+                  _c("span", {
+                    staticClass: "avatar mr-3 align-self-center",
+                    style: {
+                      backgroundImage:
+                        "url(" + notification.data.plan.user.avatar + ")"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("strong", [
+                      _vm._v(
+                        _vm._s(notification.data.plan.user.first_name) +
+                          " " +
+                          _vm._s(notification.data.plan.user.surname)
+                      )
+                    ]),
+                    _vm._v(" a sometido su plan de trabajo.\n                "),
+                    _c("div", { staticClass: "small text-muted" }, [
+                      _c("strong", [_vm._v("Fecha:")]),
+                      _vm._v(
+                        " " +
+                          _vm._s(
+                            new Date(
+                              notification.created_at
+                            ).toLocaleDateString("es-ES", {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric"
+                            })
+                          )
+                      )
+                    ])
+                  ])
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropdown-divider" }),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-item text-center text-muted-dark",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Mark all as read")]
+            )
+          ],
+          2
         )
-      ],
-      2
-    )
+      : _c(
+          "div",
+          {
+            staticClass: "dropdown-menu dropdown-menu-right dropdown-menu-arrow"
+          },
+          [
+            _c(
+              "span",
+              { staticClass: "dropdown-item text-center text-muted-dark" },
+              [_vm._v("No hay notificaciones")]
+            )
+          ]
+        )
   ])
 }
 var staticRenderFns = []
