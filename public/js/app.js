@@ -10564,7 +10564,7 @@ function Animation( elem, properties, options ) {
 				deferred.notifyWith( elem, [ animation, 1, 0 ] );
 			}
 
-			// Resolve the animation and reports its conclusion
+			// Resolve the animation and report its conclusion
 			deferred.resolveWith( elem, [ animation ] );
 			return false;
 		},
@@ -48255,7 +48255,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48343,27 +48343,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.form_elements.matters = [];
             this.form_elements.enterprises = [];
 
-            var objectives = this.form_elements.programs[event.target.selectedOptions[0].index - 1].objectives;
+            var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
+            var objectives = program.objectives;
             var matters = [];
             var enterprises = [];
 
             objectives.forEach(function (objective) {
-                if (objective.code !== 'EA') {
-                    objective.matters.forEach(function (matter) {
-                        if (matter.enterprises.length) {
-                            matters.push(matter);
-                            matter.enterprises.forEach(function (enterprise) {
-                                enterprises.push(enterprise);
-                            });
-                        } else {
-                            var found = matters.find(function (obj) {
-                                return obj.id === matter.id;
-                            });
-                            if (!found) matters.push(matter);
-                        }
-                    });
-                }
+                // if (objective.code !== 'EA') {
+                objective.matters.forEach(function (matter) {
+                    if (matter.enterprises.length) {
+                        matters.push(matter);
+                        matter.enterprises.forEach(function (enterprise) {
+                            enterprises.push(enterprise);
+                        });
+                    } else {
+                        var found = matters.find(function (obj) {
+                            return obj.id === matter.id;
+                        });
+                        if (!found) matters.push(matter);
+                    }
+                });
+                // }
             });
+
+            if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
+                matters = matters.splice(0, matters.length - 3);
+            }
+
             this.form_elements.matters.push(matters);
             this.form_elements.enterprises.push(enterprises);
             this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
