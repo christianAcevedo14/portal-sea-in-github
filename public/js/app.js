@@ -48255,7 +48255,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48321,7 +48321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             form_elements: {
-                years: [],
+                years: ['2020', '2021', '2022', '2023', '2024'],
                 programs: [],
                 matters: [],
                 enterprises: [],
@@ -48373,28 +48373,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.form_elements.matters.push(matters);
             this.form_elements.enterprises.push(enterprises);
             this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
-        },
-        setDates: function setDates() {
-            var date = new Date();
-            var actual_month = date.getMonth() + 1;
-            var actual_year = date.getFullYear();
-
-            if (actual_month < 10) {
-                this.form_elements.years.push(actual_year);
-                var i = void 0;
-                for (i = 1; i <= 4; i++) {
-                    this.form_elements.years.push(actual_year + i);
-                }
-            } else {
-                var _i = void 0;
-                for (_i = 1; _i <= 5; _i++) {
-                    this.form_elements.years.push(actual_year + _i);
-                }
-            }
         }
     },
     watch: {
-        // whenever question changes, this function will run
         'row.enterprises': function rowEnterprises() {
             if (this.row.enterprises.length === 0) {
                 this.row.matters.length = 0;
@@ -48418,7 +48399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         var domain = window.location.protocol + '//' + window.location.hostname;
-        this.setDates();
+        // this.setDates();
         axios.get(domain + '/sise/api/programs').then(function (response) {
             _this.form_elements.programs = response.data;
         });
@@ -48589,7 +48570,10 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-check-input",
-                  attrs: { type: "checkbox", id: "enterprises" },
+                  attrs: {
+                    type: "checkbox",
+                    id: "enterprise_" + enterprise.id
+                  },
                   domProps: {
                     value: enterprise.id,
                     checked: Array.isArray(_vm.row.enterprises)
@@ -48626,7 +48610,7 @@ var render = function() {
                   "label",
                   {
                     staticClass: "form-check-label",
-                    attrs: { for: "enterprises" }
+                    attrs: { for: "enterprise_" + enterprise.id }
                   },
                   [
                     _vm._v(
@@ -48660,7 +48644,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-check-input",
-                attrs: { type: "checkbox", id: "matters" },
+                attrs: { type: "checkbox", id: "matter_" + matter.id },
                 domProps: {
                   value: matter.id,
                   checked: Array.isArray(_vm.row.matters)
@@ -48695,7 +48679,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "label",
-                { staticClass: "form-check-label", attrs: { for: "matters" } },
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "matter_" + matter.id }
+                },
                 [
                   _vm._v(
                     "\n                        " +
