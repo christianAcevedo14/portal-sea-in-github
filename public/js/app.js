@@ -48255,7 +48255,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48340,6 +48340,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('removeRow');
         },
         getObjectives: function getObjectives(event) {
+            this.row.matters.length = 0;
+            this.row.enterprises.length = 0;
             this.form_elements.matters = [];
             this.form_elements.enterprises = [];
 
@@ -48349,7 +48351,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var enterprises = [];
 
             objectives.forEach(function (objective) {
-                // if (objective.code !== 'EA') {
                 objective.matters.forEach(function (matter) {
                     if (matter.enterprises.length) {
                         matters.push(matter);
@@ -48363,7 +48364,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         if (!found) matters.push(matter);
                     }
                 });
-                // }
             });
 
             if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
@@ -48389,6 +48389,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var _i = void 0;
                 for (_i = 1; _i <= 5; _i++) {
                     this.form_elements.years.push(actual_year + _i);
+                }
+            }
+        }
+    },
+    watch: {
+        // whenever question changes, this function will run
+        'row.enterprises': function rowEnterprises() {
+            if (this.row.enterprises.length === 0) {
+                this.row.matters.length = 0;
+            } else {
+                if (this.row.program_id === 1 && !this.row.matters.includes(1)) {
+                    this.row.matters.push(1);
+                    this.row.matters.push(3);
+                    this.row.matters.push(4);
+                    this.row.matters.push(5);
+                } else if (this.row.program_id === 2 && !this.row.matters.includes(8)) {
+                    this.row.matters.push(8);
+                } else if (this.row.program_id === 4 && !this.row.matters.includes(10)) {
+                    this.row.matters.push(10);
+                    this.row.matters.push(12);
+                    this.row.matters.push(13);
                 }
             }
         }
