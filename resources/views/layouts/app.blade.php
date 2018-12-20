@@ -85,5 +85,46 @@
     <!-- App.js -->
     <script src="{{ mix('js/app.js') }}"></script>
     @yield('custom-scripts')
+    <script>
+        let timeoutID;
+
+        function setup() {
+            this.addEventListener("mousemove", resetTimer, false);
+            this.addEventListener("mousedown", resetTimer, false);
+            this.addEventListener("keypress", resetTimer, false);
+            this.addEventListener("DOMMouseScroll", resetTimer, false);
+            this.addEventListener("mousewheel", resetTimer, false);
+            this.addEventListener("touchmove", resetTimer, false);
+            this.addEventListener("MSPointerMove", resetTimer, false);
+
+            startTimer();
+        }
+
+        setup();
+
+        function startTimer() {
+            // wait 115 minutes before calling goInactive
+            timeoutID = window.setTimeout(goInactive, 6900000);
+        }
+
+        function resetTimer(e) {
+            window.clearTimeout(timeoutID);
+            goActive();
+        }
+
+        function goInactive() {
+            let actual = new Date();
+            let actual_plus_five = new Date(actual.getTime() + 5*60000);
+
+            let actual_time = actual.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            let actual_plus_five_time = actual_plus_five.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+            alert('Aviso Importante:\n\nHemos detectado inactividad durante 1 hora y 55 minutos.\nDe no guardar su trabajo en los próximos 5 minutos, puede perder el mismo.\n\nTiempo de envío  : ' + actual_time + '\nExpiración de sesión: ' + actual_plus_five_time)
+        }
+
+        function goActive() {
+            startTimer();
+        }
+    </script>
 </body>
 </html>
