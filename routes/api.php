@@ -22,9 +22,7 @@ Route::group(['middleware' => 'api'], function () {
     });
 
     Route::get('/users', function () {
-        return User::whereIn('title_id', [2, 12, 13, 14, 40])
-            ->orderBy('first_name')
-            ->get();
+        return User::orderBy('first_name')->get();
     });
 });
 
