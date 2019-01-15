@@ -18,8 +18,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with(['programmatic_unit', 'title'])->get();
-        return view('users.index', compact('users'));
+        $agents = User::with(['programmatic_unit', 'title'])->agents()->orderBy('first_name')->get();
+        $educators = User::with(['programmatic_unit', 'title'])->cfc()->orderBy('first_name')->get();
+        $specialists = User::with(['programmatic_unit', 'title'])->specialists()->get();
+        return view('users.index', compact('agents', 'educators', 'specialists'));
     }
 
     /**
@@ -75,7 +77,7 @@ class UserController extends Controller
 
         $user->update($request->except('app_id'));
         $user->apps()->sync($request->app_id);
-        return redirect()->route('home');
+        return redirect()->route('users.index');
     }
 
     /**

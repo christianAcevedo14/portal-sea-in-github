@@ -40,6 +40,18 @@ class User extends Authenticatable
         return $query->where('title_id', 2);
     }
 
+    function scopeCfc($query)
+    {
+        return $query->where('title_id', 12);
+    }
+
+    function scopeSpecialists($query)
+    {
+        return $query->whereHas('programmatic_unit', function ($q) {
+            $q->where('id', 'like', '6%');
+        })->whereNotIn('title_id', [1, 4, 46]);
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->title_id == 1;
