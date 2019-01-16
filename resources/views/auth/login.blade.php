@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label class="form-label">
                                     Password
-                                    <a href="#" class="float-right small">I forgot password</a>
+                                    <a href="{{ route('password.request') }}" class="float-right small">I forgot password</a>
                                 </label>
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                 @if ($errors->has('password'))
