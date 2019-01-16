@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->title_id == 1;
     }
 
+    public function getIsSpecialistAttribute()
+    {
+        return $this->programmatic_unit->region_id == 600;
+    }
+
     public function getIsCoordAttribute()
     {
         if ($this->title_id == 23 || $this->title_id == 24)
