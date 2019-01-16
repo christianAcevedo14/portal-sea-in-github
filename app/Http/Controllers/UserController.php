@@ -21,7 +21,8 @@ class UserController extends Controller
         $agents = User::with(['programmatic_unit', 'title'])->agents()->orderBy('first_name')->get();
         $educators = User::with(['programmatic_unit', 'title'])->cfc()->orderBy('first_name')->get();
         $specialists = User::with(['programmatic_unit', 'title'])->specialists()->get();
-        return view('users.index', compact('agents', 'educators', 'specialists'));
+        $coordinators = User::with(['programmatic_unit', 'title'])->coordinators()->get();
+        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators'));
     }
 
     /**

@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $query->where('title_id', 12);
     }
 
+    function scopeCoordinators($query)
+    {
+        return $query->whereIn('title_id', [23, 24]);
+    }
+
     function scopeSpecialists($query)
     {
         return $query->whereHas('programmatic_unit', function ($q) {
