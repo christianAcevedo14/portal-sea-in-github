@@ -48366,7 +48366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
 
-            if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
+            if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1' && program.code !== 'PPG') {
                 matters = matters.splice(0, matters.length - 3);
             }
 
