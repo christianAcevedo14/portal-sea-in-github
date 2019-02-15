@@ -49078,7 +49078,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49191,8 +49191,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // Código de pruebas para eliminar las materias 170, 180, 190
 
-            /*if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
-                let recursos_externos = matters.find(matter => matter.code === '170');
+            if (program.code === 'CIA1' && program.code === 'CIC1' && program.code === 'CIJ1' && program.code === 'CIR1') {
+
+                var recursos_externos = matters.find(function (matter) {
+                    return matter.code === '170';
+                });
+                this.form_elements.matters.push(recursos_externos);
+
+                /*let recursos_externos = matters.find(matter => matter.code === '170');
                 let index_recursos_externos = matters.indexOf(recursos_externos);
                 matters.splice(index_recursos_externos, 1);
                  let evaluacion = matters.find(matter => matter.code === '180');
@@ -49200,8 +49206,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 matters.splice(index_evaluacion, 1);
                  let tecnologia = matters.find(matter => matter.code === '190');
                 let index_tecnologia = matters.indexOf(tecnologia);
-                matters.splice(index_tecnologia, 1);
-             } else if (program.code !== 'CIC2' && program.code !== 'CIC4') {
+                matters.splice(index_tecnologia, 1);*/
+            } /*else if (program.code !== 'CIC2' && program.code !== 'CIC4') {
                   let evaluacion = matters.find(matter => matter.code === '180');
                 let index_evaluacion = matters.indexOf(evaluacion);
                 matters.splice(index_evaluacion, 1);
@@ -49211,7 +49217,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                  let tecnologia = matters.find(matter => matter.code === '190');
                 let index_tecnologia = matters.indexOf(tecnologia);
                 matters.splice(index_tecnologia, 1);
-            }*/
+              }*/
 
             this.form_elements.matters.push(matters);
             this.form_elements.enterprises.push(enterprises);
