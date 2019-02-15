@@ -49078,7 +49078,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49210,17 +49210,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var index_tecnologia = matters.indexOf(tecnologia);
                 matters.splice(index_tecnologia, 1);
             } else if (program.code !== 'CIC2' && program.code !== 'CIC4') {
-                var _recursos_externos = matters.find(function (matter) {
-                    return matter.code === '170';
-                });
-                var _index_recursos_externos = matters.indexOf(_recursos_externos);
-                matters.splice(_index_recursos_externos, 1);
 
-                var _tecnologia = matters.find(function (matter) {
-                    return matter.code === '190';
+                var _evaluacion = matters.find(function (matter) {
+                    return matter.code === '180';
                 });
-                var _index_tecnologia = matters.indexOf(_tecnologia);
-                matters.splice(_index_tecnologia, 1);
+                var _index_evaluacion = matters.indexOf(_evaluacion);
+                matters.splice(_index_evaluacion, 1);
+
+                /*let recursos_externos = matters.find(matter => matter.code === '170');
+                let index_recursos_externos = matters.indexOf(recursos_externos);
+                matters.splice(index_recursos_externos, 1);
+                 let tecnologia = matters.find(matter => matter.code === '190');
+                let index_tecnologia = matters.indexOf(tecnologia);
+                matters.splice(index_tecnologia, 1);*/
             }
 
             this.form_elements.matters.push(matters);
