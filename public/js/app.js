@@ -49209,7 +49209,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
                 var index_tecnologia = matters.indexOf(tecnologia);
                 matters.splice(index_tecnologia, 1);
-            } else if (program.code === 'CIC2' && program.code === 'CIC4') {
+            } else if (program.code !== 'CIC2' && program.code !== 'CIC4') {
                 var _recursos_externos = matters.find(function (matter) {
                     return matter.code === '170';
                 });
