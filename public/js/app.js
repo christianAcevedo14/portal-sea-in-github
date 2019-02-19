@@ -49199,7 +49199,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
 
-                if (program.code === 'CIC2' && program.code === 'CIC4') {
+                if (program.code !== 'CIC2' && program.code !== 'CIC4') {
 
                     var recursos_externos = matters.find(function (matter) {
                         return matter.code === '170';
