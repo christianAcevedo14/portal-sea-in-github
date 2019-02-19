@@ -49078,7 +49078,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49197,49 +49197,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // Código de pruebas para eliminar las materias 170, 180, 190
 
-            if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
+            /*
+                            if (program.code !== 'CIA1' && program.code !== 'CIC1' && program.code !== 'CIJ1' && program.code !== 'CIR1') {
+            */
 
-                if (program.code === 'CIC2' && program.code === 'CIC4') {
+            if (program.code === 'CIC2' && program.code === 'CIC4') {
 
-                    var recursos_externos = matters.find(function (matter) {
-                        return matter.code === '170';
-                    });
-                    var index_recursos_externos = matters.indexOf(recursos_externos);
-                    matters.splice(index_recursos_externos, 1);
+                var recursos_externos = matters.find(function (matter) {
+                    return matter.code === '170';
+                });
+                var index_recursos_externos = matters.indexOf(recursos_externos);
+                matters.splice(index_recursos_externos, 1);
 
-                    var tecnologia = matters.find(function (matter) {
-                        return matter.code === '190';
-                    });
-                    var index_tecnologia = matters.indexOf(tecnologia);
-                    matters.splice(index_tecnologia, 1);
-                } else {
-                    var _recursos_externos = matters.find(function (matter) {
-                        return matter.code === '170';
-                    });
-                    var _index_recursos_externos = matters.indexOf(_recursos_externos);
-                    matters.splice(_index_recursos_externos, 1);
-
-                    var evaluacion = matters.find(function (matter) {
-                        return matter.code === '180';
-                    });
-                    var index_evaluacion = matters.indexOf(evaluacion);
-                    matters.splice(index_evaluacion, 1);
-
-                    var _tecnologia = matters.find(function (matter) {
-                        return matter.code === '190';
-                    });
-                    var _index_tecnologia = matters.indexOf(_tecnologia);
-                    matters.splice(_index_tecnologia, 1);
-                }
-            } /*else if (program.code === 'CIC2' && program.code === 'CIC4') {
-                 let recursos_externos = matters.find(matter => matter.code === '170');
+                var tecnologia = matters.find(function (matter) {
+                    return matter.code === '190';
+                });
+                var index_tecnologia = matters.indexOf(tecnologia);
+                matters.splice(index_tecnologia, 1);
+            } /*else {
+                let recursos_externos = matters.find(matter => matter.code === '170');
                 let index_recursos_externos = matters.indexOf(recursos_externos);
                 matters.splice(index_recursos_externos, 1);
+                 let evaluacion = matters.find(matter => matter.code === '180');
+                let index_evaluacion = matters.indexOf(evaluacion);
+                matters.splice(index_evaluacion, 1);
                  let tecnologia = matters.find(matter => matter.code === '190');
                 let index_tecnologia = matters.indexOf(tecnologia);
                 matters.splice(index_tecnologia, 1);
               }
-              */
+              } */ /*else if (program.code === 'CIC2' && program.code === 'CIC4') {
+                    let recursos_externos = matters.find(matter => matter.code === '170');
+                   let index_recursos_externos = matters.indexOf(recursos_externos);
+                   matters.splice(index_recursos_externos, 1);
+                    let tecnologia = matters.find(matter => matter.code === '190');
+                   let index_tecnologia = matters.indexOf(tecnologia);
+                   matters.splice(index_tecnologia, 1);
+                   }
+                   */
             this.form_elements.matters.push(matters);
             this.form_elements.enterprises.push(enterprises);
             this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
