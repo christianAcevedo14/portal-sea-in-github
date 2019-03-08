@@ -23,14 +23,14 @@ class UsersTableSeeder extends CsvSeeder
             [
                 'title_id' => 1,
                 'programmatic_unit_id' => 680,
-                'first_name' => 'Francisco',
-                'initial' => 'J',
-                'surname' => 'Colón',
-                'second_surname' => 'Rodríguez',
-                'phone' => '(787) 241-0507',
-                'email' => 'francisco.colon4@upr.edu',
+                'first_name' => 'Jorge',
+                'initial' => 'E',
+                'surname' => 'Rivera',
+                'second_surname' => 'Sebastian',
+                'phone' => '(787) 464-1826',
+                'email' => 'jorge.rivera30@upr.edu',
                 'password' => Hash::make('123456'),
-                'avatar' => 'assets/images/avatars/1.jpg'
+                'avatar' => 'assets/images/avatars/no_avatar.png'
             ],
             [
                 'title_id' => 1,

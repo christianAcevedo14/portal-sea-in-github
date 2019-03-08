@@ -99,7 +99,7 @@ return [
             'engine' => null,
         ],
 
-        'Club4H' => [
+        '4h' => [
             'driver' => 'mysql',
             'host' => env('4H_DB_HOST', '127.0.0.1'),
             'port' => env('4H_DB_PORT', '3306'),
@@ -128,6 +128,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+
     ],
 
     /*
