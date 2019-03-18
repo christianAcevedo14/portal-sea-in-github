@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\Cfc\Entities\Participant;
 use Modules\Sise\Entities\Plan;
 
 class User extends Authenticatable
@@ -23,6 +24,11 @@ class User extends Authenticatable
     function plans()
     {
         return $this->hasMany(Plan::class);
+    }
+
+    function participants()
+    {
+        return $this->hasMany(Participant::class);
     }
 
     function programmatic_unit()
