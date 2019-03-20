@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
+use Modules\Cfc\Entities\Visit;
 use Modules\Sise\Entities\Plan;
 
 class User extends Authenticatable
@@ -87,5 +88,9 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->surname}";
+    }
+
+    public function visits(){
+        return $this->hasMany(Visit::class);
     }
 }
