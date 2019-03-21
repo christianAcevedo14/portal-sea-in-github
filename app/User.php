@@ -64,9 +64,19 @@ class User extends Authenticatable
         })->whereNotIn('title_id', [1, 4, 46]);
     }
 
+    function scopeDirectors($query)
+    {
+        return $query->where('title_id', 46);
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->title_id == 1;
+    }
+
+    public function getIsDirectorAttribute()
+    {
+        return $this->title_id == 46;
     }
 
     public function getIsSpecialistAttribute()
@@ -83,6 +93,11 @@ class User extends Authenticatable
     public function getRegionAttribute()
     {
         return substr($this->programmatic_unit->region_id, 0, 1);
+    }
+
+    public function getUnitAttribute()
+    {
+        return $this->programmatic_unit->id;
     }
 
     public function getFullNameAttribute()
