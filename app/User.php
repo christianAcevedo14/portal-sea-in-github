@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
+use Modules\Cfc\Entities\Visit;
 use Modules\Sise\Entities\Plan;
 
 class User extends Authenticatable
@@ -63,9 +64,19 @@ class User extends Authenticatable
         })->whereNotIn('title_id', [1, 4, 46]);
     }
 
+    function scopeDirectors($query)
+    {
+        return $query->where('title_id', 46);
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->title_id == 1;
+    }
+
+    public function getIsDirectorAttribute()
+    {
+        return $this->title_id == 46;
     }
 
     public function getIsSpecialistAttribute()
@@ -84,8 +95,14 @@ class User extends Authenticatable
         return substr($this->programmatic_unit->region_id, 0, 1);
     }
 
+    public function getUnitAttribute()
+    {
+        return $this->programmatic_unit->id;
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->surname}";
     }
+
 }
