@@ -105,7 +105,4 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->surname}";
     }
 
-    public function visits(){
-        return $this->hasMany(Visit::class);
-    }
 }
