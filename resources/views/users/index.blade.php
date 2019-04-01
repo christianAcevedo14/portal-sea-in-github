@@ -119,6 +119,42 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="tab-pane fade" id="educators" role="tabpanel" aria-labelledby="educators-tab">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Título</th>
+                                        <th scope="col">Unidad Programática</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($educators as $educator)
+                                        <tr>
+                                            <th>
+                                                <form action="{{ route('users.destroy', $educator) }}" method="post"
+                                                      onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="delete">
+                                                    <button class="btn btn-sm btn-pill btn-danger"><i
+                                                                class="fe fe-trash-2"></i></button>
+                                                </form>
+                                            </th>
+                                            <th>{{ $educator->full_name }}</th>
+                                            <td>{{ $educator->title->description }}</td>
+                                            <td>{{ $educator->programmatic_unit->description }}</td>
+                                            <td>
+                                                <a href="{{ route('users.edit', $educator->id) }}"
+                                                   class="btn btn-sm btn-pill btn-warning"><i
+                                                            class="fe fe-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
                                 <table class="table table-hover">
                                     <thead>
