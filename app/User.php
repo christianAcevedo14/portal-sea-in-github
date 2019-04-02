@@ -105,4 +105,8 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->surname}";
     }
 
+    public function visitpurposes(){
+        return $this->hasMany(VisitPurpose::class);
+    }
+
 }
