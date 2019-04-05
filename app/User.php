@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
-use Modules\Cfc\Entities\Visit;
+use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
 
 class User extends Authenticatable
@@ -105,8 +105,8 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->surname}";
     }
 
-    public function visitpurposes(){
-        return $this->hasMany(VisitPurpose::class);
+    public function purposes(){
+        return $this->hasMany(PurposeVisit::class);
     }
 
 }
