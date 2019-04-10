@@ -79,6 +79,11 @@ class User extends Authenticatable
         return $this->title_id == 46;
     }
 
+    public function getIsOpeAttribute()
+    {
+        return $this->title_id == 26;
+    }
+
     public function getIsSpecialistAttribute()
     {
         return $this->programmatic_unit->region_id == 600;
