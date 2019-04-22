@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     function scopeCfc($query)
     {
-        return $query->where('title_id', [12,14]);
+        return $query->whereIn('title_id', [12, 14]);
     }
 
     function scopeCoordinators($query)
