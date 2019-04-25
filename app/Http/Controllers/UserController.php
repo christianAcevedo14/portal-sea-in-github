@@ -23,8 +23,8 @@ class UserController extends Controller
         $specialists = User::with(['programmatic_unit', 'title'])->specialists()->orderBy('first_name')->get();
         $coordinators = User::with(['programmatic_unit', 'title'])->coordinators()->orderBy('first_name')->get();
         $directors = User::with(['programmatic_unit', 'title'])->directors()->orderBy('first_name')->get();
-        $administrativo = User::with(['programmatic_unit', 'title'])->administrativo()->orderBy('first_name')->get();
-        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativo'));
+        $administrativos = User::with(['programmatic_unit', 'title'])->administrativo()->orderBy('first_name')->get();
+        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativos'));
     }
 
     /**

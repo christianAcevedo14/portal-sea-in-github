@@ -46,7 +46,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="administrativo-tab" data-toggle="tab" href="#administrativo" role="tab"
                                    aria-controls="administrativo" aria-selected="false">Personal Administrativo
-                                    ({{ $administrativo->count() }})</a>
+                                    ({{ $administrativos->count() }})</a>
                             </li>
                         </ul>
                         <br>
@@ -225,6 +225,43 @@
                                             <td>{{ $specialist->programmatic_unit->description }}</td>
                                             <td>
                                                 <a href="{{ route('users.edit', $specialist->id) }}"
+                                                   class="btn btn-sm btn-pill btn-warning"><i
+                                                            class="fe fe-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="administrativo" role="tabpanel"
+                                 aria-labelledby="administrativo-tab">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Título</th>
+                                        <th scope="col">Unidad Programática</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($administrativos as $administrativo)
+                                        <tr>
+                                            <th>
+                                                <form action="{{ route('users.destroy', $administrativo) }}" method="post"
+                                                      onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="delete">
+                                                    <button class="btn btn-sm btn-pill btn-danger"><i
+                                                                class="fe fe-trash-2"></i></button>
+                                                </form>
+                                            </th>
+                                            <th>{{ $administrativo->full_name }}</th>
+                                            <td>{{ $administrativo->title->description }}</td>
+                                            <td>{{ $administrativo->programmatic_unit->description }}</td>
+                                            <td>
+                                                <a href="{{ route('users.edit', $administrativo->id) }}"
                                                    class="btn btn-sm btn-pill btn-warning"><i
                                                             class="fe fe-edit"></i></a>
                                             </td>
