@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
+use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
 
@@ -49,7 +50,7 @@ class User extends Authenticatable
 
     function scopeCfc($query)
     {
-        return $query->where('title_id', 12);
+        return $query->whereIn('title_id', [12, 14]);
     }
 
     function scopeCoordinators($query)
@@ -67,6 +68,11 @@ class User extends Authenticatable
     function scopeDirectors($query)
     {
         return $query->where('title_id', 46);
+    }
+
+    function scopeAdministrativo($query)
+    {
+        return $query->whereIn('title_id', [16, 15, 22, 26, 27, 40, 42, 45, 47, 48, 49]);
     }
 
     public function getIsAdminAttribute()
@@ -112,6 +118,9 @@ class User extends Authenticatable
 
     public function purposes(){
         return $this->hasMany(PurposeVisit::class);
-    }
+
+    }public function projects(){
+    return $this->hasMany(Project::class);
+}
 
 }
