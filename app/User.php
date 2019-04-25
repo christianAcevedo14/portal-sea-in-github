@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $query->where('title_id', 46);
     }
 
+    function scopeAdministrativo($query)
+    {
+        return $query->whereIn('title_id', [16, 15, 22, 26, 27, 40, 42, 45, 47, 48, 49]);
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->title_id == 1;

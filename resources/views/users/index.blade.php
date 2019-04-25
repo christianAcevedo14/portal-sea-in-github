@@ -19,9 +19,9 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="coordinators-tab" data-toggle="tab" href="#coordinators"
+                                <a class="nav-link active text-center" id="coordinators-tab" data-toggle="tab" href="#coordinators"
                                    role="tab" aria-controls="coordinators" aria-selected="true">Administradores /
-                                    Coordinadores ({{ $coordinators->count() }})</a>
+                                    Coordinadores <br> Regionales ({{ $coordinators->count() }})</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="agents-tab" data-toggle="tab" href="#agents" role="tab"
@@ -42,6 +42,11 @@
                                 <a class="nav-link" id="directors-tab" data-toggle="tab" href="#directors" role="tab"
                                    aria-controls="directors" aria-selected="false">Directores de Departamento
                                     ({{ $directors->count() }})</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="administrativo-tab" data-toggle="tab" href="#administrativo" role="tab"
+                                   aria-controls="administrativo" aria-selected="false">Personal Administrativo
+                                    ({{ $administrativo->count() }})</a>
                             </li>
                         </ul>
                         <br>
