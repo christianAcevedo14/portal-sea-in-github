@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $query->whereIn('title_id', [16, 15, 22, 26, 27, 40, 42, 45, 47, 48, 49]);
     }
 
+    public function getIsPeanAttribute()
+    {
+        return $this->title_id == 16;
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->title_id == 1;
