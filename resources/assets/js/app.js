@@ -19,6 +19,8 @@ window.Vue = require('vue');
 Vue.component('notifications', require('./components/Notifications.vue'));
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue'));
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue'));
+Vue.component('edit-pow', require('../../../Modules/Sise/Resources/assets/js/components/EditPow.vue'));
+
 
 const app = new Vue({
     el: '#app'
