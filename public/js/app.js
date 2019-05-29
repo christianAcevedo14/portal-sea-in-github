@@ -48415,8 +48415,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
         },
         getObjectives: function getObjectives(event) {
-            this.row.matters.length = 0;
-            this.row.enterprises.length = 0;
+            //this.row.matters.length = 0;
+            //this.row.enterprises.length = 0;
             this.form_elements.matters = [];
             this.form_elements.enterprises = [];
 
