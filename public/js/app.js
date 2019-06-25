@@ -48910,7 +48910,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48957,6 +48957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48966,10 +48967,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
 
             oldPlan: {
+                id: this.plan.id,
                 user_id: this.plan.user_id,
                 plan_programs: this.planPrograms
             },
-            nextId: 2,
+            nextId: this.planPrograms.length + 1,
             users: this.planUser,
             loggedUser: {}
         };
@@ -48977,13 +48979,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addRow: function addRow() {
-            // this.plan.plan_programs.push({
-            //     id: this.nextId,
-            //     program_id: null,
-            //     matters: [],
-            //     enterprises: [],
-            //     ftes: [],
-            // });
+            this.oldPlan.plan_programs.push({
+                id: this.nextId,
+                program_id: null,
+                matters: [],
+                enterprises: [],
+                ftes: []
+            });
             this.nextId++;
         },
         removeRow: function removeRow(index) {
@@ -48997,14 +48999,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
-    // created() {
-    //     this.oldPlan.plan_programs.forEach(function(element) {
-    //         element.matters = [],
-    //         element.enterprises = [],
-    //         element.fte = [],
-    //         console.log(element);
-    //     })
-    // },
     mounted: function mounted() {
         var _this = this;
 
