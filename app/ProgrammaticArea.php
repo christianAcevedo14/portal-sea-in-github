@@ -10,11 +10,11 @@ class ProgrammaticArea extends Model
 {
     protected $guarded = [];
     protected $fillable = [];
-
+    protected $connection = 'portal';
     use SoftDeletes;
 
     public function categories(){
-        $this->hasMany(Category::class);
+        return $this->hasMany(Category::class);
     }
 
 }
