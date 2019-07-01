@@ -9,6 +9,7 @@ use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
+use Modules\Volunteer\Entities\Category;
 use Modules\Volunteer\Entities\Skill;
 
 class User extends Authenticatable
@@ -133,6 +134,10 @@ class User extends Authenticatable
 
     public function skills(){
         return $this->hasMany(Skill::class);
+    }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
     }
 
 }
