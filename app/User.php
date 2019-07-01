@@ -9,6 +9,7 @@ use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
+use Modules\Volunteer\Entities\Skill;
 
 class User extends Authenticatable
 {
@@ -124,8 +125,14 @@ class User extends Authenticatable
     public function purposes(){
         return $this->hasMany(PurposeVisit::class);
 
-    }public function projects(){
-    return $this->hasMany(Project::class);
-}
+    }
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+
+    public function skills(){
+        return $this->hasMany(Skill::class);
+    }
 
 }
