@@ -143,6 +143,11 @@ class User extends Authenticatable
         return $this->hasMany(Category::class);
     }
 
+    public function licences()
+    {
+        return $this->hasMany(Licence::class);
+    }
+
     public function volunteers()
     {
         return $this->hasMany(Volunteer::class);
@@ -153,8 +158,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Comment::class);
     }
 
-    public function licences()
-    {
-        return $this->belongsToMany(Licence::class);
-    }
 }
