@@ -10,6 +10,8 @@ use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
 use Modules\Volunteer\Entities\Category;
+use Modules\Volunteer\Entities\Comment;
+use Modules\Volunteer\Entities\Licence;
 use Modules\Volunteer\Entities\Skill;
 use Modules\Volunteer\Entities\Volunteer;
 
@@ -146,4 +148,13 @@ class User extends Authenticatable
         return $this->hasMany(Volunteer::class);
     }
 
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class);
+    }
+
+    public function licences()
+    {
+        return $this->belongsToMany(Licence::class);
+    }
 }
