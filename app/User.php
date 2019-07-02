@@ -11,6 +11,7 @@ use Modules\Cfc\Entities\PurposeVisit;
 use Modules\Sise\Entities\Plan;
 use Modules\Volunteer\Entities\Category;
 use Modules\Volunteer\Entities\Skill;
+use Modules\Volunteer\Entities\Volunteer;
 
 class User extends Authenticatable
 {
@@ -138,6 +139,11 @@ class User extends Authenticatable
 
     public function categories(){
         return $this->hasMany(Category::class);
+    }
+
+    public function volunteers()
+    {
+        return $this->hasMany(Volunteer::class);
     }
 
 }
