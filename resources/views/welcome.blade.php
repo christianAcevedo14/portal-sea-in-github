@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Portal del Extensionista | Servicio de Extensión Agrícola</title>
+        <link rel="icon" href="/demo/brand/portal_icon.png" type="image"/>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
