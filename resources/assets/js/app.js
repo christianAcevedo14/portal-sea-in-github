@@ -20,6 +20,7 @@ Vue.component('notifications', require('./components/Notifications.vue'));
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue'));
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue'));
 Vue.component('edit-pow', require('../../../Modules/Sise/Resources/assets/js/components/EditPow.vue'));
+Vue.component('edu-prep', require('../../../Modules/Volunteer/Resources/assets/js/components/EduPrep.vue'));
 
 
 const app = new Vue({
