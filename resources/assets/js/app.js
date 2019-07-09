@@ -16,11 +16,11 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('notifications', require('./components/Notifications.vue'));
-Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue'));
-Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue'));
-Vue.component('edit-pow', require('../../../Modules/Sise/Resources/assets/js/components/EditPow.vue'));
-Vue.component('edu-prep', require('../../../Modules/Volunteer/Resources/assets/js/components/EduPrep.vue'));
+Vue.component('notifications', require('./components/Notifications.vue').default);
+Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue').default);
+Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue').default);
+Vue.component('edit-pow', require('../../../Modules/Sise/Resources/assets/js/components/EditPow.vue').default);
+Vue.component('edu-prep', require('../../../Modules/Volunteer/Resources/assets/js/components/EduPrep.vue').default);
 
 
 const app = new Vue({
