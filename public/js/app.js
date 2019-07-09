@@ -362,6 +362,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue":
+/*!********************************************************************************!*\
+  !*** ./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true& */ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true&");
+/* harmony import */ var _LicencesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LicencesComponent.vue?vue&type=script&lang=js& */ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LicencesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "76714c01",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LicencesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./LicencesComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LicencesComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true&":
+/*!***************************************************************************************************************************!*\
+  !*** ./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true& ***!
+  \***************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LicencesComponent_vue_vue_type_template_id_76714c01_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2484,11 +2553,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['scholarships'],
   name: "EduPrep",
+  props: ['scholarships'],
   data: function data() {
     return {
       preparations: {
@@ -2502,7 +2569,7 @@ __webpack_require__.r(__webpack_exports__);
     addPrep: function addPrep() {
       this.preparations.scholarities.push({
         id: this.nextId,
-        scholarship_id: 1,
+        scholarship_id: 0,
         major: null,
         school: null,
         gradyear: null
@@ -2520,6 +2587,95 @@ __webpack_require__.r(__webpack_exports__);
       major: null,
       school: null,
       gradyear: null
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "LicencesComponent",
+  props: ['listedLicences'],
+  data: function data() {
+    return {
+      addedLicences: {
+        licences: [] // dynamic variable that represents each added licence
+
+      },
+      nextId: 2
+    };
+  },
+  methods: {
+    addLicence: function addLicence() {
+      this.addedLicences.licences.push({
+        id: this.nextId,
+        licence_id: 0,
+        licence_number: null,
+        expyear: null
+      });
+      this.nextId++;
+    },
+    removeLicence: function removeLicence(index) {
+      this.addedLicences.licences.splice(index, 1);
+    }
+  },
+  mounted: function mounted() {
+    this.addedLicences.licences.push({
+      id: 1,
+      licence_id: 0,
+      licence_number: null,
+      expyear: null
     });
   }
 });
@@ -38433,7 +38589,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "form-group col-12" },
-          _vm._l(_vm.preparations.scholarities, function(scholarities, index) {
+          _vm._l(_vm.preparations.scholarities, function(scholarity, index) {
             return _c("div", { key: index, staticClass: "row pt-3" }, [
               _c("div", { staticClass: "col-sm-3" }, [
                 _c("div", { staticClass: "form-group" }, [
@@ -38448,8 +38604,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: scholarities.scholarship_id,
-                          expression: "scholarities.scholarship_id"
+                          value: scholarity.scholarship_id,
+                          expression: "scholarity.scholarship_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -38465,7 +38621,7 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            scholarities,
+                            scholarity,
                             "scholarship_id",
                             $event.target.multiple
                               ? $$selectedVal
@@ -38475,7 +38631,7 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { disabled: "", selected: "" } }, [
+                      _c("option", { attrs: { disabled: "", value: "" } }, [
                         _vm._v(
                           "Seleccione un nivel de escolaridad\n                                    "
                         )
@@ -38484,12 +38640,7 @@ var render = function() {
                       _vm._l(_vm.scholarships, function(scholarship) {
                         return _c(
                           "option",
-                          {
-                            attrs: { value: "scholarship_id" },
-                            domProps: {
-                              selected: scholarship.name === _vm.scholarship_id
-                            }
-                          },
+                          { attrs: { value: "scholarship_id" } },
                           [
                             _vm._v(
                               "\n                                        " +
@@ -38515,19 +38666,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: scholarities.major,
-                      expression: "scholarities.major"
+                      value: scholarity.major,
+                      expression: "scholarity.major"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { id: "major", name: "major", type: "text" },
-                  domProps: { value: scholarities.major },
+                  domProps: { value: scholarity.major },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(scholarities, "major", $event.target.value)
+                      _vm.$set(scholarity, "major", $event.target.value)
                     }
                   }
                 })
@@ -38543,19 +38694,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: scholarities.school,
-                      expression: "scholarities.school"
+                      value: scholarity.school,
+                      expression: "scholarity.school"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { id: "school", name: "school", type: "text" },
-                  domProps: { value: scholarities.school },
+                  domProps: { value: scholarity.school },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(scholarities, "school", $event.target.value)
+                      _vm.$set(scholarity, "school", $event.target.value)
                     }
                   }
                 })
@@ -38571,8 +38722,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: scholarities.gradyear,
-                      expression: "scholarities.gradyear"
+                      value: scholarity.gradyear,
+                      expression: "scholarity.gradyear"
                     }
                   ],
                   staticClass: "form-control",
@@ -38582,13 +38733,13 @@ var render = function() {
                     name: "gradyear",
                     type: "number"
                   },
-                  domProps: { value: scholarities.gradyear },
+                  domProps: { value: scholarity.gradyear },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(scholarities, "gradyear", $event.target.value)
+                      _vm.$set(scholarity, "gradyear", $event.target.value)
                     }
                   }
                 })
@@ -38599,7 +38750,7 @@ var render = function() {
                   ? _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary mt-5",
+                        staticClass: "btn btn-primary p-3 mt-5",
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
@@ -38612,7 +38763,7 @@ var render = function() {
                   : _c(
                       "button",
                       {
-                        staticClass: "btn btn-danger mt-5",
+                        staticClass: "btn btn-danger p-3 mt-5",
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
@@ -38638,6 +38789,208 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [_vm._v("Preparación Académica")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue?vue&type=template&id=76714c01&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "form-group col-12" },
+          _vm._l(_vm.addedLicences.licences, function(licence, index) {
+            return _c("div", { key: index, staticClass: "row pl-3" }, [
+              _c("div", { staticClass: "col-sm-4" }, [
+                _c("label", { staticClass: "form-label" }, [_vm._v("Título")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: licence.licence_id,
+                        expression: "licence.licence_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "licence_id", name: "licence_id" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          licence,
+                          "licence_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "option",
+                      { attrs: { disabled: "", selected: "", value: "" } },
+                      [_vm._v("Seleccione una licencia")]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.listedLicences, function(listedLicence) {
+                      return _c(
+                        "option",
+                        { domProps: { value: listedLicence.id } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(listedLicence.name) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-4" }, [
+                _c("label", { staticClass: "form-label" }, [_vm._v("Número")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: licence.licence_number,
+                      expression: "licence.licence_number"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "licence_number",
+                    name: "licence_number",
+                    type: "text"
+                  },
+                  domProps: { value: licence.licence_number },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(licence, "licence_number", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-3" }, [
+                _c("label", { staticClass: "form-label" }, [
+                  _vm._v("Fecha de Expiración")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: licence.expyear,
+                      expression: "licence.expyear"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    id: "expyear",
+                    min: "",
+                    name: "expyear",
+                    type: "month"
+                  },
+                  domProps: { value: licence.expyear },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(licence, "expyear", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-1" }, [
+                index === 0
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary p-3 mt-5",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addLicence()
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fe fe-plus" })]
+                    )
+                  : _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger p-3 mt-5",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.removeLicence(index)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fe fe-trash" })]
+                    )
+              ])
+            ])
+          }),
+          0
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Licencias")])
     ])
   }
 ]
@@ -50919,6 +51272,7 @@ Vue.component('pow', __webpack_require__(/*! ../../../Modules/Sise/Resources/ass
 Vue.component('pow-row', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/PowRow.vue */ "./Modules/Sise/Resources/assets/js/components/PowRow.vue")["default"]);
 Vue.component('edit-pow', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/EditPow.vue */ "./Modules/Sise/Resources/assets/js/components/EditPow.vue")["default"]);
 Vue.component('edu-prep', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/EduPrep.vue */ "./Modules/Volunteer/Resources/assets/js/components/EduPrep.vue")["default"]);
+Vue.component('licences-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
