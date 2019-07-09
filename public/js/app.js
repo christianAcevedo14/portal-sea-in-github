@@ -2581,6 +2581,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    console.log(this.scholarships);
     this.preparations.scholarities.push({
       id: 1,
       scholarship_id: 0,
@@ -2644,9 +2645,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LicencesComponent",
-  props: ['listedLicences'],
+  props: ['listedLicences', 'errors'],
   data: function data() {
     return {
       addedLicences: {
@@ -2671,6 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    console.log(this.errors.licence_number);
     this.addedLicences.licences.push({
       id: 1,
       licence_id: 0,
@@ -38631,21 +38634,26 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { disabled: "", value: "" } }, [
+                      _c("option", { attrs: { disabled: "", selected: "" } }, [
                         _vm._v(
-                          "Seleccione un nivel de escolaridad\n                                    "
+                          "Seleccione un nivel de escolaridad\n                                "
                         )
                       ]),
                       _vm._v(" "),
                       _vm._l(_vm.scholarships, function(scholarship) {
                         return _c(
                           "option",
-                          { attrs: { value: "scholarship_id" } },
+                          {
+                            attrs: { value: "scholarship_id" },
+                            domProps: {
+                              selected: scholarship.name === scholarship.id
+                            }
+                          },
                           [
                             _vm._v(
-                              "\n                                        " +
+                              "\n                                    " +
                                 _vm._s(scholarship.name) +
-                                "\n"
+                                "\n                                "
                             )
                           ]
                         )
@@ -38911,7 +38919,13 @@ var render = function() {
                       _vm.$set(licence, "licence_number", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticStyle: { color: "#cd201f", "font-size": "87.5%" } },
+                  [_vm._v(_vm._s(_vm.errors.licence_number))]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-3" }, [
