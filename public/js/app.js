@@ -2483,6 +2483,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['scholarships'],
   name: "EduPrep",
@@ -38474,19 +38477,24 @@ var render = function() {
                     [
                       _c("option", { attrs: { disabled: "", selected: "" } }, [
                         _vm._v(
-                          "Seleccione un nivel de escolaridad\n                                "
+                          "Seleccione un nivel de escolaridad\n                                    "
                         )
                       ]),
                       _vm._v(" "),
                       _vm._l(_vm.scholarships, function(scholarship) {
                         return _c(
                           "option",
-                          { domProps: { value: scholarship.id } },
+                          {
+                            attrs: { value: "scholarship_id" },
+                            domProps: {
+                              selected: scholarship.name === _vm.scholarship_id
+                            }
+                          },
                           [
                             _vm._v(
-                              "\n                                    " +
+                              "\n                                        " +
                                 _vm._s(scholarship.name) +
-                                "\n                                "
+                                "\n"
                             )
                           ]
                         )
