@@ -2553,9 +2553,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EduPrep",
-  props: ['scholarships'],
+  props: ['scholarships', 'errors'],
   data: function data() {
     return {
       preparations: {
@@ -2578,6 +2579,30 @@ __webpack_require__.r(__webpack_exports__);
     },
     removePrep: function removePrep(index) {
       this.preparations.scholarities.splice(index, 1);
+    },
+    emptyMajor: function emptyMajor(errors) {
+      return !!errors.hasOwnProperty('major');
+    },
+    getMajorErrorMessage: function getMajorErrorMessage(error) {
+      if (typeof error != 'undefined') {
+        return error.toString();
+      } else return null;
+    },
+    emptySchool: function emptySchool(errors) {
+      return !!errors.hasOwnProperty('school');
+    },
+    getSchoolErrorMessage: function getSchoolErrorMessage(error) {
+      if (typeof error != 'undefined') {
+        return error.toString();
+      } else return null;
+    },
+    emptyGradyear: function emptyGradyear(errors) {
+      return !!errors.hasOwnProperty('gradyear');
+    },
+    getGradyearErrorMessage: function getGradyearErrorMessage(error) {
+      if (typeof error != 'undefined') {
+        return error.toString();
+      } else return null;
     }
   },
   mounted: function mounted() {
@@ -2670,10 +2695,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeLicence: function removeLicence(index) {
       this.addedLicences.licences.splice(index, 1);
+    },
+    emptyNumber: function emptyNumber(errors) {
+      return !!errors.hasOwnProperty('licence_number');
+    },
+    getLicenceNumberErrorMessage: function getLicenceNumberErrorMessage(error) {
+      if (typeof error != 'undefined') {
+        return error.toString();
+      } else return null;
     }
   },
   mounted: function mounted() {
-    console.log(this.errors.licence_number);
+    console.log(this.errors);
     this.addedLicences.licences.push({
       id: 1,
       licence_id: 0,
@@ -38643,12 +38676,7 @@ var render = function() {
                       _vm._l(_vm.scholarships, function(scholarship) {
                         return _c(
                           "option",
-                          {
-                            attrs: { value: "scholarship_id" },
-                            domProps: {
-                              selected: scholarship.name === scholarship.id
-                            }
-                          },
+                          { domProps: { value: scholarship.id } },
                           [
                             _vm._v(
                               "\n                                    " +
@@ -38678,7 +38706,10 @@ var render = function() {
                       expression: "scholarity.major"
                     }
                   ],
-                  staticClass: "form-control",
+                  class: {
+                    "form-control": true,
+                    "is-invalid": _vm.emptyMajor(_vm.errors)
+                  },
                   attrs: { id: "major", name: "major", type: "text" },
                   domProps: { value: scholarity.major },
                   on: {
@@ -38689,7 +38720,13 @@ var render = function() {
                       _vm.$set(scholarity, "major", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { class: { "invalid-feedback": _vm.emptyMajor(_vm.errors) } },
+                  [_vm._v(_vm._s(_vm.getMajorErrorMessage(_vm.errors.major)))]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-3" }, [
@@ -38706,7 +38743,10 @@ var render = function() {
                       expression: "scholarity.school"
                     }
                   ],
-                  staticClass: "form-control",
+                  class: {
+                    "form-control": true,
+                    "is-invalid": _vm.emptySchool(_vm.errors)
+                  },
                   attrs: { id: "school", name: "school", type: "text" },
                   domProps: { value: scholarity.school },
                   on: {
@@ -38717,7 +38757,15 @@ var render = function() {
                       _vm.$set(scholarity, "school", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    class: { "invalid-feedback": _vm.emptySchool(_vm.errors) }
+                  },
+                  [_vm._v(_vm._s(_vm.getSchoolErrorMessage(_vm.errors.school)))]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-2" }, [
@@ -38734,7 +38782,10 @@ var render = function() {
                       expression: "scholarity.gradyear"
                     }
                   ],
-                  staticClass: "form-control",
+                  class: {
+                    "form-control": true,
+                    "is-invalid": _vm.emptyGradyear(_vm.errors)
+                  },
                   attrs: {
                     id: "gradyear",
                     min: "1",
@@ -38750,7 +38801,19 @@ var render = function() {
                       _vm.$set(scholarity, "gradyear", $event.target.value)
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    class: { "invalid-feedback": _vm.emptyGradyear(_vm.errors) }
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.getGradyearErrorMessage(_vm.errors.gradyear))
+                    )
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-1" }, [
@@ -38904,7 +38967,10 @@ var render = function() {
                       expression: "licence.licence_number"
                     }
                   ],
-                  staticClass: "form-control",
+                  class: {
+                    "form-control": true,
+                    "is-invalid": _vm.emptyNumber(_vm.errors)
+                  },
                   attrs: {
                     id: "licence_number",
                     name: "licence_number",
@@ -38922,9 +38988,19 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c(
-                  "label",
-                  { staticStyle: { color: "#cd201f", "font-size": "87.5%" } },
-                  [_vm._v(_vm._s(_vm.errors.licence_number))]
+                  "div",
+                  {
+                    class: { "invalid-feedback": _vm.emptyNumber(_vm.errors) }
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(
+                        _vm.getLicenceNumberErrorMessage(
+                          _vm.errors.licence_number
+                        )
+                      )
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
