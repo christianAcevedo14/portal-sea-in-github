@@ -2573,7 +2573,7 @@ __webpack_require__.r(__webpack_exports__);
         scholarship_id: 0,
         major: null,
         school: null,
-        gradyear: null
+        grad_year: null
       });
       this.nextId++;
     },
@@ -2597,7 +2597,7 @@ __webpack_require__.r(__webpack_exports__);
       } else return null;
     },
     emptyGradyear: function emptyGradyear(errors) {
-      return !!errors.hasOwnProperty('gradyear');
+      return !!errors.hasOwnProperty('grad_year');
     },
     getGradyearErrorMessage: function getGradyearErrorMessage(error) {
       if (typeof error != 'undefined') {
@@ -2612,7 +2612,7 @@ __webpack_require__.r(__webpack_exports__);
       scholarship_id: 0,
       major: null,
       school: null,
-      gradyear: null
+      grad_year: null
     });
   }
 });
@@ -38778,8 +38778,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: scholarity.gradyear,
-                      expression: "scholarity.gradyear"
+                      value: scholarity.grad_year,
+                      expression: "scholarity.grad_year"
                     }
                   ],
                   class: {
@@ -38787,18 +38787,18 @@ var render = function() {
                     "is-invalid": _vm.emptyGradyear(_vm.errors)
                   },
                   attrs: {
-                    id: "gradyear",
+                    id: "grad_year",
                     min: "1",
-                    name: "gradyear",
+                    name: "grad_year",
                     type: "number"
                   },
-                  domProps: { value: scholarity.gradyear },
+                  domProps: { value: scholarity.grad_year },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(scholarity, "gradyear", $event.target.value)
+                      _vm.$set(scholarity, "grad_year", $event.target.value)
                     }
                   }
                 }),
@@ -38810,7 +38810,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      _vm._s(_vm.getGradyearErrorMessage(_vm.errors.gradyear))
+                      _vm._s(_vm.getGradyearErrorMessage(_vm.errors.grad_year))
                     )
                   ]
                 )
