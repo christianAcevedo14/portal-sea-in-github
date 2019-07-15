@@ -20,7 +20,7 @@ Vue.component('notifications', require('./components/Notifications.vue').default
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue').default);
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue').default);
 Vue.component('edit-pow', require('../../../Modules/Sise/Resources/assets/js/components/EditPow.vue').default);
-Vue.component('edu-prep', require('../../../Modules/Volunteer/Resources/assets/js/components/EduPrep.vue').default);
+Vue.component('scholarships-component', require('../../../Modules/Volunteer/Resources/assets/js/components/ScholarshipsComponent.vue').default);
 Vue.component('licences-component', require('../../../Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue').default);
 
 
