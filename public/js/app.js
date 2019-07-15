@@ -2653,6 +2653,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScholarshipsComponent",
   props: ['scholarships', 'errors'],
@@ -38946,7 +38956,13 @@ var render = function() {
                 _c(
                   "div",
                   { class: { "invalid-feedback": _vm.emptyMajor(_vm.errors) } },
-                  [_vm._v(_vm._s(_vm.getMajorErrorMessage(_vm.errors.major)))]
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.getMajorErrorMessage(_vm.errors.major)) +
+                        "\n                        "
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -38985,7 +39001,13 @@ var render = function() {
                   {
                     class: { "invalid-feedback": _vm.emptySchool(_vm.errors) }
                   },
-                  [_vm._v(_vm._s(_vm.getSchoolErrorMessage(_vm.errors.school)))]
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.getSchoolErrorMessage(_vm.errors.school)) +
+                        "\n                        "
+                    )
+                  ]
                 )
               ]),
               _vm._v(" "),
@@ -39031,7 +39053,11 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      _vm._s(_vm.getGradyearErrorMessage(_vm.errors.grad_year))
+                      "\n                            " +
+                        _vm._s(
+                          _vm.getGradyearErrorMessage(_vm.errors.grad_year)
+                        ) +
+                        "\n                        "
                     )
                   ]
                 )
