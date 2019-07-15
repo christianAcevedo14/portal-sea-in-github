@@ -2560,7 +2560,7 @@ __webpack_require__.r(__webpack_exports__);
         id: this.nextId,
         licence_id: 0,
         licence_number: null,
-        expyear: null
+        exp_year: null
       });
       this.nextId++;
     },
@@ -2582,7 +2582,7 @@ __webpack_require__.r(__webpack_exports__);
       id: 1,
       licence_id: 0,
       licence_number: null,
-      expyear: null
+      exp_year: null
     });
   }
 });
@@ -38747,24 +38747,24 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: licence.expyear,
-                      expression: "licence.expyear"
+                      value: licence.exp_year,
+                      expression: "licence.exp_year"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    id: "expyear",
+                    id: "exp_year",
                     min: "",
-                    name: "expyear",
+                    name: "exp_year",
                     type: "month"
                   },
-                  domProps: { value: licence.expyear },
+                  domProps: { value: licence.exp_year },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(licence, "expyear", $event.target.value)
+                      _vm.$set(licence, "exp_year", $event.target.value)
                     }
                   }
                 })
