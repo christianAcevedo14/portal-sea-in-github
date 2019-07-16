@@ -40316,7 +40316,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "reference_name" },
+                    attrs: { type: "text", name: "reference_name_" + index },
                     domProps: { value: reference.reference_name },
                     on: {
                       input: function($event) {
@@ -40355,7 +40355,7 @@ var render = function() {
                     },
                     attrs: {
                       type: "number",
-                      name: "reference_phone1",
+                      name: "reference_phone1_" + index,
                       "data-mask": "(000) 000-0000",
                       "data-mask-clearifnotmatch": "true"
                     },
