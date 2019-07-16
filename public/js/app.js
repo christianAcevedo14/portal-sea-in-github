@@ -2956,7 +2956,7 @@ __webpack_require__.r(__webpack_exports__);
     this.referencesObj.addedReferences.push({
       id: 1,
       reference_name: this.oldData.name,
-      reference_phone1: null,
+      reference_phone1: this.oldData.phone1,
       reference_phone2: null,
       reference_address: null
     });
