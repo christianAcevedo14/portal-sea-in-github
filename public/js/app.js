@@ -2749,7 +2749,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ReferencesComponent",
-  props: ['errors'],
+  props: ['oldData', 'errors'],
   data: function data() {
     return {
       referencesObj: {
@@ -2785,7 +2785,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.referencesObj.addedReferences);
     this.referencesObj.addedReferences.push({
       id: 1,
-      reference_name: null,
+      reference_name: this.oldData.name,
       reference_phone1: null,
       reference_phone2: null,
       reference_address: null
