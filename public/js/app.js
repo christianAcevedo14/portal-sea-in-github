@@ -2805,7 +2805,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(this.errors);
     this.addedDocuments.documents.push({
       id: 1,
       document_type_id: null,
@@ -2903,7 +2902,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(this.errors);
     this.addedLicences.licences.push({
       id: 1,
       licence_id: 0,
@@ -3100,7 +3098,9 @@ __webpack_require__.r(__webpack_exports__);
       referencesObj: {
         addedReferences: []
       },
-      nextId: 2
+      nextId: 2,
+      passedOld: "{}",
+      rowsIndex: 1
     };
   },
   methods: {
@@ -3113,9 +3113,11 @@ __webpack_require__.r(__webpack_exports__);
         reference_address: null
       });
       this.nextId++;
+      this.rowsIndex = this.referencesObj.addedReferences.length;
     },
     removeReference: function removeReference(index) {
       this.referencesObj.addedReferences.splice(index, 1);
+      this.rowsIndex = this.referencesObj.addedReferences.length;
     },
     emptyPhone: function emptyPhone(errors) {
       return !!errors.hasOwnProperty('reference_phone1');
@@ -3127,14 +3129,35 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    try {
+      this.passedOld = JSON.parse(this.oldData);
+    } catch (err) {
+      this.passedOld = "{}";
+    }
+
+    console.log(this.passedOld.reference_name_0);
     console.log(this.referencesObj.addedReferences);
-    this.referencesObj.addedReferences.push({
-      id: 1,
-      reference_name: this.oldData.name,
-      reference_phone1: this.oldData.phone1,
-      reference_phone2: null,
-      reference_address: null
-    });
+    console.log(this.oldData);
+
+    if (typeof this.oldData != 'undefined' || this.oldData !== "") {
+      if (this.passedOld.hasOwnProperty('reference_name_0')) {
+        this.referencesObj.addedReferences.push({
+          id: 1,
+          reference_name: this.passedOld.reference_name_0,
+          reference_phone1: this.passedOld.reference_phone1_0,
+          reference_phone2: null,
+          reference_address: null
+        });
+      }
+    } else {
+      this.referencesObj.addedReferences.push({
+        id: 1,
+        reference_name: null,
+        reference_phone1: null,
+        reference_phone2: null,
+        reference_address: null
+      });
+    }
   }
 });
 
@@ -3266,7 +3289,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(this.scholarships);
     this.preparations.scholarities.push({
       id: 1,
       scholarship_id: 0,
@@ -7787,7 +7809,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    margin: 0;\n}\n", ""]);
+exports.push([module.i, "\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    margin: 0;\n}\n", ""]);
 
 // exports
 
