@@ -2954,15 +2954,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProgrammaticAreasComponent",
-  props: ['listedProgrammaticAreas', 'errors'],
+  props: {
+    listedProgrammaticAreas: Array,
+    listedCategories: Array,
+    errors: Array
+  },
   data: function data() {
     return {
       areas: {
         programmaticAreasId: [] // dynamic variable that represents each checked prog area
 
-      }
+      },
+      areaCategories: {
+        CategoriesId: [] // dynamic variable that represents each checked category
+
+      },
+      checked4H: false
     };
   }
 });
@@ -40182,74 +40218,209 @@ var render = function() {
                 programmatic_area,
                 index
               ) {
-                return _c("div", { key: index }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "custom-control custom-checkbox custom-control-inline"
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.areas.programmaticAreasId,
-                            expression: "areas.programmaticAreasId"
-                          }
-                        ],
-                        staticClass: "custom-control-input",
-                        attrs: {
-                          type: "checkbox",
-                          id: "programmatic_area_id",
-                          name: "programmatic_area_id"
-                        },
-                        domProps: {
-                          value: programmatic_area.id,
-                          checked: Array.isArray(_vm.areas.programmaticAreasId)
-                            ? _vm._i(
-                                _vm.areas.programmaticAreasId,
-                                programmatic_area.id
-                              ) > -1
-                            : _vm.areas.programmaticAreasId
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$a = _vm.areas.programmaticAreasId,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = programmatic_area.id,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.areas,
-                                    "programmaticAreasId",
-                                    $$a.concat([$$v])
-                                  )
+                return _c(
+                  "div",
+                  { key: index, staticClass: "custom-control-inline" },
+                  [
+                    _c(
+                      "label",
+                      { staticClass: "custom-control custom-checkbox" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.areas.programmaticAreasId,
+                              expression: "areas.programmaticAreasId"
+                            }
+                          ],
+                          staticClass: "custom-control-input",
+                          attrs: {
+                            type: "checkbox",
+                            id: "programmatic_area_id",
+                            name: "programmatic_area_id"
+                          },
+                          domProps: {
+                            value: programmatic_area.id,
+                            checked: Array.isArray(
+                              _vm.areas.programmaticAreasId
+                            )
+                              ? _vm._i(
+                                  _vm.areas.programmaticAreasId,
+                                  programmatic_area.id
+                                ) > -1
+                              : _vm.areas.programmaticAreasId
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.checked4H = !_vm.checked4H
+                            },
+                            change: function($event) {
+                              var $$a = _vm.areas.programmaticAreasId,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = programmatic_area.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.areas,
+                                      "programmaticAreasId",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.areas,
+                                      "programmaticAreasId",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
                               } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.areas,
-                                    "programmaticAreasId",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
+                                _vm.$set(_vm.areas, "programmaticAreasId", $$c)
                               }
-                            } else {
-                              _vm.$set(_vm.areas, "programmaticAreasId", $$c)
                             }
                           }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "custom-control-label" }, [
-                        _vm._v(_vm._s(programmatic_area.name))
-                      ])
-                    ]
-                  )
-                ])
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "custom-control-label" }, [
+                          _vm._v(_vm._s(programmatic_area.name))
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "form-group col-12" }, [
+          _c("div", { staticClass: "form-label pb-2 d-flex" }, [
+            _vm._v("Categorías:")
+          ]),
+          _vm._v(" "),
+          _c(
+            "small",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.checked4H,
+                  expression: "!checked4H"
+                }
+              ],
+              staticClass: "form-text text-muted pb-2"
+            },
+            [
+              _vm._v(
+                "\n                    (Seleccione un área de servicio para ver las categorías.)\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row pl-3" }, [
+            _c(
+              "div",
+              { staticClass: "col-sm-12" },
+              _vm._l(_vm.listedCategories, function(category, index) {
+                return _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.checked4H,
+                        expression: "checked4H"
+                      }
+                    ],
+                    key: index
+                  },
+                  [
+                    _c(
+                      "label",
+                      { staticClass: "custom-control custom-checkbox" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.areaCategories.CategoriesId,
+                              expression: "areaCategories.CategoriesId"
+                            }
+                          ],
+                          staticClass: "custom-control-input",
+                          attrs: {
+                            type: "checkbox",
+                            id: "category_id",
+                            name: "category_id"
+                          },
+                          domProps: {
+                            value: category.id,
+                            checked: Array.isArray(
+                              _vm.areaCategories.CategoriesId
+                            )
+                              ? _vm._i(
+                                  _vm.areaCategories.CategoriesId,
+                                  category.id
+                                ) > -1
+                              : _vm.areaCategories.CategoriesId
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.areaCategories.CategoriesId,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = category.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.areaCategories,
+                                      "CategoriesId",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.areaCategories,
+                                      "CategoriesId",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(
+                                  _vm.areaCategories,
+                                  "CategoriesId",
+                                  $$c
+                                )
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "custom-control-label" }, [
+                          _vm._v(_vm._s(category.name))
+                        ])
+                      ]
+                    )
+                  ]
+                )
               }),
               0
             )
@@ -40316,7 +40487,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "reference_name_" + index },
+                    attrs: { name: "reference_name_" + index, type: "text" },
                     domProps: { value: reference.reference_name },
                     on: {
                       input: function($event) {
@@ -40354,8 +40525,8 @@ var render = function() {
                       "is-invalid": _vm.emptyPhone(_vm.errors)
                     },
                     attrs: {
-                      type: "number",
                       name: "reference_phone1_" + index,
+                      type: "number",
                       "data-mask": "(000) 000-0000",
                       "data-mask-clearifnotmatch": "true"
                     },
@@ -53076,7 +53247,7 @@ Vue.component('scholarships-component', __webpack_require__(/*! ../../../Modules
 Vue.component('licences-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue")["default"]);
 Vue.component('references-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/ReferencesComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/ReferencesComponent.vue")["default"]);
 Vue.component('documents-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/DocumentsComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/DocumentsComponent.vue")["default"]);
-Vue.component('programmatic-areas-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent */ "./Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue")["default"]);
+Vue.component('programmatic-areas-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue")["default"]);
 var app = new Vue({
   el: '#app'
 });
