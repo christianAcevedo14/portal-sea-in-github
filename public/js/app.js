@@ -2986,7 +2986,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     listedProgrammaticAreas: Array,
     listedCategories: Array,
-    errors: Array
+    errors: Object
   },
   data: function data() {
     return {
@@ -2998,8 +2998,24 @@ __webpack_require__.r(__webpack_exports__);
         CategoriesId: [] // dynamic variable that represents each checked category
 
       },
+      checkedArea: true,
       checked4H: false
     };
+  },
+  methods: {
+    checked: function checked() {
+      if (this.areas.programmaticAreasId.includes(4)) {
+        this.checked4H = true;
+      } else {
+        this.checked4H = false;
+      }
+
+      if (this.areas.programmaticAreasId.length === 0) {
+        this.checkedArea = true;
+      } else {
+        this.checkedArea = false;
+      }
+    }
   }
 });
 
@@ -40253,37 +40269,43 @@ var render = function() {
                               : _vm.areas.programmaticAreasId
                           },
                           on: {
-                            click: function($event) {
-                              _vm.checked4H = !_vm.checked4H
-                            },
-                            change: function($event) {
-                              var $$a = _vm.areas.programmaticAreasId,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = programmatic_area.id,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.areas,
-                                      "programmaticAreasId",
-                                      $$a.concat([$$v])
-                                    )
+                            change: [
+                              function($event) {
+                                var $$a = _vm.areas.programmaticAreasId,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = programmatic_area.id,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.areas,
+                                        "programmaticAreasId",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.areas,
+                                        "programmaticAreasId",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
                                 } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.areas,
-                                      "programmaticAreasId",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
+                                  _vm.$set(
+                                    _vm.areas,
+                                    "programmaticAreasId",
+                                    $$c
+                                  )
                                 }
-                              } else {
-                                _vm.$set(_vm.areas, "programmaticAreasId", $$c)
+                              },
+                              function($event) {
+                                return _vm.checked()
                               }
-                            }
+                            ]
                           }
                         }),
                         _vm._v(" "),
@@ -40316,8 +40338,8 @@ var render = function() {
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: !_vm.checked4H,
-                  expression: "!checked4H"
+                  value: _vm.checkedArea,
+                  expression: "checkedArea"
                 }
               ],
               staticClass: "form-text text-muted pb-2"
