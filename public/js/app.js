@@ -3237,13 +3237,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ScholarshipsComponent",
-  props: ['scholarships', 'errors'],
+  props: ['errors'],
   data: function data() {
     return {
       preparations: {
         scholarities: [] //    dynamic variable that represents rows of academic preparation
 
       },
+      scholarships: {},
       nextId: 2
     };
   },
@@ -3287,6 +3288,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
+    var domain = window.location.protocol + '//' + window.location.hostname;
+    axios.get("".concat(domain, "/api/scholarships")).then(function (response) {
+      _this.scholarships = response.data;
+    });
     this.preparations.scholarities.push({
       id: 1,
       scholarship_id: 0,

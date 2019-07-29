@@ -2,6 +2,7 @@
 
 use App\City;
 use App\User;
+use Modules\Volunteer\Entities\Scholarship;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,10 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('/users', function () {
         return User::orderBy('first_name')->get();
     });
+
+    Route::get('/scholarships', function () {
+        return Scholarship::all();
+    });
+
 });
 
