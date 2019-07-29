@@ -2,6 +2,7 @@
 
 use App\City;
 use App\User;
+use Modules\Volunteer\Entities\Licence;
 use Modules\Volunteer\Entities\Scholarship;
 
 /*
@@ -30,5 +31,8 @@ Route::group(['middleware' => 'api'], function () {
         return Scholarship::all();
     });
 
+    Route::get('/licences', function () {
+        return Licence::all();
+    });
 });
 

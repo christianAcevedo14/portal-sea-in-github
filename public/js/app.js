@@ -2869,13 +2869,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LicencesComponent",
-  props: ['listedLicences', 'errors'],
+  props: ['errors'],
   data: function data() {
     return {
       addedLicences: {
         licences: [] // dynamic variable that represents each added licence
 
       },
+      listedLicences: {},
       nextId: 2
     };
   },
@@ -2902,6 +2903,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
+    var domain = window.location.protocol + '//' + window.location.hostname;
+    axios.get("".concat(domain, "/api/licences")).then(function (response) {
+      _this.listedLicences = response.data;
+    });
     this.addedLicences.licences.push({
       id: 1,
       licence_id: 0,
