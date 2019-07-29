@@ -3139,16 +3139,14 @@ __webpack_require__.r(__webpack_exports__);
     console.log(this.referencesObj.addedReferences);
     console.log(this.oldData);
 
-    if (typeof this.oldData != 'undefined' || this.oldData !== "") {
-      if (this.passedOld.hasOwnProperty('reference_name_0')) {
-        this.referencesObj.addedReferences.push({
-          id: 1,
-          reference_name: this.passedOld.reference_name_0,
-          reference_phone1: this.passedOld.reference_phone1_0,
-          reference_phone2: null,
-          reference_address: null
-        });
-      }
+    if (this.passedOld.hasOwnProperty('reference_name_0')) {
+      this.referencesObj.addedReferences.push({
+        id: 1,
+        reference_name: this.passedOld.reference_name_0,
+        reference_phone1: this.passedOld.reference_phone1_0,
+        reference_phone2: null,
+        reference_address: null
+      });
     } else {
       this.referencesObj.addedReferences.push({
         id: 1,
