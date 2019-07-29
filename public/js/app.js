@@ -2772,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DocumentsComponent",
-  props: ['listedDocumentTypes', 'errors'],
+  props: ['errors'],
   data: function data() {
     return {
       //something
@@ -2780,6 +2780,7 @@ __webpack_require__.r(__webpack_exports__);
         documents: [] // dynamic variable that holds each added document
 
       },
+      listedDocumentTypes: {},
       nextId: 2
     };
   },
@@ -2805,6 +2806,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
+    var domain = window.location.protocol + '//' + window.location.hostname;
+    axios.get("".concat(domain, "/api/documentTypes")).then(function (response) {
+      _this.listedDocumentTypes = response.data;
+    });
     this.addedDocuments.documents.push({
       id: 1,
       document_type_id: null,
@@ -2989,8 +2996,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ProgrammaticAreasComponent",
   props: {
-    listedProgrammaticAreas: Array,
-    listedCategories: Array,
     errors: Object
   },
   data: function data() {
@@ -3003,6 +3008,8 @@ __webpack_require__.r(__webpack_exports__);
         CategoriesId: [] // dynamic variable that represents each checked category
 
       },
+      listedProgrammaticAreas: {},
+      listedCategories: {},
       checkedArea: true,
       checked4H: false
     };
@@ -3021,6 +3028,17 @@ __webpack_require__.r(__webpack_exports__);
         this.checkedArea = false;
       }
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var domain = window.location.protocol + '//' + window.location.hostname;
+    axios.get("".concat(domain, "/api/programmaticAreas")).then(function (response) {
+      _this.listedProgrammaticAreas = response.data;
+    });
+    axios.get("".concat(domain, "/api/categories")).then(function (response) {
+      _this.listedCategories = response.data;
+    });
   }
 });
 

@@ -1,7 +1,10 @@
 <?php
 
 use App\City;
+use App\ProgrammaticArea;
 use App\User;
+use Modules\Volunteer\Entities\Category;
+use Modules\Volunteer\Entities\DocumentType;
 use Modules\Volunteer\Entities\Licence;
 use Modules\Volunteer\Entities\Scholarship;
 
@@ -33,6 +36,18 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::get('/licences', function () {
         return Licence::all();
+    });
+
+    Route::get('/documentTypes', function () {
+        return DocumentType::all();
+    });
+
+    Route::get('/programmaticAreas', function () {
+        return ProgrammaticArea::all();
+    });
+
+    Route::get('/categories', function () {
+        return Category::all();
     });
 });
 
