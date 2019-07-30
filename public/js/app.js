@@ -3123,6 +3123,8 @@ __webpack_require__.r(__webpack_exports__);
       referencesObj: {
         addedReferences: []
       },
+      oldkeys: [],
+      referenceArray: [],
       nextId: 2,
       passedOld: "{}",
       rowsIndex: 1
@@ -3160,19 +3162,35 @@ __webpack_require__.r(__webpack_exports__);
       this.passedOld = "{}";
     }
 
-    console.log(this.passedOld.reference_name_0);
+    this.oldkeys = Object.keys(this.passedOld);
+    this.referenceArray = this.oldkeys.filter(function (kee) {
+      return kee.includes('reference_name');
+    });
     console.log(this.referencesObj.addedReferences);
     console.log(this.oldData);
 
-    if (this.passedOld.hasOwnProperty('reference_name_0')) {
-      this.referencesObj.addedReferences.push({
-        id: 1,
-        reference_name: this.passedOld.reference_name_0,
-        reference_phone1: this.passedOld.reference_phone1_0,
-        reference_phone2: null,
-        reference_address: null
-      });
-    } else {
+    try {
+      if (this.passedOld.hasOwnProperty('reference_name_0')) {
+        this.referenceArray.forEach(function (element, index) {
+          this.referencesObj.addedReferences.push({
+            id: index + 1,
+            reference_name: this.passedOld['reference_name_' + index],
+            reference_phone1: this.passedOld['reference_phone1_' + index],
+            reference_phone2: this.passedOld['reference_phone2_' + index],
+            reference_address: this.passedOld['reference_address_' + index]
+          });
+        });
+      } else {
+        this.referencesObj.addedReferences.push({
+          id: 1,
+          reference_name: null,
+          reference_phone1: null,
+          reference_phone2: null,
+          reference_address: null
+        });
+      }
+    } catch (err) {
+      console.log(err);
       this.referencesObj.addedReferences.push({
         id: 1,
         reference_name: null,
@@ -3274,6 +3292,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    savePrepRows: function savePrepRows() {
+      var parsed = JSON.stringify(this.preparations);
+      sessionStorage.setItem('preparations', parsed);
+    },
     addPrep: function addPrep() {
       this.preparations.scholarities.push({
         id: this.nextId,
@@ -3319,13 +3341,22 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("".concat(domain, "/api/scholarships")).then(function (response) {
       _this.scholarships = response.data;
     });
-    this.preparations.scholarities.push({
-      id: 1,
-      scholarship_id: 0,
-      major: null,
-      school: null,
-      grad_year: null
-    });
+
+    if (sessionStorage.getItem('preparations')) {
+      try {
+        this.preparations = JSON.parse(sessionStorage.getItem('preparations'));
+      } catch (er) {
+        sessionStorage.removeItem('preparations');
+      }
+    } else {
+      this.preparations.scholarities.push({
+        id: 1,
+        scholarship_id: 0,
+        major: null,
+        school: null,
+        grad_year: null
+      });
+    }
   }
 });
 
@@ -40653,7 +40684,7 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: {
                       type: "number",
-                      name: "reference_phone2",
+                      name: "reference_phone2_" + index,
                       "data-mask": "(000) 000-0000",
                       "data-mask-clearifnotmatch": "true"
                     },
@@ -40690,7 +40721,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "reference_address" },
+                    attrs: { type: "text", name: "reference_address_" + index },
                     domProps: { value: reference.reference_address },
                     on: {
                       input: function($event) {
@@ -40787,242 +40818,258 @@ var render = function() {
           "div",
           { staticClass: "form-group col-12" },
           _vm._l(_vm.preparations.scholarities, function(scholarity, index) {
-            return _c("div", { key: index, staticClass: "row pt-3" }, [
-              _c("div", { staticClass: "col-sm-3" }, [
-                _c("div", { staticClass: "form-group" }, [
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass: "row pt-3",
+                attrs: { onchange: _vm.savePrepRows() }
+              },
+              [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "form-label" }, [
+                      _vm._v("Grado Completado")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: scholarity.scholarship_id,
+                            expression: "scholarity.scholarship_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "scholarship_id", name: "scholarship_id" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              scholarity,
+                              "scholarship_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { disabled: "", selected: "" } },
+                          [
+                            _vm._v(
+                              "Seleccione un nivel de escolaridad\n                                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.scholarships, function(scholarship) {
+                          return _c(
+                            "option",
+                            { domProps: { value: scholarship.id } },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(scholarship.name) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
                   _c("label", { staticClass: "form-label" }, [
-                    _vm._v("Grado Completado")
+                    _vm._v("Concentración")
                   ]),
                   _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: scholarity.major,
+                        expression: "scholarity.major"
+                      }
+                    ],
+                    class: {
+                      "form-control": true,
+                      "is-invalid": _vm.emptyMajor(_vm.errors)
+                    },
+                    attrs: { id: "major", name: "major", type: "text" },
+                    domProps: { value: scholarity.major },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(scholarity, "major", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
                   _c(
-                    "select",
+                    "div",
                     {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: scholarity.scholarship_id,
-                          expression: "scholarity.scholarship_id"
+                      class: { "invalid-feedback": _vm.emptyMajor(_vm.errors) }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.getMajorErrorMessage(_vm.errors.major)) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", { staticClass: "form-label" }, [
+                    _vm._v("Escuela o Institución")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: scholarity.school,
+                        expression: "scholarity.school"
+                      }
+                    ],
+                    class: {
+                      "form-control": true,
+                      "is-invalid": _vm.emptySchool(_vm.errors)
+                    },
+                    attrs: { id: "school", name: "school", type: "text" },
+                    domProps: { value: scholarity.school },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "scholarship_id", name: "scholarship_id" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            scholarity,
-                            "scholarship_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
+                        _vm.$set(scholarity, "school", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      class: { "invalid-feedback": _vm.emptySchool(_vm.errors) }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.getSchoolErrorMessage(_vm.errors.school)) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-2" }, [
+                  _c("label", { staticClass: "form-label" }, [
+                    _vm._v("Año de Graduación")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: scholarity.grad_year,
+                        expression: "scholarity.grad_year"
+                      }
+                    ],
+                    class: {
+                      "form-control": true,
+                      "is-invalid": _vm.emptyGradyear(_vm.errors)
+                    },
+                    attrs: {
+                      id: "grad_year",
+                      min: "1",
+                      name: "grad_year",
+                      type: "number"
+                    },
+                    domProps: { value: scholarity.grad_year },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
+                        _vm.$set(scholarity, "grad_year", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      class: {
+                        "invalid-feedback": _vm.emptyGradyear(_vm.errors)
                       }
                     },
                     [
-                      _c("option", { attrs: { disabled: "", selected: "" } }, [
-                        _vm._v(
-                          "Seleccione un nivel de escolaridad\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.scholarships, function(scholarship) {
-                        return _c(
-                          "option",
-                          { domProps: { value: scholarship.id } },
-                          [
-                            _vm._v(
-                              "\n                                    " +
-                                _vm._s(scholarship.name) +
-                                "\n                                "
-                            )
-                          ]
-                        )
-                      })
-                    ],
-                    2
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(
+                            _vm.getGradyearErrorMessage(_vm.errors.grad_year)
+                          ) +
+                          "\n                        "
+                      )
+                    ]
                   )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-1" }, [
+                  index === 0
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary p-3 mt-5",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.addPrep()
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fe fe-plus" })]
+                      )
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger p-3 mt-5",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.removePrep(index)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fe fe-trash" })]
+                      )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-3" }, [
-                _c("label", { staticClass: "form-label" }, [
-                  _vm._v("Concentración")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: scholarity.major,
-                      expression: "scholarity.major"
-                    }
-                  ],
-                  class: {
-                    "form-control": true,
-                    "is-invalid": _vm.emptyMajor(_vm.errors)
-                  },
-                  attrs: { id: "major", name: "major", type: "text" },
-                  domProps: { value: scholarity.major },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(scholarity, "major", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { class: { "invalid-feedback": _vm.emptyMajor(_vm.errors) } },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.getMajorErrorMessage(_vm.errors.major)) +
-                        "\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-3" }, [
-                _c("label", { staticClass: "form-label" }, [
-                  _vm._v("Escuela o Institución")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: scholarity.school,
-                      expression: "scholarity.school"
-                    }
-                  ],
-                  class: {
-                    "form-control": true,
-                    "is-invalid": _vm.emptySchool(_vm.errors)
-                  },
-                  attrs: { id: "school", name: "school", type: "text" },
-                  domProps: { value: scholarity.school },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(scholarity, "school", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    class: { "invalid-feedback": _vm.emptySchool(_vm.errors) }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.getSchoolErrorMessage(_vm.errors.school)) +
-                        "\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-2" }, [
-                _c("label", { staticClass: "form-label" }, [
-                  _vm._v("Año de Graduación")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: scholarity.grad_year,
-                      expression: "scholarity.grad_year"
-                    }
-                  ],
-                  class: {
-                    "form-control": true,
-                    "is-invalid": _vm.emptyGradyear(_vm.errors)
-                  },
-                  attrs: {
-                    id: "grad_year",
-                    min: "1",
-                    name: "grad_year",
-                    type: "number"
-                  },
-                  domProps: { value: scholarity.grad_year },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(scholarity, "grad_year", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    class: { "invalid-feedback": _vm.emptyGradyear(_vm.errors) }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(
-                          _vm.getGradyearErrorMessage(_vm.errors.grad_year)
-                        ) +
-                        "\n                        "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-1" }, [
-                index === 0
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary p-3 mt-5",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.addPrep()
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fe fe-plus" })]
-                    )
-                  : _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger p-3 mt-5",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.removePrep(index)
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fe fe-trash" })]
-                    )
-              ])
-            ])
+              ]
+            )
           }),
           0
         )
