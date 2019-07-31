@@ -40683,8 +40683,8 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "number",
                       name: "reference_phone2_" + index,
+                      type: "number",
                       "data-mask": "(000) 000-0000",
                       "data-mask-clearifnotmatch": "true"
                     },
@@ -40721,7 +40721,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { type: "text", name: "reference_address_" + index },
+                    attrs: { name: "reference_address_" + index, type: "text" },
                     domProps: { value: reference.reference_address },
                     on: {
                       input: function($event) {
