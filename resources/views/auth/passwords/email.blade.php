@@ -5,9 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col col-login mx-auto">
-                    {{--<div class="text-center mb-6">--}}
-                        {{--<img src="./demo/brand/tabler.svg" class="h-6" alt="">--}}
-                    {{--</div>--}}
+                    <div class="text-center mb-6">
+                        <img src="{{ asset('demo/brand/portal.png') }}" class="h-6" alt="">
+                        <label class="text-center text-black" style="height: 15px">| Servicio de Extensión Agrícola </label>
+                    </div>
                     <form class="card" method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
                         @csrf
                         <div class="card-body p-6">
@@ -16,10 +17,10 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            <div class="card-title">Forgot password</div>
+                            <div class="card-title">Olvidé mi contraseña</div>
                             <p class="text-muted">Enter your email address and your password will be reset and emailed to you.</p>
                             <div class="form-group">
-                                <label for="email" class="col-form-label">{{ __('Email Address') }}</label>
+                                <label for="email" class="col-form-label">Correo electrónico</label>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -34,7 +35,7 @@
                         </div>
                     </form>
                     <div class="text-center text-muted">
-                        Forget it, <a href="{{ route('login') }}">send me back</a> to the sign in screen.
+                        De vuelta a la <a href="{{ route('login') }}">página de inicio.</a>
                     </div>
                 </div>
             </div>

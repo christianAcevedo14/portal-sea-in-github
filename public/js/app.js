@@ -86,6 +86,75 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue":
+/*!*************************************************************************!*\
+  !*** ./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true& */ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true&");
+/* harmony import */ var _ContactosLogros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ContactosLogros.vue?vue&type=script&lang=js& */ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ContactosLogros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "f130e47c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "Modules/Sise/Resources/assets/js/components/ContactosLogros.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactosLogros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContactosLogros.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactosLogros_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true&":
+/*!********************************************************************************************************************!*\
+  !*** ./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ContactosLogros_vue_vue_type_template_id_f130e47c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./Modules/Sise/Resources/assets/js/components/EditPow.vue":
 /*!*****************************************************************!*\
   !*** ./Modules/Sise/Resources/assets/js/components/EditPow.vue ***!
@@ -2255,6 +2324,105 @@ module.exports = {
   trim: trim
 };
 
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ContactosLogros",
+  data: function data() {
+    return {
+      form_elements: {
+        programs: [],
+        matters: [],
+        hideStyle: {
+          display: null
+        }
+      }
+    };
+  },
+  methods: {
+    editObjectives: function editObjectives(event) {
+      this.row.matters.length = 0;
+      this.form_elements.matters = [];
+      var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
+      var matters = [];
+      var objectives = program.objectives;
+      objectives.forEach(function (objective) {
+        objective.matters.forEach(function (matter) {
+          matters.push(matter);
+        });
+      });
+      this.form_elements.matters.push(matters);
+    },
+    getObjectives: function getObjectives(event) {
+      this.form_elements.matters = [];
+      var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
+      var objectives = program.objectives;
+      var matters = [];
+      objectives.forEach(function (objective) {
+        objective.matters.forEach(function (matter) {
+          matters.push(matter);
+        });
+      });
+      this.form_elements.matters.push(matters);
+    },
+    mounted: function mounted() {
+      var _this = this;
+
+      var domain = window.location.protocol + '//' + window.location.hostname; // this.setDates();
+
+      axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
+        _this.form_elements.programs = response.data;
+      });
+    },
+    props: ['index', 'row']
+  }
+});
 
 /***/ }),
 
@@ -39332,6 +39500,59 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue?vue&type=template&id=f130e47c&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-7" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v(" Programa Planificado:")]),
+          _vm._v(" "),
+          _c("select", {
+            staticClass: "form-control",
+            attrs: { name: "program_id" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-5" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v(" Materia:")]),
+          _vm._v(" "),
+          _c("select", {
+            staticClass: "form-control",
+            attrs: { name: "matter_id" }
+          })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./Modules/Sise/Resources/assets/js/components/EditPow.vue?vue&type=template&id=12551a7a&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./Modules/Sise/Resources/assets/js/components/EditPow.vue?vue&type=template&id=12551a7a&scoped=true& ***!
@@ -53364,6 +53585,7 @@ Vue.component('notifications', __webpack_require__(/*! ./components/Notification
 Vue.component('pow', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/Pow.vue */ "./Modules/Sise/Resources/assets/js/components/Pow.vue")["default"]);
 Vue.component('pow-row', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/PowRow.vue */ "./Modules/Sise/Resources/assets/js/components/PowRow.vue")["default"]);
 Vue.component('edit-pow', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/EditPow.vue */ "./Modules/Sise/Resources/assets/js/components/EditPow.vue")["default"]);
+Vue.component('contactos-logros', __webpack_require__(/*! ../../../Modules/Sise/Resources/assets/js/components/ContactosLogros.vue */ "./Modules/Sise/Resources/assets/js/components/ContactosLogros.vue")["default"]);
 Vue.component('scholarships-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/ScholarshipsComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/ScholarshipsComponent.vue")["default"]);
 Vue.component('licences-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/LicencesComponent.vue")["default"]);
 Vue.component('references-component', __webpack_require__(/*! ../../../Modules/Volunteer/Resources/assets/js/components/ReferencesComponent.vue */ "./Modules/Volunteer/Resources/assets/js/components/ReferencesComponent.vue")["default"]);

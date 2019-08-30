@@ -52,6 +52,7 @@
                     <div class="d-flex">
                         <a class="header-brand" href="/home">
                             <img src="{{ asset('demo/brand/portal.png') }}" class="header-brand-img" alt="tabler logo">
+                            <label class="text-center text-black" style="height: 10px">| Servicio de Extensión Agrícola </label>
                         </a>
                         <div class="d-flex order-lg-2 ml-auto">
                             <notifications></notifications>

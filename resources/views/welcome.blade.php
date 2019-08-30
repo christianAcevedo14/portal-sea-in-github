@@ -1,87 +1,101 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Portal del Extensionista | Servicio de Extensión Agrícola</title>
-        <link rel="icon" href="/demo/brand/portal_icon.png" type="image"/>
+    <title>Portal del Extensionista | Servicio de Extensión Agrícola</title>
+    <link rel="icon" href="/demo/brand/portal_icon.png" type="image"/>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
 
-            .full-height {
-                height: 100vh;
-            }
+        .full-height {
+            height: 100vh;
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .position-ref {
+            position: relative;
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .content {
+            text-align: center;
+        }
 
-            .title {
-                font-size: 84px;
-            }
+        .title {
+            font-size: 84px;
+        }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        .links > a {
+            color: #ffffff;
+            padding: 0 25px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: #2d89f0;
+        }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                </div>
-            @endif
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-center position-ref full-height">
+    {{--    @if (Route::has('login'))--}}
+    {{--        <div class="top-right links">--}}
+    {{--            @auth--}}
+    {{--                <a href="{{ url('/home') }}">Home</a>--}}
+    {{--            @else--}}
+    {{--                <a href="{{ route('login') }}">Login</a>--}}
+    {{--            @endauth--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Portal del Extensionista
-                </div>
-            </div>
+    <div class="content">
+        <img src="/assets/images/sea-logo.png" style="height: 300px">
+        <hr>
+        <div class="title m-b-md">
+            Portal del Extensionista
         </div>
-    </body>
+        <hr>
+        @if (Route::has('login'))
+            <div class="links">
+                @auth
+                    <a href="{{ url('/home') }}">Página Principal</a>
+                @else
+                    <a href="{{ route('login') }}">
+                        Iniciar Sesión</a>
+                @endauth
+            </div>
+        @endif
+    </div>
+</div>
+</body>
 </html>
