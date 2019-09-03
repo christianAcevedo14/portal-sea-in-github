@@ -2372,6 +2372,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactosLogros",
   data: function data() {
@@ -2410,17 +2414,16 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       this.form_elements.matters.push(matters);
-    },
-    mounted: function mounted() {
-      var _this = this;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
 
-      var domain = window.location.protocol + '//' + window.location.hostname; // this.setDates();
+    var domain = window.location.protocol + '//' + window.location.hostname; // this.setDates();
 
-      axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
-        _this.form_elements.programs = response.data;
-      });
-    },
-    props: ['index', 'row']
+    axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
+      _this.form_elements.programs = response.data;
+    });
   }
 });
 
@@ -39515,34 +39518,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-7" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v(" Programa Planificado:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { name: "program_id" } },
+          [
+            _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
+              _vm._v("Selecciona un Programa")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.form_elements.programs, function(program, index) {
+              return _c(
+                "option",
+                { key: index, domProps: { value: program.id } },
+                [
+                  _vm._v(
+                    _vm._s(program.code) +
+                      " - " +
+                      _vm._s(program.description) +
+                      "\n                    "
+                  )
+                ]
+              )
+            })
+          ],
+          2
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-7" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v(" Programa Planificado:")]),
-          _vm._v(" "),
-          _c("select", {
-            staticClass: "form-control",
-            attrs: { name: "program_id" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-5" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v(" Materia:")]),
-          _vm._v(" "),
-          _c("select", {
-            staticClass: "form-control",
-            attrs: { name: "matter_id" }
-          })
-        ])
+    return _c("div", { staticClass: "col-5" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v(" Materia:")]),
+        _vm._v(" "),
+        _c("select", {
+          staticClass: "form-control",
+          attrs: { name: "matter_id" }
+        })
       ])
     ])
   }
