@@ -48,6 +48,7 @@
 
         .title {
             font-size: 84px;
+            color: #129149;
         }
 
         .links > a {
@@ -58,7 +59,7 @@
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
-            background-color: #2d89f0;
+            background-color: #129149;
         }
 
         .m-b-md {
@@ -80,11 +81,11 @@
 
     <div class="content">
         <img src="/assets/images/sea-logo.png" style="height: 300px">
-        <hr>
+        <hr style="color: #129149">
         <div class="title m-b-md">
             Portal del Extensionista
         </div>
-        <hr>
+        <hr style="color: #129149">
         @if (Route::has('login'))
             <div class="links">
                 @auth
