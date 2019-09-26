@@ -77,7 +77,7 @@ class UsersTableSeeder extends CsvSeeder
         foreach ($users as $user)
         {
             $new = User::create($user);
-//            $new->apps()->attach([2]);
+            $new->apps()->attach([1,3,4,5,6,7]);
         }
 
 
