@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="page-header">
-            <h1 class="page-title">
+            <h1>
                 Aplicaciones
             </h1>
         </div>
@@ -30,3 +30,8 @@
         </div>
     </div>
 @endsection
+
+
+
+
+

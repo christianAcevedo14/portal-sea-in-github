@@ -129,4 +129,9 @@
         }
     </script>
 </body>
+
+<footer>
+    @include('layouts.includes.footer')
+</footer>
+
 </html>
