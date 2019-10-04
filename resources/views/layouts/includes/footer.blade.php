@@ -46,15 +46,15 @@
                             <li class="list-inline-item"><a href="./faq.html">Preguntas frecuentes</a></li>
                         </ul>
                     </div>
-                    <div class="col-auto">
-                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">
-                            Código fuente</a>
-                    </div>
+{{--                    <div class="col-auto">--}}
+{{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}
+{{--                            Código fuente</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
                 <img src="/assets/images/sea-logo.png" style="height: 50px">
-                Copyright © 2019 Servicio de Extensión Agrícola. All rights reserved.
+                Copyright © 2019 Servicio de Extensión Agrícola. Todos los derechos reservados.
             </div>
         </div>
     </div>

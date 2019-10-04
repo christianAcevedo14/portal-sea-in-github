@@ -12,7 +12,14 @@
                     <div class="card-header">
                         <h3 class="card-title">Lista de usuarios</h3>
                         <div class="card-options">
-                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>
+                            <a href="{{ route('users.create') }}" class="btn btn-sm  btn-pill btn-info">
+                                <div class="d-inline-flex">
+                                    <img src="/assets/images/plus-icon-png-white.png" style="height: 18px;"
+                                         class="pt-1"><span
+                                            class="pl-3 text-white" style="font-size:17px">Crear Usuario</span>
+                                </div>
+                            </a>
+{{--                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>--}}
                             {{--<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>--}}
                         </div>
                     </div>

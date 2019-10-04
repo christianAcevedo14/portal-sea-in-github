@@ -10,11 +10,11 @@
     <div class="col-lg order-lg-first">
         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
             <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link"><i class="fe fe-home"></i> Dashboard</a>
+                <a href="{{ route('home') }}" class="{{ (request()->is('home')) ? 'nav-link active' : 'nav-link' }}"><i class="fe fe-home"></i> Dashboard</a>
             </li>
             @if(Auth::user()->isAdmin)
                 <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link"><i class="fe fe-users"></i> Usuarios</a>
+                    <a href="{{ route('users.index') }}" class="{{ (request()->is('users*')) ? 'nav-link active' : 'nav-link' }}"><i class="fe fe-users"></i> Usuarios</a>
                 </li>
             @endif
             {{--<li class="nav-item">--}}
