@@ -27,5 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('notifications/get', function () {
         return auth()->user()->unreadNotifications;
     });
+    Route::get('notifications/markAsRead', function () {
+        return auth()->user()->unreadNotifications->markAsRead();
+    });
+    Route::get('notifications/markAllAsRead', function () {
+        return auth()->user()->unreadNotifications->markAsRead();
+    });
 });
 
