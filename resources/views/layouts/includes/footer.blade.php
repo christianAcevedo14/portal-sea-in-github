@@ -42,8 +42,8 @@
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <ul class="list-inline list-inline-dots mb-0">
-                            <li class="list-inline-item"><a href="./docs/index.html">Documentación</a></li>
-                            <li class="list-inline-item"><a href="./faq.html">Preguntas frecuentes</a></li>
+                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>
+                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>
                         </ul>
                     </div>
 {{--                    <div class="col-auto">--}}
