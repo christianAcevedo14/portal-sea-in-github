@@ -70,7 +70,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($coordinators as $coordinator)
                                         <tr>
                                             <th>
@@ -106,7 +106,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($agents as $agent)
                                         <tr>
                                             <th>
@@ -142,7 +142,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($educators as $educator)
                                         <tr>
                                             <th>
@@ -178,7 +178,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($directors as $director)
                                         <tr>
                                             <th>
@@ -215,7 +215,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($specialists as $specialist)
                                         <tr>
                                             <th>
@@ -252,7 +252,7 @@
                                         <th scope="col">Acciones</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="usersTable">
                                     @foreach($administrativos as $administrativo)
                                         <tr>
                                             <th>
@@ -283,11 +283,17 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('custom-scripts')
     <script>
-        $(document).ready(function () {
-            $('#users').DataTable();
+        $(document).ready(function(){
+            $("#searchInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#usersTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
     </script>
-
-@endsection
+    @endsection
