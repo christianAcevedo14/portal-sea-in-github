@@ -86,7 +86,7 @@ class UsersTableSeeder extends CsvSeeder
         $createdUsers = User::all();
 
         foreach ($createdUsers as $createdUser) {
-            $createdUser->apps()->attach([2]);
+            $createdUser->apps()->attach([2,8]);
         }
 
 

@@ -20,6 +20,7 @@ class AppsTableSeeder extends Seeder
             ['name' => 'DRC', 'url' => 'drc', 'icon' => 'fa fa-home'],
             ['name' => 'Voluntarios', 'url' => 'volunteer', 'icon' => 'fa fa-handshake-o'],
             ['name' => 'Usuarios', 'url' => 'users', 'icon' => 'fa fa-user'],
+            ['name' => 'CTI', 'url' => 'http://ctisea.uprm.edu', 'icon' => 'fa fa-desktop'],
         ];
 
         foreach ($regions as $region)
