@@ -42,13 +42,13 @@
                                 </label>
                             </div>
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                                <button type="submit" class="btn btn-primary btn-block">Acceder</button>
                             </div>
                         </div>
                     </form>
-                    <div class="text-center text-muted">
-                        ¿No tienes una cuenta? <a href="#">Regístrate</a>
-                    </div>
+{{--                    <div class="text-center text-muted">--}}
+{{--                        ¿No tienes una cuenta? <a href="#">Regístrate</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

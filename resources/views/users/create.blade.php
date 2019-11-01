@@ -9,6 +9,8 @@
         <div class="row row-cards">
             <div class="col-sm-12">
                 <form action="{{ route('users.store') }}" class="card" method="post">
+                    <input type="hidden" name="password"  value="123123" readonly="readonly">
+                    <input type="hidden" name="avatar"  value="assets/images/avatars/no_avatar.png" readonly="readonly">
                     <div class="card-header">
                         <h3 class="card-title">Crear usuario</h3>
                     </div>
@@ -80,7 +82,7 @@
                                     <div class="form-label">Aplicaciones autorizadas</div>
                                     @foreach($apps as $app)
                                         <label class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" name="app_id[]" value="{{ $app->id }}">
+                                            <input type="checkbox" class="custom-control-input" name="app_id[]" @if ($app->id === 8) checked="checked" disabled @endif value="{{ $app->id }}">
                                             <span class="custom-control-label">{{ $app->name }}</span>
                                         </label>
                                     @endforeach

@@ -7,6 +7,14 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @if(session()->has('notification'))
+                <div class="col-sm-5 offset-7">
+                    <div class="alert alert-icon alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
+                    </div>
+                </div>
+            @endif
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">

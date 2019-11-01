@@ -7,7 +7,9 @@ use App\Http\Requests\StoreUser;
 use App\ProgrammaticUnit;
 use App\Title;
 use App\User;
+use http\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -48,9 +50,10 @@ class UserController extends Controller
      */
     public function store(StoreUser $user)
     {
-        $new_user = User::create($user->except('app_id'));
+        $userPassword = array_merge($user->except('app_id' , 'password') , ['password' => Hash::make($user->password)]);
+        $new_user = User::create($userPassword);
         $new_user->apps()->attach($user->app_id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('notification', 'Usuario creado exitosamente con contraseña temporera: 123123');
     }
 
     /**
