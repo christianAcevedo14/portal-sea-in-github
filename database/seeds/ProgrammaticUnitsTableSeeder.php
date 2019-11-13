@@ -15,7 +15,6 @@ class ProgrammaticUnitsTableSeeder extends Seeder
         $programmaticUnits = [
             ['id' => 100, 'region_id' => 100, 'description' => 'Región de Arecibo'],
             ['id' => 107, 'region_id' => 100, 'description' => 'Arecibo'],
-            ['id' => 108, 'region_id' => 100, 'description' => 'Arecibo Pean'],
             ['id' => 114, 'region_id' => 100, 'description' => 'Camuy / Hatillo'],
             ['id' => 120, 'region_id' => 100, 'description' => 'Ciales'],
             ['id' => 128, 'region_id' => 100, 'description' => 'Florida / Barceloneta / Manatí'],
@@ -27,7 +26,6 @@ class ProgrammaticUnitsTableSeeder extends Seeder
 
             ['id' => 200, 'region_id' => 200, 'description' => 'Región de Caguas'],
             ['id' => 213, 'region_id' => 200, 'description' => 'Caguas'],
-            ['id' => 214, 'region_id' => 200, 'description' => 'Caguas Pean'],
             ['id' => 218, 'region_id' => 200, 'description' => 'Cayey / Aibonito'],
             ['id' => 221, 'region_id' => 200, 'description' => 'Cidra / Aguas Buenas'],
             ['id' => 233, 'region_id' => 200, 'description' => 'Gurabo / San Lorenzo'],
@@ -50,10 +48,9 @@ class ProgrammaticUnitsTableSeeder extends Seeder
             ['id' => 401, 'region_id' => 400, 'description' => 'Adjuntas / Jayuya'],
             ['id' => 422, 'region_id' => 400, 'description' => 'Coamo'],
             ['id' => 459, 'region_id' => 400, 'description' => 'Ponce / Juana Díaz / Peñuelas'],
-            ['id' => 460, 'region_id' => 400, 'description' => 'Ponce / Juana Díaz / Peñuelas Pean'],
             ['id' => 463, 'region_id' => 400, 'description' => 'Salinas - Santa Isabel / Guayama - Arroyo / Patillas'],
             ['id' => 476, 'region_id' => 400, 'description' => 'Villalba'],
-            ['id' => 478, 'region_id' => 400, 'description' => 'Yauco - Guánica / Guayanilla'],
+            ['id' => 478, 'region_id' => 400, 'description' => 'Yauco / Guánica / Guayanilla'],
 
             ['id' => 500, 'region_id' => 500, 'description' => 'Región de San Juan'],
             ['id' => 510, 'region_id' => 500, 'description' => 'Barranquitas'],
@@ -64,9 +61,9 @@ class ProgrammaticUnitsTableSeeder extends Seeder
             ['id' => 554, 'region_id' => 500, 'description' => 'Naranjito / Comerío'],
             ['id' => 555, 'region_id' => 500, 'description' => 'Orocovis'],
             ['id' => 561, 'region_id' => 500, 'description' => 'Río Grande / Canóvanas / Loíza'],
-            ['id' => 569, 'region_id' => 500, 'description' => 'Toa Baja / Toa Alta / Vega Alta - Dorado'],
+            ['id' => 569, 'region_id' => 500, 'description' => 'Toa Baja / Toa Alta / Vega Alta / Dorado'],
             ['id' => 575, 'region_id' => 500, 'description' => 'Vieques / Culebra'],
-            ['id' => 580, 'region_id' => 500, 'description' => 'Río Piedras - Guaynabo - Carolina / Trujillo Alto'],
+            ['id' => 580, 'region_id' => 500, 'description' => 'Río Piedras / Guaynabo / Carolina / Trujillo Alto'],
 
             ['id' => 680, 'region_id' => 600, 'description' => 'Centro de Tecnología de Información'],
             ['id' => 681, 'region_id' => 600, 'description' => 'Educación Agrícola'],

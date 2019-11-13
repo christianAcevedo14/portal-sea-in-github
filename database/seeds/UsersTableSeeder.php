@@ -10,7 +10,7 @@ class UsersTableSeeder extends CsvSeeder
     {
         $this->connection = 'portal';
         $this->table = 'users';
-        $this->filename = __DIR__ . '/csvs/imported_users_1.csv';
+        $this->filename = __DIR__ . '/csvs/imported_users.csv';
     }
     /**
      * Run the database seeds.
@@ -81,6 +81,7 @@ class UsersTableSeeder extends CsvSeeder
         }
 
 
+        Model::unguard();
         parent::run();
 
         $createdUsers = User::all();
@@ -89,9 +90,6 @@ class UsersTableSeeder extends CsvSeeder
             $createdUser->apps()->attach([2,8]);
         }
 
-
-
-            Model::unguard();
 
 
     }
