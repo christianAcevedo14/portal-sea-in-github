@@ -116,6 +116,11 @@ class User extends Authenticatable
         return substr($this->programmatic_unit->region_id, 0, 1);
     }
 
+    public function getRegionIDAttribute()
+    {
+        return $this->programmatic_unit->region_id;
+    }
+
     public function getUnitAttribute()
     {
         return $this->programmatic_unit->id;
