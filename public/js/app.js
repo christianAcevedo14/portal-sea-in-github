@@ -3127,7 +3127,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Pow",
-  props: ['Users'],
+  // props: ['Users'],
   data: function data() {
     return {
       plan: {
@@ -3135,7 +3135,8 @@ __webpack_require__.r(__webpack_exports__);
         plan_programs: []
       },
       nextId: 2,
-      users: this.Users,
+      users: [],
+      // users: this.Users,
       loggedUser: {},
       errors: []
     };
@@ -3164,30 +3165,28 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     submitPlan: function submitPlan() {
-      var _this = this;
-
       if (confirm('Por favor revise toda la información cuidadosamente antes de continuar. Asegurese que no dejó campos en blanco donde corresponda. ' + 'Presione "Cancel" para revisar su información. Presione "OK" para continuar.')) {
         // console.log(this.plan);
         var domain = window.location.protocol + '//' + window.location.hostname;
         axios.post("".concat(domain, "/sise/plans/store"), this.plan).then(function (response) {
           location.href = domain + response.data.redirect;
-        })["catch"](function (error) {
-          if (error.response.status == 422) {
-            _this.errors = error.response.data.errors;
-          }
-        });
+        }); // .catch(error => {
+        //     if (error.response.status == 422) {
+        //         this.errors = error.response.data.errors;
+        //     }
+        // })
       }
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this = this;
 
-    var domain = window.location.protocol + '//' + window.location.hostname; // axios.get(`${domain}/api/users`).then(response => {
-    //     this.users = response.data;
-    // });
-
+    var domain = window.location.protocol + '//' + window.location.hostname;
+    axios.get("".concat(domain, "/api/users")).then(function (response) {
+      _this.users = response.data;
+    });
     axios.get("".concat(domain, "/loggedUser")).then(function (response) {
-      _this2.loggedUser = response.data;
+      _this.loggedUser = response.data;
     });
     console.log(this.$auth);
     this.plan.plan_programs.push({
@@ -41788,28 +41787,14 @@ var render = function() {
                                       _vm._s(user.surname) +
                                       " " +
                                       _vm._s(user.second_surname) +
-                                      "\n                                    "
+                                      "\n                                        "
                                   )
                                 ]
                               )
                             })
                           ],
                           2
-                        ),
-                        _vm._v(" "),
-                        _vm.errors.length !== 0
-                          ? _c(
-                              "span",
-                              {
-                                staticClass: "is-invalid pl-3 pt-1",
-                                staticStyle: {
-                                  color: "#cd201f",
-                                  "font-size": "87.5%"
-                                }
-                              },
-                              [_vm._v(_vm._s(_vm.errors.user_id.toString()))]
-                            )
-                          : _vm._e()
+                        )
                       ])
                     ])
                   ])
@@ -41926,7 +41911,7 @@ var staticRenderFns = [
       _c("label", [
         _c("strong", [
           _vm._v(
-            "*Por favor revise toda la información cuidadosamente antes de continuar.\n                                Asegurese que no dejó campos en blanco donde\n                                corresponda.* "
+            "*Por favor revise toda la información cuidadosamente antes de continuar.\n                                    Asegurese que no dejó campos en blanco donde\n                                    corresponda.* "
           )
         ])
       ])
