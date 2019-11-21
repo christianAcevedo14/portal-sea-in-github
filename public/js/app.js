@@ -3127,7 +3127,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Pow",
-  // props: ['Users'],
+  props: ['Users'],
   data: function data() {
     return {
       plan: {
@@ -3135,8 +3135,7 @@ __webpack_require__.r(__webpack_exports__);
         plan_programs: []
       },
       nextId: 2,
-      users: [],
-      // users: this.Users,
+      users: this.Users,
       loggedUser: {},
       errors: []
     };
@@ -3165,30 +3164,32 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     submitPlan: function submitPlan() {
+      var _this = this;
+
       if (confirm('Por favor revise toda la información cuidadosamente antes de continuar. Asegurese que no dejó campos en blanco donde corresponda. ' + 'Presione "Cancel" para revisar su información. Presione "OK" para continuar.')) {
         // console.log(this.plan);
         var domain = window.location.protocol + '//' + window.location.hostname;
         axios.post("".concat(domain, "/sise/plans/store"), this.plan).then(function (response) {
           location.href = domain + response.data.redirect;
-        }); // .catch(error => {
-        //     if (error.response.status == 422) {
-        //         this.errors = error.response.data.errors;
-        //     }
-        // })
+        })["catch"](function (error) {
+          if (error.response.status == 422) {
+            _this.errors = error.response.data.errors;
+          }
+        });
       }
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
-    var domain = window.location.protocol + '//' + window.location.hostname;
-    axios.get("".concat(domain, "/api/users")).then(function (response) {
-      _this.users = response.data;
-    });
+    var domain = window.location.protocol + '//' + window.location.hostname; // axios.get(`${domain}/api/users`).then(response => {
+    //     this.users = response.data;
+    // });
+
     axios.get("".concat(domain, "/loggedUser")).then(function (response) {
-      _this.loggedUser = response.data;
-    }); // console.log(this.$auth);
-
+      _this2.loggedUser = response.data;
+    });
+    console.log(this.$auth);
     this.plan.plan_programs.push({
       id: 1,
       program_id: null,
@@ -41702,7 +41703,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "col-12" }),
+    _c("div", { staticClass: "col-12" }, [
+      _vm.errors.length !== 0
+        ? _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "alert alert-danger" },
+              _vm._l(_vm.errors, function(error) {
+                return _c("ul", [_c("li", [_vm._v(_vm._s(error))])])
+              }),
+              0
+            )
+          ])
+        : _vm._e()
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-12" }, [
