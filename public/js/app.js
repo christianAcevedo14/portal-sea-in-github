@@ -3127,11 +3127,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Pow",
-  props: ['Users'],
+  props: ['Users', 'User'],
   data: function data() {
     return {
       plan: {
-        user_id: '',
+        user_id: this.User,
         plan_programs: []
       },
       nextId: 2,
@@ -3188,8 +3188,8 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get("".concat(domain, "/loggedUser")).then(function (response) {
       _this2.loggedUser = response.data;
-    });
-    console.log(this.$auth);
+    }); // console.log(this.$auth);
+
     this.plan.plan_programs.push({
       id: 1,
       program_id: null,

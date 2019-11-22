@@ -27,14 +27,15 @@
                                             class="pl-3 text-white" style="font-size:17px">Crear Usuario</span>
                                 </div>
                             </a>
-{{--                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>--}}
+                            {{--                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>--}}
                             {{--<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>--}}
                         </div>
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active text-center" id="coordinators-tab" data-toggle="tab" href="#coordinators"
+                                <a class="nav-link active text-center" id="coordinators-tab" data-toggle="tab"
+                                   href="#coordinators"
                                    role="tab" aria-controls="coordinators" aria-selected="true">Administradores /
                                     Coordinadores <br> Regionales ({{ $coordinators->count() }})</a>
                             </li>
@@ -59,7 +60,8 @@
                                     ({{ $directors->count() }})</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="administrativo-tab" data-toggle="tab" href="#administrativo" role="tab"
+                                <a class="nav-link" id="administrativo-tab" data-toggle="tab" href="#administrativo"
+                                   role="tab"
                                    aria-controls="administrativo" aria-selected="false">Personal Administrativo
                                     ({{ $administrativos->count() }})</a>
                             </li>
@@ -71,6 +73,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
@@ -90,6 +93,9 @@
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
                                             </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($coordinator->avatar)}})"></span>
+                                            </th>
                                             <th>{{ $coordinator->full_name }}</th>
                                             <td>{{ $coordinator->title->description }}</td>
                                             <td>{{ $coordinator->programmatic_unit->description }}</td>
@@ -107,6 +113,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
@@ -126,6 +133,8 @@
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
                                             </th>
+                                           <th><span class="avatar"
+                                                      style="background-image: url({{($agent->avatar)}})"></span></th>
                                             <th>{{ $agent->full_name }}</th>
                                             <td>{{ $agent->title->description }}</td>
                                             <td>{{ $agent->programmatic_unit->description }}</td>
@@ -143,6 +152,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
@@ -162,6 +172,9 @@
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
                                             </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($educator->avatar)}})"></span>
+                                            </th>
                                             <th>{{ $educator->full_name }}</th>
                                             <td>{{ $educator->title->description }}</td>
                                             <td>{{ $educator->programmatic_unit->description }}</td>
@@ -180,6 +193,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
+                                        <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
                                         <th scope="col">Unidad Programática</th>
@@ -197,6 +211,9 @@
                                                     <button class="btn btn-sm btn-pill btn-danger"><i
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
+                                            </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($director->avatar)}})"></span>
                                             </th>
                                             <th>{{ $director->full_name }}</th>
                                             <td>{{ $director->title->description }}</td>
@@ -217,6 +234,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
+                                        <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
                                         <th scope="col">Unidad Programática</th>
@@ -234,6 +252,9 @@
                                                     <button class="btn btn-sm btn-pill btn-danger"><i
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
+                                            </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($specialist->avatar)}})"></span>
                                             </th>
                                             <th>{{ $specialist->full_name }}</th>
                                             <td>{{ $specialist->title->description }}</td>
@@ -254,6 +275,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
+                                        <th scope="col"></th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Título</th>
                                         <th scope="col">Unidad Programática</th>
@@ -264,13 +286,17 @@
                                     @foreach($administrativos as $administrativo)
                                         <tr>
                                             <th>
-                                                <form action="{{ route('users.destroy', $administrativo) }}" method="post"
+                                                <form action="{{ route('users.destroy', $administrativo) }}"
+                                                      method="post"
                                                       onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button class="btn btn-sm btn-pill btn-danger"><i
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
+                                            </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($administrativo->avatar)}})"></span>
                                             </th>
                                             <th>{{ $administrativo->full_name }}</th>
                                             <td>{{ $administrativo->title->description }}</td>
@@ -295,13 +321,13 @@
 
 @section('custom-scripts')
     <script>
-        $(document).ready(function(){
-            $("#searchInput").on("keyup", function() {
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#usersTable tr").filter(function() {
+                $("#usersTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
     </script>
-    @endsection
+@endsection
