@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Sise\Entities\Historia;
 use Modules\Sise\Entities\Plan;
 use Modules\Volunteer\Entities\Category;
 use Modules\Volunteer\Entities\Comment;
@@ -164,4 +165,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Comment::class);
     }
 
+    public function historia()
+    {
+        return $this->hasMany(Historia::class);
+    }
 }
