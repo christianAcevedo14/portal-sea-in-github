@@ -20,6 +20,7 @@
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.22.2",
     "sass-loader": "^7.1.0",
+    "summernote": "^0.8.12",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
@@ -31,9 +32,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/sea-dev/ope/portal-sea.git"
+    "url": "git+https://gitlab.com/sea-dev/ope/portal-sea.git"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://gitlab.com/sea-dev/ope/portal-sea/issues"
+  },
+  "homepage": "https://gitlab.com/sea-dev/ope/portal-sea#readme",
+  "description": "",
+  "dependencies": {
+    "codemirror": "^5.49.2"
+  }
 }
