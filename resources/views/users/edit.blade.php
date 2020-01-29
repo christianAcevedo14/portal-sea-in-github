@@ -38,34 +38,42 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="text" name="first_name" class="form-control" placeholder="First name" value="{{ old('first_name', $user->first_name) }}">
+                                    <input type="text" name="first_name" class="form-control" placeholder="First name"
+                                           value="{{ old('first_name', $user->first_name) }}">
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input type="text" name="initial" class="form-control" placeholder="Initial" value="{{ old('initial', $user->initial) }}">
+                                    <input type="text" name="initial" class="form-control" placeholder="Initial"
+                                           value="{{ old('initial', $user->initial) }}">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input type="text" name="surname" class="form-control" placeholder="Surname" value="{{ old('surname', $user->surname) }}">
+                                    <input type="text" name="surname" class="form-control" placeholder="Surname"
+                                           value="{{ old('surname', $user->surname) }}">
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input type="text" name="second_surname" class="form-control" placeholder="Second Surname" value="{{ old('second_surname', $user->second_surname) }}">
+                                    <input type="text" name="second_surname" class="form-control"
+                                           placeholder="Second Surname"
+                                           value="{{ old('second_surname', $user->second_surname) }}">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" placeholder="Phone" data-mask="(000) 000-0000" data-mask-clearifnotmatch="true" value="{{ old('phone', $user->phone) }}">
+                                    <input type="text" name="phone" class="form-control" placeholder="Phone"
+                                           data-mask="(000) 000-0000" data-mask-clearifnotmatch="true"
+                                           value="{{ old('phone', $user->phone) }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email', $user->email) }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                           value="{{ old('email', $user->email) }}">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +83,9 @@
                                     <div class="form-label">Aplicaciones autorizadas</div>
                                     @foreach($apps as $app)
                                         <label class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" name="app_id[]" @if ($app->id === 8) checked="checked" disabled @endif value="{{ $app->id }}" {{ old('app_id', $user->apps)->contains($app->id) ? 'checked' : '' }}>
+                                            <input type="checkbox" class="custom-control-input" name="app_id[]"
+                                                   @if ($app->id === 8) checked="checked" disabled
+                                                   @endif value="{{ $app->id }}" {{ old('app_id', $user->apps)->contains($app->id) ? 'checked' : '' }}>
                                             <span class="custom-control-label">{{ $app->name }}</span>
                                         </label>
                                     @endforeach
@@ -84,6 +94,9 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
+                            <a href="{{ route('users.index') }}" class="btn btn-warning"
+                               onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
+                        <span class="m-1"></span>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
                     <input type="hidden" name="_method" value="put">

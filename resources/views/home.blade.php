@@ -24,7 +24,21 @@
         </div>
 
         <div class="row row-cards">
-            @foreach(auth()->user()->apps as $app)
+                @foreach(auth()->user()->apps->where('id', '=', 2) as $sise)
+                <div class="col-6 col-sm-4 col-lg-2">
+                    <a href="{{ url($sise->url) }}" class="nounderline">
+                        <div class="card text-dark">
+                            <div class="card-body p-5 text-center">
+                                <div class="h1">
+                                    <i class="{{ $sise->icon }}"></i>
+                                </div>
+                                <div class="text-muted">{{$sise->name}}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            @foreach(auth()->user()->apps->where('id', '!=', 2) as $app)
                 <div class="col-6 col-sm-4 col-lg-2">
                     <a href="{{ url($app->url) }}" class="nounderline">
                         <div class="card text-dark">

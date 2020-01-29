@@ -91,6 +91,9 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
+                        <a href="{{ route('users.index') }}" class="btn btn-warning"
+                           onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
+                        <span class="m-1"></span>
                         <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
                     @csrf

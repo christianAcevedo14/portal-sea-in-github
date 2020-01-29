@@ -2840,11 +2840,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactosLogros",
-  props: ['errors'],
+  props: ['errors', 'plannedPrograms'],
   data: function data() {
     return {
       form_elements: {
-        programs: [],
+        programs: this.plannedPrograms,
         matters: [],
         objectives: [],
         contactosLogros: [],
@@ -3126,14 +3126,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
     var domain = window.location.protocol + '//' + window.location.hostname; // this.setDates();
-
-    axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
-      _this.form_elements.programs = response.data;
-      _this.loading = true;
-    });
+    // axios.get(`${domain}/sise/api/programs`).then(response => {
+    //     this.form_elements.programs = response.data;
+    //     this.loading = true;
+    // });
 
     if (sessionStorage.getItem('form_elements')) {
       try {
@@ -3521,6 +3518,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PowRow",
   props: ['index', 'row'],
@@ -3610,8 +3608,8 @@ __webpack_require__.r(__webpack_exports__);
       this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
     },
     getObjectives: function getObjectives(event) {
-      // this.row.matters.length = 0;
-      // this.row.enterprises.length = 0;
+      //this.row.matters.length = 0;
+      //this.row.enterprises.length = 0;
       this.form_elements.matters = [];
       this.form_elements.enterprises = [];
       var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
@@ -3798,6 +3796,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "historia-component",
   props: [],
@@ -3815,12 +3814,15 @@ __webpack_require__.r(__webpack_exports__);
     addImage: function addImage() {
       this.form_elements.images.push({
         id: this.nextId,
-        image: null
+        image: {}
       });
       this.nextId++;
     },
     removeImage: function removeImage(index) {
       this.form_elements.images.splice(index, 1);
+    },
+    imageChanged: function imageChanged(event, image) {
+      this.form_elements.images.image = event.target.files[0];
     },
     closeForm: function closeForm() {
       if (confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.')) {
@@ -3832,7 +3834,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.form_elements.images.push({
       id: 1,
-      image: null
+      image: {}
     });
   }
 });
@@ -3848,8 +3850,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -48322,7 +48322,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    !_vm.loading
+    _vm.loading
       ? _c("div", [
           _c("img", {
             staticClass: "rounded mx-auto d-block pb-5",
@@ -50371,30 +50371,35 @@ var render = function() {
           ? _c("div", { key: index, staticClass: "col-sm-2" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { staticClass: "form-label", attrs: { for: "" } }, [
-                  _vm._v("FY " + _vm._s(year))
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.row.ftes[index],
-                      expression: "row.ftes[index]"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "number", name: "ftes", min: 0, max: 100 },
-                  domProps: { value: _vm.row.ftes[index] },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                  _vm._v("FY " + _vm._s(year) + "\n                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.row.ftes[index],
+                        expression: "row.ftes[index]"
                       }
-                      _vm.$set(_vm.row.ftes, index, $event.target.value)
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      name: "ftes",
+                      min: "0",
+                      max: "100",
+                      maxlength: "3"
+                    },
+                    domProps: { value: _vm.row.ftes[index] },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.row.ftes, index, $event.target.value)
+                      }
                     }
-                  }
-                })
+                  })
+                ])
               ])
             ])
           : _vm._e()
@@ -50607,8 +50612,6 @@ var render = function() {
             _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
@@ -50623,7 +50626,12 @@ var render = function() {
                       _c("div", { staticClass: "file" }, [
                         _c("input", {
                           class: { "file-input": true, "form-control": true },
-                          attrs: { name: "image", type: "file" }
+                          attrs: { name: "image", type: "file" },
+                          on: {
+                            change: function($event) {
+                              return _vm.imageChanged($event, image)
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("label", { staticClass: "file-label" })
@@ -50668,7 +50676,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-footer" }, [
             _c("div", { staticClass: "row" }, [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "col-1" }, [
                 _c(
@@ -50736,20 +50744,6 @@ var staticRenderFns = [
             attrs: { type: "text", name: "title" }
           })
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("label", { staticClass: "form-label" }, [
-          _c("h4", [_vm._v("Resumen")])
-        ]),
-        _vm._v(" "),
-        _c("textarea", { staticClass: "WYSIWYG", attrs: { name: "text" } })
       ])
     ])
   },
@@ -50879,21 +50873,7 @@ var render = function() {
                     attrs: { name: "url", type: "file" }
                   }),
                   _vm._v(" "),
-                  _c("label", { staticClass: "custom-file-label" }, [
-                    _vm._v("Escoger archivo")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { class: { "invalid-feedback": _vm.emptyURL(_vm.errors) } },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.getURLErrorMessage(_vm.errors.url)) +
-                          "\n                            "
-                      )
-                    ]
-                  )
+                  _c("label", { staticClass: "custom-file-label" })
                 ])
               ]),
               _vm._v(" "),
