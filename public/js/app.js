@@ -2869,6 +2869,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactosLogros",
   props: ['errors', 'cities'],
@@ -3743,6 +3779,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -48484,11 +48521,11 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                            " +
+                    "\n                                " +
                       _vm._s(
                         _vm.getContactDateErrorMessage(_vm.errors.contact_date)
                       ) +
-                      "\n                        "
+                      "\n                            "
                   )
                 ]
               )
@@ -48499,7 +48536,7 @@ var render = function() {
             _c("div", { staticClass: "container form-control text-center" }, [
               _c("div", { staticClass: "form-label text-red" }, [
                 _vm._v(
-                  "Utilice esta opción de no haber contactos\n                            durante el\n                            mes:\n                        "
+                  "Utilice esta opción de no haber contactos\n                                durante el\n                                mes:\n                            "
                 )
               ]),
               _vm._v(" "),
@@ -48871,7 +48908,7 @@ var render = function() {
                                       _vm._s(program.code) +
                                         " - " +
                                         _vm._s(program.description) +
-                                        "\n                                    "
+                                        "\n                                        "
                                     )
                                   ]
                                 )
@@ -48891,13 +48928,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                    " +
+                                "\n                                        " +
                                   _vm._s(
                                     _vm.getProgramErrorMessage(
                                       _vm.errors.program_id
                                     )
                                   ) +
-                                  "\n                                "
+                                  "\n                                    "
                               )
                             ]
                           )
@@ -48964,50 +49001,17 @@ var render = function() {
                                 matters_index
                               ) {
                                 return _c(
-                                  "optgroup",
-                                  {
-                                    key: matters_index,
-                                    attrs: {
-                                      label: matter.description,
-                                      value: matter.id
-                                    }
-                                  },
+                                  "option",
+                                  { domProps: { value: matter.id } },
                                   [
-                                    !matter.enterprises.length
-                                      ? _c("option", [
-                                          _vm._v(
-                                            " " +
-                                              _vm._s(matter.code) +
-                                              " - " +
-                                              _vm._s(matter.description) +
-                                              "\n                                        "
-                                          )
-                                        ])
-                                      : _vm._l(matter.enterprises, function(
-                                          enterprise,
-                                          enterprises_index
-                                        ) {
-                                          return _c(
-                                            "option",
-                                            {
-                                              key: enterprises_index,
-                                              domProps: { value: enterprise.id }
-                                            },
-                                            [
-                                              _vm._v(
-                                                " " +
-                                                  _vm._s(enterprise.code) +
-                                                  " - " +
-                                                  _vm._s(
-                                                    enterprise.description
-                                                  ) +
-                                                  "\n                                        "
-                                              )
-                                            ]
-                                          )
-                                        })
-                                  ],
-                                  2
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(matter.code) +
+                                        " - " +
+                                        _vm._s(matter.description) +
+                                        "\n                                            "
+                                    )
+                                  ]
                                 )
                               })
                             ],
@@ -49023,13 +49027,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                    " +
+                                "\n                                        " +
                                   _vm._s(
                                     _vm.getMatterErrorMessage(
                                       _vm.errors.matter_id
                                     )
                                   ) +
-                                  "\n                                "
+                                  "\n                                    "
                               )
                             ]
                           )
@@ -49105,9 +49109,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                        " +
+                                      "\n                                            " +
                                         _vm._s(city.description) +
-                                        "\n                                    "
+                                        "\n                                        "
                                     )
                                   ]
                                 )
@@ -49125,15 +49129,169 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                    " +
+                                "\n                                        " +
                                   _vm._s(
                                     _vm.getCityErrorMessage(_vm.errors.city_id)
                                   ) +
-                                  "\n                                "
+                                  "\n                                    "
                               )
                             ]
                           )
                         ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12 pb-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "container form-control",
+                            staticStyle: { height: "100px" }
+                          },
+                          [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-5" }, [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _vm._m(4, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: contactosLogros.enterprise_id,
+                                          expression:
+                                            "contactosLogros.enterprise_id"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      class: {
+                                        "form-control": true,
+                                        "is-invalid": _vm.emptyMatters(
+                                          _vm.errors
+                                        )
+                                      },
+                                      attrs: { name: "matter_id" },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            contactosLogros,
+                                            "enterprise_id",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "",
+                                            selected: "",
+                                            disabled: ""
+                                          }
+                                        },
+                                        [_vm._v("Seleccione una Materia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._l(
+                                        _vm.form_elements.matters[0],
+                                        function(matter, matters_index) {
+                                          return matter.enterprises.length
+                                            ? _c(
+                                                "optgroup",
+                                                {
+                                                  key: matters_index,
+                                                  attrs: {
+                                                    label: matter.description,
+                                                    value: matter.id
+                                                  }
+                                                },
+                                                _vm._l(
+                                                  matter.enterprises,
+                                                  function(
+                                                    enterprise,
+                                                    enterprises_index
+                                                  ) {
+                                                    return _c(
+                                                      "option",
+                                                      {
+                                                        key: enterprises_index,
+                                                        domProps: {
+                                                          value: enterprise.id
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          " " +
+                                                            _vm._s(
+                                                              enterprise.code
+                                                            ) +
+                                                            " - " +
+                                                            _vm._s(
+                                                              enterprise.description
+                                                            ) +
+                                                            "\n                                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  }
+                                                ),
+                                                0
+                                              )
+                                            : _vm._e()
+                                        }
+                                      )
+                                    ],
+                                    2
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      class: {
+                                        "invalid-feedback": _vm.emptyMatters(
+                                          _vm.errors
+                                        )
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                    " +
+                                          _vm._s(
+                                            _vm.getMatterErrorMessage(
+                                              _vm.errors.matter_id
+                                            )
+                                          ) +
+                                          "\n                                                "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ]
+                        )
                       ])
                     ]),
                     _vm._v(" "),
@@ -49207,11 +49365,11 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                        " +
+                                      "\n                                            " +
                                         _vm._s(objective.code) +
                                         " - " +
                                         _vm._s(objective.description) +
-                                        "\n                                    "
+                                        "\n                                        "
                                     )
                                   ]
                                 )
@@ -49231,13 +49389,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                    " +
+                                "\n                                        " +
                                   _vm._s(
                                     _vm.getObjectiveErrorMessage(
                                       _vm.errors.objective_id
                                     )
                                   ) +
-                                  "\n                                "
+                                  "\n                                    "
                               )
                             ]
                           )
@@ -49256,7 +49414,7 @@ var render = function() {
                           [
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-6" }, [
-                                _vm._m(4, true),
+                                _vm._m(5, true),
                                 _vm._v(" "),
                                 _c(
                                   "span",
@@ -49267,7 +49425,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
+                                        "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49334,13 +49492,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                        " +
                                             _vm._s(
                                               _vm.getAdultMaleContactErrorMessage(
                                                 _vm.errors.adult_male_contacts
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                                    "
                                         )
                                       ]
                                     )
@@ -49406,13 +49564,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                        " +
                                             _vm._s(
                                               _vm.getYoungMaleContactErrorMessage(
                                                 _vm.errors.young_male_contacts
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                                    "
                                         )
                                       ]
                                     )
@@ -49421,7 +49579,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-6" }, [
-                                _vm._m(5, true),
+                                _vm._m(6, true),
                                 _vm._v(" "),
                                 _c(
                                   "span",
@@ -49432,7 +49590,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
+                                        "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49499,13 +49657,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                        " +
                                             _vm._s(
                                               _vm.getAdultFemaleContactErrorMessage(
                                                 _vm.errors.adult_female_contacts
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                                    "
                                         )
                                       ]
                                     )
@@ -49571,13 +49729,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                        " +
                                             _vm._s(
                                               _vm.getYoungFemaleContactErrorMessage(
                                                 _vm.errors.young_female_contacts
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                                    "
                                         )
                                       ]
                                     )
@@ -49599,7 +49757,7 @@ var render = function() {
                           [
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-sm-9" }, [
-                                _vm._m(6, true),
+                                _vm._m(7, true),
                                 _vm._v(" "),
                                 _c(
                                   "span",
@@ -49610,7 +49768,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Indirectos\n                                                  </h5>\n                                                  <div> Se excluye la\n                                                interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                al uso de medios masivos de comunicación (radio, periódico, internet\n                                                donde se ofrece una información para público general. )\n                                                 </div>"
+                                        "<h5>Contactos Indirectos\n                                                      </h5>\n                                                      <div> Se excluye la\n                                                    interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                    (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                    al uso de medios masivos de comunicación (radio, periódico, internet\n                                                    donde se ofrece una información para público general. )\n                                                     </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49672,13 +49830,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                        " +
                                             _vm._s(
                                               _vm.getIndirectContactErrorMessage(
                                                 _vm.errors.indirect_contacts
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                                    "
                                         )
                                       ]
                                     )
@@ -49691,10 +49849,10 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(7, true)
+                    _vm._m(8, true)
                   ]),
                   _vm._v(" "),
-                  _vm._m(8, true),
+                  _vm._m(9, true),
                   _vm._v(" "),
                   _c("div", [
                     _c("div", { staticClass: "card-body" }, [
@@ -49738,13 +49896,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getBeneficioErrorMessage(
                                                 _vm.errors.beneficio
                                               )
                                             ) +
-                                            "\n                                            "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49752,16 +49910,16 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(9, true),
-                              _vm._v(" "),
                               _vm._m(10, true),
                               _vm._v(" "),
-                              _vm._m(11, true)
+                              _vm._m(11, true),
+                              _vm._v(" "),
+                              _vm._m(12, true)
                             ]),
                             _vm._v(" "),
-                            _vm._m(12, true),
+                            _vm._m(13, true),
                             _vm._v(" "),
-                            _vm._m(13, true)
+                            _vm._m(14, true)
                           ]
                         )
                       ]),
@@ -49775,12 +49933,12 @@ var render = function() {
           }),
           0
         )
-      : _c("div", [_vm._m(14)]),
+      : _c("div", [_vm._m(15)]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-footer" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(15),
+          _vm._m(16),
           _vm._v(" "),
           _c("div", { staticClass: "col-1" }, [
             _c(
@@ -49798,7 +49956,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(16)
+          _vm._m(17)
         ])
       ])
     ])
@@ -49834,6 +49992,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [_c("strong", [_vm._v("Materia:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Empresa:")])])
   },
   function() {
     var _vm = this
@@ -49892,7 +50056,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-6  p-4" }, [
       _c("div", { staticClass: "form-group d-inline" }, [
         _vm._v(
-          "\n                                            Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                            cultivo.\n                                        "
+          "\n                                                Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                                cultivo.\n                                            "
         )
       ])
     ])
@@ -49909,7 +50073,7 @@ var staticRenderFns = [
           [
             _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
               _vm._v(
-                " Seleccione el tipo de audiencia\n                                                "
+                " Seleccione el tipo de audiencia\n                                                    "
               )
             ]),
             _vm._v(" "),
@@ -49966,7 +50130,7 @@ var staticRenderFns = [
       _c("label", [
         _c("strong", [
           _vm._v(
-            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                        el\n                        botón de\n                        guardar. Asegurese que no dejó campos en blanco donde\n                        corresponda.* "
+            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                            el\n                            botón de\n                            guardar. Asegurese que no dejó campos en blanco donde\n                            corresponda.* "
           )
         ])
       ])
@@ -50723,96 +50887,55 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "form-group col-12" },
-                [
-                  _vm._l(_vm.form_elements.images, function(image, index) {
-                    return _c("div", { key: index, staticClass: "row" }, [
-                      _c("div", { staticClass: "form-group col-5" }, [
-                        _c("label", { staticClass: "form-label" }, [
-                          _vm._v("Adjuntar Foto")
-                        ]),
-                        _vm._v(" "),
-                        _c("button", { on: { click: _vm.onUpload } }, [
-                          _vm._v("Upload")
-                        ])
-                      ])
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-1" }, [
-                    _vm.index + 1 === _vm.form_elements.images.length
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary p-3 mt-5",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.addImage()
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fe fe-plus" })]
-                        )
-                      : _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger p-3 mt-5",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.removeImage(_vm.index)
-                              }
-                            }
-                          },
-                          [_c("i", { staticClass: "fe fe-trash" })]
-                        )
-                  ])
-                ],
-                2
-              )
+              _c("div", { staticClass: "col-12" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "WYSIWYG",
+                  attrs: {
+                    name: "content",
+                    content: _vm.form_elements.text_body
+                  }
+                })
+              ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-footer" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-1" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-warning",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      return _vm.closeForm()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-1" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-warning",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        return _vm.closeForm()
+                      }
                     }
-                  }
-                },
-                [_vm._v("Cancelar")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-1" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: {
-                    click: function($event) {
-                      return _vm.submitForm()
+                  },
+                  [_vm._v("Cancelar")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-1" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        return _vm.submitForm()
+                      }
                     }
-                  }
-                },
-                [_vm._v("Guardar")]
-              )
+                  },
+                  [_vm._v("Guardar")]
+                )
+              ])
             ])
           ])
         ])
@@ -50849,12 +50972,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("label", { staticClass: "form-label" }, [
-          _c("h4", [_vm._v("Resumen")])
-        ])
-      ])
+    return _c("label", { staticClass: "form-label" }, [
+      _c("h4", [_vm._v("Resumen")])
     ])
   },
   function() {
