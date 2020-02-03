@@ -2888,11 +2888,6 @@ __webpack_require__.r(__webpack_exports__);
           contactDate: null
         }
       },
-      //when we separate this file into many components, a "contactosLogros" will be passed with all the ids and the index of the contact. See PowRow
-      program_id: 1,
-      matter_id: 1,
-      enterprise_id: 1,
-      objective_id: 1,
       nextId: 2
     };
   },
@@ -2904,7 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form_elements.matters = [];
       this.form_elements.enterprises = [];
       this.form_elements.objectives = [];
-      var program = this.form_elements.programs[this.program_id - 1];
+      var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
       var objectives = program.objectives;
       var matters = [];
       var enterprises = [];
@@ -2963,7 +2958,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form_elements.matters = [];
       this.form_elements.enterprises = [];
       this.form_elements.objectives = [];
-      var program = this.form_elements.programs[this.program_id - 1];
+      var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
       /*             var thing = event.target.selectedOptions[0].index;
                    var program = this.form_elements.programs[thing - 1];*/
 
@@ -3035,10 +3030,10 @@ __webpack_require__.r(__webpack_exports__);
     addContactosLogros: function addContactosLogros() {
       this.form_elements.contactosLogros.push({
         id: this.nextId,
-        program_id: {},
-        matter_id: {},
-        enterprise_id: {},
-        objective_id: {},
+        program_id: null,
+        matter_id: null,
+        enterprise_id: null,
+        objective_id: null,
         city_id: null,
         adult_male_contacts: null,
         young_male_contacts: null,
@@ -3175,10 +3170,10 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.form_elements.contactosLogros.push({
         id: 1,
-        program_id: {},
-        matter_id: {},
-        enterprise_id: {},
-        objective_id: {},
+        program_id: null,
+        matter_id: null,
+        enterprise_id: null,
+        objective_id: null,
         city_id: null,
         adult_male_contacts: null,
         young_male_contacts: null,
@@ -49088,7 +49083,13 @@ var render = function() {
                             [
                               _c(
                                 "option",
-                                { attrs: { disabled: "", value: "" } },
+                                {
+                                  attrs: {
+                                    value: "",
+                                    selected: "",
+                                    disabled: ""
+                                  }
+                                },
                                 [_vm._v("Seleccione un Municipio")]
                               ),
                               _vm._v(" "),
