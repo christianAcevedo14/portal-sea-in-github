@@ -2913,8 +2913,6 @@ __webpack_require__.r(__webpack_exports__);
       form_elements: {
         cities: this.cities,
         programs: [],
-        matters: [],
-        objectives: [],
         contactosLogros: [],
         hideStyle: {
           display: null
@@ -2929,12 +2927,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   //
   methods: {
-    editObjectives: function editObjectives(event) {
+    editObjectives: function editObjectives(event, index) {
       // this.row.matters.length = 0;
       // this.row.enterprises.length = 0;
-      this.form_elements.matters = [];
-      this.form_elements.enterprises = [];
-      this.form_elements.objectives = [];
+      this.form_elements.contactosLogros[index].matters = [];
+      this.form_elements.contactosLogros[index].enterprises = [];
+      this.form_elements.contactosLogros[index].objectives = [];
       var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
       var objectives = program.objectives;
       var matters = [];
@@ -2983,17 +2981,17 @@ __webpack_require__.r(__webpack_exports__);
       //
       // }
 
-      this.form_elements.objectives.push(objectives);
-      this.form_elements.matters.push(matters);
-      this.form_elements.enterprises.push(enterprises);
+      this.form_elements.contactosLogros[index].objectives.push(objectives);
+      this.form_elements.contactosLogros[index].matters.push(matters);
+      this.form_elements.contactosLogros[index].enterprises.push(enterprises);
       this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
     },
-    getObjectives: function getObjectives(event) {
+    getObjectives: function getObjectives(event, index) {
       //this.row.matters.length = 0;
       //this.row.enterprises.length = 0;
-      this.form_elements.matters = [];
-      this.form_elements.enterprises = [];
-      this.form_elements.objectives = [];
+      this.form_elements.contactosLogros[index].matters = [];
+      this.form_elements.contactosLogros[index].enterprises = [];
+      this.form_elements.contactosLogros[index].objectives = [];
       var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
       /*             var thing = event.target.selectedOptions[0].index;
                    var program = this.form_elements.programs[thing - 1];*/
@@ -3044,9 +3042,9 @@ __webpack_require__.r(__webpack_exports__);
       //
       // }
 
-      this.form_elements.objectives.push(objectives);
-      this.form_elements.matters.push(matters);
-      this.form_elements.enterprises.push(enterprises);
+      this.form_elements.contactosLogros[index].objectives.push(objectives);
+      this.form_elements.contactosLogros[index].matters.push(matters);
+      this.form_elements.contactosLogros[index].enterprises.push(enterprises);
       this.form_elements.enterprises[0].length > 0 ? this.form_elements.hideStyle.display = 'block' : this.form_elements.hideStyle.display = 'none';
     },
     checked: function checked() {
@@ -3066,6 +3064,9 @@ __webpack_require__.r(__webpack_exports__);
     addContactosLogros: function addContactosLogros() {
       this.form_elements.contactosLogros.push({
         id: this.nextId,
+        matters: [],
+        enterprises: [],
+        objectives: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -3206,6 +3207,9 @@ __webpack_require__.r(__webpack_exports__);
     } else {
       this.form_elements.contactosLogros.push({
         id: 1,
+        matters: [],
+        enterprises: [],
+        objectives: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -48521,11 +48525,11 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                                " +
+                    "\n                            " +
                       _vm._s(
                         _vm.getContactDateErrorMessage(_vm.errors.contact_date)
                       ) +
-                      "\n                            "
+                      "\n                        "
                   )
                 ]
               )
@@ -48536,7 +48540,7 @@ var render = function() {
             _c("div", { staticClass: "container form-control text-center" }, [
               _c("div", { staticClass: "form-label text-red" }, [
                 _vm._v(
-                  "Utilice esta opción de no haber contactos\n                                durante el\n                                mes:\n                            "
+                  "Utilice esta opción de no haber contactos\n                            durante el\n                            mes:\n                        "
                 )
               ]),
               _vm._v(" "),
@@ -48872,11 +48876,11 @@ var render = function() {
                                     )
                                   },
                                   function($event) {
-                                    return _vm.editObjectives($event)
+                                    return _vm.editObjectives($event, index)
                                   }
                                 ],
                                 focus: function($event) {
-                                  return _vm.getObjectives($event)
+                                  return _vm.getObjectives($event, index)
                                 }
                               }
                             },
@@ -48908,7 +48912,7 @@ var render = function() {
                                       _vm._s(program.code) +
                                         " - " +
                                         _vm._s(program.description) +
-                                        "\n                                        "
+                                        "\n                                    "
                                     )
                                   ]
                                 )
@@ -48928,13 +48932,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                        " +
+                                "\n                                    " +
                                   _vm._s(
                                     _vm.getProgramErrorMessage(
                                       _vm.errors.program_id
                                     )
                                   ) +
-                                  "\n                                    "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -48996,24 +49000,28 @@ var render = function() {
                                 [_vm._v("Seleccione una Materia")]
                               ),
                               _vm._v(" "),
-                              _vm._l(_vm.form_elements.matters[0], function(
-                                matter,
-                                matters_index
-                              ) {
-                                return _c(
-                                  "option",
-                                  { domProps: { value: matter.id } },
-                                  [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(matter.code) +
-                                        " - " +
-                                        _vm._s(matter.description) +
-                                        "\n                                            "
-                                    )
-                                  ]
-                                )
-                              })
+                              _vm._l(
+                                _vm.form_elements.contactosLogros[index]
+                                  .matters[0],
+                                function(matter, matters_index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: matters_index,
+                                      domProps: { value: matter.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(matter.code) +
+                                          " - " +
+                                          _vm._s(matter.description) +
+                                          "\n                                    "
+                                      )
+                                    ]
+                                  )
+                                }
+                              )
                             ],
                             2
                           ),
@@ -49027,13 +49035,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                        " +
+                                "\n                                    " +
                                   _vm._s(
                                     _vm.getMatterErrorMessage(
                                       _vm.errors.matter_id
                                     )
                                   ) +
-                                  "\n                                    "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -49109,9 +49117,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                            " +
+                                      "\n                                        " +
                                         _vm._s(city.description) +
-                                        "\n                                        "
+                                        "\n                                    "
                                     )
                                   ]
                                 )
@@ -49129,11 +49137,11 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                        " +
+                                "\n                                    " +
                                   _vm._s(
                                     _vm.getCityErrorMessage(_vm.errors.city_id)
                                   ) +
-                                  "\n                                    "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -49211,11 +49219,12 @@ var render = function() {
                                             disabled: ""
                                           }
                                         },
-                                        [_vm._v("Seleccione una Materia")]
+                                        [_vm._v("Seleccione una Empresa")]
                                       ),
                                       _vm._v(" "),
                                       _vm._l(
-                                        _vm.form_elements.matters[0],
+                                        _vm.form_elements.contactosLogros[index]
+                                          .matters[0],
                                         function(matter, matters_index) {
                                           return matter.enterprises.length
                                             ? _c(
@@ -49243,7 +49252,7 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          " " +
+                                                          "\n                                                        " +
                                                             _vm._s(
                                                               enterprise.code
                                                             ) +
@@ -49251,7 +49260,7 @@ var render = function() {
                                                             _vm._s(
                                                               enterprise.description
                                                             ) +
-                                                            "\n                                                        "
+                                                            "\n                                                    "
                                                         )
                                                       ]
                                                     )
@@ -49277,13 +49286,13 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                                    " +
+                                        "\n                                                " +
                                           _vm._s(
                                             _vm.getMatterErrorMessage(
                                               _vm.errors.matter_id
                                             )
                                           ) +
-                                          "\n                                                "
+                                          "\n                                            "
                                       )
                                     ]
                                   )
@@ -49353,27 +49362,28 @@ var render = function() {
                                 [_vm._v("Seleccione un Objetivo")]
                               ),
                               _vm._v(" "),
-                              _vm._l(_vm.form_elements.objectives[0], function(
-                                objective,
-                                objectives_index
-                              ) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: objectives_index,
-                                    domProps: { value: objective.id }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(objective.code) +
-                                        " - " +
-                                        _vm._s(objective.description) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                )
-                              })
+                              _vm._l(
+                                _vm.form_elements.contactosLogros[index]
+                                  .objectives[0],
+                                function(objective, objectives_index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: objectives_index,
+                                      domProps: { value: objective.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(objective.code) +
+                                          " - " +
+                                          _vm._s(objective.description) +
+                                          "\n                                    "
+                                      )
+                                    ]
+                                  )
+                                }
+                              )
                             ],
                             2
                           ),
@@ -49389,13 +49399,13 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                        " +
+                                "\n                                    " +
                                   _vm._s(
                                     _vm.getObjectiveErrorMessage(
                                       _vm.errors.objective_id
                                     )
                                   ) +
-                                  "\n                                    "
+                                  "\n                                "
                               )
                             ]
                           )
@@ -49425,7 +49435,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
+                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49492,13 +49502,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                        " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getAdultMaleContactErrorMessage(
                                                 _vm.errors.adult_male_contacts
                                               )
                                             ) +
-                                            "\n                                                    "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49564,13 +49574,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                        " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getYoungMaleContactErrorMessage(
                                                 _vm.errors.young_male_contacts
                                               )
                                             ) +
-                                            "\n                                                    "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49590,7 +49600,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
+                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49657,13 +49667,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                        " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getAdultFemaleContactErrorMessage(
                                                 _vm.errors.adult_female_contacts
                                               )
                                             ) +
-                                            "\n                                                    "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49729,13 +49739,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                        " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getYoungFemaleContactErrorMessage(
                                                 _vm.errors.young_female_contacts
                                               )
                                             ) +
-                                            "\n                                                    "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49768,7 +49778,7 @@ var render = function() {
                                       "data-placement": "top",
                                       "data-html": "true",
                                       "data-title":
-                                        "<h5>Contactos Indirectos\n                                                      </h5>\n                                                      <div> Se excluye la\n                                                    interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                    (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                    al uso de medios masivos de comunicación (radio, periódico, internet\n                                                    donde se ofrece una información para público general. )\n                                                     </div>"
+                                        "<h5>Contactos Indirectos\n                                                  </h5>\n                                                  <div> Se excluye la\n                                                interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                al uso de medios masivos de comunicación (radio, periódico, internet\n                                                donde se ofrece una información para público general. )\n                                                 </div>"
                                     }
                                   },
                                   [_vm._v("?")]
@@ -49830,13 +49840,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                        " +
+                                          "\n                                                    " +
                                             _vm._s(
                                               _vm.getIndirectContactErrorMessage(
                                                 _vm.errors.indirect_contacts
                                               )
                                             ) +
-                                            "\n                                                    "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
@@ -49896,13 +49906,13 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                    " +
+                                          "\n                                                " +
                                             _vm._s(
                                               _vm.getBeneficioErrorMessage(
                                                 _vm.errors.beneficio
                                               )
                                             ) +
-                                            "\n                                                "
+                                            "\n                                            "
                                         )
                                       ]
                                     )
@@ -50056,7 +50066,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-6  p-4" }, [
       _c("div", { staticClass: "form-group d-inline" }, [
         _vm._v(
-          "\n                                                Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                                cultivo.\n                                            "
+          "\n                                            Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                            cultivo.\n                                        "
         )
       ])
     ])
@@ -50073,7 +50083,7 @@ var staticRenderFns = [
           [
             _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
               _vm._v(
-                " Seleccione el tipo de audiencia\n                                                    "
+                " Seleccione el tipo de audiencia\n                                                "
               )
             ]),
             _vm._v(" "),
@@ -50130,7 +50140,7 @@ var staticRenderFns = [
       _c("label", [
         _c("strong", [
           _vm._v(
-            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                            el\n                            botón de\n                            guardar. Asegurese que no dejó campos en blanco donde\n                            corresponda.* "
+            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                        el\n                        botón de\n                        guardar. Asegurese que no dejó campos en blanco donde\n                        corresponda.* "
           )
         ])
       ])
