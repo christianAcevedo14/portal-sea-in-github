@@ -2905,6 +2905,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactosLogros",
   props: ['errors', 'cities'],
@@ -2913,6 +2932,7 @@ __webpack_require__.r(__webpack_exports__);
       form_elements: {
         cities: this.cities,
         programs: [],
+        objectives: [],
         contactosLogros: [],
         hideStyle: {
           display: null
@@ -2927,6 +2947,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   //
   methods: {
+    getIndicators: function getIndicators(event, index) {
+      this.form_elements.contactosLogros[index].indicators = [];
+      var objectives = this.form_elements.objectives;
+      var objective_id = this.form_elements.contactosLogros[index].objective_id;
+      var matter_id = this.form_elements.contactosLogros[index].matter_id;
+      var enterprise_id = this.form_elements.contactosLogros[index].enterprise_id;
+      var indicators = []; // console.log(objective);
+
+      objectives.forEach(function (objective) {
+        if (objective.id === objective_id) {
+          objective.indicators.forEach(function (indicator) {
+            indicators.push(indicator);
+          });
+        }
+      });
+      console.log(indicators);
+      this.form_elements.contactosLogros[index].indicators.push(indicators);
+    },
+    showEnterprise: function showEnterprise(event, index) {
+      var matter = this.form_elements.contactosLogros[index].matters[0].Object[event.target.selectedOptions[0].index - 1].id;
+      console.log(matter); // var enterprises = matter.enterprises;
+      //
+      // if (enterprises.length) {
+      //     this.form_elements.hideStyle.display = 'block'
+      // } else {
+      //     this.form_elements.hideStyle.display = 'none';
+      // }
+    },
     editObjectives: function editObjectives(event, index) {
       // this.row.matters.length = 0;
       // this.row.enterprises.length = 0;
@@ -2934,6 +2982,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form_elements.contactosLogros[index].enterprises = [];
       this.form_elements.contactosLogros[index].objectives = [];
       var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
+      console.log(program);
       var objectives = program.objectives;
       var matters = [];
       var enterprises = [];
@@ -3067,6 +3116,7 @@ __webpack_require__.r(__webpack_exports__);
         matters: [],
         enterprises: [],
         objectives: [],
+        indicators: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -3197,6 +3247,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
       _this.form_elements.programs = response.data;
     });
+    axios.get("".concat(domain, "/sise/api/objectives")).then(function (response) {
+      _this.form_elements.objectives = response.data;
+    });
 
     if (sessionStorage.getItem('form_elements')) {
       try {
@@ -3210,6 +3263,7 @@ __webpack_require__.r(__webpack_exports__);
         matters: [],
         enterprises: [],
         objectives: [],
+        indicators: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -3949,6 +4003,8 @@ $(document).ready(function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -48775,10 +48831,10 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _vm._m(1, true),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-4" }, [
+                    _c("div", { staticClass: "col-5" }, [
                       _c("div", { staticClass: "card-header" }, [
                         index + 1 === _vm.form_elements.contactosLogros.length
-                          ? _c("div", { staticClass: "row pl-8" }, [
+                          ? _c("div", { staticClass: "row pl-lg-9" }, [
                               _c("label", { staticClass: "pr-3 pt-2" }, [
                                 _vm._v("Añadir nuevos contactos y logros")
                               ]),
@@ -48967,24 +49023,29 @@ var render = function() {
                               },
                               attrs: { name: "matter_id" },
                               on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    contactosLogros,
-                                    "matter_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      contactosLogros,
+                                      "matter_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.showEnterprise($event, index)
+                                  }
+                                ]
                               }
                             },
                             [
@@ -49182,7 +49243,7 @@ var render = function() {
                                           _vm.errors
                                         )
                                       },
-                                      attrs: { name: "matter_id" },
+                                      attrs: { name: "enterpise_id" },
                                       on: {
                                         change: function($event) {
                                           var $$selectedVal = Array.prototype.filter
@@ -49329,24 +49390,29 @@ var render = function() {
                               },
                               attrs: { name: "objective_id" },
                               on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    contactosLogros,
-                                    "objective_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      contactosLogros,
+                                      "objective_id",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                  function($event) {
+                                    return _vm.getIndicators($event, index)
+                                  }
+                                ]
                               }
                             },
                             [
@@ -49864,91 +49930,155 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(9, true),
                   _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-12 container form-control" },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-1" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group d-inline" },
-                                  [
-                                    _c("label"),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyBeneficios(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "beneficio",
-                                        value: ""
-                                      }
-                                    }),
-                                    _vm._v(" "),
+                  _vm.form_elements.contactosLogros[index].indicators.length
+                    ? _c(
+                        "div",
+                        _vm._l(
+                          _vm.form_elements.contactosLogros[index]
+                            .indicators[0],
+                          function(indicator, indicators_index) {
+                            return _c(
+                              "div",
+                              { attrs: { value: indicator.id } },
+                              [
+                                _c("div", { staticClass: "card-body" }, [
+                                  _c("div", { staticClass: "row" }, [
                                     _c(
                                       "div",
                                       {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyBeneficios(
-                                            _vm.errors
-                                          )
-                                        }
+                                        staticClass:
+                                          "col-12 container form-control"
                                       },
                                       [
-                                        _vm._v(
-                                          "\n                                                " +
-                                            _vm._s(
-                                              _vm.getBeneficioErrorMessage(
-                                                _vm.errors.beneficio
+                                        _c("div", { staticClass: "row" }, [
+                                          _c("div", { staticClass: "col-1" }, [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "form-group d-inline"
+                                              },
+                                              [
+                                                _c("label"),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  staticClass: "form-control",
+                                                  class: {
+                                                    "form-control": true,
+                                                    "is-invalid": _vm.emptyBeneficios(
+                                                      _vm.errors
+                                                    )
+                                                  },
+                                                  attrs: {
+                                                    type: "number",
+                                                    maxlength: "3",
+                                                    name: "beneficio",
+                                                    value: ""
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    class: {
+                                                      "invalid-feedback": _vm.emptyBeneficios(
+                                                        _vm.errors
+                                                      )
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                    " +
+                                                        _vm._s(
+                                                          _vm.getBeneficioErrorMessage(
+                                                            _vm.errors.beneficio
+                                                          )
+                                                        ) +
+                                                        "\n                                                "
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col-1 p-4" },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-group d-inline"
+                                                },
+                                                [
+                                                  _c("h4", [
+                                                    _c("strong", [
+                                                      _vm._v(
+                                                        _vm._s(indicator.code)
+                                                      )
+                                                    ])
+                                                  ])
+                                                ]
                                               )
-                                            ) +
-                                            "\n                                            "
-                                        )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col-7  p-4" },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-group d-inline"
+                                                },
+                                                [
+                                                  _c("span", [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          indicator.description
+                                                        ) +
+                                                        " "
+                                                    )
+                                                  ])
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._m(10, true)
+                                        ]),
+                                        _vm._v(" "),
+                                        _vm._m(11, true)
                                       ]
                                     )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(10, true),
-                              _vm._v(" "),
-                              _vm._m(11, true),
-                              _vm._v(" "),
-                              _vm._m(12, true)
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(13, true),
-                            _vm._v(" "),
-                            _vm._m(14, true)
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("hr")
-                    ])
-                  ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("hr")
+                                ])
+                              ]
+                            )
+                          }
+                        ),
+                        0
+                      )
+                    : _c("div", [_vm._m(12, true)])
                 ])
               ]
             )
           }),
           0
         )
-      : _c("div", [_vm._m(15)]),
+      : _c("div", [_vm._m(13)]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-footer" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(16),
+          _vm._m(14),
           _vm._v(" "),
           _c("div", { staticClass: "col-1" }, [
             _c(
@@ -49966,7 +50096,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(17)
+          _vm._m(15)
         ])
       ])
     ])
@@ -49987,7 +50117,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
+    return _c("div", { staticClass: "col-7" }, [
       _c("h3", { staticClass: "card-header" }, [_vm._v("Contactos")])
     ])
   },
@@ -50053,29 +50183,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-1 p-4" }, [
-      _c("div", { staticClass: "form-group d-inline" }, [
-        _c("span", [_c("strong", [_vm._v("PAA")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6  p-4" }, [
-      _c("div", { staticClass: "form-group d-inline" }, [
-        _vm._v(
-          "\n                                            Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                            cultivo.\n                                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 p-2" }, [
+    return _c("div", { staticClass: "col-3 p-2 pr-2" }, [
       _c("div", { staticClass: "form-group d-inline" }, [
         _c(
           "select",
@@ -50083,25 +50191,13 @@ var staticRenderFns = [
           [
             _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
               _vm._v(
-                " Seleccione el tipo de audiencia\n                                                "
+                " Seleccione el tipo de\n                                                        audiencia\n                                                    "
               )
             ]),
             _vm._v(" "),
             _c("option")
           ]
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-1" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-10" }, [
-        _c("span", { staticStyle: { color: "red" } }, [_vm._v(" *Aviso* ")])
       ])
     ])
   },
@@ -50117,6 +50213,20 @@ var staticRenderFns = [
           staticClass: "form-control",
           attrs: { type: "text", placeholder: "Descripción" }
         })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h4", { staticClass: "text-center" }, [
+          _vm._v(
+            " Seleccione un programa, materia, empresa y objetivo para mostrar indicadores. "
+          )
+        ])
       ])
     ])
   },
@@ -51112,7 +51222,21 @@ var render = function() {
                     attrs: { name: "url", type: "file" }
                   }),
                   _vm._v(" "),
-                  _c("label", { staticClass: "custom-file-label" })
+                  _c("label", { staticClass: "custom-file-label" }, [
+                    _vm._v("Escoger archivo")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { class: { "invalid-feedback": _vm.emptyURL(_vm.errors) } },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.getURLErrorMessage(_vm.errors.url)) +
+                          "\n                            "
+                      )
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
