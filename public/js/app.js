@@ -2905,6 +2905,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContactosLogros",
   props: ['errors', 'cities'],
@@ -2913,6 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
       form_elements: {
         cities: this.cities,
         programs: [],
+        objectives: [],
         contactosLogros: [],
         hideStyle: {
           display: null
@@ -2927,6 +2930,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   //
   methods: {
+    getIndicators: function getIndicators(event, index) {
+      this.form_elements.contactosLogros[index].indicators = [];
+      var objectives = this.form_elements.objectives;
+      var objective_id = this.form_elements.contactosLogros[index].objective_id;
+      var matter_id = this.form_elements.contactosLogros[index].matter_id;
+      var enterprise_id = this.form_elements.contactosLogros[index].enterprise_id;
+      var indicators = []; // console.log(objective);
+
+      objectives.forEach(function (objective) {
+        if (objective.id === objective_id) {
+          objective.indicators.forEach(function (indicator) {
+            indicators.push(indicator);
+          });
+        }
+      });
+      console.log(indicators);
+      this.form_elements.contactosLogros[index].indicators.push(indicators);
+    },
+    showEnterprise: function showEnterprise(event, index) {
+      var matter = this.form_elements.contactosLogros[index].matters[0].Object[event.target.selectedOptions[0].index - 1].id;
+      console.log(matter); // var enterprises = matter.enterprises;
+      //
+      // if (enterprises.length) {
+      //     this.form_elements.hideStyle.display = 'block'
+      // } else {
+      //     this.form_elements.hideStyle.display = 'none';
+      // }
+    },
     editObjectives: function editObjectives(event, index) {
       // this.row.matters.length = 0;
       // this.row.enterprises.length = 0;
@@ -2934,6 +2965,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form_elements.contactosLogros[index].enterprises = [];
       this.form_elements.contactosLogros[index].objectives = [];
       var program = this.form_elements.programs[event.target.selectedOptions[0].index - 1];
+      console.log(program);
       var objectives = program.objectives;
       var matters = [];
       var enterprises = [];
@@ -3067,6 +3099,7 @@ __webpack_require__.r(__webpack_exports__);
         matters: [],
         enterprises: [],
         objectives: [],
+        indicators: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -3197,6 +3230,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("".concat(domain, "/sise/api/programs")).then(function (response) {
       _this.form_elements.programs = response.data;
     });
+    axios.get("".concat(domain, "/sise/api/objectives")).then(function (response) {
+      _this.form_elements.objectives = response.data;
+    });
 
     if (sessionStorage.getItem('form_elements')) {
       try {
@@ -3210,6 +3246,7 @@ __webpack_require__.r(__webpack_exports__);
         matters: [],
         enterprises: [],
         objectives: [],
+        indicators: [],
         program_id: null,
         matter_id: null,
         enterprise_id: null,
@@ -3526,6 +3563,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -48525,11 +48565,11 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                            " +
+                    "\n                                " +
                       _vm._s(
                         _vm.getContactDateErrorMessage(_vm.errors.contact_date)
                       ) +
-                      "\n                        "
+                      "\n                            "
                   )
                 ]
               )
@@ -48540,7 +48580,7 @@ var render = function() {
             _c("div", { staticClass: "container form-control text-center" }, [
               _c("div", { staticClass: "form-label text-red" }, [
                 _vm._v(
-                  "Utilice esta opción de no haber contactos\n                            durante el\n                            mes:\n                        "
+                  "Utilice esta opción de no haber contactos\n                                durante el\n                                mes:\n                            "
                 )
               ]),
               _vm._v(" "),
@@ -48771,93 +48811,322 @@ var render = function() {
                 attrs: { onchange: _vm.saveContactosLogros() }
               },
               [
-                _c("div", { staticClass: "card-footer" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _vm._m(1, true),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-4" }, [
-                      _c("div", { staticClass: "card-header" }, [
-                        index + 1 === _vm.form_elements.contactosLogros.length
-                          ? _c("div", { staticClass: "row pl-8" }, [
-                              _c("label", { staticClass: "pr-3 pt-2" }, [
-                                _vm._v("Añadir nuevos contactos y logros")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.addContactosLogros()
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fe fe-plus" })]
-                              )
-                            ])
-                          : _c("div", { staticClass: "row pl-lg-9" }, [
-                              _c("label", { staticClass: "pr-3 pt-2" }, [
-                                _vm._v("Remover contactos y logros")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.removeContactosLogros(index)
-                                    }
-                                  }
-                                },
-                                [_c("i", { staticClass: "fe fe-trash" })]
-                              )
-                            ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-footer" },
+                  [
                     _c("div", { staticClass: "row" }, [
+                      _vm._m(1, true),
+                      _vm._v(" "),
                       _c("div", { staticClass: "col-5" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(2, true),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "form-help",
-                              attrs: {
-                                "data-toggle": "tooltip",
-                                title: "Tooltip content"
-                              }
-                            },
-                            [_vm._v("?")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: contactosLogros.program_id,
-                                  expression: "contactosLogros.program_id"
+                        _c("div", { staticClass: "card-header" }, [
+                          index + 1 === _vm.form_elements.contactosLogros.length
+                            ? _c("div", { staticClass: "row pl-lg-9" }, [
+                                _c("label", { staticClass: "pr-3 pt-2" }, [
+                                  _vm._v("Añadir nuevos contactos y logros")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.addContactosLogros()
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fe fe-plus" })]
+                                )
+                              ])
+                            : _c("div", { staticClass: "row pl-lg-9" }, [
+                                _c("label", { staticClass: "pr-3 pt-2" }, [
+                                  _vm._v("Remover contactos y logros")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.removeContactosLogros(index)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fe fe-trash" })]
+                                )
+                              ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-5" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _vm._m(2, true),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "form-help",
+                                attrs: {
+                                  "data-toggle": "tooltip",
+                                  title: "Tooltip content"
                                 }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "form-control": true,
-                                "is-invalid": _vm.emptyPrograms(_vm.errors)
                               },
-                              attrs: { name: "program_id" },
-                              on: {
-                                change: [
-                                  function($event) {
+                              [_vm._v("?")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: contactosLogros.program_id,
+                                    expression: "contactosLogros.program_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "form-control": true,
+                                  "is-invalid": _vm.emptyPrograms(_vm.errors)
+                                },
+                                attrs: { name: "program_id" },
+                                on: {
+                                  change: [
+                                    function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        contactosLogros,
+                                        "program_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                    function($event) {
+                                      return _vm.editObjectives($event, index)
+                                    }
+                                  ],
+                                  focus: function($event) {
+                                    return _vm.getObjectives($event, index)
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Seleccione un Programa")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.form_elements.programs, function(
+                                  program,
+                                  programs_index
+                                ) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: programs_index,
+                                      domProps: { value: program.id }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(program.code) +
+                                          " - " +
+                                          _vm._s(program.description) +
+                                          "\n                                        "
+                                      )
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                class: {
+                                  "invalid-feedback": _vm.emptyPrograms(
+                                    _vm.errors
+                                  )
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(
+                                      _vm.getProgramErrorMessage(
+                                        _vm.errors.program_id
+                                      )
+                                    ) +
+                                    "\n                                    "
+                                )
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-4" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _vm._m(3, true),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: contactosLogros.matter_id,
+                                    expression: "contactosLogros.matter_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "form-control": true,
+                                  "is-invalid": _vm.emptyMatters(_vm.errors)
+                                },
+                                attrs: { name: "matter_id" },
+                                on: {
+                                  change: [
+                                    function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        contactosLogros,
+                                        "matter_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                    function($event) {
+                                      return _vm.showEnterprise($event, index)
+                                    }
+                                  ]
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Seleccione una Materia")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(
+                                  _vm.form_elements.contactosLogros[index]
+                                    .matters[0],
+                                  function(matter, matters_index) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: matters_index,
+                                        domProps: { value: matter.id }
+                                      },
+                                      [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(matter.code) +
+                                            " - " +
+                                            _vm._s(matter.description) +
+                                            "\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  }
+                                )
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                class: {
+                                  "invalid-feedback": _vm.emptyMatters(
+                                    _vm.errors
+                                  )
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(
+                                      _vm.getMatterErrorMessage(
+                                        _vm.errors.matter_id
+                                      )
+                                    ) +
+                                    "\n                                    "
+                                )
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-3" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { staticClass: "form-label" }, [
+                              _vm._v(" Municipio Trabajado:")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: contactosLogros.city_id,
+                                    expression: "contactosLogros.city_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "form-control": true,
+                                  "is-invalid": _vm.emptyCities(_vm.errors)
+                                },
+                                attrs: { name: "city_id" },
+                                on: {
+                                  change: function($event) {
                                     var $$selectedVal = Array.prototype.filter
                                       .call($event.target.options, function(o) {
                                         return o.selected
@@ -48869,1086 +49138,942 @@ var render = function() {
                                       })
                                     _vm.$set(
                                       contactosLogros,
-                                      "program_id",
+                                      "city_id",
                                       $event.target.multiple
                                         ? $$selectedVal
                                         : $$selectedVal[0]
                                     )
-                                  },
-                                  function($event) {
-                                    return _vm.editObjectives($event, index)
                                   }
-                                ],
-                                focus: function($event) {
-                                  return _vm.getObjectives($event, index)
                                 }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "",
-                                    selected: "",
-                                    disabled: ""
-                                  }
-                                },
-                                [_vm._v("Seleccione un Programa")]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.form_elements.programs, function(
-                                program,
-                                programs_index
-                              ) {
-                                return _c(
+                              },
+                              [
+                                _c(
                                   "option",
                                   {
-                                    key: programs_index,
-                                    domProps: { value: program.id }
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
                                   },
-                                  [
-                                    _vm._v(
-                                      _vm._s(program.code) +
-                                        " - " +
-                                        _vm._s(program.description) +
-                                        "\n                                    "
-                                    )
-                                  ]
-                                )
-                              })
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class: {
-                                "invalid-feedback": _vm.emptyPrograms(
-                                  _vm.errors
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(
-                                    _vm.getProgramErrorMessage(
-                                      _vm.errors.program_id
-                                    )
-                                  ) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-4" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(3, true),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: contactosLogros.matter_id,
-                                  expression: "contactosLogros.matter_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "form-control": true,
-                                "is-invalid": _vm.emptyMatters(_vm.errors)
-                              },
-                              attrs: { name: "matter_id" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    contactosLogros,
-                                    "matter_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "",
-                                    selected: "",
-                                    disabled: ""
-                                  }
-                                },
-                                [_vm._v("Seleccione una Materia")]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(
-                                _vm.form_elements.contactosLogros[index]
-                                  .matters[0],
-                                function(matter, matters_index) {
+                                  [_vm._v("Seleccione un Municipio")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.form_elements.cities, function(
+                                  city,
+                                  cities_index
+                                ) {
                                   return _c(
                                     "option",
                                     {
-                                      key: matters_index,
-                                      domProps: { value: matter.id }
+                                      key: cities_index,
+                                      domProps: { value: city.id }
                                     },
                                     [
                                       _vm._v(
-                                        " " +
-                                          _vm._s(matter.code) +
-                                          " - " +
-                                          _vm._s(matter.description) +
-                                          "\n                                    "
+                                        "\n                                            " +
+                                          _vm._s(city.description) +
+                                          "\n                                        "
                                       )
                                     ]
                                   )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                class: {
+                                  "invalid-feedback": _vm.emptyCities(
+                                    _vm.errors
+                                  )
                                 }
-                              )
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class: {
-                                "invalid-feedback": _vm.emptyMatters(_vm.errors)
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(
-                                    _vm.getMatterErrorMessage(
-                                      _vm.errors.matter_id
-                                    )
-                                  ) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(
+                                      _vm.getCityErrorMessage(
+                                        _vm.errors.city_id
+                                      )
+                                    ) +
+                                    "\n                                    "
+                                )
+                              ]
+                            )
+                          ])
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-3" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { staticClass: "form-label" }, [
-                            _vm._v(" Municipio Trabajado:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: contactosLogros.city_id,
-                                  expression: "contactosLogros.city_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "form-control": true,
-                                "is-invalid": _vm.emptyCities(_vm.errors)
-                              },
-                              attrs: { name: "city_id" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    contactosLogros,
-                                    "city_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "",
-                                    selected: "",
-                                    disabled: ""
-                                  }
-                                },
-                                [_vm._v("Seleccione un Municipio")]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.form_elements.cities, function(
-                                city,
-                                cities_index
-                              ) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: cities_index,
-                                    domProps: { value: city.id }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                        " +
-                                        _vm._s(city.description) +
-                                        "\n                                    "
-                                    )
-                                  ]
-                                )
-                              })
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class: {
-                                "invalid-feedback": _vm.emptyCities(_vm.errors)
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(
-                                    _vm.getCityErrorMessage(_vm.errors.city_id)
-                                  ) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-12 pb-3" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "container form-control",
-                            staticStyle: { height: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-5" }, [
-                                _c("div", { staticClass: "form-group" }, [
-                                  _vm._m(4, true),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: contactosLogros.enterprise_id,
-                                          expression:
-                                            "contactosLogros.enterprise_id"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyMatters(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: { name: "matter_id" },
-                                      on: {
-                                        change: function($event) {
-                                          var $$selectedVal = Array.prototype.filter
-                                            .call(
-                                              $event.target.options,
-                                              function(o) {
-                                                return o.selected
-                                              }
-                                            )
-                                            .map(function(o) {
-                                              var val =
-                                                "_value" in o
-                                                  ? o._value
-                                                  : o.value
-                                              return val
-                                            })
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "enterprise_id",
-                                            $event.target.multiple
-                                              ? $$selectedVal
-                                              : $$selectedVal[0]
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "option",
-                                        {
-                                          attrs: {
-                                            value: "",
-                                            selected: "",
-                                            disabled: ""
-                                          }
-                                        },
-                                        [_vm._v("Seleccione una Empresa")]
-                                      ),
-                                      _vm._v(" "),
-                                      _vm._l(
-                                        _vm.form_elements.contactosLogros[index]
-                                          .matters[0],
-                                        function(matter, matters_index) {
-                                          return matter.enterprises.length
-                                            ? _c(
-                                                "optgroup",
-                                                {
-                                                  key: matters_index,
-                                                  attrs: {
-                                                    label: matter.description,
-                                                    value: matter.id
-                                                  }
-                                                },
-                                                _vm._l(
-                                                  matter.enterprises,
-                                                  function(
-                                                    enterprise,
-                                                    enterprises_index
-                                                  ) {
-                                                    return _c(
-                                                      "option",
-                                                      {
-                                                        key: enterprises_index,
-                                                        domProps: {
-                                                          value: enterprise.id
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                                        " +
-                                                            _vm._s(
-                                                              enterprise.code
-                                                            ) +
-                                                            " - " +
-                                                            _vm._s(
-                                                              enterprise.description
-                                                            ) +
-                                                            "\n                                                    "
-                                                        )
-                                                      ]
-                                                    )
-                                                  }
-                                                ),
-                                                0
-                                              )
-                                            : _vm._e()
-                                        }
-                                      )
-                                    ],
-                                    2
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      class: {
-                                        "invalid-feedback": _vm.emptyMatters(
-                                          _vm.errors
-                                        )
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                " +
-                                          _vm._s(
-                                            _vm.getMatterErrorMessage(
-                                              _vm.errors.matter_id
-                                            )
-                                          ) +
-                                          "\n                                            "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-12 pb-4" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { staticClass: "form-label" }, [
-                            _vm._v(" Objetivo:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: contactosLogros.objective_id,
-                                  expression: "contactosLogros.objective_id"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              class: {
-                                "form-control": true,
-                                "is-invalid": _vm.emptyObjectives(_vm.errors)
-                              },
-                              attrs: { name: "objective_id" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    contactosLogros,
-                                    "objective_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "",
-                                    selected: "",
-                                    disabled: ""
-                                  }
-                                },
-                                [_vm._v("Seleccione un Objetivo")]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(
-                                _vm.form_elements.contactosLogros[index]
-                                  .objectives[0],
-                                function(objective, objectives_index) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: objectives_index,
-                                      domProps: { value: objective.id }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(objective.code) +
-                                          " - " +
-                                          _vm._s(objective.description) +
-                                          "\n                                    "
-                                      )
-                                    ]
-                                  )
-                                }
-                              )
-                            ],
-                            2
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class: {
-                                "invalid-feedback": _vm.emptyObjectives(
-                                  _vm.errors
-                                )
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(
-                                    _vm.getObjectiveErrorMessage(
-                                      _vm.errors.objective_id
-                                    )
-                                  ) +
-                                  "\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-8" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "container form-control",
-                            staticStyle: { height: "135px" }
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-6" }, [
-                                _vm._m(5, true),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass: "form-help",
-                                    attrs: {
-                                      "data-toggle": "tooltip",
-                                      "data-placement": "top",
-                                      "data-html": "true",
-                                      "data-title":
-                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
-                                    }
-                                  },
-                                  [_vm._v("?")]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "row pl-3" }, [
-                                  _c("div", { staticClass: "col-sm-6 pb-3" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "text-center" },
-                                      [_vm._v("Adultos:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            contactosLogros.adult_male_contacts,
-                                          expression:
-                                            "contactosLogros.adult_male_contacts"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyAdultMaleContacts(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "adult_male_contacts",
-                                        value: ""
-                                      },
-                                      domProps: {
-                                        value:
-                                          contactosLogros.adult_male_contacts
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "adult_male_contacts",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyAdultMaleContacts(
-                                            _vm.errors
-                                          )
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(
-                                              _vm.getAdultMaleContactErrorMessage(
-                                                _vm.errors.adult_male_contacts
-                                              )
-                                            ) +
-                                            "\n                                                "
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-sm-6 pb-3" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "text-center" },
-                                      [_vm._v("Jóvenes:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            contactosLogros.young_male_contacts,
-                                          expression:
-                                            "contactosLogros.young_male_contacts"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyYoungMaleContacts(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "young_male_contacts",
-                                        value: ""
-                                      },
-                                      domProps: {
-                                        value:
-                                          contactosLogros.young_male_contacts
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "young_male_contacts",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyYoungMaleContacts(
-                                            _vm.errors
-                                          )
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(
-                                              _vm.getYoungMaleContactErrorMessage(
-                                                _vm.errors.young_male_contacts
-                                              )
-                                            ) +
-                                            "\n                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-6" }, [
-                                _vm._m(6, true),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass: "form-help",
-                                    attrs: {
-                                      "data-toggle": "tooltip",
-                                      "data-placement": "top",
-                                      "data-html": "true",
-                                      "data-title":
-                                        "<h5>Contactos Directos\n                                                  </h5>\n                                                  <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                 </div>"
-                                    }
-                                  },
-                                  [_vm._v("?")]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "row pl-3" }, [
-                                  _c("div", { staticClass: "col-sm-6 pb-3" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "text-center" },
-                                      [_vm._v("Adultas:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            contactosLogros.adult_female_contacts,
-                                          expression:
-                                            "contactosLogros.adult_female_contacts"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyAdultFemaleContacts(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "adult_female_contacts",
-                                        value: ""
-                                      },
-                                      domProps: {
-                                        value:
-                                          contactosLogros.adult_female_contacts
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "adult_female_contacts",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyAdultFemaleContacts(
-                                            _vm.errors
-                                          )
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(
-                                              _vm.getAdultFemaleContactErrorMessage(
-                                                _vm.errors.adult_female_contacts
-                                              )
-                                            ) +
-                                            "\n                                                "
-                                        )
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-sm-6 pb-3" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "text-center" },
-                                      [_vm._v("Jóvenes:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            contactosLogros.young_female_contacts,
-                                          expression:
-                                            "contactosLogros.young_female_contacts"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyYoungFemaleContacts(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "young_female_contacts",
-                                        value: ""
-                                      },
-                                      domProps: {
-                                        value:
-                                          contactosLogros.young_female_contacts
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "young_female_contacts",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyYoungFemaleContacts(
-                                            _vm.errors
-                                          )
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(
-                                              _vm.getYoungFemaleContactErrorMessage(
-                                                _vm.errors.young_female_contacts
-                                              )
-                                            ) +
-                                            "\n                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-4" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "container form-control",
-                            staticStyle: { height: "135px" }
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-sm-9" }, [
-                                _vm._m(7, true),
-                                _vm._v(" "),
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass: "form-help",
-                                    attrs: {
-                                      "data-toggle": "tooltip",
-                                      "data-placement": "top",
-                                      "data-html": "true",
-                                      "data-title":
-                                        "<h5>Contactos Indirectos\n                                                  </h5>\n                                                  <div> Se excluye la\n                                                interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                al uso de medios masivos de comunicación (radio, periódico, internet\n                                                donde se ofrece una información para público general. )\n                                                 </div>"
-                                    }
-                                  },
-                                  [_vm._v("?")]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "row pl-3" }, [
-                                  _c("div", { staticClass: "col-sm-12 pb-3" }, [
-                                    _c("p"),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            contactosLogros.indirect_contacts,
-                                          expression:
-                                            "contactosLogros.indirect_contacts"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyIndirectContacts(
-                                          _vm.errors
-                                        )
-                                      },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "indirect_contacts",
-                                        value: ""
-                                      },
-                                      domProps: {
-                                        value: contactosLogros.indirect_contacts
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            contactosLogros,
-                                            "indirect_contacts",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        class: {
-                                          "invalid-feedback": _vm.emptyIndirectContacts(
-                                            _vm.errors
-                                          )
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(
-                                              _vm.getIndirectContactErrorMessage(
-                                                _vm.errors.indirect_contacts
-                                              )
-                                            ) +
-                                            "\n                                                "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(8, true)
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(9, true),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("div", { staticClass: "card-body" }, [
                       _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-12 container form-control" },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-1" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group d-inline" },
-                                  [
-                                    _c("label"),
+                        _c("div", { staticClass: "col-12 pb-3" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "container form-control",
+                              staticStyle: { height: "100px" }
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-5" }, [
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _vm._m(4, true),
                                     _vm._v(" "),
-                                    _c("input", {
-                                      staticClass: "form-control",
-                                      class: {
-                                        "form-control": true,
-                                        "is-invalid": _vm.emptyBeneficios(
-                                          _vm.errors
-                                        )
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              contactosLogros.enterprise_id,
+                                            expression:
+                                              "contactosLogros.enterprise_id"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        class: {
+                                          "form-control": true,
+                                          "is-invalid": _vm.emptyMatters(
+                                            _vm.errors
+                                          )
+                                        },
+                                        attrs: { name: "enterpise_id" },
+                                        on: {
+                                          change: function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.$set(
+                                              contactosLogros,
+                                              "enterprise_id",
+                                              $event.target.multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            )
+                                          }
+                                        }
                                       },
-                                      attrs: {
-                                        type: "number",
-                                        maxlength: "3",
-                                        name: "beneficio",
-                                        value: ""
-                                      }
-                                    }),
+                                      [
+                                        _c(
+                                          "option",
+                                          {
+                                            attrs: {
+                                              value: "",
+                                              selected: "",
+                                              disabled: ""
+                                            }
+                                          },
+                                          [_vm._v("Seleccione una Empresa")]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._l(
+                                          _vm.form_elements.contactosLogros[
+                                            index
+                                          ].matters[0],
+                                          function(matter, matters_index) {
+                                            return matter.enterprises.length
+                                              ? _c(
+                                                  "optgroup",
+                                                  {
+                                                    key: matters_index,
+                                                    attrs: {
+                                                      label: matter.description,
+                                                      value: matter.id
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    matter.enterprises,
+                                                    function(
+                                                      enterprise,
+                                                      enterprises_index
+                                                    ) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          key: enterprises_index,
+                                                          domProps: {
+                                                            value: enterprise.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                            " +
+                                                              _vm._s(
+                                                                enterprise.code
+                                                              ) +
+                                                              " - " +
+                                                              _vm._s(
+                                                                enterprise.description
+                                                              ) +
+                                                              "\n                                                        "
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e()
+                                          }
+                                        )
+                                      ],
+                                      2
+                                    ),
                                     _vm._v(" "),
                                     _c(
                                       "div",
                                       {
                                         class: {
-                                          "invalid-feedback": _vm.emptyBeneficios(
+                                          "invalid-feedback": _vm.emptyMatters(
                                             _vm.errors
                                           )
                                         }
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                " +
+                                          "\n                                                    " +
                                             _vm._s(
-                                              _vm.getBeneficioErrorMessage(
-                                                _vm.errors.beneficio
+                                              _vm.getMatterErrorMessage(
+                                                _vm.errors.matter_id
                                               )
                                             ) +
-                                            "\n                                            "
+                                            "\n                                                "
                                         )
                                       ]
                                     )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(10, true),
-                              _vm._v(" "),
-                              _vm._m(11, true),
-                              _vm._v(" "),
-                              _vm._m(12, true)
+                                  ])
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12 pb-4" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { staticClass: "form-label" }, [
+                              _vm._v(" Objetivo:")
                             ]),
                             _vm._v(" "),
-                            _vm._m(13, true),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: contactosLogros.objective_id,
+                                    expression: "contactosLogros.objective_id"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "form-control": true,
+                                  "is-invalid": _vm.emptyObjectives(_vm.errors)
+                                },
+                                attrs: { name: "objective_id" },
+                                on: {
+                                  change: [
+                                    function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        contactosLogros,
+                                        "objective_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    },
+                                    function($event) {
+                                      return _vm.getIndicators($event, index)
+                                    }
+                                  ]
+                                }
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  {
+                                    attrs: {
+                                      value: "",
+                                      selected: "",
+                                      disabled: ""
+                                    }
+                                  },
+                                  [_vm._v("Seleccione un Objetivo")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(
+                                  _vm.form_elements.contactosLogros[index]
+                                    .objectives[0],
+                                  function(objective, objectives_index) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: objectives_index,
+                                        domProps: { value: objective.id }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            " +
+                                            _vm._s(objective.code) +
+                                            " - " +
+                                            _vm._s(objective.description) +
+                                            "\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  }
+                                )
+                              ],
+                              2
+                            ),
                             _vm._v(" "),
-                            _vm._m(14, true)
-                          ]
-                        )
+                            _c(
+                              "div",
+                              {
+                                class: {
+                                  "invalid-feedback": _vm.emptyObjectives(
+                                    _vm.errors
+                                  )
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(
+                                      _vm.getObjectiveErrorMessage(
+                                        _vm.errors.objective_id
+                                      )
+                                    ) +
+                                    "\n                                    "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("hr")
-                    ])
-                  ])
-                ])
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-8" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "container form-control",
+                              staticStyle: { height: "135px" }
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-6" }, [
+                                  _vm._m(5, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "form-help",
+                                      attrs: {
+                                        "data-toggle": "tooltip",
+                                        "data-placement": "top",
+                                        "data-html": "true",
+                                        "data-title":
+                                          "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
+                                      }
+                                    },
+                                    [_vm._v("?")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row pl-3" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-6 pb-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { staticClass: "text-center" },
+                                          [_vm._v("Adultos:")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                contactosLogros.adult_male_contacts,
+                                              expression:
+                                                "contactosLogros.adult_male_contacts"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "form-control": true,
+                                            "is-invalid": _vm.emptyAdultMaleContacts(
+                                              _vm.errors
+                                            )
+                                          },
+                                          attrs: {
+                                            type: "number",
+                                            maxlength: "3",
+                                            name: "adult_male_contacts",
+                                            value: ""
+                                          },
+                                          domProps: {
+                                            value:
+                                              contactosLogros.adult_male_contacts
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                contactosLogros,
+                                                "adult_male_contacts",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            class: {
+                                              "invalid-feedback": _vm.emptyAdultMaleContacts(
+                                                _vm.errors
+                                              )
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(
+                                                  _vm.getAdultMaleContactErrorMessage(
+                                                    _vm.errors
+                                                      .adult_male_contacts
+                                                  )
+                                                ) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-6 pb-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { staticClass: "text-center" },
+                                          [_vm._v("Jóvenes:")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                contactosLogros.young_male_contacts,
+                                              expression:
+                                                "contactosLogros.young_male_contacts"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "form-control": true,
+                                            "is-invalid": _vm.emptyYoungMaleContacts(
+                                              _vm.errors
+                                            )
+                                          },
+                                          attrs: {
+                                            type: "number",
+                                            maxlength: "3",
+                                            name: "young_male_contacts",
+                                            value: ""
+                                          },
+                                          domProps: {
+                                            value:
+                                              contactosLogros.young_male_contacts
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                contactosLogros,
+                                                "young_male_contacts",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            class: {
+                                              "invalid-feedback": _vm.emptyYoungMaleContacts(
+                                                _vm.errors
+                                              )
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(
+                                                  _vm.getYoungMaleContactErrorMessage(
+                                                    _vm.errors
+                                                      .young_male_contacts
+                                                  )
+                                                ) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-6" }, [
+                                  _vm._m(6, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "form-help",
+                                      attrs: {
+                                        "data-toggle": "tooltip",
+                                        "data-placement": "top",
+                                        "data-html": "true",
+                                        "data-title":
+                                          "<h5>Contactos Directos\n                                                      </h5>\n                                                      <div> Cara a cara. Es cuando ambos el educador/el que disemina la información y el cliente/receptor estan en un mismo tiempo o lugar (conversaciones , días de campo, demostraciones, seminarios, talleres, etc)\n                                                     </div>"
+                                      }
+                                    },
+                                    [_vm._v("?")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row pl-3" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-6 pb-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { staticClass: "text-center" },
+                                          [_vm._v("Adultas:")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                contactosLogros.adult_female_contacts,
+                                              expression:
+                                                "contactosLogros.adult_female_contacts"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "form-control": true,
+                                            "is-invalid": _vm.emptyAdultFemaleContacts(
+                                              _vm.errors
+                                            )
+                                          },
+                                          attrs: {
+                                            type: "number",
+                                            maxlength: "3",
+                                            name: "adult_female_contacts",
+                                            value: ""
+                                          },
+                                          domProps: {
+                                            value:
+                                              contactosLogros.adult_female_contacts
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                contactosLogros,
+                                                "adult_female_contacts",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            class: {
+                                              "invalid-feedback": _vm.emptyAdultFemaleContacts(
+                                                _vm.errors
+                                              )
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(
+                                                  _vm.getAdultFemaleContactErrorMessage(
+                                                    _vm.errors
+                                                      .adult_female_contacts
+                                                  )
+                                                ) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-6 pb-3" },
+                                      [
+                                        _c(
+                                          "label",
+                                          { staticClass: "text-center" },
+                                          [_vm._v("Jóvenes:")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                contactosLogros.young_female_contacts,
+                                              expression:
+                                                "contactosLogros.young_female_contacts"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "form-control": true,
+                                            "is-invalid": _vm.emptyYoungFemaleContacts(
+                                              _vm.errors
+                                            )
+                                          },
+                                          attrs: {
+                                            type: "number",
+                                            maxlength: "3",
+                                            name: "young_female_contacts",
+                                            value: ""
+                                          },
+                                          domProps: {
+                                            value:
+                                              contactosLogros.young_female_contacts
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                contactosLogros,
+                                                "young_female_contacts",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            class: {
+                                              "invalid-feedback": _vm.emptyYoungFemaleContacts(
+                                                _vm.errors
+                                              )
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(
+                                                  _vm.getYoungFemaleContactErrorMessage(
+                                                    _vm.errors
+                                                      .young_female_contacts
+                                                  )
+                                                ) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-4" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "container form-control",
+                              staticStyle: { height: "135px" }
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-sm-9" }, [
+                                  _vm._m(7, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "form-help",
+                                      attrs: {
+                                        "data-toggle": "tooltip",
+                                        "data-placement": "top",
+                                        "data-html": "true",
+                                        "data-title":
+                                          "<h5>Contactos Indirectos\n                                                      </h5>\n                                                      <div> Se excluye la\n                                                    interacción. Es cuando no se conoce exactamente quién lo esta viendo o leyendo\n                                                    (cartas, radio, internet). Generalmente se aplica cuando se refiere\n                                                    al uso de medios masivos de comunicación (radio, periódico, internet\n                                                    donde se ofrece una información para público general. )\n                                                     </div>"
+                                      }
+                                    },
+                                    [_vm._v("?")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row pl-3" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-sm-12 pb-3" },
+                                      [
+                                        _c("p"),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                contactosLogros.indirect_contacts,
+                                              expression:
+                                                "contactosLogros.indirect_contacts"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          class: {
+                                            "form-control": true,
+                                            "is-invalid": _vm.emptyIndirectContacts(
+                                              _vm.errors
+                                            )
+                                          },
+                                          attrs: {
+                                            type: "number",
+                                            maxlength: "3",
+                                            name: "indirect_contacts",
+                                            value: ""
+                                          },
+                                          domProps: {
+                                            value:
+                                              contactosLogros.indirect_contacts
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                contactosLogros,
+                                                "indirect_contacts",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            class: {
+                                              "invalid-feedback": _vm.emptyIndirectContacts(
+                                                _vm.errors
+                                              )
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                        " +
+                                                _vm._s(
+                                                  _vm.getIndirectContactErrorMessage(
+                                                    _vm.errors.indirect_contacts
+                                                  )
+                                                ) +
+                                                "\n                                                    "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8, true)
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(9, true),
+                    _vm._v(" "),
+                    _vm._l(
+                      _vm.form_elements.contactosLogros[index].indicators[0],
+                      function(indicator, indicators_index) {
+                        return _c("div", { attrs: { value: indicator.id } }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("div", { staticClass: "row" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "col-12 container form-control"
+                                },
+                                [
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("div", { staticClass: "col-1" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group d-inline" },
+                                        [
+                                          _c("label"),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            staticClass: "form-control",
+                                            class: {
+                                              "form-control": true,
+                                              "is-invalid": _vm.emptyBeneficios(
+                                                _vm.errors
+                                              )
+                                            },
+                                            attrs: {
+                                              type: "number",
+                                              maxlength: "3",
+                                              name: "beneficio",
+                                              value: ""
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              class: {
+                                                "invalid-feedback": _vm.emptyBeneficios(
+                                                  _vm.errors
+                                                )
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    " +
+                                                  _vm._s(
+                                                    _vm.getBeneficioErrorMessage(
+                                                      _vm.errors.beneficio
+                                                    )
+                                                  ) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-1 p-4" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group d-inline" },
+                                        [
+                                          _c("h4", [
+                                            _c("strong", [
+                                              _vm._v(_vm._s(indicator.code))
+                                            ])
+                                          ])
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-7  p-4" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group d-inline" },
+                                        [
+                                          _c("span", [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(indicator.description) +
+                                                " "
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(10, true)
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(11, true)
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("hr")
+                          ])
+                        ])
+                      }
+                    )
+                  ],
+                  2
+                )
               ]
             )
           }),
           0
         )
-      : _c("div", [_vm._m(15)]),
+      : _c("div", [_vm._m(12)]),
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-footer" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(16),
+          _vm._m(13),
           _vm._v(" "),
           _c("div", { staticClass: "col-1" }, [
             _c(
@@ -49966,7 +50091,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(17)
+          _vm._m(14)
         ])
       ])
     ])
@@ -49987,7 +50112,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8" }, [
+    return _c("div", { staticClass: "col-7" }, [
       _c("h3", { staticClass: "card-header" }, [_vm._v("Contactos")])
     ])
   },
@@ -50053,29 +50178,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-1 p-4" }, [
-      _c("div", { staticClass: "form-group d-inline" }, [
-        _c("span", [_c("strong", [_vm._v("PAA")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6  p-4" }, [
-      _c("div", { staticClass: "form-group d-inline" }, [
-        _vm._v(
-          "\n                                            Cursos de educación no formal ofrecidos sobre manejo integrado del\n                                            cultivo.\n                                        "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 p-2" }, [
+    return _c("div", { staticClass: "col-3 p-2 pr-2" }, [
       _c("div", { staticClass: "form-group d-inline" }, [
         _c(
           "select",
@@ -50083,25 +50186,13 @@ var staticRenderFns = [
           [
             _c("option", { attrs: { value: "", selected: "", disabled: "" } }, [
               _vm._v(
-                " Seleccione el tipo de audiencia\n                                                "
+                " Seleccione el tipo de audiencia\n                                                    "
               )
             ]),
             _vm._v(" "),
             _c("option")
           ]
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-1" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-10" }, [
-        _c("span", { staticStyle: { color: "red" } }, [_vm._v(" *Aviso* ")])
       ])
     ])
   },
@@ -50140,7 +50231,7 @@ var staticRenderFns = [
       _c("label", [
         _c("strong", [
           _vm._v(
-            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                        el\n                        botón de\n                        guardar. Asegurese que no dejó campos en blanco donde\n                        corresponda.* "
+            "*Por favor revise toda la información cuidadosamente antes de oprimir\n                            el\n                            botón de\n                            guardar. Asegurese que no dejó campos en blanco donde\n                            corresponda.* "
           )
         ])
       ])
@@ -50609,7 +50700,7 @@ var render = function() {
                       _vm._s(program.code) +
                         " - " +
                         _vm._s(program.description) +
-                        "\n                        "
+                        "\n                    "
                     )
                   ]
                 )
@@ -50661,13 +50752,13 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-sm-6", style: _vm.form_elements.hideStyle },
-        [
-          _c(
-            "div",
-            { staticClass: "form-group" },
+      _c("div", { staticClass: "col-6", style: _vm.form_elements.hideStyle }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { staticClass: "form-label" }, [_vm._v("Empresa")]),
+            _vm._v(" "),
             _vm._l(_vm.form_elements.enterprises[0], function(
               enterprise,
               index
@@ -50735,98 +50826,102 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            " +
+                        "\n                        " +
                           _vm._s(enterprise.code) +
                           " - " +
                           _vm._s(enterprise.description) +
-                          "\n                        "
+                          "\n                    "
                       )
                     ]
                   )
                 ]
               )
-            }),
-            0
-          )
-        ]
-      ),
+            })
+          ],
+          2
+        )
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
+      _c("div", { staticClass: "col-6" }, [
         _c(
           "div",
           { staticClass: "form-group" },
-          _vm._l(_vm.form_elements.matters[0], function(matter, index) {
-            return _c(
-              "label",
-              { key: index, staticClass: "custom-control custom-checkbox" },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.row.matters,
-                      expression: "row.matters"
-                    }
-                  ],
-                  staticClass: "custom-control-input",
-                  attrs: {
-                    name: "matter_id",
-                    type: "checkbox",
-                    id: "matter_" + matter.id
-                  },
-                  domProps: {
-                    value: matter.id,
-                    checked: Array.isArray(_vm.row.matters)
-                      ? _vm._i(_vm.row.matters, matter.id) > -1
-                      : _vm.row.matters
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.row.matters,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = matter.id,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            _vm.$set(_vm.row, "matters", $$a.concat([$$v]))
+          [
+            _c("label", { staticClass: "form-label" }, [_vm._v("Materia")]),
+            _vm._v(" "),
+            _vm._l(_vm.form_elements.matters[0], function(matter, index) {
+              return _c(
+                "label",
+                { key: index, staticClass: "custom-control custom-checkbox" },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.row.matters,
+                        expression: "row.matters"
+                      }
+                    ],
+                    staticClass: "custom-control-input",
+                    attrs: {
+                      name: "matter_id",
+                      type: "checkbox",
+                      id: "matter_" + matter.id
+                    },
+                    domProps: {
+                      value: matter.id,
+                      checked: Array.isArray(_vm.row.matters)
+                        ? _vm._i(_vm.row.matters, matter.id) > -1
+                        : _vm.row.matters
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.row.matters,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = matter.id,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.row, "matters", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.row,
+                                "matters",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
                         } else {
-                          $$i > -1 &&
-                            _vm.$set(
-                              _vm.row,
-                              "matters",
-                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                            )
+                          _vm.$set(_vm.row, "matters", $$c)
                         }
-                      } else {
-                        _vm.$set(_vm.row, "matters", $$c)
                       }
                     }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass: "custom-control-label",
-                    attrs: { for: "matter_" + matter.id }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(matter.code) +
-                        " - " +
-                        _vm._s(matter.description) +
-                        "\n                        "
-                    )
-                  ]
-                )
-              ]
-            )
-          }),
-          0
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "custom-control-label",
+                      attrs: { for: "matter_" + matter.id }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(matter.code) +
+                          " - " +
+                          _vm._s(matter.description) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]
+              )
+            })
+          ],
+          2
         )
       ])
     ])
