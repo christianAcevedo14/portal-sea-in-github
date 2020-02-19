@@ -3349,34 +3349,32 @@ __webpack_require__.r(__webpack_exports__);
       });
 
       _this.form_elements.programs.push(programs);
-    });
+    }); // if (sessionStorage.getItem('form_elements')) {
+    //     try {
+    //         this.form_elements = JSON.parse(sessionStorage.getItem('form_elements'));
+    //     } catch (er) {
+    //         sessionStorage.removeItem('form_elements');
+    //     }
+    // } else {
 
-    if (sessionStorage.getItem('form_elements')) {
-      try {
-        this.form_elements = JSON.parse(sessionStorage.getItem('form_elements'));
-      } catch (er) {
-        sessionStorage.removeItem('form_elements');
-      }
-    } else {
-      this.form_elements.contactosLogros.push({
-        id: 1,
-        matters: [],
-        enterprises: [],
-        objectives: [],
-        indicators: [],
-        program_id: null,
-        matter_id: null,
-        enterprise_id: null,
-        objective_id: null,
-        city_id: null,
-        adult_male_contacts: null,
-        young_male_contacts: null,
-        adult_female_contacts: null,
-        young_female_contacts: null,
-        indirect_contacts: null,
-        hide_enterprises: true
-      });
-    }
+    this.form_elements.contactosLogros.push({
+      id: 1,
+      matters: [],
+      enterprises: [],
+      objectives: [],
+      indicators: [],
+      program_id: null,
+      matter_id: null,
+      enterprise_id: null,
+      objective_id: null,
+      city_id: null,
+      adult_male_contacts: null,
+      young_male_contacts: null,
+      adult_female_contacts: null,
+      young_female_contacts: null,
+      indirect_contacts: null,
+      hide_enterprises: true
+    }); // }
   }
 });
 
