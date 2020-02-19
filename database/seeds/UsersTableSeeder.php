@@ -70,6 +70,19 @@ class UsersTableSeeder extends CsvSeeder
                 'avatar' => 'assets/images/avatars/4.jpg'
             ],
 
+            [
+                'title_id' => 1,
+                'programmatic_unit_id' => 680,
+                'first_name' => 'Rafael',
+                'initial' => '',
+                'surname' => 'Soto',
+                'second_surname' => 'Candelaria',
+                'phone' => '',
+                'email' => 'rafael.soto6@upr.edu',
+                'password' => Hash::make('123456'),
+                'avatar' => 'assets/images/avatars/no_avatar.png'
+            ],
+
 
         ];
 
