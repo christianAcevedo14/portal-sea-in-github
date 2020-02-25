@@ -4149,6 +4149,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DocumentsComponent",
   props: ['errors'],
@@ -51332,7 +51334,21 @@ var render = function() {
                     attrs: { name: "url", type: "file" }
                   }),
                   _vm._v(" "),
-                  _c("label", { staticClass: "custom-file-label" })
+                  _c("label", { staticClass: "custom-file-label" }, [
+                    _vm._v("Escoger archivo")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { class: { "invalid-feedback": _vm.emptyURL(_vm.errors) } },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.getURLErrorMessage(_vm.errors.url)) +
+                          "\n                            "
+                      )
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),

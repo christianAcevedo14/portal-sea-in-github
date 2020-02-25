@@ -34,6 +34,14 @@ Route::group(['middleware' => 'auth'], function () {
         return auth()->user()->unreadNotifications->markAsRead();
     });
 
+    Route::resource('offices' , 'OfficeController');
+    Route::group(['prefix' => 'offices/{office}'], function (){
+        Route::resource('documents', 'DocumentController');
+    });
+
+
+
+
 
 });
 
