@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Office;
 use App\Document;
+use FontLib\EOT\File;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use PhpParser\Comment\Doc;
 
 class DocumentController extends Controller
 {
@@ -42,6 +46,7 @@ class DocumentController extends Controller
      */
     public function store(Office $office, Request $request)
     {
+
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
@@ -80,9 +85,9 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Office $office, Document $document)
     {
-        //
+        return view('documents.edit',compact('office', 'document'));
     }
 
     /**
@@ -92,9 +97,39 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Office $office, Document $document, Request $request)
     {
-        //
+
+//        @unlink($document->file);
+//
+//        $document->update($request->all());
+//
+//        return redirect()->route('offices.edit', $office)->with('notification', 'El documento fue editado exitosamente');
+
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'file' => ''
+        ]);
+
+        if(request('file')){
+            $filePath ='/storage/' . request('file')->store('documents','public');
+            \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
+
+            $document->update(array_merge(
+                $data,
+                ['file' => $filePath]
+            ));
+        }
+        else{
+            $document->update($data);
+        }
+
+//        unlink(public_path() . '/' . $document->file);
+
+
+
+        return redirect()->route('offices.edit', $office)->with('notification', 'El documento fue editado exitosamente');
     }
 
     /**
@@ -103,8 +138,12 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Office $office, Document $document)
     {
-        //
+        \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
+
+        $document->delete();
+
+        return redirect()->back();
     }
 }

@@ -16,11 +16,12 @@
 
 @section('content')
     <div class="container">
+
         <div class="row row-cards">
             <div class="col-sm-12">
                 <form action="{{ route('documents.store', $office) }}" enctype="multipart/form-data" class="card" method="post">
                     <div class="card-header">
-                        <h3 class="card-title">Añadir documento</h3>
+                        <h3 class="card-title">Añadir documento a {{ $office->name }}</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">

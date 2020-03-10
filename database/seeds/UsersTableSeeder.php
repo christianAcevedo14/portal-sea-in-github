@@ -56,7 +56,6 @@ class UsersTableSeeder extends CsvSeeder
                 'password' => Hash::make('123456'),
                 'avatar' => 'assets/images/avatars/3.jpg'
             ],
-
             [
                 'title_id' => 1,
                 'programmatic_unit_id' => 680,
@@ -68,6 +67,18 @@ class UsersTableSeeder extends CsvSeeder
                 'email' => 'erick.matos@upr.edu',
                 'password' => Hash::make('123456'),
                 'avatar' => 'assets/images/avatars/4.jpg'
+            ],
+            [
+                'title_id' => 1,
+                'programmatic_unit_id' => 680,
+                'first_name' => 'Christian',
+                'initial' => 'J',
+                'surname' => 'Acevedo',
+                'second_surname' => 'Luis',
+                'phone' => '',
+                'email' => 'christian.acevedo14@upr.edu',
+                'password' => Hash::make('123456'),
+                'avatar' => 'assets/images/avatars/no_avatar.png'
             ],
 
             [
@@ -94,13 +105,14 @@ class UsersTableSeeder extends CsvSeeder
         }
 
 
+
         Model::unguard();
         parent::run();
 
         $createdUsers = User::all();
 
         foreach ($createdUsers as $createdUser) {
-            $createdUser->apps()->attach([2,8]);
+            $createdUser->apps()->attach([2,8,9]);
         }
 
 

@@ -42,7 +42,58 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col"></th>
 
+                            </tr>
+                            </thead>
+                            <tbody id="documentsTable">
+
+
+
+
+
+
+
+                            @foreach($documents->where('office_id',$office->id) as $document)
+                                <tr>
+                                    <th>
+                                        <form action="{{ route('documents.destroy', [$office,$document]) }}" method="post"
+                                              onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="delete">
+                                            <button class="btn btn-sm btn-pill btn-danger"><i
+                                                        class="fe fe-trash-2"></i></button>
+                                        </form>
+                                    </th>
+{{--                                    <th><span class="avatar"--}}
+{{--                                              style="background-image: url({{($document->)}})"></span>--}}
+{{--                                    </th>--}}
+
+
+
+                                    <th>{{ $document->name }}</th>
+                                    <td>{{ $document->description }}</td>
+                                    <td>
+                                        <a href="{{ $document->file }}" role="button" class="btn btn-primary btn-pill" download>
+                                            <i class="fa fa-download"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('documents.edit', [$office,$document]) }}"
+                                           class="btn btn-sm btn-pill btn-warning"><i
+                                                    class="fe fe-edit"></i></a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

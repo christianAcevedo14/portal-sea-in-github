@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use App\Http\Requests\StoreOffice;
 use App\Office;
 use Illuminate\Http\Request;
@@ -52,7 +53,9 @@ class OfficeController extends Controller
 
     public function edit(Office $office)
     {
-        return view('offices.edit', compact('office'));
+        $documents = Document::all();
+
+        return view('offices.edit', compact('office', 'documents'));
 
     }
 }
