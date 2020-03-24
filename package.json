@@ -10,7 +10,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "axios": "^0.18",
+    "axios": "^0.18.1",
     "bootstrap": "^4.0.0",
     "cross-env": "^5.2.0",
     "jquery": "^3.2",
@@ -42,6 +42,11 @@
   "homepage": "https://gitlab.com/sea-dev/ope/portal-sea#readme",
   "description": "",
   "dependencies": {
-    "codemirror": "^5.49.2"
+    "codemirror": "^5.49.2",
+    "laravel-vue-pagination": "^2.3.1",
+    "sweetalert2": "^9.10.5",
+    "vform": "^1.0.1",
+    "vue-progressbar": "^0.7.5",
+    "vue-router": "^3.1.6"
   }
 }
