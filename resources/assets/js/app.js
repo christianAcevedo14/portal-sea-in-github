@@ -1,13 +1,37 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { Form, HasError, AlertError } from 'vform';
+
+window.Form = Form;
+
+import VueRouter from 'vue-router'
+import Informes from "../../../Modules/Sise/Resources/assets/js/components/Informes";
+import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
+Vue.use(VueRouter);
+
+let routes = [
+    {path: '/sise/informes', component: Informes},
+    {path: '/sise/dashboard', component: Dashboard},
+    {path: '/sise/*', redirect: '/sise/dashboard'}
+
+];
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
+
+// const app = new Vue({
+//     el: '#app',
+//     router
+// });
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,13 +51,14 @@ Vue.component('references-component', require('../../../Modules/Volunteer/Resour
 Vue.component('documents-component', require('../../../Modules/Volunteer/Resources/assets/js/components/DocumentsComponent.vue').default);
 Vue.component('programmatic-areas-component', require('../../../Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue').default);
 Vue.component('historia-component', require('../../../Modules/Sise/Resources/assets/js/components/historia-component.vue').default);
-
-
-
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });
+
 
 
 
