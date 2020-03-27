@@ -3816,7 +3816,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var domain = window.location.protocol + '//' + window.location.hostname;
       axios.get("".concat(domain, "/sise/api/matters")).then(function (response) {
-        _this5.matters = response;
+        _this5.matters = response.data;
       })["catch"](function (error) {
         return console.log(error);
       });
