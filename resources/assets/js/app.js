@@ -6,32 +6,31 @@
  */
 
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
+import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
+import Matter from  "../../../Modules/Sise/Resources/assets/js/components/Matter";
 
 require('./bootstrap');
-
 window.Vue = require('vue');
+
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
 import { Form, HasError, AlertError } from 'vform'
-
 window.Form = Form;
 Vue.component(HasError.name, HasError);
+
 Vue.component(AlertError.name, AlertError);
 
 import VueProgressBar from 'vue-progressbar'
+
 
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '10px'
 });
-
-
 import Swal from 'sweetalert2'
-import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
-import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
 window.Swal = Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -48,7 +47,6 @@ window.Toast = Toast;
 window.Fire = new Vue();
 
 
-Vue.component('pagination', require('laravel-vue-pagination'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -58,7 +56,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 const routes = [
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/program', component: Program },
-    { path: '/sise/audience', component: Audience },
+    { path: '/sise/matter', component: Matter },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
@@ -66,7 +64,9 @@ const router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
 });
+
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('notifications', require('./components/Notifications.vue').default);
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue').default);
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue').default);
