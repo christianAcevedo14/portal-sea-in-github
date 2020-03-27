@@ -7,11 +7,11 @@
 
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
-import Matter from  "../../../Modules/Sise/Resources/assets/js/components/Matter";
+import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 
 require('./bootstrap');
-window.Vue = require('vue');
 
+window.Vue = require('vue');
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
@@ -19,18 +19,17 @@ Vue.use(VueRouter);
 import { Form, HasError, AlertError } from 'vform'
 window.Form = Form;
 Vue.component(HasError.name, HasError);
-
 Vue.component(AlertError.name, AlertError);
 
 import VueProgressBar from 'vue-progressbar'
 
-
 Vue.use(VueProgressBar, {
-    color: 'rgb(143, 255, 199)',
+    color: 'rgb(45, 137, 240)',
     failedColor: 'red',
     height: '10px'
 });
 import Swal from 'sweetalert2'
+
 window.Swal = Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -47,6 +46,7 @@ window.Toast = Toast;
 window.Fire = new Vue();
 
 
+Vue.component('pagination', require('laravel-vue-pagination'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -66,7 +66,6 @@ const router = new VueRouter({
 });
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('notifications', require('./components/Notifications.vue').default);
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue').default);
 Vue.component('pow-row', require('../../../Modules/Sise/Resources/assets/js/components/PowRow.vue').default);
