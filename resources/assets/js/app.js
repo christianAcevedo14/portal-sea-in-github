@@ -58,7 +58,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 const routes = [
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/program', component: Program },
-    { path: '/sise/Audience', component: Audience },
+    { path: '/sise/audience', component: Audience },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];

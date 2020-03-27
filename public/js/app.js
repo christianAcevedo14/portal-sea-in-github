@@ -2464,7 +2464,7 @@ __webpack_require__.r(__webpack_exports__);
         $('#addNewModal').modal('hide');
         Toast.fire({
           icon: 'success',
-          title: 'Audiencia Creado'
+          title: 'Audiencia Creada'
         });
 
         _this4.$Progress.finish();
@@ -53317,7 +53317,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewModalLabel" }
                   },
-                  [_vm._v("Add  PP")]
+                  [_vm._v("Add  Audience")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -53334,7 +53334,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewModalLabel" }
                   },
-                  [_vm._v("Edit  PP")]
+                  [_vm._v("Edit  Audience")]
                 ),
                 _vm._v(" "),
                 _vm._m(2)
@@ -72398,7 +72398,7 @@ var routes = [{
   path: '/sise/program',
   component: _Modules_Sise_Resources_assets_js_components_Program__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
-  path: '/sise/Audience',
+  path: '/sise/audience',
   component: _Modules_Sise_Resources_assets_js_components_Audience__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   path: '/sise/*',
