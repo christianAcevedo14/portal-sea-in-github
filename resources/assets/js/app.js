@@ -31,7 +31,7 @@ Vue.use(VueProgressBar, {
 
 import Swal from 'sweetalert2'
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
-import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
+import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
 window.Swal = Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -58,7 +58,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 const routes = [
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/program', component: Program },
-    { path: '/sise/audience', component: Audience },
+    { path: '/sise/audience', component: Objective },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
