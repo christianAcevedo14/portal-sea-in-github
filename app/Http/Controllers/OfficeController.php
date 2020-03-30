@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Document;
-use App\Http\Requests\StoreOffice;
 use App\Office;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,7 @@ class OfficeController extends Controller
     {
         return view('offices.create');
     }
-    public function store(StoreOffice $office)
+    public function store()
     {
         $data = request()->validate([
             'name' => 'required',

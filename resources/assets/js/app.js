@@ -17,6 +17,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 import { Form, HasError, AlertError } from 'vform'
+
 window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
@@ -24,12 +25,14 @@ Vue.component(AlertError.name, AlertError);
 import VueProgressBar from 'vue-progressbar'
 
 Vue.use(VueProgressBar, {
-    color: 'rgb(45, 137, 240)',
+    color: 'rgb(143, 255, 199)',
     failedColor: 'red',
     height: '10px'
 });
 import Swal from 'sweetalert2'
 
+import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
+import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
 window.Swal = Swal;
 const Toast = Swal.mixin({
     toast: true,
@@ -54,6 +57,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
  */
 
 const routes = [
+    { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/program', component: Program },
     { path: '/sise/matter', component: Matter },
