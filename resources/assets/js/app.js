@@ -9,6 +9,10 @@ import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dash
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
+import Indicator from "../../../Modules/Sise/Resources/assets/js/components/Indicator";
+import Swal from 'sweetalert2'
+
+
 
 require('./bootstrap');
 
@@ -29,7 +33,7 @@ Vue.use(VueProgressBar, {
     failedColor: 'red',
     height: '10px'
 });
-import Swal from 'sweetalert2'
+
 
 window.Swal = Swal;
 const Toast = Swal.mixin({
@@ -56,6 +60,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 
 const routes = [
     { path: '/sise/dashboard', component: Dashboard },
+    { path: '/sise/indicator', component: Indicator },
     { path: '/sise/program', component: Program },
     { path: '/sise/objective', component: Objective },
     { path: '/sise/matter', component: Matter },
