@@ -9,6 +9,7 @@ import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dash
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
+import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
 
 require('./bootstrap');
 
@@ -59,6 +60,7 @@ const routes = [
     { path: '/sise/program', component: Program },
     { path: '/sise/objective', component: Objective },
     { path: '/sise/matter', component: Matter },
+    { path: '/sise/course', component: Course },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
