@@ -3849,6 +3849,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   Name: "Enterprise",
   data: function data() {
@@ -3885,12 +3904,14 @@ __webpack_require__.r(__webpack_exports__);
     openEditModal: function openEditModal(enterprise) {
       this.editMode = true;
       this.form.reset();
+      this.form.clear();
       $('#addNewModal').modal('show');
       this.form.fill(enterprise);
     },
     openCreateModal: function openCreateModal() {
       this.editMode = false;
       this.form.reset();
+      this.form.clear();
       $('#addNewModal').modal('show');
     },
     openMatterModal: function openMatterModal() {
@@ -3917,7 +3938,7 @@ __webpack_require__.r(__webpack_exports__);
             Swal.fire('¡Eliminado!', 'La Empresa fue eliminada.', 'success');
             Fire.$emit('ReloadPage');
           })["catch"](function () {
-            Swal.fire('¡Error!', 'Algo falló.', 'warning');
+            Swal.fire('Error.', 'Algo falló.', 'warning');
           });
         }
       });
@@ -3929,6 +3950,8 @@ __webpack_require__.r(__webpack_exports__);
       var domain = window.location.protocol + '//' + window.location.hostname;
       axios.get("".concat(domain, "/sise/api/enterprises?page=") + page).then(function (response) {
         _this3.enterprises = response.data;
+
+        _this3.toTop();
       });
     },
     createEnterprise: function createEnterprise() {
@@ -3946,7 +3969,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.$Progress.finish();
       })["catch"](function () {
-        Swal.fire('¡Error!', 'Algo falló.', 'warning');
+        Swal.fire('Error.', 'Algo falló.', 'warning');
       });
     },
     loadEnterprises: function loadEnterprises() {
@@ -3967,6 +3990,20 @@ __webpack_require__.r(__webpack_exports__);
         _this6.matters = response.data;
       })["catch"](function (error) {
         return console.log(error);
+      });
+    },
+    compareMatterIDs: function compareMatterIDs(matter) {
+      var arrayOfFmatterIDs = [];
+      this.form.matters.forEach(function (fmatter) {
+        arrayOfFmatterIDs.push(fmatter.id);
+      });
+      return !!arrayOfFmatterIDs.includes(matter.id);
+    },
+    toTop: function toTop() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
       });
     }
   },
@@ -56188,7 +56225,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewModalLabel" }
                   },
-                  [_vm._v("Add PP")]
+                  [_vm._v("Add Enterprise")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -56205,7 +56242,7 @@ var render = function() {
                     staticClass: "modal-title",
                     attrs: { id: "addNewModalLabel" }
                   },
-                  [_vm._v("Edit PP")]
+                  [_vm._v("Edit Enterprise")]
                 ),
                 _vm._v(" "),
                 _vm._m(2)
@@ -56306,18 +56343,7 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "form-group" },
-                        [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("has-error", {
-                            attrs: { form: _vm.form, field: "matters" }
-                          })
-                        ],
-                        1
-                      ),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -56335,21 +56361,40 @@ var render = function() {
                         0
                       ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-info",
-                            attrs: { type: "button" },
-                            on: { click: _vm.openMatterModal }
-                          },
-                          [
-                            _vm._v(
-                              "Escoger\n                                    materia(s)\n                                "
-                            )
-                          ]
-                        )
-                      ])
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info form-control w-50",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("matters")
+                              },
+                              attrs: { type: "button" },
+                              on: { click: _vm.openMatterModal },
+                              model: {
+                                value: _vm.form.matters,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form, "matters", $$v)
+                                },
+                                expression: "form.matters"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "Escoger\n                                    materia(s)\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "matters" }
+                          })
+                        ],
+                        1
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -56429,80 +56474,224 @@ var render = function() {
               _vm._m(6),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "mb-2" }, [
-                  _vm._v(
-                    "Seleccione todos las materias para los cuales la nueva empresa\n                        aplica.\n                    "
-                  )
-                ]),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.editMode,
+                        expression: "!editMode"
+                      }
+                    ],
+                    staticClass: "mb-2"
+                  },
+                  [
+                    _vm._v(
+                      "Seleccione todas las materias para las cuales la empresa\n                        aplica.\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.editMode,
+                        expression: "editMode"
+                      }
+                    ],
+                    staticClass: "mb-2"
+                  },
+                  [
+                    _vm._v(
+                      "Edite las materias para las cuales la empresa aplica."
+                    )
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "fieldset",
                   { staticClass: "form-fieldset" },
                   _vm._l(this.matters, function(matter) {
                     return _c("div", [
-                      _c(
-                        "label",
-                        { staticClass: "custom-control custom-checkbox" },
-                        [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.matters,
-                                expression: "form.matters"
-                              }
-                            ],
-                            staticClass: "custom-control-input",
-                            attrs: {
-                              type: "checkbox",
-                              id: "matters",
-                              name: "matters"
-                            },
-                            domProps: {
-                              value: matter,
-                              checked: Array.isArray(_vm.form.matters)
-                                ? _vm._i(_vm.form.matters, matter) > -1
-                                : _vm.form.matters
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.form.matters,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = matter,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        _vm.form,
-                                        "matters",
-                                        $$a.concat([$$v])
+                      _vm.compareMatterIDs(matter)
+                        ? _c(
+                            "div",
+                            _vm._l(_vm.form.matters, function(fmatter) {
+                              return _c("div", [
+                                fmatter.id === matter.id
+                                  ? _c("div", [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "custom-control custom-checkbox"
+                                        },
+                                        [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.form.matters,
+                                                expression: "form.matters"
+                                              }
+                                            ],
+                                            staticClass: "custom-control-input",
+                                            attrs: {
+                                              type: "checkbox",
+                                              id: "matter",
+                                              name: "matter"
+                                            },
+                                            domProps: {
+                                              value: fmatter,
+                                              checked: Array.isArray(
+                                                _vm.form.matters
+                                              )
+                                                ? _vm._i(
+                                                    _vm.form.matters,
+                                                    fmatter
+                                                  ) > -1
+                                                : _vm.form.matters
+                                            },
+                                            on: {
+                                              change: function($event) {
+                                                var $$a = _vm.form.matters,
+                                                  $$el = $event.target,
+                                                  $$c = $$el.checked
+                                                    ? true
+                                                    : false
+                                                if (Array.isArray($$a)) {
+                                                  var $$v = fmatter,
+                                                    $$i = _vm._i($$a, $$v)
+                                                  if ($$el.checked) {
+                                                    $$i < 0 &&
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "matters",
+                                                        $$a.concat([$$v])
+                                                      )
+                                                  } else {
+                                                    $$i > -1 &&
+                                                      _vm.$set(
+                                                        _vm.form,
+                                                        "matters",
+                                                        $$a
+                                                          .slice(0, $$i)
+                                                          .concat(
+                                                            $$a.slice($$i + 1)
+                                                          )
+                                                      )
+                                                  }
+                                                } else {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "matters",
+                                                    $$c
+                                                  )
+                                                }
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "custom-control-label"
+                                            },
+                                            [
+                                              _c("strong", [
+                                                _vm._v(_vm._s(fmatter.code))
+                                              ]),
+                                              _vm._v(
+                                                " " +
+                                                  _vm._s(fmatter.description)
+                                              )
+                                            ]
+                                          )
+                                        ]
                                       )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        _vm.form,
-                                        "matters",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
+                                    ])
+                                  : _vm._e()
+                              ])
+                            }),
+                            0
+                          )
+                        : _c("div", [
+                            _c(
+                              "label",
+                              { staticClass: "custom-control custom-checkbox" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.matters,
+                                      expression: "form.matters"
+                                    }
+                                  ],
+                                  staticClass: "custom-control-input",
+                                  attrs: {
+                                    type: "checkbox",
+                                    id: "matters",
+                                    name: "matters"
+                                  },
+                                  domProps: {
+                                    value: matter,
+                                    checked: Array.isArray(_vm.form.matters)
+                                      ? _vm._i(_vm.form.matters, matter) > -1
+                                      : _vm.form.matters
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.form.matters,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = matter,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              _vm.form,
+                                              "matters",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              _vm.form,
+                                              "matters",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
+                                      } else {
+                                        _vm.$set(_vm.form, "matters", $$c)
+                                      }
+                                    }
                                   }
-                                } else {
-                                  _vm.$set(_vm.form, "matters", $$c)
-                                }
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "custom-control-label" }, [
-                            _c("strong", [_vm._v(_vm._s(matter.code))]),
-                            _vm._v(" " + _vm._s(matter.description))
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "custom-control-label" },
+                                  [
+                                    _c("strong", [_vm._v(_vm._s(matter.code))]),
+                                    _vm._v(" " + _vm._s(matter.description))
+                                  ]
+                                )
+                              ]
+                            )
                           ])
-                        ]
-                      )
                     ])
                   }),
                   0
@@ -56591,9 +56780,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "form-label" }, [
-      _vm._v("Materia(s):"),
-      _c("span", { staticClass: "form-required" }, [_vm._v("*")])
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { staticClass: "form-label" }, [
+        _vm._v("Materia(s):"),
+        _c("span", { staticClass: "form-required" }, [_vm._v("*")])
+      ])
     ])
   },
   function() {
