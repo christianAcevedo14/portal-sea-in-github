@@ -14,6 +14,7 @@ import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audie
 import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
 import Indicator from "../../../Modules/Sise/Resources/assets/js/components/Indicator";
+import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
 
@@ -22,11 +23,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 window.Form = Form;
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
 Vue.use(VueProgressBar, {
     color: 'rgb(45, 137, 240)',
