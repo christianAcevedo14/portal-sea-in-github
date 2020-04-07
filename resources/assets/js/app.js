@@ -12,6 +12,7 @@ import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter"
 import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
 import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
 import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
+import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
 import VueProgressBar from 'vue-progressbar'
 
 
@@ -55,6 +56,7 @@ window.Fire = new Vue();
 const routes = [
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
+    { path: '/sise/objective', component: Objective },
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/matter', component: Matter },
