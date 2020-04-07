@@ -13,7 +13,9 @@ import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Ent
 import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
 import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
+import Indicator from "../../../Modules/Sise/Resources/assets/js/components/Indicator";
 import VueProgressBar from 'vue-progressbar'
+import { Form, HasError, AlertError } from 'vform'
 
 
 require('./bootstrap');
@@ -56,6 +58,7 @@ window.Fire = new Vue();
 const routes = [
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
+    { path: '/sise/indicator', component: Indicator },
     { path: '/sise/objective', component: Objective },
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
