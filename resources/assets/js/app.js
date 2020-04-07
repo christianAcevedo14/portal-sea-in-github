@@ -7,31 +7,31 @@
 
 import Swal from 'sweetalert2'
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
-import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
+import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
+import VueRouter from 'vue-router'
+import { Form, HasError, AlertError } from 'vform'
+import VueProgressBar from 'vue-progressbar'
+import Swal from 'sweetalert2'
 
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import { Form, HasError, AlertError } from 'vform'
 
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-import VueProgressBar from 'vue-progressbar'
 
 Vue.use(VueProgressBar, {
     color: 'rgb(45, 137, 240)',
     failedColor: 'red',
     height: '10px'
-})
-
+});
 
 window.Swal = Swal;
 const Toast = Swal.mixin({
