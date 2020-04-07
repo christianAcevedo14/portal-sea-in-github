@@ -7,24 +7,27 @@
 
 import Swal from 'sweetalert2'
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
-import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
+import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
+import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
+
 Vue.use(VueRouter)
 
 import { Form, HasError, AlertError } from 'vform'
+
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
-
 import VueProgressBar from 'vue-progressbar'
+
 Vue.use(VueProgressBar, {
-    color: 'rgb(143, 255, 199)',
+    color: 'rgb(45, 137, 240)',
     failedColor: 'red',
     height: '10px'
 })
@@ -38,13 +41,12 @@ const Toast = Swal.mixin({
     timer: 3000,
     timerProgressBar: true,
     onOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
     }
-})
+});
 window.Toast = Toast;
 window.Fire = new Vue();
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -56,13 +58,15 @@ const routes = [
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/program', component: Program },
+    { path: '/sise/matter', component: Matter },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
-]
+];
 const router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
-})
+});
+
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('notifications', require('./components/Notifications.vue').default);
