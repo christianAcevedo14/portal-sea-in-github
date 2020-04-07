@@ -11,8 +11,7 @@ import Program from "../../../Modules/Sise/Resources/assets/js/components/Progra
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
 import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
-import VueRouter from 'vue-router'
-import { Form, HasError, AlertError } from 'vform'
+import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
 import VueProgressBar from 'vue-progressbar'
 
 
@@ -22,11 +21,9 @@ window.Vue = require('vue');
 
 Vue.use(VueRouter)
 
-
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
-
 
 Vue.use(VueProgressBar, {
     color: 'rgb(45, 137, 240)',
@@ -61,6 +58,7 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/matter', component: Matter },
+    { path: '/sise/course', component: Course },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
