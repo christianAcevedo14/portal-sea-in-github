@@ -10,10 +10,11 @@ import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dash
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
 import Enterprise from "../../../Modules/Sise/Resources/assets/js/components/Enterprise";
+import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audience";
 import VueRouter from 'vue-router'
 import { Form, HasError, AlertError } from 'vform'
 import VueProgressBar from 'vue-progressbar'
-import Swal from 'sweetalert2'
+
 
 require('./bootstrap');
 
@@ -57,6 +58,7 @@ window.Fire = new Vue();
 const routes = [
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
+    { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/matter', component: Matter },
     { path: '/sise/*', component: Dashboard },
