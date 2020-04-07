@@ -14,6 +14,7 @@ import Audience from "../../../Modules/Sise/Resources/assets/js/components/Audie
 import Course from "../../../Modules/Sise/Resources/assets/js/components/Course";
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
 import Indicator from "../../../Modules/Sise/Resources/assets/js/components/Indicator";
+import Plan from "../../../Modules/Sise/Resources/assets/js/components/Plan";
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
@@ -65,6 +66,7 @@ const routes = [
     { path: '/sise/program', component: Program },
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
+    { path: '/sise/plan', component: Plan },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
