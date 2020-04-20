@@ -11,6 +11,9 @@
 |
 */
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +26,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('loggedUser', function() {
         return auth()->user();
+    });
+    Route::get('/users!logged', function () {
+        return User::where('id', '!=', Auth::id())->orderBy('first_name')->get();
     });
     Route::get('notifications/get', function () {
         return auth()->user()->unreadNotifications;
