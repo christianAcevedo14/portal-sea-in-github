@@ -25,7 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UserController');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('loggedUser', function() {
-        return auth()->user();
+        return Auth::User()->where('id', Auth::id())->with('programmatic_unit.region')->first();
+        //return auth()->user();
     });
     Route::get('/users!logged', function () {
         return User::where('id', '!=', Auth::id())->orderBy('first_name')->get();
