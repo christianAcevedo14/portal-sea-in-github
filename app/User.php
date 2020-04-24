@@ -117,6 +117,21 @@ class User extends Authenticatable
         return $this->title_id == 4;
     }
 
+    public function getIsAssocDeanAttribute()
+    {
+        return $this->title_id == 42;
+    }
+
+    public function getIsAuxDeanAttribute()
+    {
+        return $this->title_id == 40;
+    }
+
+    public function getIsCFCAttribute()
+    {
+        return $this->title_id == 47;
+    }
+
     public function getRegionAttribute()
     {
         return substr($this->programmatic_unit->region_id, 0, 1);
@@ -138,20 +153,24 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->surname}";
     }
 
-    public function purposes(){
+    public function purposes()
+    {
         return $this->hasMany(PurposeVisit::class);
 
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
 
-    public function skills(){
+    public function skills()
+    {
         return $this->hasMany(Skill::class);
     }
 
-    public function categories(){
+    public function categories()
+    {
         return $this->hasMany(Category::class);
     }
 
