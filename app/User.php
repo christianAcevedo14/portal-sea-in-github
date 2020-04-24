@@ -112,6 +112,11 @@ class User extends Authenticatable
             return true;
     }
 
+    public function getIsRegistratorAttribute()
+    {
+        return $this->title_id == 4;
+    }
+
     public function getRegionAttribute()
     {
         return substr($this->programmatic_unit->region_id, 0, 1);
