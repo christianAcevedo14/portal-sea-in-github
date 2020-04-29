@@ -18,7 +18,7 @@ import Plan from "../../../Modules/Sise/Resources/assets/js/components/Plan";
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
-import IndicatorPlanned from "../../../Modules/Sise/Resources/assets/js/components/IndicatorPlanned";
+import IndicatorsPlanned from "../../../Modules/Sise/Resources/assets/js/components/IndicatorsPlanned";
 
 
 require('./bootstrap');
@@ -68,7 +68,7 @@ const routes = [
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', component: Plan },
-    { path:  '/sise/indicatorPlanned', component: IndicatorPlanned},
+    { path:  '/sise/indicatorsPlanned', component: IndicatorsPlanned},
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
