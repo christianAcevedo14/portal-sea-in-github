@@ -94,6 +94,17 @@ Vue.component('programmatic-areas-component', require('../../../Modules/Voluntee
 Vue.component('historia-component', require('../../../Modules/Sise/Resources/assets/js/components/historia-component.vue').default);
 
 
+
+//Directives
+Vue.directive('tooltip', function(el,binding){
+    $(el).tooltip({
+        title: binding.value,
+        placement: binding.arg,
+        trigger: 'hover'
+    })
+});
+
+
 const app = new Vue({
     el: '#app',
     router,
