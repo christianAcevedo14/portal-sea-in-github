@@ -19,7 +19,11 @@ import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
 import IndicatorsPlanned from "../../../Modules/Sise/Resources/assets/js/components/IndicatorsPlanned";
-import Informe from "../../../Modules/Sise/Resources/assets/js/components/Informe";
+import InformesIndex from "../../../Modules/Sise/Resources/assets/js/components/InformesIndex";
+import Informes from "../../../Modules/Sise/Resources/assets/js/components/Informes";
+import Achievements from "../../../Modules/Sise/Resources/assets/js/components/Achievements";
+import Contacts from "../../../Modules/Sise/Resources/assets/js/components/Contacts";
+import Historias from "../../../Modules/Sise/Resources/assets/js/components/Historias";
 
 
 require('./bootstrap');
@@ -67,7 +71,11 @@ const routes = [
     { path: '/sise/objective', component: Objective },
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
-    { path: '/sise/informe', component: Informe},
+    { path: '/sise/informesIndex', component: InformesIndex},
+    { path: '/sise/informes', component: Informes},
+    { path: '/sise/informes/achievements', component: Achievements},
+    { path: '/sise/informes/contacts', component: Contacts},
+    { path: '/sise/informes/historias', component: Historias},
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', component: Plan },
