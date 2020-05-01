@@ -64,14 +64,14 @@ window.Fire = new Vue();
  */
 
 const routes = [
-    { path: '/sise/indicatorsPlanned', component: IndicatorsPlanned},
+    { path: '/sise/indicators_planned', component: IndicatorsPlanned},
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/indicator', component: Indicator },
     { path: '/sise/objective', component: Objective },
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
-    { path: '/sise/informesIndex', component: InformesIndex},
+    { path: '/sise/informes_index', component: InformesIndex},
     { path: '/sise/informes', component: Informes , children: [
             {
                 path: 'contacts',
