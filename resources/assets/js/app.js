@@ -72,10 +72,21 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informesIndex', component: InformesIndex},
-    { path: '/sise/informes', component: Informes},
-    { path: '/sise/informes/achievements', component: Achievements},
-    { path: '/sise/informes/contacts', component: Contacts},
-    { path: '/sise/informes/historias', component: Historias},
+    { path: '/sise/informes', component: Informes , children: [
+            {
+                path: 'contacts',
+                component: Contacts
+            },
+            {
+                path: 'achievements',
+                component: Achievements
+            },
+            {
+                path: 'historias',
+                component: Historias
+            }
+        ]
+    },
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', component: Plan },
