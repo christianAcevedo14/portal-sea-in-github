@@ -115,6 +115,10 @@ Vue.component('programmatic-areas-component', require('../../../Modules/Voluntee
 Vue.component('historia-component', require('../../../Modules/Sise/Resources/assets/js/components/historia-component.vue').default);
 
 
+Vue.component('contacts', require('../../../Modules/Sise/Resources/assets/js/components/Contacts.vue').default);
+Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js/components/Achievements.vue').default);
+Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
+
 
 //Directives
 Vue.directive('tooltip', function(el,binding){
