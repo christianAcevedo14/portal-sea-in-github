@@ -24,6 +24,7 @@ import Informes from "../../../Modules/Sise/Resources/assets/js/components/Infor
 import Achievements from "../../../Modules/Sise/Resources/assets/js/components/Achievements";
 import Contacts from "../../../Modules/Sise/Resources/assets/js/components/Contacts";
 import Historias from "../../../Modules/Sise/Resources/assets/js/components/Historias";
+import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/components/ApproveInformes";
 
 
 require('./bootstrap');
@@ -72,6 +73,7 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
+    { path: '/sise/approve_informes', component: ApproveInformes},
     { path: '/sise/informes', component: Informes , children: [
             {
                 path: 'contacts',
