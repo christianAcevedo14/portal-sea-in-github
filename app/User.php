@@ -132,6 +132,14 @@ class User extends Authenticatable
         return $this->title_id == 47;
     }
 
+    public function getIsSupervisorAttribute()
+    {
+        if($this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 ||  $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47)
+            return true;
+        else
+            return false;
+    }
+
     public function getRegionAttribute()
     {
         return substr($this->programmatic_unit->region_id, 0, 1);
