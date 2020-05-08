@@ -25,13 +25,20 @@ import Achievements from "../../../Modules/Sise/Resources/assets/js/components/A
 import Contacts from "../../../Modules/Sise/Resources/assets/js/components/Contacts";
 import Historias from "../../../Modules/Sise/Resources/assets/js/components/Historias";
 import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/components/ApproveInformes";
+import moment from 'moment'
 
+/*let moment = require('moment');
+moment().format();
+*/
+moment.locale('es');
 
+//Vue.use(require('vue-moment'));
 require('./bootstrap');
-
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
+
+Vue.prototype.moment = moment
 
 window.Form = Form;
 Vue.component(HasError.name, HasError);
