@@ -38,7 +38,7 @@ window.Vue = require('vue');
 
 Vue.use(VueRouter);
 
-Vue.prototype.moment = moment
+Vue.prototype.moment = moment;
 
 window.Form = Form;
 Vue.component(HasError.name, HasError);
