@@ -89,6 +89,31 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-label">Region a Supervisar</div>
+                            <div class="custom-controls-stacked">
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value="1">
+                                    <span class="custom-control-label">Region Arecibo</span>
+                                </label>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value="2">
+                                    <span class="custom-control-label">Region Caguas</span>
+                                </label>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value="3">
+                                    <span class="custom-control-label">Region Mayaguez</span>
+                                </label>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value="4">
+                                    <span class="custom-control-label">Region Ponce</span>
+                                </label>
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value="5">
+                                    <span class="custom-control-label">Region San Juan</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer text-right">
                         <a href="{{ route('users.index') }}" class="btn btn-warning"
