@@ -156,6 +156,11 @@ class User extends Authenticatable
         return $this->programmatic_unit->id;
     }
 
+    public function getSupervisedAttribute()
+    {
+        return substr($this->supervised_region, 0, 1);
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->surname}";
