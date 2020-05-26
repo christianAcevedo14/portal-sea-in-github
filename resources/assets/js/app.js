@@ -72,7 +72,7 @@ window.Fire = new Vue();
  */
 
 const routes = [
-    { path: '/sise/indicators_planned', component: IndicatorsPlanned},
+    { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/indicator', component: Indicator },
