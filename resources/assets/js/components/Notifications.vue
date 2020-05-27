@@ -55,13 +55,18 @@
 
             },
 
+            loadNotifications(){
+                let domain = window.location.protocol + '//' + window.location.hostname;
+                axios.get(`${domain}/notifications/get`).then(response => {
+                    this.notifications = response.data;
+                });
+            }
+
         },
 
         mounted() {
-            let domain = window.location.protocol + '//' + window.location.hostname;
-            axios.get(`${domain}/notifications/get`).then(response => {
-                this.notifications = response.data;
-            });
+            this.loadNotifications();
+            setInterval(() => this.loadNotifications(), 5000)
         }
     }
 </script>
