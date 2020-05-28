@@ -57,8 +57,15 @@
 
             loadNotifications(){
                 let domain = window.location.protocol + '//' + window.location.hostname;
+
+                // this.$root.disableInterceptor();
+
                 axios.get(`${domain}/notifications/get`).then(response => {
-                    this.notifications = response.data;
+                    this.notifications = response.data
+
+                    // this.$root.enableInterceptor()
+
+                    // console.log('Interceptor Enabled')
                 });
             }
 
@@ -66,7 +73,7 @@
 
         mounted() {
             this.loadNotifications();
-            setInterval(() => this.loadNotifications(), 20000)
+            // setInterval(() => this.loadNotifications(), 20000)
         }
     }
 </script>

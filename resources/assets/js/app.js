@@ -25,7 +25,8 @@ import Achievements from "../../../Modules/Sise/Resources/assets/js/components/A
 import Contacts from "../../../Modules/Sise/Resources/assets/js/components/Contacts";
 import Historias from "../../../Modules/Sise/Resources/assets/js/components/Historias";
 import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/components/ApproveInformes";
-import moment from 'moment'
+import moment from 'moment';
+
 
 /*let moment = require('moment');
 moment().format();
@@ -127,6 +128,7 @@ Vue.component('historia-component', require('../../../Modules/Sise/Resources/ass
 Vue.component('contacts', require('../../../Modules/Sise/Resources/assets/js/components/Contacts.vue').default);
 Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js/components/Achievements.vue').default);
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
+Vue.component('loader', require('./components/Loader.vue').default);
 
 
 //Directives
@@ -140,17 +142,58 @@ Vue.directive('tooltip', function(el,binding){
 });
 
 
-const app = new Vue({
+    const app = new Vue({
     el: '#app',
     router,
     data: {
-        search: ''
+        search: '',
+        isLoading: false,
+        counter : 0,
+        axiosInterceptor: null,
     },
+
+    mounted() {
+      this.enableInterceptor()
+    },
+
+
     methods: {
         searchit(){
             console.log("searching...");
             Fire.$emit('searching');
-        }
+        },
+        enableInterceptor() {
+            console.log('enabled successfully');
+            this.axiosInterceptor = window.axios.interceptors.request.use((config) => {
+                console.log('request intercepted');
+                this.isLoading = true;
+                this.counter++;
+                return config
+            }, (error) => {
+                console.log('request intercept error');
+                this.isLoading = false;
+                return Promise.reject(error)
+            })
+
+            window.axios.interceptors.response.use((response) => {
+                console.log('received response');
+                this.counter--;
+                if(this.counter <= 0){
+                    this.counter = 0;
+                    this.isLoading = false;
+                }
+                return response
+            }, function(error) {
+                console.log('response error');
+                this.isLoading = false;
+                return Promise.reject(error)
+            })
+        },
+
+        disableInterceptor() {
+            console.log('disabled successfully');
+            window.axios.interceptors.request.eject(this.axiosInterceptor)
+        },
     }
 });
 
