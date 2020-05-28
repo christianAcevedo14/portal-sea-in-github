@@ -66,7 +66,7 @@
 
         mounted() {
             this.loadNotifications();
-            setInterval(() => this.loadNotifications(), 5000)
+            setInterval(() => this.loadNotifications(), 20000)
         }
     }
 </script>
