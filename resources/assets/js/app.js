@@ -153,7 +153,7 @@ Vue.directive('tooltip', function(el,binding){
     },
 
     mounted() {
-      this.enableInterceptor()
+      // this.enableInterceptor()
 
         Fire.$on('load', () => {
             this.load();
@@ -175,38 +175,39 @@ Vue.directive('tooltip', function(el,binding){
             console.log("searching...");
             Fire.$emit('searching');
         },
-        enableInterceptor() {
-            console.log('enabled successfully');
-            this.axiosInterceptor = window.axios.interceptors.request.use((config) => {
-                console.log('request intercepted');
-                this.isLoading = true;
-                this.counter++;
-                return config
-            }, (error) => {
-                console.log('request intercept error');
-                this.isLoading = false;
-                return Promise.reject(error)
-            })
 
-            window.axios.interceptors.response.use((response) => {
-                console.log('received response');
-                this.counter--;
-                if(this.counter <= 0){
-                    this.counter = 0;
-                    this.isLoading = false;
-                }
-                return response
-            }, function(error) {
-                console.log('response error');
-                this.isLoading = false;
-                return Promise.reject(error)
-            })
-        },
-
-        disableInterceptor() {
-            console.log('disabled successfully');
-            window.axios.interceptors.request.eject(this.axiosInterceptor)
-        },
+        // enableInterceptor() {
+        //     console.log('enabled successfully');
+        //     this.axiosInterceptor = window.axios.interceptors.request.use((config) => {
+        //         console.log('request intercepted');
+        //         this.isLoading = true;
+        //         this.counter++;
+        //         return config
+        //     }, (error) => {
+        //         console.log('request intercept error');
+        //         this.isLoading = false;
+        //         return Promise.reject(error)
+        //     })
+        //
+        //     window.axios.interceptors.response.use((response) => {
+        //         console.log('received response');
+        //         this.counter--;
+        //         if(this.counter <= 0){
+        //             this.counter = 0;
+        //             this.isLoading = false;
+        //         }
+        //         return response
+        //     }, function(error) {
+        //         console.log('response error');
+        //         this.isLoading = false;
+        //         return Promise.reject(error)
+        //     })
+        // },
+        //
+        // disableInterceptor() {
+        //     console.log('disabled successfully');
+        //     window.axios.interceptors.request.eject(this.axiosInterceptor)
+        // },
     }
 });
 
