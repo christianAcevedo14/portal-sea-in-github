@@ -154,10 +154,23 @@ Vue.directive('tooltip', function(el,binding){
 
     mounted() {
       this.enableInterceptor()
+
+        Fire.$on('load', () => {
+            this.load();
+        })
+        Fire.$on('finishLoad', () => {
+            this.finishLoad();
+        })
     },
 
 
     methods: {
+        load(){
+            this.isLoading = true;
+        },
+        finishLoad(){
+            this.isLoading = false;
+        },
         searchit(){
             console.log("searching...");
             Fire.$emit('searching');
