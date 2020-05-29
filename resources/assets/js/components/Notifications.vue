@@ -8,19 +8,21 @@
             <a class="dropdown-item d-flex" href="#" v-for="notification in notifications">
                 <span :style="{ backgroundImage: 'url(' + notification.data.user_avatar + ')' }"
                       class="avatar mr-3 align-self-center"></span>
-                <div class="col-9">
-                    {{ notification.data.message }}
+                <div class="">
+                    <span style="display:block; width:400px; word-wrap:break-word; white-space: normal;">{{ notification.data.message }}</span>
+                    <button type="button" class="btn close float-right" aria-label="Close"
+                            v-on:click="removeNotification(notification.Id)">
+                        <!--                    <span aria-hidden="true">&times;</span>-->
+                    </button>
+                <!--</div>-->
+<!--                <div class="col-1">-->
                     <div class="small text-muted"><strong>Fecha:</strong> {{ new
                         Date(notification.created_at).toLocaleDateString('es-ES', {month: 'long', day: 'numeric', year:
                         'numeric'}) }}
                     </div>
                 </div>
-                <span class="pl-3 float-right">
-                                    <button type="button" class="btn close float-right" aria-label="Close"
-                                            v-on:click="removeNotification(notification.Id)">
-                <!--                    <span aria-hidden="true">&times;</span>-->
-                                </button>
-                                    </span>
+                <!--<span class="pl-9 float-right">
+                                    </span>-->
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item text-center text-muted-dark" href="#" v-on:click="removeAllNotifications()">Marcar
