@@ -11,7 +11,7 @@
                 <div class="">
                     <span style="display:block; width:400px; word-wrap:break-word; white-space: normal;">{{ notification.data.message }}</span>
                     <button type="button" class="btn close float-right" aria-label="Close"
-                            v-on:click="removeNotification(notification.Id)">
+                            v-on:click="removeNotification(notification.id)">
                         <!--                    <span aria-hidden="true">&times;</span>-->
                     </button>
                 <!--</div>-->
@@ -43,11 +43,10 @@
             }
         },
         methods: {
-            removeNotification(Id) {
-                notificationId = Id;
+            removeNotification(id) {
                 let domain = window.location.protocol + '//' + window.location.hostname;
-                axios.get(`${domain}/notifications/markAsRead`);
-
+                axios.get(`${domain}/notifications/markAsRead/` + id);
+                Fire.$emit('ReloadPage');
             },
             removeAllNotifications() {
                 let domain = window.location.protocol + '//' + window.location.hostname;
@@ -76,6 +75,10 @@
         mounted() {
             this.loadNotifications();
             // setInterval(() => this.loadNotifications(), 20000)
+
+            Fire.$on('ReloadPage', () => {
+                this.loadNotifications();
+            })
         }
     }
 </script>
