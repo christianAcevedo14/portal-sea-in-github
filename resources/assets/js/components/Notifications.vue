@@ -47,7 +47,8 @@
                 let domain = window.location.protocol + '//' + window.location.hostname;
                 axios.get(`${domain}/notifications/markAsRead/` + id);
                 Fire.$emit('ReloadPage');
-            },
+                },
+
             removeAllNotifications() {
                 let domain = window.location.protocol + '//' + window.location.hostname;
                 axios.get(`${domain}/notifications/markAllAsRead`);
@@ -74,7 +75,7 @@
 
         mounted() {
             this.loadNotifications();
-            // setInterval(() => this.loadNotifications(), 20000)
+            setInterval(() => this.loadNotifications(), 20000)
 
             Fire.$on('ReloadPage', () => {
                 this.loadNotifications();
