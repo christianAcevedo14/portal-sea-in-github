@@ -86,5 +86,9 @@
 
 
 <style scoped>
-
+    .dropdown-menu{
+        height: auto;
+        max-height: 300px;
+        overflow-y:auto;
+    }
 </style>
