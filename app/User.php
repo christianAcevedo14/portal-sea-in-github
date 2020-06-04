@@ -132,9 +132,20 @@ class User extends Authenticatable
         return $this->title_id == 47;
     }
 
+    public function getIsPIAAttribute()
+    {
+        return $this->title_id == 50;
+    }
+
+    public function getIsAgriculturaAttribute()
+    {
+        return $this->title_id == 27;
+    }
+
     public function getIsSupervisorAttribute()
     {
-        if($this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 ||  $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47)
+        if ($this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
+            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47)
             return true;
         else
             return false;
