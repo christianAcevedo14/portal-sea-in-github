@@ -5,7 +5,6 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Swal from 'sweetalert2'
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
@@ -15,9 +14,6 @@ import Course from "../../../Modules/Sise/Resources/assets/js/components/Course"
 import Objective from "../../../Modules/Sise/Resources/assets/js/components/Objective";
 import Indicator from "../../../Modules/Sise/Resources/assets/js/components/Indicator";
 import Plan from "../../../Modules/Sise/Resources/assets/js/components/Plan";
-import VueRouter from 'vue-router'
-import VueProgressBar from 'vue-progressbar'
-import { Form, HasError, AlertError } from 'vform'
 import IndicatorsPlanned from "../../../Modules/Sise/Resources/assets/js/components/IndicatorsPlanned";
 import InformesIndex from "../../../Modules/Sise/Resources/assets/js/components/InformesIndex";
 import Informes from "../../../Modules/Sise/Resources/assets/js/components/Informes";
@@ -25,6 +21,12 @@ import Achievements from "../../../Modules/Sise/Resources/assets/js/components/A
 import Contacts from "../../../Modules/Sise/Resources/assets/js/components/Contacts";
 import Historias from "../../../Modules/Sise/Resources/assets/js/components/Historias";
 import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/components/ApproveInformes";
+import UnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformes";
+import UnplannedInformesCreate from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformesCreate";
+import Swal from 'sweetalert2'
+import VueRouter from 'vue-router'
+import VueProgressBar from 'vue-progressbar'
+import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
 
 
@@ -74,6 +76,8 @@ window.Fire = new Vue();
 
 const routes = [
     { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
+    { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
+    { path: '/sise/unplanned_informes', component: UnplannedInformes},
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/indicator', component: Indicator },
