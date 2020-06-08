@@ -23,6 +23,7 @@ import Historias from "../../../Modules/Sise/Resources/assets/js/components/Hist
 import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/components/ApproveInformes";
 import UnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformes";
 import UnplannedInformesCreate from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformesCreate";
+import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/SuperviseUnplannedInformes";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
@@ -77,6 +78,7 @@ window.Fire = new Vue();
 const routes = [
     { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
     { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
+    { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
     { path: '/sise/unplanned_informes', component: UnplannedInformes},
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
