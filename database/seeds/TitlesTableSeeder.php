@@ -52,7 +52,8 @@ class TitlesTableSeeder extends Seeder
             ['id' => 50, 'description' => 'Coordinador(a) PIA'],
             ['id' => 51, 'description' => 'Ingenería Agrícola'],
             ['id' => 52, 'description' => 'Educador en CFC - Ciencias de la Familia y el Consumidor - PIA'],
-            ['id' => 53, 'description' => 'Coordinador(a) MEI'],
+            ['id' => 53, 'description' => 'Coordinador(a) de Medios Educativos e Información (MEI)'],
+            ['id' => 54, 'description' => 'Coordinador(a) Plaguicidas'],
         ];
 
         foreach ($titles as $title)
