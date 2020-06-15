@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Sise\Entities\FederalProgramPersonContact;
 use Modules\Sise\Entities\Historia;
 use Modules\Sise\Entities\Plan;
 use Modules\Volunteer\Entities\Category;
@@ -99,6 +100,16 @@ class User extends Authenticatable
     public function getIsOpeAttribute()
     {
         return $this->title_id == 26;
+    }
+
+    public function getIsFPPCAttribute()
+    {
+        $fppcUsers = FederalProgramPersonContact::pluck('user_id')->toArray();
+
+        if (in_array($this->id, $fppcUsers)){
+            return true;
+        } else return false;
+
     }
 
     public function getIsSpecialistAttribute()
