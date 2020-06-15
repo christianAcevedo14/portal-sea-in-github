@@ -24,6 +24,8 @@ import ApproveInformes from "../../../Modules/Sise/Resources/assets/js/component
 import UnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformes";
 import UnplannedInformesCreate from "../../../Modules/Sise/Resources/assets/js/components/UnplannedInformesCreate";
 import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/SuperviseUnplannedInformes";
+import CRUDFPPC from "../../../Modules/Sise/Resources/assets/js/components/CRUDFPPC";
+import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monitor";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
@@ -80,6 +82,8 @@ const routes = [
     { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
     { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
     { path: '/sise/unplanned_informes', component: UnplannedInformes},
+    { path: '/sise/monitor', component: Monitor},
+    { path: '/sise/crud_fppc', component: CRUDFPPC },
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/indicator', component: Indicator },
