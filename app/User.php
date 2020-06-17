@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Sise\Entities\FederalProgramPersonContact;
 use Modules\Sise\Entities\Historia;
 use Modules\Sise\Entities\Plan;
 use Modules\Volunteer\Entities\Category;
@@ -101,6 +102,16 @@ class User extends Authenticatable
         return $this->title_id == 26;
     }
 
+    public function getIsFPPCAttribute()
+    {
+        $fppcUsers = FederalProgramPersonContact::pluck('user_id')->toArray();
+
+        if (in_array($this->id, $fppcUsers)){
+            return true;
+        } else return false;
+
+    }
+
     public function getIsSpecialistAttribute()
     {
         return $this->programmatic_unit->region_id == 600;
@@ -110,6 +121,45 @@ class User extends Authenticatable
     {
         if ($this->title_id == 23 || $this->title_id == 24)
             return true;
+    }
+
+    public function getIsRegistratorAttribute()
+    {
+        return $this->title_id == 4;
+    }
+
+    public function getIsAssocDeanAttribute()
+    {
+        return $this->title_id == 42;
+    }
+
+    public function getIsAuxDeanAttribute()
+    {
+        return $this->title_id == 40;
+    }
+
+    public function getIsCFCAttribute()
+    {
+        return $this->title_id == 47;
+    }
+
+    public function getIsPIAAttribute()
+    {
+        return $this->title_id == 50;
+    }
+
+    public function getIsAgriculturaAttribute()
+    {
+        return $this->title_id == 27;
+    }
+
+    public function getIsSupervisorAttribute()
+    {
+        if ($this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
+            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47)
+            return true;
+        else
+            return false;
     }
 
     public function getRegionAttribute()
@@ -128,25 +178,34 @@ class User extends Authenticatable
         return $this->programmatic_unit->id;
     }
 
+    public function getSupervisedAttribute()
+    {
+        return substr($this->supervised_region, 0, 1);
+    }
+
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->surname}";
     }
 
-    public function purposes(){
+    public function purposes()
+    {
         return $this->hasMany(PurposeVisit::class);
 
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
 
-    public function skills(){
+    public function skills()
+    {
         return $this->hasMany(Skill::class);
     }
 
-    public function categories(){
+    public function categories()
+    {
         return $this->hasMany(Category::class);
     }
 

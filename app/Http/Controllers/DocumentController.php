@@ -61,6 +61,7 @@ class DocumentController extends Controller
             'file' => $filePath
         ]);
 
+//        dd($filePath);
 
 
         return redirect()->route('offices.edit', $office)->with('notification', 'El documento fue guardado exitosamente');
