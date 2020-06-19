@@ -26,6 +26,7 @@ import UnplannedInformesCreate from "../../../Modules/Sise/Resources/assets/js/c
 import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/SuperviseUnplannedInformes";
 import CRUDFPPC from "../../../Modules/Sise/Resources/assets/js/components/CRUDFPPC";
 import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monitor";
+import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
@@ -84,6 +85,7 @@ const routes = [
     { path: '/sise/unplanned_informes', component: UnplannedInformes},
     { path: '/sise/monitor', component: Monitor},
     { path: '/sise/crud_fppc', component: CRUDFPPC },
+    { path: '/sise/fppc', component: FPPC },
     { path: '/sise/enterprise', component: Enterprise },
     { path: '/sise/dashboard', component: Dashboard },
     { path: '/sise/indicator', component: Indicator },
