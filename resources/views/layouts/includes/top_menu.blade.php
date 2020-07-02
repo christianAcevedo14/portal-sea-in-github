@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="{{ (request()->is('home')) ? 'nav-link active' : 'nav-link' }}"><i class="fe fe-grid"></i> Aplicaciones</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('tutorials.index') }}" class="{{ (request()->is('tutorials*')) ? 'nav-link active' : 'nav-link' }}"><i class="fe fe-film"></i> Tutoriales</a>
+                </li>
                 @if(Auth::user()->isAdmin)
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="{{ (request()->is('users*')) ? 'nav-link active' : 'nav-link' }}"><i class="fe fe-users"></i> Usuarios</a>

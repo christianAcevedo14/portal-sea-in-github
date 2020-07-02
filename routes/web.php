@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'offices/{office}'], function (){
         Route::resource('documents', 'DocumentController');
     });
+    Route::resource('tutorials' , 'TutorialController');
 
 
 
