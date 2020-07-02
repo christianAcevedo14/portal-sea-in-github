@@ -27,6 +27,7 @@ import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/j
 import CRUDFPPC from "../../../Modules/Sise/Resources/assets/js/components/CRUDFPPC";
 import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monitor";
 import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
+import Tutorial from "./components/Tutorial";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
@@ -79,6 +80,7 @@ window.Fire = new Vue();
  */
 
 const routes = [
+    { path: '/tutorials', component: Tutorial },
     { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
     { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
     { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
