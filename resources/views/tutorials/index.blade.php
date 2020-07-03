@@ -4,6 +4,13 @@
     @include('layouts.includes.top_menu')
 @endsection
 
+<style>
+    iframe{
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
 @section('content')
 
     <div class="container">
