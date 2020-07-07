@@ -46,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('documents', 'DocumentController');
     });
     Route::resource('tutorials' , 'TutorialController');
+    Route::get('showTutorials' , 'TutorialController@show');
+    Route::put('updateTutorials{id}' , 'TutorialController@update');
+    Route::delete('deleteTutorials{id}' , 'TutorialController@destroy');
 
 
 
