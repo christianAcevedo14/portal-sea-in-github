@@ -82,6 +82,7 @@ window.Fire = new Vue();
 
 const routes = [
     { path: '/tutorials', component: Tutorial },
+    { path: '/profile', component: Profile},
     { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
     { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
     { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
@@ -116,7 +117,6 @@ const routes = [
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', component: Plan },
     { path: '/sise/*', component: Dashboard },
-    { path: '/profile', component: Profile},
     { path: '/*', component: Dashboard },
 ];
 const router = new VueRouter({
