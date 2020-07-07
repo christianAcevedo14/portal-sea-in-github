@@ -364,7 +364,7 @@
 
                         Fire.$emit('ReloadPage');
                         Swal.fire(
-                            '¡Actiualizado!',
+                            '¡Actualizado!',
                             'Se actualizó satisfactoriamente',
                             'success'
                         );
@@ -393,6 +393,8 @@
                     if (result.value) {
                         let domain = window.location.protocol + '//' + window.location.hostname;
                         this.form.delete(`${domain}/deleteTutorials` + id).then(() => {
+                            this.closeModal();
+                            $('#tutorialModal').modal('hide');
                             Swal.fire(
                                 '¡Eliminado!',
                                 'Se elimino satisfactoriamente',
