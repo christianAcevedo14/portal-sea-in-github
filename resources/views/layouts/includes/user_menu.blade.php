@@ -10,7 +10,7 @@
         <a class="dropdown-item" href="{{ route('home') }}">
             <i class="dropdown-icon fe fe-grid"></i> Aplicaciones
         </a>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="{{ route('profile') }}">
             <i class="dropdown-icon fe fe-user"></i> Perfil
         </a>
 {{--        <a class="dropdown-item" href="#">--}}

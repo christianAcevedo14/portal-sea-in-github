@@ -27,6 +27,7 @@ import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/j
 import CRUDFPPC from "../../../Modules/Sise/Resources/assets/js/components/CRUDFPPC";
 import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monitor";
 import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
+import Profile from "./components/Profile";
 import Tutorial from "./components/Tutorial";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
@@ -115,6 +116,7 @@ const routes = [
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', component: Plan },
     { path: '/sise/*', component: Dashboard },
+    { path: '/profile', component: Profile},
     { path: '/*', component: Dashboard },
 ];
 const router = new VueRouter({
@@ -123,6 +125,7 @@ const router = new VueRouter({
 });
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('notifications', require('./components/Notifications.vue').default);
 Vue.component('pow', require('../../../Modules/Sise/Resources/assets/js/components/Pow.vue').default);
