@@ -13,7 +13,7 @@ class TutorialAppsTableSeeder extends Seeder
     public function run()
     {
         $apps = [
-            ['name' => 'Portal-Sea'],
+            ['name' => 'Portal-SEA'],
             ['name' => 'SISE'],
         ];
 
