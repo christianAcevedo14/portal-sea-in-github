@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::resource('users', 'UserController');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('loggedUser', function() {
@@ -46,6 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('documents', 'DocumentController');
     });
     Route::resource('tutorials' , 'TutorialController');
+    Route::get('showTutorials' , 'TutorialController@show');
+    Route::put('updateTutorials{id}' , 'TutorialController@update');
+    Route::delete('deleteTutorials{id}' , 'TutorialController@destroy');
 
 
 

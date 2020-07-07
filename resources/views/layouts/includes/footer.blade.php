@@ -44,7 +44,9 @@
                         <ul class="list-inline list-inline-dots mb-0">
 {{--                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>--}}
 {{--                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>--}}
-                            <li class="list-inline-item"><a href="{{ route('tutorials.index') }}" style="color: #0d8ddc">Tutoriales</a></li>
+                            <li class="list-inline-item btn-primary btn-pill">
+                                <a href="{{ route('tutorials.index') }}" class="text-white">Tutoriales</a>
+                            </li>
                         </ul>
                     </div>
 {{--                    <div class="col-auto">--}}
