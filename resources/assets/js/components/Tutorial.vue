@@ -7,13 +7,14 @@
                 </h1>
             </div>
             <div class="col-9">
-                <div v-if="loggedUser.title_id === 1 && !editMode" class="form-group">
-                    <button type="button" class="btn btn-primary mt-5 float-right" @click="editPage(true)">Editar Página
-                    </button>
-                </div>
-                <div v-else-if="loggedUser.title_id === 1 && editMode" class="form-group">
-                    <button type="button" class="btn btn-primary mt-5 float-right" @click="editPage(false)">Finalizar
-                    </button>
+                <div v-if="loggedUser.title_id === 1" class="form-group">
+                    <div class="form-group">
+                        <label class="custom-switch mt-5 float-right">
+                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" v-model="editMode">
+                            <span class="custom-switch-indicator"></span>
+                            <span class="custom-switch-description">Editar Página</span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,9 +92,7 @@
                                         </div>
 
                                         <div v-for="video in selectedSection.tutorial_videos" class="row mt-3">
-                                            <div class="col-1"></div>
-                                            <div class="col-10">
-                                                <div class="container form-control align-content-center m-3 p-3">
+                                                <div class="container form-control col-10 align-content-center m-auto mb-3 p-3">
                                                     <div class="row card-header m-3">
                                                         <div class="col-11">
                                                             <h4 class="mb-3">{{video.title}}</h4>
@@ -113,14 +112,9 @@
                                                         <p>{{video.description}}</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-1"></div>
                                         </div>
-
                                         <div v-if="selectedSection.tutorial_videos.length === 0" class="row mt-3">
-                                            <div class="col-1"></div>
-                                            <div class="col-10">
-                                                <div class="container form-control align-content-center m-3 p-3">
+                                                <div class="container form-control col-10 align-content-center m-auto mb-3 p-3">
                                                     <div class="col-12">
                                                         <h4 class="text-center mt-2">No hay videos para mostrar.</h4>
                                                     </div>
@@ -128,10 +122,7 @@
                                                         <p class="text-center mt-3">Esta área aún no cuenta con video-tutoriales. Por favor, seleccione otra área.</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-1"></div>
                                         </div>
-
                                     </div>
                                 </div>
                               <!--  <div class="card-footer">
@@ -323,10 +314,6 @@
                 this.form.item = 'video';
                 this.form.app = this.selectedApp.id;
                 this.form.section = this.selectedSection.id;
-            },
-
-            editPage(boolean) {
-                this.editMode = boolean;
             },
 
             createItem() {
