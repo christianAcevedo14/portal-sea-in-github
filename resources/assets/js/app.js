@@ -29,6 +29,7 @@ import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monito
 import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
 import Profile from "./components/Profile";
 import Tutorial from "./components/Tutorial";
+import AccessDenied from "./components/AccessDenied";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
@@ -83,6 +84,7 @@ window.Fire = new Vue();
 const routes = [
     { path: '/tutorials', component: Tutorial },
     { path: '/profile', component: Profile},
+    { path: '/access_denied', component: AccessDenied},
     { path: '/sise/indicators_planned', name: 'IndicatorsPlanned', props: true, component: IndicatorsPlanned},
     { path: '/sise/unplanned_informes_create', component: UnplannedInformesCreate},
     { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
@@ -146,6 +148,7 @@ Vue.component('contacts', require('../../../Modules/Sise/Resources/assets/js/com
 Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js/components/Achievements.vue').default);
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
 Vue.component('loader', require('./components/Loader.vue').default);
+Vue.component('access-denied', require('./components/AccessDenied.vue').default);
 
 
 //Directives
