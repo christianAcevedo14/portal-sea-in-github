@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label">Bio</label>
-                        <textarea class="form-control" rows="5">Big belly rude boy, million dollar hustler. Unemployed.</textarea>
+                        <textarea class="form-control" rows="5">Extensionista del Servicio de Extensión Agrícola.</textarea>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email-Address</label>
