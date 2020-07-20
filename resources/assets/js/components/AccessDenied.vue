@@ -30,6 +30,10 @@
                 this.message = "El status de su Plan de Trabajo no le permite acceder a esta página aún.";
                 this.url = '/sise/plan';
                 this.btn = "Ver Plan";
+            }else if (this.source === 'CE-9'){
+              this.message = "Usted no ha creado una CE-9."
+                this.url = "/sise/plan"
+                this.btn = "Crear CE-9"
             } else {
                 this.message = "Usted no tiene permiso para acceder a esta página.";
                 this.url = '/home/';
