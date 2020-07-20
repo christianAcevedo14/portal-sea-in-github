@@ -143,7 +143,7 @@ class User extends Authenticatable
         return $this->title_id == 27 || $this->title_id == 47 || $this->title_id == 48 || $this->title_id == 49;
     }
 
-    public function getIsAgriAttribute()
+    public function getIsAgriculturaAttribute()
     {
         return $this->title_id == 27;
     }
