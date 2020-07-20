@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <h1>¡Alto!</h1>
-                <img src="/img/hand_stop.gif" class="mb-3" alt="warning image">
+                <img src="/img/hand_stop.gif" class="mb-3" alt="warning image" style=" box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.1);">
                 <div class="text-center">
                     <h3 class="my-5">{{this.message}}</h3>
                     <a :href="this.url" class="btn btn-primary btn-lg text-white">{{this.btn}}</a>
