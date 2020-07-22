@@ -34,6 +34,10 @@
               this.message = "Usted no ha creado una CE-9."
                 this.url = "/sise/plan"
                 this.btn = "Crear CE-9"
+            }else if (this.source === 'notSupervisor'){
+              this.message = "Usted no tiene permiso para ver los indicadores de otros usuarios."
+                this.url = "/sise/plan"
+                this.btn = "Ver mi plan"
             } else {
                 this.message = "Usted no tiene permiso para acceder a esta página.";
                 this.url = '/home/';
