@@ -83,7 +83,7 @@
         <img src="/assets/images/sea-logo.png" style="height: 300px">
         <hr style="color: #129149">
         <div class="title m-b-md">
-            Portal de Desarrollo
+            Portal del Extensionista
         </div>
         <hr style="color: #129149">
         @if (Route::has('login'))
