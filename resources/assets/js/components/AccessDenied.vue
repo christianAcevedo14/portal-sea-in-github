@@ -1,11 +1,12 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <img src="/img/hand_stop.gif" class="mb-3" alt="warning image">
+            <div class="col-md-8 text-center">
+                <h1>¡Alto!</h1>
+                <img src="/img/hand_stop.gif" class="mb-3" alt="warning image" style=" box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.1);">
                 <div class="text-center">
-                    <h3 class="my-5">Usted no tiene permiso para ver esta página.</h3>
-                    <a :href="/home/" class="btn btn-primary btn-lg text-white"> Menú Principal</a>
+                    <h3 class="my-5">{{this.message}}</h3>
+                    <a :href="this.url" class="btn btn-primary btn-lg text-white">{{this.btn}}</a>
                 </div>
             </div>
         </div>
@@ -14,8 +15,34 @@
 
 <script>
     export default {
+        name: "AccessDenied",
+        props: ['source'],
+        data() {
+            return {
+                message: "",
+                url: '',
+                btn: "",
+            }
+        },
+        methods: {},
         mounted() {
-
+            if (this.source === 'plan_status') {
+                this.message = "El status de su Plan de Trabajo no le permite acceder a esta página aún.";
+                this.url = '/sise/plan';
+                this.btn = "Ver Plan";
+            }else if (this.source === 'CE-9'){
+              this.message = "Usted no ha creado una CE-9."
+                this.url = "/sise/plan"
+                this.btn = "Crear CE-9"
+            }else if (this.source === 'notSupervisor'){
+              this.message = "Usted no tiene permiso para ver los indicadores de otros usuarios."
+                this.url = "/sise/plan"
+                this.btn = "Ver mi plan"
+            } else {
+                this.message = "Usted no tiene permiso para acceder a esta página.";
+                this.url = '/home/';
+                this.btn = "Menú Principal";
+            }
         }
     }
 </script>

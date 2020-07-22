@@ -99,7 +99,7 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
-    { path: '/sise/approve_informes', component: ApproveInformes},
+    { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
     { path: '/sise/informes', component: Informes , children: [
             {
                 path: 'contacts',

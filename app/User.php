@@ -138,19 +138,34 @@ class User extends Authenticatable
         return $this->title_id == 40;
     }
 
-    public function getIsCFCAttribute()
+    public function getIsProgrammaticLeaderAttribute()
     {
-        return $this->title_id == 47;
-    }
-
-    public function getIsPIAAttribute()
-    {
-        return $this->title_id == 50;
+        return $this->title_id == 27 || $this->title_id == 47 || $this->title_id == 48 || $this->title_id == 49;
     }
 
     public function getIsAgriculturaAttribute()
     {
         return $this->title_id == 27;
+    }
+
+    public function getIsCFCAttribute()
+    {
+        return $this->title_id == 47;
+    }
+
+    public function getIs4hAttribute()
+    {
+        return $this->title_id == 48;
+    }
+
+    public function getIsDRCAttribute()
+    {
+        return $this->title_id == 49;
+    }
+
+    public function getIsPIAAttribute()
+    {
+        return $this->title_id == 50;
     }
 
     public function getIsSupervisorAttribute()
