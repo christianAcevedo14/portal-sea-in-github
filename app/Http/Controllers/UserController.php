@@ -84,7 +84,7 @@ class UserController extends Controller
 
         $user->update($request->except('app_id'));
         $user->apps()->sync($request->app_id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
     }
 
     /**

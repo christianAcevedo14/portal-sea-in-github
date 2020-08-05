@@ -121,7 +121,7 @@
                                     <span class="custom-control-label">San Juan</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="NULL"
+                                    <input type="radio" class="custom-control-input" name="supervised_region" value=""
                                             {{ old('supervised_region', $user->supervised_region) === NULL ? 'checked' : '' }}>
                                     <span class="custom-control-label">Ninguna</span>
                                 </label>
