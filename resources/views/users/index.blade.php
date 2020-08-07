@@ -7,14 +7,21 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if(session()->has('notification'))
-                <div class="col-sm-5 offset-7">
-                    <div class="alert alert-icon alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert"></button>
-                        <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
-                    </div>
-                </div>
-            @endif
+            <div class="col-4">
+                <h1 class="page-header">
+                    Usuarios
+                </h1>
+            </div>
+           <div class="col-8">
+               @if(session()->has('notification'))
+                   <div class="col-sm-5 offset-7">
+                       <div class="alert alert-icon alert-success alert-dismissible">
+                           <button type="button" class="close" data-dismiss="alert"></button>
+                           <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
+                       </div>
+                   </div>
+               @endif
+           </div>
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
@@ -33,42 +40,48 @@
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link active text-center" id="coordinators-tab" data-toggle="tab"
                                    href="#coordinators"
                                    role="tab" aria-controls="coordinators" aria-selected="true">Administradores /
                                     Coordinadores <br> Regionales ({{ $coordinators->count() }})</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link" id="agents-tab" data-toggle="tab" href="#agents" role="tab"
                                    aria-controls="agents" aria-selected="false">Agentes Agrícolas
                                     ({{ $agents->count() }})</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link" id="educators-tab" data-toggle="tab" href="#educators" role="tab"
                                    aria-controls="educators" aria-selected="false">Educadoras CFC
                                     ({{ $educators->count() }})</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link" id="specialists-tab" data-toggle="tab" href="#specialists"
                                    role="tab" aria-controls="specialists" aria-selected="false">Especialistas
                                     ({{ $specialists->count() }})</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link" id="directors-tab" data-toggle="tab" href="#directors" role="tab"
                                    aria-controls="directors" aria-selected="false">Directores de Departamento
                                     ({{ $directors->count() }})</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="width: 150px">
                                 <a class="nav-link" id="administrativo-tab" data-toggle="tab" href="#administrativo"
                                    role="tab"
                                    aria-controls="administrativo" aria-selected="false">Personal Administrativo
                                     ({{ $administrativos->count() }})</a>
                             </li>
+                            <li class="nav-item" style="width: 150px">
+                                <a class="nav-link" id="opes-tab" data-toggle="tab" href="#opes"
+                                   role="tab"
+                                   aria-controls="opes" aria-selected="false">Oficina de Planificación
+                                    ({{ $opes->count() }})</a>
+                            </li>
                         </ul>
                         <br>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane show active" id="coordinators" role="tabpanel"
+                            <div class="tab-pane show active table-responsive" id="coordinators" role="tabpanel"
                                  aria-labelledby="coordinators-tab">
                                 <table class="table table-hover">
                                     <thead>
@@ -109,7 +122,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="agents" role="tabpanel" aria-labelledby="agents-tab">
+                            <div class="tab-pane fade table-responsive" id="agents" role="tabpanel" aria-labelledby="agents-tab">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -133,7 +146,7 @@
                                                                 class="fe fe-trash-2"></i></button>
                                                 </form>
                                             </th>
-                                           <th><span class="avatar"
+                                            <th><span class="avatar"
                                                       style="background-image: url({{($agent->avatar)}})"></span></th>
                                             <th>{{ $agent->full_name }}</th>
                                             <td>{{ $agent->title->description }}</td>
@@ -148,7 +161,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="educators" role="tabpanel" aria-labelledby="educators-tab">
+                            <div class="tab-pane fade table-responsive" id="educators" role="tabpanel" aria-labelledby="educators-tab">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -188,7 +201,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="directors" role="tabpanel" aria-labelledby="directors-tab">
+                            <div class="tab-pane fade table-responsive" id="directors" role="tabpanel" aria-labelledby="directors-tab">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -228,7 +241,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="specialists" role="tabpanel"
+                            <div class="tab-pane fade table-responsive" id="specialists" role="tabpanel"
                                  aria-labelledby="specialists-tab">
                                 <table class="table table-hover">
                                     <thead>
@@ -269,7 +282,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="administrativo" role="tabpanel"
+                            <div class="tab-pane fade table-responsive" id="administrativo" role="tabpanel"
                                  aria-labelledby="administrativo-tab">
                                 <table class="table table-hover">
                                     <thead>
@@ -303,6 +316,50 @@
                                             <td>{{ $administrativo->programmatic_unit->description }}</td>
                                             <td>
                                                 <a href="{{ route('users.edit', $administrativo->id) }}"
+                                                   class="btn btn-sm btn-pill btn-warning"><i
+                                                            class="fe fe-edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade table-responsive" id="opes" role="tabpanel"
+                                 aria-labelledby="opes-tab">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Título</th>
+                                        <th scope="col">Unidad Programática</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="usersTable">
+                                    @foreach($opes as $ope)
+                                        <tr>
+                                            <th>
+                                                @if($ope->title_id !== 1)
+                                                    <form action="{{ route('users.destroy', $ope) }}"
+                                                          method="post"
+                                                          onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        <button class="btn btn-sm btn-pill btn-danger"><i
+                                                                    class="fe fe-trash-2"></i></button>
+                                                    </form>
+                                                @endIf
+                                            </th>
+                                            <th><span class="avatar"
+                                                      style="background-image: url({{($ope->avatar)}})"></span>
+                                            </th>
+                                            <th>{{ $ope->full_name }}</th>
+                                            <td>{{ $ope->title->description }}</td>
+                                            <td>{{ $ope->programmatic_unit->description }}</td>
+                                            <td>
+                                                <a href="{{ route('users.edit', $ope->id) }}"
                                                    class="btn btn-sm btn-pill btn-warning"><i
                                                             class="fe fe-edit"></i></a>
                                             </td>

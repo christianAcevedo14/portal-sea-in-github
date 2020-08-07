@@ -22,11 +22,12 @@ class UserController extends Controller
     {
         $agents = User::with(['programmatic_unit', 'title'])->agents()->orderBy('first_name')->get();
         $educators = User::with(['programmatic_unit', 'title'])->cfc()->orderBy('first_name')->get();
-        $specialists = User::with(['programmatic_unit', 'title'])->specialists()->orderBy('first_name')->get();
+        $specialists = User::with(['programmatic_unit', 'title'])->specialists()->where('id' , '!=' , 147)->orderBy('first_name')->get();
         $coordinators = User::with(['programmatic_unit', 'title'])->coordinators()->orderBy('first_name')->get();
         $directors = User::with(['programmatic_unit', 'title'])->directors()->orderBy('first_name')->get();
-        $administrativos = User::with(['programmatic_unit', 'title'])->administrativo()->orderBy('first_name')->get();
-        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativos'));
+        $administrativos = User::with(['programmatic_unit', 'title'])->administrativo()->orWhere('id' , '=' , 147)->orderBy('first_name')->get();
+        $opes = User::with(['programmatic_unit', 'title'])->whereIn('title_id' , [1, 4, 26])->orderBy('first_name')->get();
+        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativos' , 'opes'));
     }
 
     /**
@@ -83,7 +84,7 @@ class UserController extends Controller
 
         $user->update($request->except('app_id'));
         $user->apps()->sync($request->app_id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
     }
 
     /**
