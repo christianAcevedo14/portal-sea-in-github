@@ -132,13 +132,13 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header modal-header-warning">
-                        <h4 class="modal-title"  style="font-weight: bold; color:white;">ANUNCIO IMPORTANTE</h4>
+                        <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
                         {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>--}}
                     </div>
                     <div class="modal-body">
-                        <p> Esta accediendo un sistema con seguridad controlada. Al entrar usted certifica que es
+                        <p> Usted esta accediendo un sistema con seguridad controlada. Al entrar usted certifica que es
                             usuario autotizado del Servicio de Extensión Agrícola. </p>
 
                         <p>Acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la politica de
