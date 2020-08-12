@@ -138,12 +138,12 @@
                         </button>--}}
                     </div>
                     <div class="modal-body">
-                        <p> Usted esta accediendo un sistema con seguridad controlada. Al entrar usted certifica que es
+                        <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted certifica que es un
                             usuario autotizado del Servicio de Extensión Agrícola. </p>
 
-                        <p>Acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la politica de
-                            tecnología e informacion de la Universidad de Puerto Rico y a cualquier otra disposicion ley
-                            estatal y federal segun aplicable.</p>
+                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de
+                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley
+                            estatal y federal según aplicable.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Acepto</button>
