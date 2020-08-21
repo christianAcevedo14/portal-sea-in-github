@@ -14,22 +14,31 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-auto pb-3">
+                                <span class="avatar avatar-xl"
+                                      style="background-image: url({{asset($user->avatar)}})"></span>
+                            </div>
+                            <div class="col">
                                 <div class="form-group">
-                                    <select name="title_id" class="custom-select">
+                                    <select name="title_id" class="custom-select"
+                                            @if(Auth::user()->title_id != 1) disabled @endif>
                                         <option selected>Título</option>
                                         @foreach($titles as $title)
-                                            <option value="{{ $title->id }}" {{ (old("title_id", $user->title->id) == $title->id ? "selected":"") }}>{{ $title->description }}</option>
+                                            <option
+                                                value="{{ $title->id }}" {{ (old("title_id", $user->title->id) == $title->id ? "selected":"") }}>{{ $title->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="col">
                                 <div class="form-group">
-                                    <select name="programmatic_unit_id" class="custom-select">
+                                    <select name="programmatic_unit_id" class="custom-select"
+                                            @if(Auth::user()->title_id != 1) disabled @endif>
                                         <option selected>Unidad Programática</option>
                                         @foreach($programmatic_units as $programmatic_unit)
-                                            <option value="{{ $programmatic_unit->id }}" {{ (old("programmatic_unit_id", $user->programmatic_unit->id) == $programmatic_unit->id ? "selected":"") }}>{{ $programmatic_unit->description }}</option>
+                                            <option
+                                                value="{{ $programmatic_unit->id }}" {{ (old("programmatic_unit_id", $user->programmatic_unit->id) == $programmatic_unit->id ? "selected":"") }}>{{ $programmatic_unit->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -73,8 +82,20 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control" placeholder="Email"
-                                           value="{{ old('email', $user->email) }}">
+                                           value="{{ old('email', $user->email) }}"
+                                           @if(Auth::user()->title_id != 1) disabled @endif>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="password" name="password" class="form-control" placeholder="Password"
+                                       value="{{ old('password'), $user->password }}">
+                            </div>
+                            <div class="col-sm-6 pb-3">
+                                <input type="password" name="confirm password" class="form-control"
+                                       placeholder="Confirm Password"
+                                       value="{{ old('password'), $user->password }}">
                             </div>
                         </div>
                         <div class="row">
@@ -84,9 +105,10 @@
                                     @foreach($apps as $app)
                                         <label class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input" name="app_id[]"
-{{--                                                   @if ($app->id === 2 || $app->id === 8) checked="checked" disabled--}}
-{{--                                                   @endif--}}
-                                                   value="{{ $app->id }}" {{ old('app_id', $user->apps)->contains($app->id) ? 'checked' : '' }}>
+                                                   {{--                                                   @if ($app->id === 2 || $app->id === 8) checked="checked" disabled--}}
+                                                   {{--                                                   @endif--}}
+                                                   value="{{ $app->id }}"
+                                                   {{ old('app_id', $user->apps)->contains($app->id) ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                             <span class="custom-control-label">{{ $app->name }}</span>
                                         </label>
                                     @endforeach
@@ -97,41 +119,47 @@
                             <div class="form-label">Región a supervisar</div>
                             <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="100"
-                                            {{ old('supervised_region', $user->supervised_region) === 100 ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value="100"
+                                           {{ old('supervised_region', $user->supervised_region) === 100 ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">Arecibo</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="200"
-                                            {{ old('supervised_region', $user->supervised_region) === 200 ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value="200"
+                                           {{ old('supervised_region', $user->supervised_region) === 200 ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">Caguas</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="300"
-                                            {{ old('supervised_region', $user->supervised_region) === 300 ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value="300"
+                                           {{ old('supervised_region', $user->supervised_region) === 300 ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">Mayagüez</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="400"
-                                            {{ old('supervised_region', $user->supervised_region) === 400 ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value="400"
+                                           {{ old('supervised_region', $user->supervised_region) === 400 ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">Ponce</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value="500"
-                                            {{ old('supervised_region', $user->supervised_region) === 500 ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value="500"
+                                           {{ old('supervised_region', $user->supervised_region) === 500 ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">San Juan</span>
                                 </label>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" name="supervised_region" value=""
-                                            {{ old('supervised_region', $user->supervised_region) === NULL ? 'checked' : '' }}>
+                                    <input type="radio" class="custom-control-input" name="supervised_region"
+                                           value=""
+                                           {{ old('supervised_region', $user->supervised_region) === NULL ? 'checked' : '' }} @if(Auth::user()->title_id != 1) disabled @endif>
                                     <span class="custom-control-label">Ninguna</span>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                            <a href="{{ route('users.index') }}" class="btn btn-secondary"
-                               onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-secondary"
+                           onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
                         <span class="m-1"></span>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
