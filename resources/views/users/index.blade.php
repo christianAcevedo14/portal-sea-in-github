@@ -17,7 +17,7 @@
                    <div class="col-sm-5 offset-7">
                        <div class="alert alert-icon alert-success alert-dismissible">
                            <button type="button" class="close" data-dismiss="alert"></button>
-                           <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
+                           <i class="fe fe-check mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
                        </div>
                    </div>
                @endif
