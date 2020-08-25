@@ -81,10 +81,30 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
+       if ($request['password'] === null ) {
 
-        $user->update($request->except('app_id'));
-        $user->apps()->sync($request->app_id);
-        return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
+            $user->update($request->except('app_id' , 'password' , 'confirm_password'));
+            $user->apps()->sync($request->app_id);
+
+            if (auth()->user()->isAdmin) {
+                return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
+            } else {
+                return redirect()->route('home')->with('notification', 'Perfil editado exitosamente.');
+            }
+
+        } else {
+
+            $user->update($request->except('app_id' , 'confirm_password'));
+            $user->apps()->sync($request->app_id);
+
+            if (auth()->user()->isAdmin) {
+                return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
+            } else {
+                return redirect()->route('home')->with('notification', 'Perfil editado exitosamente.');
+            }
+
+        }
+
     }
 
     /**
