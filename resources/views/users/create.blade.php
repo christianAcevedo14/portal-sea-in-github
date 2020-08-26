@@ -6,6 +6,9 @@
 
 @section('content')
     <div class="container">
+        @if(!(Auth::user()->isAdmin))
+            <access-denied></access-denied>
+        @else
         <div class="row row-cards">
             <div class="col-sm-12">
                 <form action="{{ route('users.store') }}" class="card" method="post">
@@ -129,6 +132,7 @@
                 </form>
             </div>
         </div>
+        @endif
     </div>
 @endsection
 
