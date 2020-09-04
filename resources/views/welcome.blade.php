@@ -120,9 +120,10 @@
         @if (Route::has('login'))
             <div class="links">
                 @auth
-                    <a href="{{ url('/home') }}">Página Principal</a>
+                    <a href="{{ url('/home') }}" class="btn btn-success">
+                        Página Principal</a>
                 @else
-                    <a href="{{ route('login') }}">
+                    <a href="{{ route('login') }}" class="btn btn-success">
                         Iniciar Sesión</a>
                 @endauth
             </div>
