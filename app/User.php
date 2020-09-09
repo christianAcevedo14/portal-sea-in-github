@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Sise\Entities\AccessRequest;
 use Modules\Sise\Entities\FederalProgramPersonContact;
 use Modules\Sise\Entities\Historia;
 use Modules\Sise\Entities\Plan;
@@ -33,6 +34,11 @@ class User extends Authenticatable
     function plans()
     {
         return $this->hasMany(Plan::class);
+    }
+
+    function access_requests()
+    {
+        return $this->hasMany(AccessRequest::class);
     }
 
     function participants()
