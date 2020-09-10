@@ -51,9 +51,16 @@ class UserController extends Controller
      */
     public function store(StoreUser $user)
     {
-        $userPassword = array_merge($user->except('app_id' , 'password') , ['password' => Hash::make($user->password)]);
+        $userPassword = array_merge($user->except('app_id' , 'password','avatar') , ['password' => Hash::make($user->password)]);
         $new_user = User::create($userPassword);
         $new_user->apps()->attach($user->app_id);
+//        $imagePath ='/storage/' . request('avatar')->store('img','public');
+
+//        $new_user -> avatar = $imagePath;
+//                  $name = $user->input('name', 'Sally');
+
+//        dd($new_user);
+
         return redirect()->route('users.index')->with('notification', 'Usuario creado exitosamente con contraseña temporera: 123123');
     }
 
@@ -79,12 +86,21 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(User $user, Request $request)
+    public function update(User $user,Request $request)
     {
-       if ($request['password'] === null ) {
+        $avatar = $user->avatar;
+       if ($request->password === null ) {
 
-            $user->update($request->except('app_id' , 'password' , 'confirm_password'));
+            $user->update(request()->except('app_id' ,'avatar', 'password' , 'confirm_password'));
             $user->apps()->sync($request->app_id);
+
+           if($request->hasFile('avatar')) {
+               $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+
+               $user->update([
+                   'avatar' => $imagePath,
+               ]);
+           }
 
             if (auth()->user()->isAdmin) {
                 return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
@@ -92,10 +108,21 @@ class UserController extends Controller
                 return redirect()->route('home')->with('notification', 'Perfil editado exitosamente.');
             }
 
+
+
+
         } else {
 
-            $user->update($request->except('app_id' , 'confirm_password'));
+            $user->update(request()->except('app_id' , 'confirm_password'));
             $user->apps()->sync($request->app_id);
+
+           if($request->hasFile('avatar')) {
+               $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+
+               $user->update([
+                   'avatar' => $imagePath,
+               ]);
+           }
 
             if (auth()->user()->isAdmin) {
                 return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');

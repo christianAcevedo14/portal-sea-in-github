@@ -25,7 +25,7 @@
         </div>
         <div class="row row-cards">
             <div class="col-sm-12">
-                <form action="{{ route('users.update', $user) }}" class="card" method="post">
+                <form action="{{ route('users.update', $user) }}" class="card" method="post" enctype="multipart/form-data">
 {{--                    <div class="card-header">--}}
 {{--                        <h3 class="card-title">{{ $user->full_name }}</h3>--}}
 {{--                    </div>--}}
@@ -137,6 +137,12 @@
                                 <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                             </div>
                         </div>
+                            <div class="row">
+                                <div class="col-sm-6 pb-3">
+                                    <span for="picture" class="form-label"> Foto de perfil </span>
+                                    <input type="file" id="avatar" name="avatar" class="form-control-file" >
+                                </div>
+                            </div>
                         <div class="row" @if(!(Auth::user()->isAdmin)) hidden @endif>
                             <div class="col-sm-12">
                                 <div class="form-group">
