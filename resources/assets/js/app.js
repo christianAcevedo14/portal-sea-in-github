@@ -170,16 +170,21 @@ Vue.directive('tooltip', function(el,binding){
         isLoading: false,
         counter : 0,
         axiosInterceptor: null,
+        minDate: '',
+        maxDate: '',
     },
 
     mounted() {
-      // this.enableInterceptor()
-
+        this.dateRange();
+        // this.enableInterceptor()
         Fire.$on('load', () => {
             this.load();
         })
         Fire.$on('finishLoad', () => {
             this.finishLoad();
+        })
+        Fire.$on('dateRange', () => {
+            this.dateRange();
         })
     },
 
@@ -194,6 +199,10 @@ Vue.directive('tooltip', function(el,binding){
         searchit(){
             console.log("searching...");
             Fire.$emit('searching');
+        },
+        dateRange() {
+            sessionStorage.minDate = moment('2020-01-01').format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2020-09-30").format("YYYY-MM-DD");
         },
 
         // enableInterceptor() {
