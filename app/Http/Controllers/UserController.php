@@ -51,15 +51,9 @@ class UserController extends Controller
      */
     public function store(StoreUser $user)
     {
-        $userPassword = array_merge($user->except('app_id' , 'password','avatar') , ['password' => Hash::make($user->password)]);
+        $userPassword = array_merge($user->except('app_id' , 'password') , ['password' => Hash::make($user->password)]);
         $new_user = User::create($userPassword);
         $new_user->apps()->attach($user->app_id);
-//        $imagePath ='/storage/' . request('avatar')->store('img','public');
-
-//        $new_user -> avatar = $imagePath;
-//                  $name = $user->input('name', 'Sally');
-
-//        dd($new_user);
 
         return redirect()->route('users.index')->with('notification', 'Usuario creado exitosamente con contraseña temporera: 123123');
     }

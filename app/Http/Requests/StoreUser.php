@@ -29,7 +29,6 @@ class StoreUser extends FormRequest
             'first_name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'avatar' => 'image',
             'app_id.0' => 'required',
         ];
     }
