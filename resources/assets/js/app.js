@@ -36,8 +36,8 @@ import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
-import RequestedMonthsIndex from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
+import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 
 
 /*let moment = require('moment');
@@ -104,6 +104,7 @@ const routes = [
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
+    { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
     { path: '/sise/informes', component: Informes , children: [
             {
