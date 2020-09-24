@@ -45,7 +45,7 @@
     </script>
     <style>
         #myBtn {
-            display: none;
+            visibility: hidden;
             position: fixed;
             bottom: 20px;
             right: 30px;
@@ -58,6 +58,8 @@
             cursor: pointer;
             padding: 15px;
             border-radius: 4px;
+            opacity: 0;
+            transition: .5s ease;
         }
 
         /*#myBtn:hover {*/
@@ -159,10 +161,12 @@
         window.onscroll = function() {scrollFunction()};
 
         function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
+            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+                mybutton.style.visibility = "visible";
+                mybutton.style.opacity = "1";
             } else {
-                mybutton.style.display = "none";
+                mybutton.style.visibility = "hidden";
+                mybutton.style.opacity = "0";
             }
         }
 

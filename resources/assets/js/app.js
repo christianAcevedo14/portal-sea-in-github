@@ -26,6 +26,7 @@ import UnplannedInformesCreate from "../../../Modules/Sise/Resources/assets/js/c
 import SuperviseUnplannedInformes from "../../../Modules/Sise/Resources/assets/js/components/SuperviseUnplannedInformes";
 import CRUDFPPC from "../../../Modules/Sise/Resources/assets/js/components/CRUDFPPC";
 import Monitor from "../../../Modules/Sise/Resources/assets/js/components/Monitor";
+import Ftes from "../../../Modules/Sise/Resources/assets/js/components/Ftes";
 import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
 import Profile from "./components/Profile";
 import Tutorial from "./components/Tutorial";
@@ -35,6 +36,8 @@ import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
+import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
+import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 
 
 /*let moment = require('moment');
@@ -90,6 +93,7 @@ const routes = [
     { path: '/sise/supervise_unplanned_informes', component: SuperviseUnplannedInformes},
     { path: '/sise/unplanned_informes', component: UnplannedInformes},
     { path: '/sise/monitor', component: Monitor},
+    { path: '/sise/fte', component: Ftes},
     { path: '/sise/crud_fppc', component: CRUDFPPC },
     { path: '/sise/fppc', component: FPPC },
     { path: '/sise/enterprise', component: Enterprise },
@@ -99,6 +103,8 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
+    { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
+    { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
     { path: '/sise/informes', component: Informes , children: [
             {
@@ -170,16 +176,21 @@ Vue.directive('tooltip', function(el,binding){
         isLoading: false,
         counter : 0,
         axiosInterceptor: null,
+        minDate: '',
+        maxDate: '',
     },
 
     mounted() {
-      // this.enableInterceptor()
-
+        this.dateRange();
+        // this.enableInterceptor()
         Fire.$on('load', () => {
             this.load();
         })
         Fire.$on('finishLoad', () => {
             this.finishLoad();
+        })
+        Fire.$on('dateRange', () => {
+            this.dateRange();
         })
     },
 
@@ -194,6 +205,10 @@ Vue.directive('tooltip', function(el,binding){
         searchit(){
             console.log("searching...");
             Fire.$emit('searching');
+        },
+        dateRange() {
+            sessionStorage.minDate = moment("2020-01-01").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2020-09-30").format("YYYY-MM-DD");
         },
 
         // enableInterceptor() {

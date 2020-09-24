@@ -22,12 +22,12 @@ class UserController extends Controller
     {
         $agents = User::with(['programmatic_unit', 'title'])->agents()->orderBy('first_name')->get();
         $educators = User::with(['programmatic_unit', 'title'])->cfc()->orderBy('first_name')->get();
-        $specialists = User::with(['programmatic_unit', 'title'])->specialists()->where('id' , '!=' , 147)->orderBy('first_name')->get();
+        $specialists = User::with(['programmatic_unit', 'title'])->specialists()->where('id', '!=', 147)->orderBy('first_name')->get();
         $coordinators = User::with(['programmatic_unit', 'title'])->coordinators()->orderBy('first_name')->get();
         $directors = User::with(['programmatic_unit', 'title'])->directors()->orderBy('first_name')->get();
-        $administrativos = User::with(['programmatic_unit', 'title'])->administrativo()->orWhere('id' , '=' , 147)->orderBy('first_name')->get();
-        $opes = User::with(['programmatic_unit', 'title'])->whereIn('title_id' , [1, 4, 26])->orderBy('first_name')->get();
-        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativos' , 'opes'));
+        $administrativos = User::with(['programmatic_unit', 'title'])->administrativo()->orWhere('id', '=', 147)->orderBy('first_name')->get();
+        $opes = User::with(['programmatic_unit', 'title'])->whereIn('title_id', [1, 4, 26])->orderBy('first_name')->get();
+        return view('users.index', compact('agents', 'educators', 'specialists', 'coordinators', 'directors', 'administrativos', 'opes'));
     }
 
     /**
@@ -51,16 +51,17 @@ class UserController extends Controller
      */
     public function store(StoreUser $user)
     {
-        $userPassword = array_merge($user->except('app_id' , 'password') , ['password' => Hash::make($user->password)]);
+        $userPassword = array_merge($user->except('app_id', 'password'), ['password' => Hash::make($user->password)]);
         $new_user = User::create($userPassword);
         $new_user->apps()->attach($user->app_id);
+
         return redirect()->route('users.index')->with('notification', 'Usuario creado exitosamente con contraseña temporera: 123123');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,7 +70,7 @@ class UserController extends Controller
         $apps = App::select('id', 'name')->get();
         $titles = Title::select('id', 'description')->get();
         $programmatic_units = ProgrammaticUnit::select('id', 'description')->get();
-        return view('users.edit', compact('user','apps', 'titles', 'programmatic_units'));
+        return view('users.edit', compact('user', 'apps', 'titles', 'programmatic_units'));
     }
 
     /**
@@ -81,27 +82,37 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
-       if ($request['password'] === null ) {
+        $avatar = $user->avatar;
+        if ($request->password === null) {
 
-            $user->update($request->except('app_id' , 'password' , 'confirm_password'));
+            $user->update(request()->except('app_id', 'avatar', 'password', 'confirm_password'));
             $user->apps()->sync($request->app_id);
 
-            if (auth()->user()->isAdmin) {
-                return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
-            } else {
-                return redirect()->route('home')->with('notification', 'Perfil editado exitosamente.');
+            if ($request->hasFile('avatar')) {
+                $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+
+                $user->update([
+                    'avatar' => $imagePath,
+                ]);
             }
+
+            return back()->with('notification', 'Perfil actualizado exitosamente.');
+
 
         } else {
 
-            $user->update($request->except('app_id' , 'confirm_password'));
+            $user->update(request()->except('app_id', 'confirm_password'));
             $user->apps()->sync($request->app_id);
 
-            if (auth()->user()->isAdmin) {
-                return redirect()->route('users.index')->with('notification', 'Usuario editado exitosamente.');
-            } else {
-                return redirect()->route('home')->with('notification', 'Perfil editado exitosamente.');
+            if ($request->hasFile('avatar')) {
+                $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+
+                $user->update([
+                    'avatar' => $imagePath,
+                ]);
             }
+
+            return back()->with('notification', 'Perfil actualizado exitosamente.');
 
         }
 
