@@ -44,6 +44,33 @@
         });
     </script>
     <style>
+        /*usado en profile para esconder input*/
+        #avatar{
+            display: none;
+        }
+
+        .image {
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            width: 100px;
+        }
+        .label {
+            background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+            bottom: -65px;
+            color: #fff;
+            left: 0;
+            margin: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            transition:0.1s all;
+        }
+
+        .image:hover .label {
+            bottom: 0px;
+        }
+
         #myBtn {
             visibility: hidden;
             position: fixed;
