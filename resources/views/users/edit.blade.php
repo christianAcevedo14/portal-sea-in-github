@@ -38,8 +38,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 pb-5 text-center align-content-center">
-                                <span class="avatar avatar-xl"
-                                      style="background-image: url({{asset($user->avatar)}}) ; width: 8em ; height: 8em"></span>
+                                <span id="image" class="avatar avatar-xl image" type="file" onclick = "pro1()"
+                                      style="background-image: url({{asset($user->avatar)}}) ; width: 8em ; height: 8em">
+                                      <p class="label">Cambiar</p>
+                                </span>
+
+                                <input type="file" id="avatar" name="avatar" class="form-control-file" >
                             </div>
                             <div class="col-12 text-center pb-2">
                                 <h3>{{ $user->full_name }}</h3>
@@ -140,12 +144,6 @@
                                     <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6 pb-3">
-                                    <span for="picture" class="form-label"> Foto de perfil </span>
-                                    <input type="file" id="avatar" name="avatar" class="form-control-file">
-                                </div>
-                            </div>
                             <div class="row" @if(!(Auth::user()->isAdmin)) hidden @endif>
                                 <div class="col-sm-12">
                                     <div class="form-group">
@@ -224,9 +222,16 @@
 @endsection
 
 @section('custom-scripts')
+    <script>
+        function pro1(){
+            document.getElementById("avatar").click();
+        }
+    </script>
+
 
     <script>
         require(['input-mask']);
     </script>
+
 
 @endsection

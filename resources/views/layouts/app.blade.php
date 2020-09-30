@@ -44,6 +44,33 @@
         });
     </script>
     <style>
+        /*usado en profile para esconder input*/
+        #avatar{
+            display: none;
+        }
+
+        .image {
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            width: 100px;
+        }
+        .label {
+            background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+            bottom: -65px;
+            color: #fff;
+            left: 0;
+            margin: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            transition:0.1s all;
+        }
+
+        .image:hover .label {
+            bottom: 0px;
+        }
+
         #myBtn {
             visibility: hidden;
             position: fixed;
@@ -62,6 +89,19 @@
             transition: .5s ease;
         }
 
+        .sea-lg {
+            visibility: hidden;
+            font-size: 1px;
+        }
+
+        /* check if the screen size is at least 400px */
+        @media only screen and (min-width: 600px) {
+            .md-lg {
+                visibility: visible;
+                font-size: 18px;
+            }
+        }
+
         /*#myBtn:hover {*/
         /*    background-color: #2d89f0;*/
         /*}*/
@@ -76,8 +116,8 @@
                 <div class="container">
                     <div class="d-flex">
                         <a class="header-brand" href="/home">
-                            <img src="{{ asset('demo/brand/portal.png') }}" class="header-brand-img" alt="tabler logo">
-                            <label class="text-center text-black" style="height: 10px">| Servicio de Extensión Agrícola </label>
+                            <img src="{{ asset('demo/brand/portal.png') }}" class="header-brand-img" alt="portal logo">
+                            <label class="text-center text-black sea-lg md-lg" style="height: 10px">| Servicio de Extensión Agrícola </label>
                         </a>
                         <div class="d-flex order-lg-2 ml-auto">
                             <notifications></notifications>
