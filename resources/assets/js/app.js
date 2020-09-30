@@ -207,7 +207,7 @@ Vue.directive('tooltip', function(el,binding){
             Fire.$emit('searching');
         },
         dateRange() {
-            sessionStorage.minDate = moment("2020-01-01").format("YYYY-MM-DD");
+            sessionStorage.minDate = moment("2020-04-01").format("YYYY-MM-DD");
             sessionStorage.maxDate = moment("2020-09-30").format("YYYY-MM-DD");
         },
 
