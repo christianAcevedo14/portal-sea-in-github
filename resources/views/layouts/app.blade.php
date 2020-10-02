@@ -102,6 +102,16 @@
             }
         }
 
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+
         /*#myBtn:hover {*/
         /*    background-color: #2d89f0;*/
         /*}*/
@@ -215,6 +225,14 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
 
     </script>
 </body>
