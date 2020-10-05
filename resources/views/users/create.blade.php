@@ -85,7 +85,7 @@
                                     <div class="form-label">Aplicaciones autorizadas</div>
                                     @foreach($apps as $app)
                                         <label class="custom-control custom-checkbox custom-control-inline">
-                                            <input type="checkbox" class="custom-control-input" name="app_id[]" @if ($app->id === 2 || $app->id === 8 ) checked="checked" disabled @endif value="{{ $app->id }}">
+                                            <input type="checkbox" class="custom-control-input" name="app_id[]" @if ($app->id === 2 || $app->id === 8 ) checked="checked" @endif value="{{ $app->id }}">
                                             <span class="custom-control-label">{{ $app->name }}</span>
                                         </label>
                                     @endforeach
