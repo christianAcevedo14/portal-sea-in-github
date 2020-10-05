@@ -34,38 +34,38 @@
                     </div>
                 @endif
             </div>
-            <div class="row row-cards">
-                @foreach(auth()->user()->apps->where('id', '=', 2) as $sise)
-                    <div class="col-sm-6 col-md-4 col-lg-2">
-                        <a href="{{ url($sise->url) }}" class="nounderline">
-                            <div class="card m-2 text-dark">
-                                <div class="card-body p-5 text-center">
-                                    <div class="h1">
-                                        <i class="{{ $sise->icon }}"></i>
-                                        {{--                                    <img src="/img/regular-document.png" alt="">--}}
-                                        {{--                                    <span class="m-2">{{$sise->name}}</span>--}}
-                                    </div>
-                                    <div class="text-muted">{{$sise->name}}</div>
+        </div>
+        <div class="row row-cards">
+            @foreach(auth()->user()->apps->where('id', '=', 2) as $sise)
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <a href="{{ url($sise->url) }}" class="nounderline">
+                        <div class="card m-2 text-dark">
+                            <div class="card-body p-5 text-center">
+                                <div class="h1">
+                                    <i class="{{ $sise->icon }}"></i>
+                                    {{--                                    <img src="/img/regular-document.png" alt="">--}}
+                                    {{--                                    <span class="m-2">{{$sise->name}}</span>--}}
                                 </div>
+                                <div class="text-muted">{{$sise->name}}</div>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
-                @foreach(auth()->user()->apps->where('id', '!=', 2) as $app)
-                    <div class="col-sm-6 col-md-4 col-lg-2">
-                        <a href="{{ url($app->url) }}" class="nounderline">
-                            <div class="card m-2 text-dark">
-                                <div class="card-body p-5 text-center">
-                                    <div class="h1">
-                                        <i class="{{ $app->icon }}"></i>
-                                    </div>
-                                    <div class="text-muted">{{$app->name}}</div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+            @foreach(auth()->user()->apps->where('id', '!=', 2) as $app)
+                <div class="col-sm-6 col-md-4 col-lg-2">
+                    <a href="{{ url($app->url) }}" class="nounderline">
+                        <div class="card m-2 text-dark">
+                            <div class="card-body p-5 text-center">
+                                <div class="h1">
+                                    <i class="{{ $app->icon }}"></i>
                                 </div>
+                                <div class="text-muted">{{$app->name}}</div>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
