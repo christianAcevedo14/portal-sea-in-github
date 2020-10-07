@@ -192,8 +192,10 @@ Vue.directive('tooltip', function(el,binding){
         Fire.$on('dateRange', () => {
             this.dateRange();
         })
+        Fire.$on('search', () => {
+            this.searchit();
+        })
     },
-
 
     methods: {
         load(){
@@ -203,8 +205,11 @@ Vue.directive('tooltip', function(el,binding){
             this.isLoading = false;
         },
         searchit(){
-            console.log("searching...");
-            Fire.$emit('searching');
+            setTimeout(() => {
+                Fire.$emit('searching');
+            }, 800);
+            // console.log("searching...");
+            // Fire.$emit('searching');
         },
         dateRange() {
             sessionStorage.minDate = moment("2020-04-01").format("YYYY-MM-DD");
