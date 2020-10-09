@@ -88,6 +88,41 @@ class User extends Authenticatable
         return $query->whereIn('title_id', [16, 15, 22, 26, 27, 40, 42, 45, 47, 48, 49]);
     }
 
+    function scopeSupervisors($query)
+    {
+        return $query->whereIn('title_id', [46, 26, 16, 23, 24, 27, 42, 40, 47]);
+    }
+
+    function scopePean($query)
+    {
+        return $query->where('title_id', 16);
+    }
+
+    function scopeAssocDean($query)
+    {
+        return $query->where('title_id', 42);
+    }
+
+    function scopeAuxDean($query)
+    {
+        return $query->where('title_id', 40);
+    }
+
+    function scopeCFCs($query)
+    {
+        return $query->where('title_id', 47);
+    }
+
+    function scopePIA($query)
+    {
+        return $query->where('title_id', 50);
+    }
+
+    function scopeAgricultura($query)
+    {
+        return $query->where('title_id', 27);
+    }
+
     public function getIsPeanAttribute()
     {
         return $this->title_id == 16;
@@ -174,13 +209,38 @@ class User extends Authenticatable
         return $this->title_id == 50;
     }
 
+    public function getSupervisedByPeanAttribute()
+    {
+        return $this->title_id == 14;
+    }
+
+    public function getSupervisedByAssocDeanAttribute()
+    {
+        return $this->title_id == 40 || $this->title_id == 26 || $this->title_id == 23 || $this->title_id == 15 || $this->title_id == 45;
+    }
+
+    public function getSupervisedByAuxDeanAttribute()
+    {
+        return $this->title_id == 27 || $this->title_id == 47 || $this->title_id == 48 || $this->title_id == 49 || $this->title_id == 24 || $this->title_id == 53 || $this->title_id == 22 || $this->title_id == 50;
+    }
+    public function getSupervisedByCFCAttribute()
+    {
+        return $this->title_id == 16;
+    }
+    public function getSupervisedByPIAAttribute()
+    {
+        return $this->title_id == 52;
+    }
+
+    public function getSupervisedByAgriculturaAttribute()
+    {
+        return $this->id == 168;
+    }
+
     public function getIsSupervisorAttribute()
     {
-        if ($this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
-            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47)
-            return true;
-        else
-            return false;
+        return $this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
+            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47;
     }
 
     public function getRegionAttribute()
