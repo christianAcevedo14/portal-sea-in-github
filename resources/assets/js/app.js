@@ -227,9 +227,7 @@ Vue.directive('tooltip', function(el,binding){
 
             if((today === endOfGracePeriod)){
                 axios.put(`${domain}/sise/api/closeRequest/`)
-                console.log('testing completed')
             } else{
-                console.log('if statement is false')
             }
         }
         // enableInterceptor() {
