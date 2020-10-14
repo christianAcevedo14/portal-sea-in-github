@@ -106,7 +106,7 @@ const routes = [
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
     { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
-    { path: '/sise/informes', component: Informes , children: [
+    { path: '/sise/informes', name: 'Informes', props: true, component: Informes , children: [
             {
                 path: 'contacts',
                 component: Contacts
