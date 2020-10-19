@@ -106,7 +106,7 @@ const routes = [
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
     { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
-    { path: '/sise/informes', component: Informes , children: [
+    { path: '/sise/informes', name: 'Informes', props: true, component: Informes , children: [
             {
                 path: 'contacts',
                 component: Contacts
@@ -182,6 +182,7 @@ Vue.directive('tooltip', function(el,binding){
 
     mounted() {
         this.dateRange();
+        this.closeRequests();
         // this.enableInterceptor()
         Fire.$on('load', () => {
             this.load();
@@ -216,6 +217,19 @@ Vue.directive('tooltip', function(el,binding){
             sessionStorage.maxDate = moment("2020-09-30").format("YYYY-MM-DD");
         },
 
+        closeRequests(){
+            let domain = window.location.protocol + '//' + window.location.hostname;
+            let endOfGracePeriod = moment().startOf("month").add(14, "days").format("MM-DD-YYYY");
+            let today = moment().format("MM-DD-YYYY");
+           /* let minHour ='08:00'
+            let maxHour = '09:00'
+            let currentHour = moment().format('HH:mm'); */
+
+            if((today === endOfGracePeriod)){
+                axios.put(`${domain}/sise/api/closeRequest/`)
+            } else{
+            }
+        }
         // enableInterceptor() {
         //     console.log('enabled successfully');
         //     this.axiosInterceptor = window.axios.interceptors.request.use((config) => {
