@@ -38,7 +38,7 @@ import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
-
+import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
 
 /*let moment = require('moment');
 moment().format();
@@ -155,6 +155,7 @@ Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
 Vue.component('loader', require('./components/Loader.vue').default);
 Vue.component('access-denied', require('./components/AccessDenied.vue').default);
+Vue.component('fiscal-year-button', require('../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton.vue').default);
 
 
 //Directives
