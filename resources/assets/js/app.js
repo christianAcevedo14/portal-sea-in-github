@@ -85,6 +85,7 @@ window.Fire = new Vue();
  */
 
 const routes = [
+    { path: '/fiscalYearButton', name: 'FiscalYearButton', component: FiscalYearButton },
     { path: '/tutorials', component: Tutorial },
     { path: '/profile', component: Profile},
     { path: '/access_denied', component: AccessDenied},
