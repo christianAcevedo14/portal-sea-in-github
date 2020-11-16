@@ -74,7 +74,7 @@
             </h1>
         </div>
         <div class="row row-cards text-center align-content-center">
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.google.com/chrome/" class="nounderline" target="_blank">
                     <div class="card text-dark">
                         <div class="card-status bg-green"></div>
@@ -86,7 +86,7 @@
                 </a>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.microsoft.com/en-us/edge" class="nounderline" target="_blank">
                     <div class="card text-dark">
                         <div class="card-status bg-blue"></div>
@@ -98,17 +98,17 @@
                 </a>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <a href="https://www.mozilla.org/en-US/firefox/new/" class="nounderline" target="_blank">
-                    <div class="card text-dark">
-                        <div class="card-status bg-orange"></div>
-                        <div class="card-body">
-                            <h3 class="text-center">Mozilla Firefox</h3>
-                            <img src="/assets/images/logos/Firefox_logo.png" alt="" width="100" height="100">
-                        </div>
-                    </div>
-                </a>
-            </div>
+{{--            <div class="col-sm-12 col-md-6 col-lg-4">--}}
+{{--                <a href="https://www.mozilla.org/en-US/firefox/new/" class="nounderline" target="_blank">--}}
+{{--                    <div class="card text-dark">--}}
+{{--                        <div class="card-status bg-orange"></div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <h3 class="text-center">Mozilla Firefox</h3>--}}
+{{--                            <img src="/assets/images/logos/Firefox_logo.png" alt="" width="100" height="100">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </a>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection
