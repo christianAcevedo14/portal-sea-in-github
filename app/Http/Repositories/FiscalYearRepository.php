@@ -19,13 +19,14 @@ class FiscalYearRepository
         $fyStart = "10/01";
 
         $date = strtotime($inputDate);
-        $currentYear = strftime('%Y', $date);
+        $currentFiscalYear = strftime('%Y', $date);
         $inputyear = strftime('%Y', $date);
 
         $fyenddate = strtotime($fyEnd . '/' . $inputyear);
 
         if ($date >= $fyenddate) {
             $inputyear = intval($inputyear)+1;
+            $currentFiscalYear = intval($currentFiscalYear)+1;
         }
 
         if(!Session::has('originalInputYear')) {
@@ -65,7 +66,7 @@ class FiscalYearRepository
         $newStartDate = date('Y-m-d', strtotime('-1year', $fystartdate));
         $newEndDate = date('Y-m-d', $fyenddate);
 
-        return compact('fy' , 'newStartDate' , 'newEndDate', 'currentYear');
+        return compact('fy' , 'newStartDate' , 'newEndDate', 'currentFiscalYear');
     }
 
 }
