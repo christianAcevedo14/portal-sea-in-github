@@ -1,12 +1,18 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
-                <h1>¡Alto!</h1>
-                <img src="/img/hand_stop.gif" class="mb-3" alt="warning image" style=" box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.1);">
-                <div class="text-center">
-                    <h3 class="my-5">{{this.message}}</h3>
-                    <a :href="this.url" class="btn btn-primary btn-lg text-white">{{this.btn}}</a>
+            <div class="card align-content-center">
+                <div class="card-body">
+                    <div class="col-12 text-center">
+                        <h1><strong>¡Alto!</strong></h1>
+                        <img src="/img/hand_stop.gif" class="mb-3" alt="warning image">
+                        <div class="alert alert-warning" role="alert">
+                            <h3 class="my-5">{{this.message}}</h3>
+                        </div>
+                        <span class="text-center">
+                     <a :href="this.url" class="btn btn-primary btn-lg text-white">{{this.btn}}</a>
+                </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,7 +41,7 @@
                 this.url = "/sise/plan"
                 this.btn = "Crear CE-9"
             }else if (this.source === 'notSupervisor'){
-              this.message = "Usted no tiene permiso para ver los indicadores de otros usuarios."
+              this.message = "Usted no tiene permiso para ver la información de otros usuarios."
                 this.url = "/sise/plan"
                 this.btn = "Ver mi plan"
             } else {
