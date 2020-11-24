@@ -50,7 +50,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-auto">
+          {{--          <div class="col-auto">
 
                         <ul class="list-inline list-inline-dots mb-0">
 
@@ -67,11 +67,11 @@
                                 </a>
                             </li>
                         </ul>
-                        {{--                    <div class="col-auto">--}}
-                        {{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}
-                        {{--                            Código fuente</a>--}}
-                        {{--                    </div>--}}
-                    </div>
+                        --}}{{--                    <div class="col-auto">--}}{{--
+                        --}}{{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}{{--
+                        --}}{{--                            Código fuente</a>--}}{{--
+                        --}}{{--                    </div>--}}{{--
+                    </div>--}}
                 </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
