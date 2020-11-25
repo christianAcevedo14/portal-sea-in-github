@@ -11,7 +11,7 @@ class FiscalYearRepository
          * Codigo para calcular el año fiscal corriente
          */
         $inputDate = now();
-        $fyEnd = "09/30";
+        $fyEnd = "12/31";
         $fyStart = "10/01";
 
         $date = strtotime($inputDate);
