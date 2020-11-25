@@ -39,6 +39,7 @@ import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
+import MiProgreso from "../../../Modules/Sise/Resources/assets/js/components/MiProgreso";
 
 /*let moment = require('moment');
 moment().format();
@@ -104,6 +105,7 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
+    { path: '/sise/mi_progreso', component: MiProgreso},
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
     { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
