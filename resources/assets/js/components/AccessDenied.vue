@@ -38,12 +38,16 @@
                 this.btn = "Ver Plan";
             }else if (this.source === 'CE-9'){
               this.message = "Usted no ha creado una CE-9."
-                this.url = "/sise/plan"
-                this.btn = "Crear CE-9"
+                this.url = "/sise/plan";
+                this.btn = "Crear CE-9";
             }else if (this.source === 'notSupervisor'){
               this.message = "Usted no tiene permiso para ver la información de otros usuarios."
-                this.url = "/sise/plan"
-                this.btn = "Ver mi plan"
+                this.url = "/sise/plan";
+                this.btn = "Ver mi plan";
+            }else if (this.source === 'fiscal_year'){
+                this.message = "No puede crear o modificicar información para un año fiscal anterior."
+                this.url = '/home/';
+                this.btn =  "Menú Principal";
             } else {
                 this.message = "Usted no tiene permiso para acceder a esta página.";
                 this.url = '/home/';
