@@ -234,7 +234,7 @@ class User extends Authenticatable
 
     public function getSupervisedByAgriculturaAttribute()
     {
-        return $this->id == 168;
+        return $this->id == 168 || $this->title_id == 54;
     }
 
     public function getIsSupervisorAttribute()
