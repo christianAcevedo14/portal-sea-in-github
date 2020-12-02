@@ -38,7 +38,8 @@ import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
-
+import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
+import MiProgreso from "../../../Modules/Sise/Resources/assets/js/components/MiProgreso";
 
 /*let moment = require('moment');
 moment().format();
@@ -85,6 +86,7 @@ window.Fire = new Vue();
  */
 
 const routes = [
+    { path: '/fiscalYearButton', name: 'FiscalYearButton', component: FiscalYearButton },
     { path: '/tutorials', component: Tutorial },
     { path: '/profile', component: Profile},
     { path: '/access_denied', component: AccessDenied},
@@ -103,6 +105,7 @@ const routes = [
     { path: '/sise/audience', component: Audience },
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
+    { path: '/sise/mi_progreso', component: MiProgreso},
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
     { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
@@ -155,6 +158,7 @@ Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
 Vue.component('loader', require('./components/Loader.vue').default);
 Vue.component('access-denied', require('./components/AccessDenied.vue').default);
+Vue.component('fiscal-year-button', require('../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton.vue').default);
 
 
 //Directives
@@ -213,8 +217,9 @@ Vue.directive('tooltip', function(el,binding){
             // Fire.$emit('searching');
         },
         dateRange() {
-            sessionStorage.minDate = moment("2020-07-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2020-09-30").format("YYYY-MM-DD");
+            //Year needs to be updated dynamically according to current FY
+            sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-09-30").format("YYYY-MM-DD");
         },
 
         closeRequests(){
