@@ -50,28 +50,30 @@
                             </li>
                         </ul>
                     </div>
-          {{--          <div class="col-auto">
 
-                        <ul class="list-inline list-inline-dots mb-0">
+{{--               Warning!! Breaks Portal-SEA!!--}}
+                    {{--          <div class="col-auto">
+                       <ul class="list-inline list-inline-dots mb-0">
+                           <li class="list-inline-item btn-primary btn-pill">
+                               <a href="{{ route('ticket.create') }}"
+                                  target="popup"
+                                  onclick="window.open(
+                                      '{{ URL::to('ticket/ticket/create') }}',
+                                      'name',
+                                      'width=600,height=600'
+                                      )"
+                                  class="text-white">
+                                   Crear Ticket Serv
+                               </a>
+                           </li>
+                       </ul>
+                   </div>--}}
 
-                            <li class="list-inline-item btn-primary btn-pill">
-                                <a href="{{ route('ticket.create') }}"
-                                   target="popup"
-                                   onclick="window.open(
-                                       '{{ URL::to('ticket/ticket/create') }}',
-                                       'name',
-                                       'width=600,height=600'
-                                       )"
-                                   class="text-white">
-                                    Crear Ticket Serv
-                                </a>
-                            </li>
-                        </ul>
-                        --}}{{--                    <div class="col-auto">--}}{{--
-                        --}}{{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}{{--
-                        --}}{{--                            Código fuente</a>--}}{{--
-                        --}}{{--                    </div>--}}{{--
-                    </div>--}}
+{{--                    <div class="col-auto">--}}
+{{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}
+{{--                            Código fuente</a>--}}
+{{--                    </div>--}}
+
                 </div>
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
