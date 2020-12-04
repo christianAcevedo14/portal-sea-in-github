@@ -94,8 +94,8 @@
             font-size: 1px;
         }
 
-        /* check if the screen size is at least 400px */
-        @media only screen and (min-width: 600px) {
+        /* check if the screen size is at least 770px */
+        @media only screen and (min-width: 770px) {
             .md-lg {
                 visibility: visible;
                 font-size: 18px;
