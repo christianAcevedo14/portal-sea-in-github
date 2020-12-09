@@ -177,15 +177,15 @@
                         </button>--}}
                     </div>
                     <div class="modal-body">
-                        <p> El Portal del Extensionista se encuentra bajo mantenimiento. Por el momento, no podrá acceder al mismo.</p>
+                        <p> El Portal del Extensionista se encuentra bajo mantenimiento. Por el momento, no tendrá acceso a ciertas aplicaciones.</p>
 
 {{--                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de--}}
 {{--                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley--}}
 {{--                            estatal y federal según aplicable.</p>--}}
                     </div>
-                 {{--   <div class="modal-footer">
-                        <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Acepto</button>
-                    </div>--}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Continuar</button>
+                    </div>
                 </div>
 
             </div>
