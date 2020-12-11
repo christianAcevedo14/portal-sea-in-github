@@ -45,6 +45,20 @@
             border-top-right-radius: 5px;
         }
 
+        .modal-header-danger {
+            color: #fff;
+            padding: 9px 15px;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            background-color: #a41a19;
+            -webkit-border-top-left-radius: 5px;
+            -webkit-border-top-right-radius: 5px;
+            -moz-border-radius-topleft: 5px;
+            -moz-border-radius-topright: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
         .modal-body {
             height: 80%;
             overflow: auto;
@@ -131,12 +145,13 @@
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <!-- Modal content-->
-                <div class="modal-content">
+
+              {{--  <div class="modal-content">
                     <div class="modal-header modal-header-warning">
                         <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        --}}{{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>--}}
+                        </button>--}}{{--
                     </div>
                     <div class="modal-body">
                         <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted certifica que es un
@@ -148,6 +163,28 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Acepto</button>
+                    </div>
+                </div>--}}
+
+
+         {{--       For Portal-SEA Update--}}
+
+                <div class="modal-content">
+                    <div class="modal-header modal-header-danger">
+                        <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>--}}
+                    </div>
+                    <div class="modal-body">
+                        <p> El Portal del Extensionista se encuentra bajo mantenimiento. Por el momento, no tendrá acceso a ciertas aplicaciones.</p>
+
+{{--                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de--}}
+{{--                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley--}}
+{{--                            estatal y federal según aplicable.</p>--}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Continuar</button>
                     </div>
                 </div>
 
