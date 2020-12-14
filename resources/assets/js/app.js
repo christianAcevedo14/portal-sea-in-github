@@ -219,7 +219,7 @@ Vue.directive('tooltip', function(el,binding){
         dateRange() {
             //Year needs to be updated dynamically according to current FY
             sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-09-30").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-02-28").format("YYYY-MM-DD");
         },
 
         closeRequests(){
