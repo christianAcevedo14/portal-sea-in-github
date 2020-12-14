@@ -126,7 +126,7 @@ const routes = [
     },
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
-    { path: '/sise/plan', component: Plan },
+    { path: '/sise/plan', name: 'Plan', props: true,  component: Plan },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
