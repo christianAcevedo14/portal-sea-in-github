@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Sise\Entities\Program;
 use Modules\Volunteer\Entities\Category;
 use Modules\Volunteer\Entities\Volunteer;
 
@@ -21,5 +22,9 @@ class ProgrammaticArea extends Model
     public function volunteers()
     {
         return $this->hasMany(Volunteer::class);
+    }
+
+    public function programs() {
+        return $this->hasMany(Program::class, 'id');
     }
 }

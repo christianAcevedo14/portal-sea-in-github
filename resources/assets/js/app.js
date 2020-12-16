@@ -126,7 +126,7 @@ const routes = [
     },
     { path: '/sise/matter', component: Matter },
     { path: '/sise/course', component: Course },
-    { path: '/sise/plan', component: Plan },
+    { path: '/sise/plan', name: 'Plan', props: true,  component: Plan },
     { path: '/sise/*', component: Dashboard },
     { path: '/*', component: Dashboard },
 ];
@@ -219,7 +219,7 @@ Vue.directive('tooltip', function(el,binding){
         dateRange() {
             //Year needs to be updated dynamically according to current FY
             sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-09-30").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-02-28").format("YYYY-MM-DD");
         },
 
         closeRequests(){
