@@ -68,15 +68,20 @@
             @endforeach
         </div>
         <br>
-        <div class="row m-2">
-            <h1 class="page-header">
-                Navegadores Recomendados
-            </h1>
+        <div class="row mt-2">
+            <div class="col-12">
+                <h1 class="page-header">
+                    Navegadores Recomendados
+                </h1>
+            </div>
+            <div class="col-12">
+                <p>Considere utilizar uno de los siguientes navegadores para obtener la mejor experiencia dentro del Portal del Extansionista.</p>
+            </div>
         </div>
         <div class="row row-cards text-center align-content-center">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.google.com/chrome/" class="nounderline" target="_blank">
-                    <div class="card text-dark">
+                    <div class="card text-dark pulse-button">
                         <div class="card-status bg-green"></div>
                         <div class="card-body">
                             <h3 class="text-center">Google Chrome</h3>
@@ -88,7 +93,7 @@
 
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.microsoft.com/en-us/edge" class="nounderline" target="_blank">
-                    <div class="card text-dark">
+                    <div class="card text-dark pulse-button">
                         <div class="card-status bg-blue"></div>
                         <div class="card-body">
                             <h3 class="text-center">Microsoft Edge</h3>
