@@ -113,6 +113,7 @@
         }
 
         .pulse-button {
+            box-shadow: 0 0 0 0 rgba(38, 143, 255, 0.5);
             -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
             -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
             -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
