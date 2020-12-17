@@ -80,7 +80,7 @@ class User extends Authenticatable
 
     function scopeDirectors($query)
     {
-        return $query->where('title_id', 46);
+        return $query->whereIn('title_id', [46, 55]);
     }
 
     function scopeAdministrativo($query)
