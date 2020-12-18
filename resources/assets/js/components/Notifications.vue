@@ -19,9 +19,9 @@
                             new
                             Date(notification.created_at).toLocaleDateString('es-ES', {
                                 month: 'long', day: 'numeric', year:
-                                    'numeric'
+                                    'numeric' ,  time: 'numeric'
                             })
-                        }}
+                        }} - {{ new Date(notification.created_at).toLocaleTimeString('es-US' ,  { hour: '2-digit' , minute: '2-digit'})}}
                     </span>
                 </span>
                 <span>

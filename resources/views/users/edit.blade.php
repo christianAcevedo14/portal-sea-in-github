@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    @if(!(Auth::user()->id === $user->id || Auth::user()->isAdmin))
+        <access-denied></access-denied>
+    @else
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -219,6 +222,8 @@
             </div>
         </div>
     </div>
+    @endif
+
 @endsection
 
 @section('custom-scripts')
