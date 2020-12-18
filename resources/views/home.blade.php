@@ -86,7 +86,7 @@
                     <div class="card-body">
                         <h3 class="text-center">SISE 2.0</h3>
                         <img src="/img/regular-document.png" alt="Document" width="200" height="200">
-                        <p>La nueva versión de SISE trae cambios y mejoras que incrementan la funcionalidad de la herramienta.</p>
+                        <p class="mt-2">La nueva versión de SISE trae cambios y mejoras que incrementan la funcionalidad de la herramienta.</p>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     <div class="card-body">
                         <h3 class="text-center">Felices Fiestas</h3>
                         <img src="/img/firework.gif" alt="Fireworks" width="200" height="200">
-                        <p>De parte del equipo de programación de la Oficina de Planificación y Evaluación del Servicio de Extensión Agrícola.</p>
+                        <p class="mt-2">De parte del equipo de programación de la Oficina de Planificación y Evaluación del Servicio de Extensión Agrícola.</p>
                         {{--                        Felices fiestas, compañeros. Gracias por su excelente trabajo y por la oportunidad de compartir esta experiencia con ustedes. Mucho éxito!! (EM)--}}
                     </div>
                 </div>
