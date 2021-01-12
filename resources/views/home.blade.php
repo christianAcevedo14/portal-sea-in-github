@@ -46,7 +46,7 @@
                                     {{--                                    <img src="/img/regular-document.png" alt="">--}}
                                     {{--                                    <span class="m-2">{{$sise->name}}</span>--}}
                                 </div>
-                                <div class="text-muted">{{$sise->name}}</div>
+                                <div class="text-muted">{{$sise->name}} 2.0</div>
                             </div>
                         </div>
                     </a>
@@ -91,17 +91,17 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-6">
+<!--            <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="card text-dark">
                     <div class="card-status bg-green-light"></div>
                     <div class="card-body">
                         <h3 class="text-center">Felices Fiestas</h3>
                         <img src="/img/firework.gif" alt="Fireworks" width="200" height="200">
                         <p class="mt-2">De parte del equipo de programación de la Oficina de Planificación y Evaluación del Servicio de Extensión Agrícola.</p>
-                        {{--                        Felices fiestas, compañeros. Gracias por su excelente trabajo y por la oportunidad de compartir esta experiencia con ustedes. Mucho éxito!! (EM)--}}
+                                                Felices fiestas, compañeros. Gracias por su excelente trabajo y por la oportunidad de compartir esta experiencia con ustedes. Mucho éxito!! (EM)
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <div class="row mt-2">
