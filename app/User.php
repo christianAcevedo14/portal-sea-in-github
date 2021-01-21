@@ -80,7 +80,7 @@ class User extends Authenticatable
 
     function scopeDirectors($query)
     {
-        return $query->where('title_id', 46);
+        return $query->whereIn('title_id', [46, 55]);
     }
 
     function scopeAdministrativo($query)
@@ -209,6 +209,10 @@ class User extends Authenticatable
         return $this->title_id == 50;
     }
 
+    public function getIsFacDeanAttribute(){
+        return $this->title_id == 55;
+    }
+
     public function getSupervisedByPeanAttribute()
     {
         return $this->title_id == 14;
@@ -240,7 +244,7 @@ class User extends Authenticatable
     public function getIsSupervisorAttribute()
     {
         return $this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
-            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47 || $this->title_id == 50;
+            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47 || $this->title_id == 50 || $this->title_id == 55;
     }
 
     public function getRegionAttribute()

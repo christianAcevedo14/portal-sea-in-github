@@ -112,6 +112,24 @@
             margin-top: -1px;
         }
 
+        .pulse-button {
+            box-shadow: 0 0 0 0 rgba(38, 143, 255, 0.5);
+            -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        .pulse-button:hover
+        {
+            -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+        }
+
+        @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
         /*#myBtn:hover {*/
         /*    background-color: #2d89f0;*/
         /*}*/

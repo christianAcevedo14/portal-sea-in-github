@@ -46,7 +46,7 @@
                                     {{--                                    <img src="/img/regular-document.png" alt="">--}}
                                     {{--                                    <span class="m-2">{{$sise->name}}</span>--}}
                                 </div>
-                                <div class="text-muted">{{$sise->name}}</div>
+                                <div class="text-muted">{{$sise->name}} 2.0</div>
                             </div>
                         </div>
                     </a>
@@ -67,16 +67,58 @@
                 </div>
             @endforeach
         </div>
-        <br>
-        <div class="row m-2">
-            <h1 class="page-header">
-                Navegadores Recomendados
-            </h1>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <h1 class="page-header">
+                    Anuncios
+                </h1>
+            </div>
+            {{--            <div class="col-12">--}}
+            {{--                <p></p>--}}
+            {{--            </div>--}}
         </div>
+
+        <div class="row row-cards text-center align-content-center">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="card text-dark">
+                    <div class="card-status bg-blue-light"></div>
+                    <div class="card-body">
+                        <h3 class="text-center">SISE 2.0</h3>
+                        <img src="/img/regular-document.png" alt="Document" width="200" height="200">
+                        <p class="mt-2">La nueva versión de SISE trae cambios y mejoras que incrementan la funcionalidad de la herramienta.</p>
+                    </div>
+                </div>
+            </div>
+
+<!--            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="card text-dark">
+                    <div class="card-status bg-green-light"></div>
+                    <div class="card-body">
+                        <h3 class="text-center">Felices Fiestas</h3>
+                        <img src="/img/firework.gif" alt="Fireworks" width="200" height="200">
+                        <p class="mt-2">De parte del equipo de programación de la Oficina de Planificación y Evaluación del Servicio de Extensión Agrícola.</p>
+                                                Felices fiestas, compañeros. Gracias por su excelente trabajo y por la oportunidad de compartir esta experiencia con ustedes. Mucho éxito!! (EM)
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <h1 class="page-header">
+                    Navegadores Recomendados
+                </h1>
+            </div>
+            <div class="col-12">
+                <p>Considere utilizar uno de los siguientes navegadores para obtener la mejor experiencia dentro del Portal del Extansionista.</p>
+            </div>
+        </div>
+
         <div class="row row-cards text-center align-content-center">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.google.com/chrome/" class="nounderline" target="_blank">
-                    <div class="card text-dark">
+                    <div class="card text-dark pulse-button">
                         <div class="card-status bg-green"></div>
                         <div class="card-body">
                             <h3 class="text-center">Google Chrome</h3>
@@ -88,7 +130,7 @@
 
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="https://www.microsoft.com/en-us/edge" class="nounderline" target="_blank">
-                    <div class="card text-dark">
+                    <div class="card text-dark pulse-button">
                         <div class="card-status bg-blue"></div>
                         <div class="card-body">
                             <h3 class="text-center">Microsoft Edge</h3>
@@ -110,6 +152,9 @@
 {{--                </a>--}}
 {{--            </div>--}}
         </div>
+
+
+
     </div>
 @endsection
 

@@ -146,12 +146,12 @@
             <div class="modal-dialog modal-dialog-centered">
                 <!-- Modal content-->
 
-              {{--  <div class="modal-content">
+                <div class="modal-content">
                     <div class="modal-header modal-header-warning">
                         <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
-                        --}}{{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>--}}{{--
+                        </button>
                     </div>
                     <div class="modal-body">
                         <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted certifica que es un
@@ -164,29 +164,29 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Acepto</button>
                     </div>
-                </div>--}}
+                </div>
 
 
          {{--       For Portal-SEA Update--}}
 
-                <div class="modal-content">
+<!--                <div class="modal-content">
                     <div class="modal-header modal-header-danger">
                         <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>--}}
+                        </button>
                     </div>
                     <div class="modal-body">
                         <p> El Portal del Extensionista se encuentra bajo mantenimiento. Por el momento, no tendrá acceso a ciertas aplicaciones.</p>
 
-{{--                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de--}}
-{{--                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley--}}
-{{--                            estatal y federal según aplicable.</p>--}}
+                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de
+                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley
+                            estatal y federal según aplicable.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Continuar</button>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
