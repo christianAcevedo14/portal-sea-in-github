@@ -58,7 +58,7 @@ class User extends Authenticatable
 
     function scopeAgents($query)
     {
-        return $query->where('title_id', 2);
+        return $query->whereIn('title_id', [2, 12]);
     }
 
     function scopeCfc($query)
