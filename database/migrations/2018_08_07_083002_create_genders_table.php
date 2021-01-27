@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRaceTable extends Migration
+class CreateGendersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRaceTable extends Migration
      */
     public function up()
     {
-        Schema::connection('portal')->create('races', function (Blueprint $table) {
+        Schema::connection('portal')->create('genders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
 
@@ -30,6 +30,6 @@ class CreateRaceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('race');
+        Schema::dropIfExists('genders');
     }
 }
