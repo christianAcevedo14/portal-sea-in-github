@@ -249,7 +249,8 @@ class User extends Authenticatable
 
     public function getRegionAttribute()
     {
-        return substr($this->programmatic_unit->region_id, 0, 1);
+        return $this->programmatic_unit->region_id;
+        /*return substr($this->programmatic_unit->region_id, 0, 1);*/
     }
 
     public function getRegionIDAttribute()
@@ -265,7 +266,8 @@ class User extends Authenticatable
 
     public function getSupervisedAttribute()
     {
-        return substr($this->supervised_region, 0, 1);
+        return $this->supervised_region;
+        /*return substr($this->supervised_region, 0, 1);*/
     }
 
     public function getFullNameAttribute()
