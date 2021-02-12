@@ -34,6 +34,7 @@ import AccessDenied from "./components/AccessDenied";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
+import VueApexCharts from 'vue-apexcharts'
 import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
@@ -78,6 +79,9 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast;
 window.Fire = new Vue();
+
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
