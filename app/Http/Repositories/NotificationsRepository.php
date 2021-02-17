@@ -38,10 +38,11 @@ class NotificationsRepository
 
             if (substr($plan->user->region, 0 , 1) === "6") {
                 if(!($plan->user->unit === 691 || $plan->user->unit === 695)){
-//                    $administrators = User::where('supervised_region', 'like', $plan->user->region . '00%')->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
-                    $administrators = User::with('programmatic_unit.region')->whereHas('programmatic_unit.region', function ($q) {
-                        $q->where('id', 'like', auth()->user()->supervised != null ? auth()->user()->supervised : auth()->user()->region);
-                    })->directors()->get();
+                    $administrators = User::where('supervised_region', 'like', $plan->user->region)->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
+//                    $administrators = User::with('programmatic_unit.region')->whereHas('programmatic_unit', function ($q) {
+//                        $q->where('id', 'like', auth()->user()->supervised != null ? auth()->user()->supervised : auth()->user()->unit); // needs a fix
+//                   })->directors()->get();
+
                 }
             }
 
