@@ -17,7 +17,7 @@
 
 @section('content')
     <div class="container">
-        @if(auth()->user()->title_id === 1)
+        @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
             <div class="row">
                 <div class="col-12">
                     <a href="{{ route('offices.create') }}" class="btn btn-sm btn-pill btn-info m-2 float-right">

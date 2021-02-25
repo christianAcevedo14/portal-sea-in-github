@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-4 col-sm-12">
-                                @if(auth()->user()->title_id === 1)
+                                @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                                 <a href="{{ route('offices.edit', [$office]) }}" class="btn btn-sm btn-pill btn-primary mt-2 float-right">
                                     <span class="text-white" style="font-size:17px"><i
                                             class="fe fe-edit pr-1"></i>Editar</span>
@@ -58,7 +58,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Documentos</h3>
-                        @if(auth()->user()->title_id === 1)
+                        @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                         <div class="card-options">
                             <a href="{{ route('documents.create', $office) }}" class="btn btn-sm  btn-pill btn-info">
                                     <span class="text-white" style="font-size:17px"><i
@@ -74,7 +74,7 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripcion</th>
-                                    @if(auth()->user()->title_id === 1)
+                                    @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                                     <th scope="col" class="w-2">Acciones</th>
                                     <th scope="col"></th>
                                     @endif
@@ -89,7 +89,7 @@
                                             </a>
                                         </td>
                                         <td>{{ $document->description }}</td>
-                                        @if(auth()->user()->title_id === 1)
+                                        @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                                         <td>
                                             {{--                                        <a href="{{ $document->file }}" role="button" class="btn btn-info btn-pill"--}}
                                             {{--                                           target="_blank">--}}
