@@ -17,85 +17,49 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if(session()->has('notification'))
-                <div class="col-sm-5 offset-7">
-                    <div class="alert alert-icon alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert"></button>
-                        <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
-                    </div>
-                </div>
-            @endif
+            <div class="col-12">
+                <h1 class="page-header"><a href="{{ route('documents.index', [$office]) }}" class="mr-2"><i class="fe fe-arrow-left-circle"></i></a>
+                    Editar Oficina</h1>
+            </div>
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Documentos de {{ $office->name }}</h3>
-                        <div class="card-options">
-                            <a href="{{ route('documents.create', $office) }}" class="btn btn-sm  btn-pill btn-info">
-                                <div class="d-inline-flex">
-                                    <img src="/assets/images/plus-icon-png-white.png" style="height: 18px;"
-                                         class="pt-1"><span
-                                            class="pl-3 text-white" style="font-size:17px">Añadir documentos</span>
-                                </div>
-                            </a>
-                            {{--                            <a href="{{ route('users.create') }}"><i class="fe fe-plus-circle"></i></a>--}}
-                            {{--<a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>--}}
-                        </div>
-                    </div>
+                <form action="{{ route('offices.update', [$office]) }}" enctype="multipart/form-data" class="card" method="post">
                     <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col"></th>
-
-                            </tr>
-                            </thead>
-                            <tbody id="documentsTable">
-
-
-
-
-
-
-
-                            @foreach($documents->where('office_id',$office->id) as $document)
-                                <tr>
-                                    <th>
-                                        <form action="{{ route('documents.destroy', [$office,$document]) }}" method="post"
-                                              onsubmit="return confirm('¿Está seguro que desea eliminar el usuario?');">
-                                            @csrf
-                                            <input type="hidden" name="_method" value="delete">
-                                            <button class="btn btn-sm btn-pill btn-danger"><i
-                                                        class="fe fe-trash-2"></i></button>
-                                        </form>
-                                    </th>
-{{--                                    <th><span class="avatar"--}}
-{{--                                              style="background-image: url({{($document->)}})"></span>--}}
-{{--                                    </th>--}}
-
-
-
-                                    <th>{{ $document->name }}</th>
-                                    <td>{{ $document->description }}</td>
-                                    <td>
-                                        <a href="{{ $document->file }}" role="button" class="btn btn-primary btn-pill" download>
-                                            <i class="fa fa-download"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('documents.edit', [$office,$document]) }}"
-                                           class="btn btn-sm btn-pill btn-warning"><i
-                                                    class="fe fe-edit"></i></a>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        <fieldset class="form-fieldset">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Nombre:</label>
+                                        <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Nombre de oficina..." value="{{ old('name' , $office->name) }}">
+                                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="description" class="form-label">Descripción:</label>
+                                        <input type="text" name="description" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Descripcion de oficina..." value="{{ old('description' , $office->description) }}">
+                                        <div class="invalid-feedback">{{ $errors->first('description') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="file" class="form-label">Logo:</label>
+                                        <input type="file" name="logo" class="form-control-file" placeholder="Logo" value="{{ old('logo') }}">
+                                        @if ($errors->has('logo'))
+                                            <p class="text-danger">{{ $errors->first('logo') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                </div>
+                    <div class="card-footer text-right">
+                        <a href="{{ route('offices.index') }}" class="btn btn-secondary"
+                           onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
+                        <span class="m-1"></span>
+                        <button type="submit" class="btn btn-success" disabled>Actualizar</button>
+                    </div>
+                    @csrf
+                </form>
             </div>
         </div>
     </div>
