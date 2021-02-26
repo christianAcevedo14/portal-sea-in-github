@@ -99,12 +99,12 @@
                 <!--/.Controls-->
 
                 <!--Indicators-->
-{{--                <ol class="carousel-indicators">--}}
-{{--                    <li data-target="#announcements" data-slide-to="0" class="active"></li>--}}
-{{--                    <li data-target="#announcements" data-slide-to="1"></li>--}}
-{{--                    <li data-target="#announcements" data-slide-to="2"></li>--}}
-{{--                </ol>--}}
-                <!--/.Indicators-->
+            {{--                <ol class="carousel-indicators">--}}
+            {{--                    <li data-target="#announcements" data-slide-to="0" class="active"></li>--}}
+            {{--                    <li data-target="#announcements" data-slide-to="1"></li>--}}
+            {{--                    <li data-target="#announcements" data-slide-to="2"></li>--}}
+            {{--                </ol>--}}
+            <!--/.Indicators-->
 
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
@@ -113,6 +113,62 @@
                     <div class="carousel-item active">
 
                         <div class="row row-cards text-center align-content-center">
+                            {{--                announcement section--}}
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card text-dark h-100">
+                                    <div class="card-status bg-green-dark"></div>
+                                    <div class="card-body">
+                                        <a href="https://www.uprm.edu/sea/mdocs-posts/carta-circular-revisada-sobre-prevencion-covid-19-en-el-trabajo-iafs/"
+                                           class="nounderline text-dark"
+                                           target="_blank">
+                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250" height="200">
+                                            <h3 class="text-center">CARTA CIRCULAR MEDIDAS PREVENTIVAS <br>COVID 19 EN EL TRABAJO</h3>
+                                            <p class="mt-2">Carta circular revisada sobre prevención COVID-19 en el trabajo IAFS.</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--                announcement section--}}
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card text-dark h-100">
+                                    <div class="card-status bg-green-dark"></div>
+                                    <div class="card-body">
+                                        <a href="https://www.uprm.edu/sea/mdocs-posts/protocolo-para-el-manejo-del-formulario-digital-covid-19/"
+                                           class="nounderline text-dark"
+                                           target="_blank">
+                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250" height="200">
+                                            <h3 class="text-center">PROTOCOLO MANEJO DEL FORMULARIO <br> COVID 19</h3>
+                                            <p class="mt-2">Protocolo a seguir en el manejo del formulario COVID 19.</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--/.First slide-->
+
+                    <!--Second slide-->
+                    <div class="carousel-item">
+
+                        <div class="row row-cards text-center align-content-center">
+                            {{--          <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="card text-dark h-100">
+                            <div class="card-status bg-blue-light"></div>
+                            <div class="card-body">
+                                <a href="/assets/images/announcements/asesory_lid_area_prog.jpg"
+                                   class="nounderline text-dark"
+                                   target="_blank">
+                                    <img src="/assets/images/announcements/asesory_lid_area_prog.jpg"
+                                         alt="Document" width="500" height="300">
+                                </a>
+                                --}}{{--                            <h3 class="text-center">Actividad</h3>--}}{{--
+                                --}}{{--                            <p class="mt-2">La nueva versión de SISE contiene cambios y mejoras que incrementan la--}}{{--
+                                --}}{{--                                funcionalidad--}}{{--
+                                --}}{{--                                de la aplicación.</p>--}}{{--
+                            </div>
+                        </div>
+                    </div>--}}
                             {{--                announcement section--}}
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card text-dark h-100">
@@ -127,33 +183,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--                announcement section--}}
-                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                <div class="card text-dark h-100">
-                                    <div class="card-status bg-blue-light"></div>
-                                    <div class="card-body">
-                                        <a href="/assets/images/announcements/asesory_lid_area_prog.jpg"
-                                           class="nounderline text-dark"
-                                           target="_blank">
-                                            <img src="/assets/images/announcements/asesory_lid_area_prog.jpg"
-                                                 alt="Document" width="500" height="300">
-                                        </a>
-                                        {{--                            <h3 class="text-center">Actividad</h3>--}}
-                                        {{--                            <p class="mt-2">La nueva versión de SISE contiene cambios y mejoras que incrementan la--}}
-                                        {{--                                funcionalidad--}}
-                                        {{--                                de la aplicación.</p>--}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!--/.First slide-->
-
-                    <!--Second slide-->
-                    <div class="carousel-item">
-
-                        <div class="row row-cards text-center align-content-center">
                             {{--                announcement section--}}
                             <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card text-dark h-100">
