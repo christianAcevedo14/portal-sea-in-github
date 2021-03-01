@@ -12,6 +12,13 @@
         <div class="row">
             <div class="col-sm-4">
                 <h1 class="page-header">
+                    @if(auth()->user()->title_id == 1)
+                    <a href="{{ route('users.index') }}" class="mr-2"><i
+                            class="fe fe-arrow-left-circle"></i></a>
+                    @else
+                        <a href="{{ route('home') }}" class="mr-2"><i
+                                class="fe fe-arrow-left-circle"></i></a>
+                    @endif
                     Perfil de Usuario
                 </h1>
             </div>
