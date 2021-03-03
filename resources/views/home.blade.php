@@ -121,9 +121,12 @@
                                         <a href="https://www.uprm.edu/sea/mdocs-posts/carta-circular-revisada-sobre-prevencion-covid-19-en-el-trabajo-iafs/"
                                            class="nounderline text-dark"
                                            target="_blank">
-                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250" height="200">
-                                            <h3 class="text-center">CARTA CIRCULAR MEDIDAS PREVENTIVAS <br>COVID 19 EN EL TRABAJO</h3>
-                                            <p class="mt-2">Carta circular revisada sobre prevención COVID-19 en el trabajo IAFS.</p>
+                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250"
+                                                 height="200">
+                                            <h3 class="text-center">CARTA CIRCULAR MEDIDAS PREVENTIVAS <br>COVID 19 EN
+                                                EL TRABAJO</h3>
+                                            <p class="mt-2">Carta circular revisada sobre prevención COVID-19 en el
+                                                trabajo IAFS.</p>
                                         </a>
                                     </div>
                                 </div>
@@ -136,7 +139,8 @@
                                         <a href="https://www.uprm.edu/sea/mdocs-posts/protocolo-para-el-manejo-del-formulario-digital-covid-19/"
                                            class="nounderline text-dark"
                                            target="_blank">
-                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250" height="200">
+                                            <img src="/assets/images/sea-logo.png" alt="Document" width="250"
+                                                 height="200">
                                             <h3 class="text-center">PROTOCOLO MANEJO DEL FORMULARIO <br> COVID 19</h3>
                                             <p class="mt-2">Protocolo a seguir en el manejo del formulario COVID 19.</p>
                                         </a>
@@ -170,7 +174,7 @@
                         </div>
                     </div>--}}
                             {{--                announcement section--}}
-                            <div class="col-sm-12 col-md-6 col-lg-6">
+                           {{-- <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card text-dark h-100">
                                     <div class="card-status bg-blue-light"></div>
                                     <div class="card-body">
@@ -182,6 +186,21 @@
                                             de la aplicación.</p>
                                     </div>
                                 </div>
+                            </div>--}}
+                            {{--                announcement section--}}
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card text-dark h-100">
+                                    <div class="card-status bg-green"></div>
+                                    <div class="card-body">
+                                        <a href="https://meet.google.com/hze-outc-csd" class="nounderline text-dark" target="_blank">
+                                            <h3 class="text-center">Ventana de Apoyo</h3>
+                                            <img src="/assets/images/logos/google-meet-logo.png" class="my-5" alt="Google Meet Logo"
+                                                 width="200" height="170" title="Visitar Ventana">
+                                            <p class="mt-2">Horario: Lunes a Jueves, de 9:00AM a 11:00AM y de 2:00PM a
+                                                4:00PM</p>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             {{--                announcement section--}}
                             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -191,11 +210,13 @@
                                         <h3 class="text-center">Navegadores Recomendados</h3>
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12 p-5">
-                                                <a href="https://www.google.com/chrome/" class="nounderline text-dark"
+                                                <a href="https://www.google.com/chrome/"
+                                                   class="nounderline text-dark"
                                                    target="_blank">
                                                     <h3 class="text-center">Google Chrome</h3>
-                                                    <img src="/assets/images/logos/Chrome_logo.png" alt="" width="100"
-                                                         height="100">
+                                                    <img src="/assets/images/logos/Chrome_logo.png" alt="Chrome_logo" title="Descargar Google Chrome"
+                                                         width="120"
+                                                         height="120">
                                                 </a>
                                             </div>
                                             <div class="col-lg-6 col-sm-12 p-5">
@@ -203,8 +224,8 @@
                                                    class="nounderline text-dark"
                                                    target="_blank">
                                                     <h3 class="text-center">Microsoft Edge</h3>
-                                                    <img src="/assets/images/logos/Edge_logo.png" alt="" width="100"
-                                                         height="100">
+                                                    <img src="/assets/images/logos/Edge_logo.png" alt="Edge_logo" title="Descargar Microsoft Edge" width="120"
+                                                         height="120">
                                                 </a>
                                             </div>
                                         </div>
@@ -214,66 +235,55 @@
                                             Portal del Extansionista.</p>
                                     </div>
                                 </div>
-                            </div>
 
                         </div>
-                        <!--/.Second slide-->
+                    </div>
+                    <!--/.Second slide-->
 
-                        <!--Third slide-->
-                    {{--                    <div class="carousel-item">--}}
+                    <!--Third slide-->
+<!--                    <div class="carousel-item">
 
-                    {{--                        <div class="row">--}}
-                    {{--                            <div class="col-md-4">--}}
-                    {{--                                <div class="card mb-2">--}}
-                    {{--                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"--}}
-                    {{--                                         alt="Card image cap">--}}
-                    {{--                                    <div class="card-body">--}}
-                    {{--                                        <h4 class="card-title">Card title</h4>--}}
-                    {{--                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the--}}
-                    {{--                                            card's content.</p>--}}
-                    {{--                                        <a class="btn btn-primary">Button</a>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
+                        <div class="row row-cards text-center align-content-center">
 
-                    {{--                            <div class="col-md-4 clearfix d-none d-md-block">--}}
-                    {{--                                <div class="card mb-2">--}}
-                    {{--                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"--}}
-                    {{--                                         alt="Card image cap">--}}
-                    {{--                                    <div class="card-body">--}}
-                    {{--                                        <h4 class="card-title">Card title</h4>--}}
-                    {{--                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the--}}
-                    {{--                                            card's content.</p>--}}
-                    {{--                                        <a class="btn btn-primary">Button</a>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
+                        </div>
 
-                    {{--                            <div class="col-md-4 clearfix d-none d-md-block">--}}
-                    {{--                                <div class="card mb-2">--}}
-                    {{--                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"--}}
-                    {{--                                         alt="Card image cap">--}}
-                    {{--                                    <div class="card-body">--}}
-                    {{--                                        <h4 class="card-title">Card title</h4>--}}
-                    {{--                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the--}}
-                    {{--                                            card's content.</p>--}}
-                    {{--                                        <a class="btn btn-primary">Button</a>--}}
-                    {{--                                    </div>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
+                                                        <div class="col-md-4 clearfix d-none d-md-block">
+                                                            <div class="card mb-2">
+                                                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                                                                     alt="Card image cap">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Card title</h4>
+                                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                        card's content.</p>
+                                                                    <a class="btn btn-primary">Button</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                    {{--                    </div>--}}
+                                                        <div class="col-md-4 clearfix d-none d-md-block">
+                                                            <div class="card mb-2">
+                                                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                                                                     alt="Card image cap">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Card title</h4>
+                                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                                        card's content.</p>
+                                                                    <a class="btn btn-primary">Button</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                    </div>-->
                     <!--/.Third slide-->
 
-                    </div>
-                    <!--/.Slides-->
-
                 </div>
-                <!--/.Carousel Wrapper-->
-            </div>
+                <!--/.Slides-->
 
+            </div>
+            <!--/.Carousel Wrapper-->
         </div>
+
     </div>
 @endsection
 
