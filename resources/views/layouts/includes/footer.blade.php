@@ -41,12 +41,16 @@
             <div class="col-auto ml-lg-auto">
                 <div class="row align-items-center">
                     <div class="col-auto">
-                        <ul class="list-inline list-inline-dots mb-0">
+                        <ul class="list-inline mb-0">
                             {{--                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>--}}
                             {{--                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>--}}
                             <li class="list-inline-item btn-primary btn-pill">
                                 <a href="{{ route('tutorials.index') }}" target="_blank"
                                    class="text-white">Tutoriales</a>
+                            </li>
+                            <li class="list-inline-item btn-primary btn-pill">
+                                <a href="#" data-toggle="modal" class="text-white"
+                                    data-target="#helpModal">Ventana de Apoyo</a>
                             </li>
                         </ul>
                     </div>
@@ -78,7 +82,7 @@
             </div>
             <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
                 <img src="/assets/images/sea-logo.png" style="height: 50px">
-                Copyright © 2020 Servicio de Extensión Agrícola. Todos los derechos reservados.
+                Copyright © {{ date('Y') }} Servicio de Extensión Agrícola. Todos los derechos reservados.
             </div>
         </div>
     </div>
