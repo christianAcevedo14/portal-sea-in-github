@@ -49,18 +49,27 @@
                 </button>
             </div>
             <div class="modal-body text-center align-content-center">
-                <h3 class="header">Visite Nuestra Ventana de Apoyo</h3>
-                <div class="row">
-                    <div class="col-12 my-4">
-                        <a href="https://meet.google.com/hze-outc-csd" target="_blank">
-                            <img src="/assets/images/logos/google-meet-logo.png" alt="Google Meet Logo" width="120" height="100" title="Visitar Ventana">
-                        </a>
+                <div class="form-control">
+                    <h3 class="header">Visite Nuestra Ventana de Apoyo</h3>
+                    <div class="row">
+                        <div class="col-12 my-4">
+                            <a href="https://meet.google.com/hze-outc-csd" target="_blank">
+                                <img src="/assets/images/logos/google-meet-logo.png" alt="Google Meet Logo" width="120" height="100" title="Visitar Ventana">
+                            </a>
+                        </div>
+                        <div class="col-12 my-5">
+                            <a href="https://meet.google.com/hze-outc-csd" class="btn btn-pill btn-primary" target="_blank">Visitar Ahora</a>
+                        </div>
                     </div>
-                    <div class="col-12 my-5">
-                        <a href="https://meet.google.com/hze-outc-csd" class="btn btn-pill btn-primary" target="_blank">Visitar Ahora</a>
-                    </div>
+                    <p class="text-center">Horario: Lunes a Jueves, de 9:00AM a 11:00AM y de 2:00PM a 4:00PM</p>
                 </div>
-                <p class="text-center">Horario: Lunes a Jueves, de 9:00AM a 11:00AM y de 2:00PM a 4:00PM</p>
+                <br>
+                <div class="form-control">
+                <h3 class="header">Contáctenos via Email</h3>
+                <p class="text-center"><a href="mailto:support-ope@upr.edu">
+                        support-ope@upr.edu
+                    </a></p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

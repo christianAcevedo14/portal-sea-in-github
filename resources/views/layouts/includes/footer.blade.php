@@ -50,7 +50,7 @@
                             </li>
                             <li class="list-inline-item btn-primary btn-pill">
                                 <a href="#" data-toggle="modal" class="text-white"
-                                    data-target="#helpModal">Ventana de Apoyo</a>
+                                    data-target="#helpModal">Ayuda</a>
                             </li>
                         </ul>
                     </div>
