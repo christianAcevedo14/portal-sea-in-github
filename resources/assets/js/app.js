@@ -40,6 +40,13 @@ import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/co
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
 import MiProgreso from "../../../Modules/Sise/Resources/assets/js/components/MiProgreso";
+import Dashboard4h from "../../../Modules/Club4H/Resources/assets/js/components/Dashboard4h.vue";
+import Club from "../../../Modules/Club4H/Resources/assets/js/components/Club.vue";
+import Category from "../../../Modules/Club4H/Resources/assets/js/components/Category.vue";
+import Interest from "../../../Modules/Club4H/Resources/assets/js/components/Interest.vue";
+import Event from "../../../Modules/Club4H/Resources/assets/js/components/Event.vue";
+import Project from "../../../Modules/Club4H/Resources/assets/js/components/Project.vue";
+import assignProject from "../../../Modules/Club4H/Resources/assets/js/components/assignProject.vue";
 
 /*let moment = require('moment');
 moment().format();
