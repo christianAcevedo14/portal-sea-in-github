@@ -69,18 +69,17 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="documentsTable">
                                 <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripcion</th>
                                     @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
-                                    <th scope="col" class="w-2">Acciones</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Acciones</th>
                                     @endif
                                 </tr>
                                 </thead>
-                                <tbody id="documentsTable">
+                                <tbody>
                                 @foreach($documents->where('office_id',$office->id) as $document)
                                     <tr>
                                         <td><a href="{{ $document->file }}" target="_blank">
@@ -99,8 +98,7 @@
                                             <a href="{{ route('documents.edit', [$office,$document]) }}"
                                                class="btn btn-sm btn-pill btn-primary" title="Editar"><i
                                                     class="fe fe-edit"></i></a>
-                                        </td>
-                                        <td>
+                                            <br>
                                             <form action="{{ route('documents.destroy', [$office,$document]) }}"
                                                   method="post" class="w-5" title="Borrar"
                                                   onsubmit="return confirm('¿Está seguro que desea eliminar el documento?');">
@@ -122,3 +120,11 @@
         </div>
     </div>
 @stop
+
+@section('custom-scripts')
+<script>
+    $(document).ready(function () {
+        $('#documentsTable').DataTable(dtOpts);
+    });
+</script>
+@endsection

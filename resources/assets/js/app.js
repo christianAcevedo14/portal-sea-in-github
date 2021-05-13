@@ -49,6 +49,14 @@ moment.locale('es');
 
 //Vue.use(require('vue-moment'));
 require('./bootstrap');
+require( 'jszip' );
+require( 'pdfmake' );
+require( 'datatables.net-bs4' );
+require( 'datatables.net-buttons-bs4' )
+require( 'datatables.net-buttons/js/buttons.html5.js' );
+require( 'datatables.net-fixedheader-bs4' );
+require( 'datatables.net-responsive-bs4' );
+
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
@@ -172,6 +180,8 @@ Vue.directive('tooltip', function(el,binding){
         placement: binding.arg,
         trigger: 'hover',
         boundary: 'viewpoint',
+        hideOnTargetClick: true,
+        autoHide: true,
     })
 });
 
@@ -216,7 +226,7 @@ Vue.directive('tooltip', function(el,binding){
         searchit(){
             setTimeout(() => {
                 Fire.$emit('searching');
-            }, 800);
+            }, 1200);
             // console.log("searching...");
             // Fire.$emit('searching');
         },

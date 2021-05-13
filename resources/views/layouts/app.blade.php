@@ -102,6 +102,12 @@
             }
         }
 
+        @media print {
+            .modal-body {
+                overflow: visible !important;
+            }
+        }
+
         .dropdown-submenu {
             position: relative;
         }
@@ -164,7 +170,7 @@
                 </div>
             </div>
             <div class="my-3 my-md-5">
-                <button onclick="topFunction()" id="myBtn" class="btn btn-primary" title="Go to top"><span class="fe fe-arrow-up-circle"></span></button>
+                <button onclick="topFunction()" id="myBtn" class="btn btn-primary" title="Regresar Arriba"><span class="fe fe-arrow-up-circle"></span></button>
                 @yield('content')
             </div>
         </div>
@@ -183,6 +189,42 @@
     @yield('custom-scripts')
     <script>
         let timeoutID;
+        let langOpt = {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros.",
+            "sZeroRecords": "No se encontraron resultados.",
+            "sEmptyTable": "Ningún dato disponible en esta tabla.",
+            "sInfo": "Mostrando registros del _START_ al _END_ de _TOTAL_.",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de 0.",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+        }
+        let dtOpts = {
+            // dom: 'lfrtip<"clear">B',
+            // buttons: [
+            //     'copy', 'csv', 'pdf'
+            // ],
+            // responsive: true,
+            // processing: true,
+            retrieve: true,
+            language: langOpt,
+        }
 
         function setup() {
             this.addEventListener("mousemove", resetTimer, false);
