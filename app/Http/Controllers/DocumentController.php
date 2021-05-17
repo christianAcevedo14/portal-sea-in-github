@@ -23,9 +23,11 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Office $office)
     {
-        //
+        $documents = Document::all();
+
+        return view('documents.index', compact('office', 'documents'));
     }
 
     /**
@@ -50,21 +52,24 @@ class DocumentController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
-            'file' => 'required'
+            'file' => 'required',
+            'downloadable' => 'required'
         ]);
 
-        $filePath ='/storage/' . request('file')->store('documents','public');
+//        $filePath ='/storage/' . request('file')->store('documents','public');
+        if ($request->downloadable == 1) {
+            $file = $request->file . '&download=1';
+        } else {
+            $file = $request->file;
+        }
 
         $office->documents()->create([
             'name' => $request->name,
             'description' => $request->description,
-            'file' => $filePath
+            'file' => $file,
         ]);
 
-//        dd($filePath);
-
-
-        return redirect()->route('offices.edit', $office)->with('notification', 'El documento fue guardado exitosamente');
+        return redirect()->route('documents.index', $office)->with('notification', 'El documento fue guardado exitosamente');
 
 //        return view('offices.show',compact('office'));
     }
@@ -75,9 +80,9 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Office $office)
     {
-        //
+        return redirect()->route('documents.index', $office);
     }
 
     /**
@@ -110,27 +115,43 @@ class DocumentController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
-            'file' => ''
+            'file' => 'required',
+            'downloadable' => 'required'
         ]);
 
-        if(request('file')){
-            $filePath ='/storage/' . request('file')->store('documents','public');
-            \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
+//        if(request('file')){
+//           $filePath ='/storage/' . request('file')->store('documents','public');
+//          \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
+//
+//
+//            $document->update(array_merge(
+//                $data,
+//                ['file' => $file,]
+//            ));
+//        }
 
-            $document->update(array_merge(
-                $data,
-                ['file' => $filePath]
-            ));
+        if ($document->file !== $request->file){
+            if ($request->downloadable == 1) {
+                $file = $request->file . '&download=1';
+            } else {
+                $file = $request->file;
+            }
+
+            $document->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'file' => $file,
+            ]);
         }
         else{
-            $document->update($data);
+            $document->update(request()->except('downloadable'));
         }
 
 //        unlink(public_path() . '/' . $document->file);
 
 
 
-        return redirect()->route('offices.edit', $office)->with('notification', 'El documento fue editado exitosamente');
+        return redirect()->route('documents.index', $office)->with('notification', 'El documento fue editado exitosamente.');
     }
 
     /**
@@ -141,10 +162,10 @@ class DocumentController extends Controller
      */
     public function destroy(Office $office, Document $document)
     {
-        \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
+//        \Illuminate\Support\Facades\File::delete(public_path() . '/' . $document->file);
 
         $document->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('notification', 'El documento fue eliminado exitosamente.');
     }
 }

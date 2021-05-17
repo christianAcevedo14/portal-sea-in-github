@@ -34,6 +34,7 @@ import AccessDenied from "./components/AccessDenied";
 import Swal from 'sweetalert2'
 import VueRouter from 'vue-router'
 import VueProgressBar from 'vue-progressbar'
+import VueApexCharts from 'vue-apexcharts'
 import { Form, HasError, AlertError } from 'vform'
 import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
@@ -48,6 +49,14 @@ moment.locale('es');
 
 //Vue.use(require('vue-moment'));
 require('./bootstrap');
+require( 'jszip' );
+require( 'pdfmake' );
+require( 'datatables.net-bs4' );
+require( 'datatables.net-buttons-bs4' )
+require( 'datatables.net-buttons/js/buttons.html5.js' );
+require( 'datatables.net-fixedheader-bs4' );
+require( 'datatables.net-responsive-bs4' );
+
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
@@ -78,6 +87,9 @@ const Toast = Swal.mixin({
 });
 window.Toast = Toast;
 window.Fire = new Vue();
+
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -168,6 +180,8 @@ Vue.directive('tooltip', function(el,binding){
         placement: binding.arg,
         trigger: 'hover',
         boundary: 'viewpoint',
+        hideOnTargetClick: true,
+        autoHide: true,
     })
 });
 
@@ -212,14 +226,14 @@ Vue.directive('tooltip', function(el,binding){
         searchit(){
             setTimeout(() => {
                 Fire.$emit('searching');
-            }, 800);
+            }, 1200);
             // console.log("searching...");
             // Fire.$emit('searching');
         },
         dateRange() {
             //Year needs to be updated dynamically according to current FY
             sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-02-28").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-04-30").format("YYYY-MM-DD");
         },
 
         closeRequests(){
