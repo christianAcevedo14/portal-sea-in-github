@@ -176,6 +176,9 @@
         </div>
         {{--footer--}}
     </div>
+    @yield('custom-scripts')
+    <!-- App.js -->
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- Dashboard Core -->
     {{--<script src="{{ asset('assets/js/dashboard.js') }}"></script>--}}
     <!-- c3.js Charts Plugin -->
@@ -184,9 +187,6 @@
     <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
-    <!-- App.js -->
-    <script src="{{ mix('js/app.js') }}"></script>
-    @yield('custom-scripts')
     <script>
         let timeoutID;
         let langOpt = {
@@ -292,6 +292,7 @@
                 e.stopPropagation();
                 e.preventDefault();
             });
+            $("#resetPassModal").modal('show');
         });
 
     </script>

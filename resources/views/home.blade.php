@@ -18,9 +18,14 @@
 @section('content')
 
     <div class="container">
+{{--        Opens modal to change password if user is still using the default--}}
+        @if(isset($firstLogin))
+            @include('users.partials.resetPassModal')
+        @endif
+
         <div class="row">
             @if(session()->has('notification'))
-                <div class="col-12 offset-7 float-right">
+                <div class="col-sm-5 offset-7 float-right">
                     <div class="alert alert-icon alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert"></button>
                         <i class="fe fe-check mr-2" aria-hidden="true"></i> {{ session()->get('notification') }}
@@ -289,6 +294,8 @@
             </div>
 
         </div>
+
+    </div>
 @endsection
 
 

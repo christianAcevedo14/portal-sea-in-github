@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/profile', 'ProfileController@index')->name('profile');
     Route::resource('users', 'UserController');
+    Route::put('/update_password' , 'UserController@updatePassword')->name('password.update');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('loggedUser', function() {
         return Auth::User()->where('id', Auth::id())->with('programmatic_unit.region')->first();
@@ -53,9 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('updateTutorials{id}' , 'TutorialController@update');
     Route::delete('deleteTutorials{id}' , 'TutorialController@destroy');
 
-
-
-
-
 });
+//
+//Route::any('{query}',
+//    function() { return redirect('/home'); })
+//    ->where('query', '.*');
 
