@@ -47,6 +47,8 @@ import Interest from "../../../Modules/Club4H/Resources/assets/js/components/Int
 import Event from "../../../Modules/Club4H/Resources/assets/js/components/Event.vue";
 import Project from "../../../Modules/Club4H/Resources/assets/js/components/Project.vue";
 import assignProject from "../../../Modules/Club4H/Resources/assets/js/components/assignProject.vue";
+import Participant from "../../../Modules/Club4H/Resources/assets/js/components/Participant.vue";
+import ShowParticipant from "../../../Modules/Club4H/Resources/assets/js/components/showParticipant.vue";
 
 /*let moment = require('moment');
 moment().format();
@@ -136,12 +138,14 @@ const routes = [
     { path: '/sise/plan', name: 'Plan', props: true,  component: Plan },
     { path: '/sise/*', component: Dashboard },
     { path: '/4h/assignProject', component: assignProject},
+    { path: '/4h/showParticipant', name: 'ShowParticipant', component: ShowParticipant, props: true},
+    { path: '/4h/participant', component: Participant},
     { path: '/4h/project', component: Project},
     { path: '/4h/interest', component: Interest},
     { path: '/4h/event', component: Event},
     { path: '/4h/club', component: Club},
     { path: '/4h/category', component: Category},
-    { path: '/4h/*', component: Dashboard4h},
+    { path: '/4h*', component: Dashboard4h},
     { path: '/*', component: Dashboard }
 ];
 const router = new VueRouter({
@@ -165,8 +169,6 @@ Vue.component('documents-component', require('../../../Modules/Volunteer/Resourc
 Vue.component('programmatic-areas-component', require('../../../Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue').default);
 */
 Vue.component('historia-component', require('../../../Modules/Sise/Resources/assets/js/components/historia-component.vue').default);
-
-
 Vue.component('contacts', require('../../../Modules/Sise/Resources/assets/js/components/Contacts.vue').default);
 Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js/components/Achievements.vue').default);
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);

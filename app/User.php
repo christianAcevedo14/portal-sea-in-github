@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Club4H\Entities\ProjectUser;
 use Modules\Sise\Entities\AccessRequest;
 use Modules\Sise\Entities\FederalProgramPersonContact;
 use Modules\Sise\Entities\Historia;
