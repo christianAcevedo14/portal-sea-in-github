@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\App;
+use App\Http\Requests\StorePassword;
 use App\Http\Requests\StoreUser;
 use App\ProgrammaticUnit;
 use App\Title;
@@ -82,40 +83,106 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
+
         $avatar = $user->avatar;
-        if ($request->password === null) {
 
-            $user->update(request()->except('app_id', 'avatar', 'password', 'confirm_password'));
-            $user->apps()->sync($request->app_id);
+        $user->update(request()->except('app_id', 'avatar', 'password', 'confirm_password'));
+        $user->apps()->sync($request->app_id);
 
-            if ($request->hasFile('avatar')) {
-                $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+        if ($request->hasFile('avatar')) {
+            $imagePath = '/storage/' . request('avatar')->store('img', 'public');
 
-                $user->update([
-                    'avatar' => $imagePath,
-                ]);
+            $user->update([
+                'avatar' => $imagePath,
+            ]);
+        }
+
+//        if ($request->password !== null && $request->confirm_password !== null) {
+//
+////            $this->validate($request, [
+////                'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+////                'confirm_password' => 'required|same:password|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+////            ]);
+//
+//            if ($request['password'] == $request['confirm_password']) {
+//
+//                $user->update(['password' => Hash::make($request['confirm_password'])]);
+//
+//            }
+//
+//        }
+
+        return back()->with('notification', 'Perfil actualizado exitosamente.');
+
+    }
+
+    public function updatePassword(Request $request)
+    {
+//        $req = \Illuminate\Support\Facades\Request::all();
+
+        $user = User::findORFail(auth()->user()->id);
+
+        if (isset($request['current_password'])) {
+
+            $c_password = $request['current_password'];
+
+            if (\Hash::check( $c_password , auth()->user()->password)) {
+
+                $this->validate($request, [
+                    'new_password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+                    'confirm_password' => 'required|same:new_password|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+                ],
+                    [
+                        'new_password.required' => 'Debe escribir una contraseña.',
+                        'new_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                        'new_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                        'new_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
+
+                        'confirm_password.required' => 'Debe escribir una contraseña.',
+                        'confirm_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                        'confirm_password.same' => 'Las contraseñas deben coincidir.',
+                        'confirm_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                        'confirm_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
+                    ]
+                );
+
+                if ($request['new_password'] == $request['confirm_password']) {
+
+                    $user->update(['password' => Hash::make($request['new_password'])]);
+
+                }
+
             }
-
-            return back()->with('notification', 'Perfil actualizado exitosamente.');
-
 
         } else {
 
-            $user->update(request()->except('app_id', 'confirm_password'));
-            $user->apps()->sync($request->app_id);
+            $this->validate($request, [
+                'new_password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+                'confirm_password' => 'required|same:new_password|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            ],
+                [
+                    'new_password.required' => 'Debe escribir una contraseña.',
+                    'new_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                    'new_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                    'new_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
 
-            if ($request->hasFile('avatar')) {
-                $imagePath = '/storage/' . request('avatar')->store('img', 'public');
+                    'confirm_password.required' => 'Debe escribir una contraseña.',
+                    'confirm_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                    'confirm_password.same' => 'Las contraseñas deben coincidir.',
+                    'confirm_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                    'confirm_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
+                ]
+            );
 
-                $user->update([
-                    'avatar' => $imagePath,
-                ]);
+            if ($request['new_password'] == $request['confirm_password']) {
+
+                $user->update(['password' => Hash::make($request['new_password'])]);
+
             }
-
-            return back()->with('notification', 'Perfil actualizado exitosamente.');
 
         }
 
+        return back()->with('notification', 'Contraseña actualizada exitosamente.');
     }
 
     /**
@@ -125,7 +192,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy(User $user)
+    public
+    function destroy(User $user)
     {
         $user->delete();
         return redirect()->back();

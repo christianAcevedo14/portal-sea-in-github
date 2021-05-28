@@ -5,6 +5,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Swal from 'sweetalert2'
+import VueRouter from 'vue-router'
+import VueProgressBar from 'vue-progressbar'
+import VueApexCharts from 'vue-apexcharts'
+import { Form, HasError, AlertError } from 'vform'
+import moment from 'moment';
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
@@ -31,12 +37,6 @@ import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
 import Profile from "./components/Profile";
 import Tutorial from "./components/Tutorial";
 import AccessDenied from "./components/AccessDenied";
-import Swal from 'sweetalert2'
-import VueRouter from 'vue-router'
-import VueProgressBar from 'vue-progressbar'
-import VueApexCharts from 'vue-apexcharts'
-import { Form, HasError, AlertError } from 'vform'
-import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
@@ -163,8 +163,6 @@ Vue.component('documents-component', require('../../../Modules/Volunteer/Resourc
 Vue.component('programmatic-areas-component', require('../../../Modules/Volunteer/Resources/assets/js/components/ProgrammaticAreasComponent.vue').default);
 */
 Vue.component('historia-component', require('../../../Modules/Sise/Resources/assets/js/components/historia-component.vue').default);
-
-
 Vue.component('contacts', require('../../../Modules/Sise/Resources/assets/js/components/Contacts.vue').default);
 Vue.component('achievements', require('../../../Modules/Sise/Resources/assets/js/components/Achievements.vue').default);
 Vue.component('historia', require('../../../Modules/Sise/Resources/assets/js/components/Historias.vue').default);
@@ -233,7 +231,7 @@ Vue.directive('tooltip', function(el,binding){
         dateRange() {
             //Year needs to be updated dynamically according to current FY
             sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-04-30").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-06-30").format("YYYY-MM-DD");
         },
 
         closeRequests(){
