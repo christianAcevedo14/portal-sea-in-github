@@ -49,13 +49,15 @@ moment.locale('es');
 
 //Vue.use(require('vue-moment'));
 require('./bootstrap');
-require( 'jszip' );
-require( 'pdfmake' );
-require( 'datatables.net-bs4' );
-require( 'datatables.net-buttons-bs4' )
-require( 'datatables.net-buttons/js/buttons.html5.js' );
-require( 'datatables.net-fixedheader-bs4' );
-require( 'datatables.net-responsive-bs4' );
+
+/** DataTables references */
+// require( 'jszip' );
+// require( 'pdfmake' );
+// require( 'datatables.net-bs4' );
+// require( 'datatables.net-buttons-bs4' )
+// require( 'datatables.net-buttons/js/buttons.html5.js' );
+// require( 'datatables.net-fixedheader-bs4' );
+// require( 'datatables.net-responsive-bs4' );
 
 window.Vue = require('vue');
 
@@ -231,7 +233,7 @@ Vue.directive('tooltip', function(el,binding){
         dateRange() {
             //Year needs to be updated dynamically according to current FY
             sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-06-30").format("YYYY-MM-DD");
+            sessionStorage.maxDate = moment("2021-09-30").format("YYYY-MM-DD");
         },
 
         closeRequests(){
