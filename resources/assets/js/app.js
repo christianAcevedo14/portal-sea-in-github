@@ -196,6 +196,7 @@ Vue.directive('tooltip', function(el,binding){
         axiosInterceptor: null,
         minDate: '',
         maxDate: '',
+        dateRanges: {},
     },
 
     mounted() {
@@ -220,9 +221,11 @@ Vue.directive('tooltip', function(el,binding){
         load(){
             this.isLoading = true;
         },
+
         finishLoad(){
             this.isLoading = false;
         },
+
         searchit(){
             setTimeout(() => {
                 Fire.$emit('searching');
@@ -230,10 +233,19 @@ Vue.directive('tooltip', function(el,binding){
             // console.log("searching...");
             // Fire.$emit('searching');
         },
+
         dateRange() {
-            //Year needs to be updated dynamically according to current FY
-            sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-09-30").format("YYYY-MM-DD");
+            let domain = window.location.protocol + '//' + window.location.hostname;
+            axios.get(`${domain}/sise/dateRange`).then(response => {
+                this.dateRanges = response.data;
+
+                this.minDate = this.dateRanges[0].date;
+                this.maxDate = this.dateRanges[1].date;
+
+                //Year needs to be updated dynamically according to current FY
+                sessionStorage.minDate = moment(this.minDate).format("YYYY-MM-DD");
+                sessionStorage.maxDate = moment(this.maxDate).format("YYYY-MM-DD");
+            });
         },
 
         closeRequests(){
