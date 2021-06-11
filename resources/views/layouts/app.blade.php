@@ -84,7 +84,7 @@
             /*color: white;*/
             cursor: pointer;
             padding: 15px;
-            border-radius: 4px;
+            border-radius: 15px;
             opacity: 0;
             transition: .5s ease;
         }
@@ -131,6 +131,10 @@
             -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
         }
 
+        .form-control , .form-fieldset , .form-group , .custom-select , .card , .dropdown-menu , .modal-content , .btn , .alert , .stamp {
+            border-radius: 15px;
+        }
+
         @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
         @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
         @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
@@ -151,7 +155,7 @@
                     <div class="d-flex">
                         <a class="header-brand" href="/home">
                             <img src="{{ asset('demo/brand/portal.png') }}" class="header-brand-img" alt="portal logo">
-                            <label class="text-center text-black sea-lg md-lg" style="height: 10px">| Servicio de Extensión Agrícola </label>
+                            <label class="text-center text-black sea-lg md-lg" style="height: 8px">| Servicio de Extensión Agrícola </label>
                         </a>
                         <div class="d-flex order-lg-2 ml-auto">
                             <notifications></notifications>

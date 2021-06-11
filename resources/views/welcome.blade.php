@@ -91,8 +91,9 @@
         }
 
         .title {
-            font-size: 84px;
-            color: #129149;
+            font-size: 90px;
+            font-weight: 600;
+            color: #0a0c0d;
         }
 
         .links > a {
@@ -103,12 +104,9 @@
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
-            background-color: #129149;
+            background-color: #57A1F3;
         }
 
-        .m-b-md {
-            margin-bottom: 30px;
-        }
     </style>
 </head>
 <body>
@@ -124,24 +122,31 @@
     {{--    @endif--}}
 
     <div class="content">
-
-        <img src="/assets/images/sea-logo.png" style="height: 300px">
-        <hr style="color: #129149">
-        <div class="title m-b-md">
-            Portal del Extensionista
-        </div>
-        <hr style="color: #129149">
-        @if (Route::has('login'))
-            <div class="links">
-                @auth
-                    <a href="{{ url('/home') }}" class="btn btn-success">
-                        Página Principal</a>
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-success">
-                        Iniciar Sesión</a>
-                @endauth
+        <div class="row">
+            <div class="col-8 border-right pr-4">
+                <div class="title text-right justify-content-center">
+                    Portal <br> del <br> Extensionista
+                </div>
             </div>
-        @endif
+            <div class="col-4 pl-4">
+                <img src="/assets/images/sea-logo.png" style="height: 400px">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                @if (Route::has('login'))
+                    <div class="links">
+                        @auth
+                            <a href="{{ url('/home') }}" class="btn btn-info">
+                                Página Principal</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-info">
+                                Iniciar Sesión</a>
+                        @endauth
+                    </div>
+                @endif
+            </div>
+        </div>
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <!-- Modal content-->
