@@ -33,17 +33,17 @@
                 </div>
             @endif
             <div class="col-12">
-                <h1 class="page-header">
+                <h4 class="page-title">
                     Bienvenido, {{ Auth::user()->first_name }}
-                </h1>
+                </h4>
             </div>
         </div>
         <div class="form-control p-5 mb-5">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="header">
+                    <h2 class="page-title mb-2">
                         Aplicaciones
-                    </h1>
+                    </h2>
                 </div>
             </div>
             <div class="row row-cards text-center align-content-center">
@@ -51,7 +51,6 @@
                     <div class="col-sm-6 col-md-4 col-lg-2">
                         <a href="{{ url($sise->url) }}" class="nounderline">
                             <div class="card text-dark">
-                                <div class="card-status bg-blue-light"></div>
                                 <div class="card-body p-5 text-center">
                                     <div class="h1">
                                         <i class="{{ $sise->icon }}"></i>
@@ -67,8 +66,7 @@
                 @foreach(auth()->user()->apps->where('id', '!=', 2) as $app)
                     <div class="col-sm-6 col-md-4 col-lg-2">
                         <a href="{{ url($app->url) }}" class="nounderline">
-                            <div class="card text-dark">
-                                <div class="card-status bg-blue-light"></div>
+                            <div class="card text-dark" style="border-radius: 15px">
                                 <div class="card-body p-5 text-center">
                                     <div class="h1">
                                         <i class="{{ $app->icon }}"></i>
