@@ -33,9 +33,9 @@
                 </div>
             @endif
             <div class="col-12">
-                <h4 class="page-title">
+                <h2 class="page-header">
                     Bienvenido, {{ Auth::user()->first_name }}
-                </h4>
+                </h2>
             </div>
         </div>
         <div class="form-control p-5 mb-5">

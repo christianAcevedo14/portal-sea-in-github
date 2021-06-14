@@ -49,7 +49,7 @@
                                                 trabajo IAFS.</p>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 pl-4">
-                                            <img src="/assets/images/sea-logo.png" alt="Document" width="140"
+                                            <img src="/assets/images/sea-logo.png" alt="Document"
                                                  height="180">
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                             <p class="mt-3">Protocolo a seguir en el manejo del formulario COVID 19.</p>
                                         </div>
                                         <div class="col-lg-4 col-sm-12 pl-4">
-                                            <img src="/assets/images/sea-logo.png" alt="Document" width="140"
+                                            <img src="/assets/images/sea-logo.png" alt="Document"
                                                  height="180">
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                                                 <div class="col-12">
                                                     <img src="/assets/images/logos/google-meet-logo.png" class="my-4"
                                                          alt="Google Meet Logo"
-                                                         width="120" height="120" title="Visitar Ventana">
+                                                      height="120" title="Visitar Ventana">
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +164,6 @@
                                                    target="_blank">
                                                     <img src="/assets/images/logos/Chrome_logo.png" alt="Chrome_logo"
                                                          title="Descargar Google Chrome"
-                                                         width="60"
                                                          height="60">
                                                 </a>
                                             </div>
@@ -173,7 +172,7 @@
                                                    class="nounderline text-dark"
                                                    target="_blank">
                                                     <img src="/assets/images/logos/Edge_logo.png" alt="Edge_logo"
-                                                         title="Descargar Microsoft Edge" width="60"
+                                                         title="Descargar Microsoft Edge"
                                                          height="60">
                                                 </a>
                                             </div>

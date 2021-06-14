@@ -40,7 +40,6 @@
                     <div class="col-sm-6 col-md-3 col-lg-2">
                         <a href="{{ route("documents.index", $office) }}" class="nounderline">
                             <div class="card text-dark">
-                                <div class="card-status bg-blue-light"></div>
                                 <div class="card-body p-5 text-center">
                                     <span class="avatar"
                                           style="background-image: url({{($office->logo)}}); width: 5em; height: 5em"></span>

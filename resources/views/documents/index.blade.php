@@ -26,7 +26,6 @@
             </div>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-status bg-blue-light"></div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-9 col-md-8 col-sm-12">

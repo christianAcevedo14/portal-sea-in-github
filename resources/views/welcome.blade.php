@@ -24,47 +24,47 @@
     <style>
         html, body {
             background-color: #fff;
-            color: #636b6f;
+            /*color: #636b6f;*/
             font-family: 'Raleway', sans-serif;
             font-weight: 100;
             height: 100vh;
-            margin: 0;
+            /*margin: 0;*/
         }
 
-        .modal-header-warning {
-            color: #fff;
-            padding: 9px 15px;
-            font-weight: bold;
-            border-bottom: 1px solid #eee;
-            background-color: #f0ad4e;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-topright: 5px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
+        /*.modal-header-warning {*/
+        /*    color: #fff;*/
+        /*    padding: 9px 15px;*/
+        /*    font-weight: bold;*/
+        /*    border-bottom: 1px solid #eee;*/
+        /*    background-color: #f0ad4e;*/
+        /*    -webkit-border-top-left-radius: 5px;*/
+        /*    -webkit-border-top-right-radius: 5px;*/
+        /*    -moz-border-radius-topleft: 5px;*/
+        /*    -moz-border-radius-topright: 5px;*/
+        /*    border-top-left-radius: 5px;*/
+        /*    border-top-right-radius: 5px;*/
+        /*}*/
 
-        .modal-header-danger {
-            color: #fff;
-            padding: 9px 15px;
-            font-weight: bold;
-            border-bottom: 1px solid #eee;
-            background-color: #a41a19;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-topright: 5px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
+        /*.modal-header-danger {*/
+        /*    color: #fff;*/
+        /*    padding: 9px 15px;*/
+        /*    font-weight: bold;*/
+        /*    border-bottom: 1px solid #eee;*/
+        /*    background-color: #a41a19;*/
+        /*    -webkit-border-top-left-radius: 5px;*/
+        /*    -webkit-border-top-right-radius: 5px;*/
+        /*    -moz-border-radius-topleft: 5px;*/
+        /*    -moz-border-radius-topright: 5px;*/
+        /*    border-top-left-radius: 5px;*/
+        /*    border-top-right-radius: 5px;*/
+        /*}*/
 
-        .modal-body {
-            height: 80%;
-            overflow: auto;
-            text-align: justify;
-            font-weight: bold;
-        }
+        /*.modal-body {*/
+        /*    height: 80%;*/
+        /*    overflow: auto;*/
+        /*    text-align: justify;*/
+        /*    font-weight: bold;*/
+        /*}*/
 
         .full-height {
             height: 100vh;
@@ -91,8 +91,7 @@
         }
 
         .title {
-            font-size: 90px;
-            font-weight: 600;
+            /*font-weight: 600;*/
             color: #0a0c0d;
         }
 
@@ -106,6 +105,30 @@
             text-transform: uppercase;
             background-color: #57A1F3;
         }
+
+        .modal-content, .btn {
+            border-radius: 15px;
+        }
+
+        /* check if the screen size is at least 770px */
+        @media only screen and (min-width: 1000px) {
+            #sea_logo_sm {
+                display: none;
+            }
+            .title {
+                font-size: 90px;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #sea_logo_lg {
+                display: none;
+            }
+            .title {
+                font-size: 55px;
+            }
+        }
+
 
     </style>
 </head>
@@ -122,59 +145,78 @@
     {{--    @endif--}}
 
     <div class="content">
-        <div class="row">
-            <div class="col-8 border-right pr-4">
-                <div class="title text-right justify-content-center">
-                    Portal <br> del <br> Extensionista
+        <div class="container">
+            <div id="sea_logo_sm" class="row">
+                <div class="col-12 text-left">
+                    <img src="/assets/images/sea-logo.png" style="height: 320px">
+                    <hr class="mt-5">
+                    <h3 class="title text-left">
+                        Portal del <br> Extensionista
+                    </h3>
+                    <hr>
                 </div>
             </div>
-            <div class="col-4 pl-4">
-                <img src="/assets/images/sea-logo.png" style="height: 400px">
+            <div id="sea_logo_lg" class="row">
+                <div class="col-8 border-right pr-4">
+                    <h3 class="title text-right mt-5 font-weight-bold">
+                        Portal <br> del <br> Extensionista
+                    </h3>
+                </div>
+                <div class="col-4 pl-4 pt-3">
+                    <img src="/assets/images/sea-logo.png" style="height: 400px">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    @if (Route::has('login'))
+                        <div class="links">
+                            @auth
+                                <a href="{{ url('/home') }}" class="btn btn-info">
+                                    Página Principal</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-info">
+                                    Iniciar Sesión</a>
+                            @endauth
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                @if (Route::has('login'))
-                    <div class="links">
-                        @auth
-                            <a href="{{ url('/home') }}" class="btn btn-info">
-                                Página Principal</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-info">
-                                Iniciar Sesión</a>
-                        @endauth
-                    </div>
-                @endif
-            </div>
-        </div>
+
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
                 <!-- Modal content-->
 
                 <div class="modal-content">
                     <div class="modal-header modal-header-warning">
-                        <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
+                        <h4 class="modal-title text-dark font-weight-bold">AVISO IMPORTANTE</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted certifica que es un
-                            usuario autotizado del Servicio de Extensión Agrícola. </p>
+                        <div class="alert alert-warning text-justify font-weight-bold">
+                            <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted
+                                certifica que es un
+                                usuario autotizado del Servicio de Extensión Agrícola. </p>
 
-                        <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen la política de
-                            tecnología e información de la Universidad de Puerto Rico y a cualquier otra disposición, ley
-                            estatal y federal según aplicable.</p>
+                            <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen
+                                la política de
+                                tecnología e información de la Universidad de Puerto Rico y a cualquier otra
+                                disposición, ley
+                                estatal y federal según aplicable.</p>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger strong btn-lg" data-dismiss="modal">Acepto</button>
+                        <button type="button" class="btn btn-danger font-weight-bold" data-dismiss="modal">Acepto
+                        </button>
                     </div>
                 </div>
 
 
-         {{--       For Portal-SEA Update--}}
+            {{--       For Portal-SEA Update--}}
 
-<!--                <div class="modal-content">
+            <!--                <div class="modal-content">
                     <div class="modal-header modal-header-danger">
                         <h4 class="modal-title"  style="font-weight: bold; color:white;">AVISO IMPORTANTE</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
