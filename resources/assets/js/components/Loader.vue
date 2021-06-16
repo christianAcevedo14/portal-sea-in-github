@@ -32,7 +32,8 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
     z-index: 999;
     cursor: pointer;
 
@@ -56,7 +57,7 @@ export default {
         margin: -75px 0 0 -75px;
         border: 16px solid #f3f3f3;
         border-radius: 50%;
-        border-top: 16px solid #3498db;
+        border-top: 16px solid #57A1F3;
         -webkit-animation: spin 2s linear infinite;
         animation: spin 2s linear infinite;
     }
