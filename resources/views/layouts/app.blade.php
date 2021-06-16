@@ -130,7 +130,15 @@
         }
 
         .stamp {
-            border-radius: 12px;
+            border-radius: 10px;
+        }
+
+        .fade {
+            backdrop-filter: blur(5px);
+        }
+
+        .nounderline {
+            text-decoration: none !important
         }
 
         @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}

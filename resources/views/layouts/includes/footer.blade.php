@@ -45,18 +45,14 @@
                             {{--                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>--}}
                             {{--                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>--}}
                             <li class="list-inline-item">
-                                <a href="{{ route('tutorials.index') }}" target="_blank">
-                                    <button class="btn btn-outline-primary btn-pill btn-sm">
+                                <a href="{{ route('tutorials.index') }}" target="_blank" class="border-bottom nounderline">
                                         Tutoriales
-                                    </button>
                                    </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" data-toggle="modal"
+                                <a href="#" data-toggle="modal" class="border-bottom nounderline"
                                    data-target="#helpModal">
-                                    <button class="btn btn-outline-primary btn-pill btn-sm">
                                         Ayuda
-                                    </button>
                                 </a>
                             </li>
                         </ul>
