@@ -48,7 +48,7 @@
             </div>
             <div class="row row-cards text-center align-content-center">
                 @foreach(auth()->user()->apps->where('id', '=', 2) as $sise)
-                    <div class="col-sm-6 col-md-4 col-lg-2">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
                         <a href="{{ url($sise->url) }}" class="nounderline">
                             <div class="card text-dark">
                                 <div class="card-body p-5 text-center">
@@ -64,7 +64,7 @@
                     </div>
                 @endforeach
                 @foreach(auth()->user()->apps->where('id', '!=', 2) as $app)
-                    <div class="col-sm-6 col-md-4 col-lg-2">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
                         <a href="{{ url($app->url) }}" class="nounderline">
                             <div class="card text-dark" style="border-radius: 15px">
                                 <div class="card-body p-5 text-center">
