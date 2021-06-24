@@ -63,13 +63,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12 text-center" id="profile_edit">
-                                    <button class="btn btn-primary w-75" type="button" data-toggle="collapse"
+                                    <button class="btn btn-primary w-75 m-1" type="button" data-toggle="collapse"
                                             data-target="#collapse_edit" aria-expanded="true"
                                             aria-controls="collapse_edit">Editar Perfil
                                     </button>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-center" id="profile_pass">
-                                    <button class="btn btn-success w-75" type="button" data-toggle="collapse"
+                                    <button class="btn btn-success w-75 m-1" type="button" data-toggle="collapse"
                                             data-target="#collapse_pass" aria-expanded="true"
                                             aria-controls="collapse_pass">Cambiar Contraseña
                                     </button>
