@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (\Hash::check('123123', auth()->user()->password)) {
+            $firstLogin = true;
+            return view('home' , compact('firstLogin'));
+        } else {
+            return view('home');
+        }
+
     }
 }

@@ -37,24 +37,61 @@
 {{--</div>--}}
 <footer class="footer">
     <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-auto ml-lg-auto">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-sm-12 mb-2">
                 <div class="row align-items-center">
                     <div class="col-auto">
-                        <ul class="list-inline list-inline-dots mb-0">
-                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>
-                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>
+                        <ul class="list-inline mb-0">
+                            {{--                            <li class="list-inline-item"><a href="./docs/index.html" style="color: #0d8ddc">Documentación</a></li>--}}
+                            {{--                            <li class="list-inline-item"><a href="./faq.html"  style="color: #0d8ddc">Preguntas frecuentes</a></li>--}}
+                            <li class="list-inline-item">
+                                <a href="{{ route('tutorials.index') }}" target="_blank" class="border-bottom nounderline">
+                                        Tutoriales
+                                   </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" data-toggle="modal" class="border-bottom nounderline"
+                                   data-target="#helpModal">
+                                        Ayuda
+                                </a>
+                            </li>
                         </ul>
                     </div>
-{{--                    <div class="col-auto">--}}
-{{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}
-{{--                            Código fuente</a>--}}
-{{--                    </div>--}}
                 </div>
+
+                {{--               Warning!! Breaks Portal-SEA!!--}}
+                {{--          <div class="col-auto">
+                   <ul class="list-inline list-inline-dots mb-0">
+                       <li class="list-inline-item btn-primary btn-pill">
+                           <a href="{{ route('ticket.create') }}"
+                              target="popup"
+                              onclick="window.open(
+                                  '{{ URL::to('ticket/ticket/create') }}',
+                                  'name',
+                                  'width=600,height=600'
+                                  )"
+                              class="text-white">
+                               Crear Ticket Serv
+                           </a>
+                       </li>
+                   </ul>
+               </div>--}}
+
+                {{--                    <div class="col-auto">--}}
+                {{--                        <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">--}}
+                {{--                            Código fuente</a>--}}
+                {{--                    </div>--}}
+
             </div>
-            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-                <img src="/assets/images/sea-logo.png" style="height: 50px">
-                Copyright © 2019 Servicio de Extensión Agrícola. Todos los derechos reservados.
+            <div class="col-lg-5 col-sm-12">
+                <div class="row">
+                    <div class="col-10 pr-1 border-right text-right">
+                        Copyright © {{ date('Y') }} Servicio de Extensión Agrícola. <br> Todos los derechos reservados.
+                    </div>
+                    <div class="col-2 pl-1">
+                        <img src="/assets/images/sea-logo.png" style="height: 50px">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

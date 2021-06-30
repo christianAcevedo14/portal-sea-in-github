@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
          $this->call(ZipcodesTableSeeder::class);
          $this->call(UsersTableSeeder::class);
          $this->call(ProgrammaticAreasTableSeeder::class);
+         $this->call(TutorialAppsTableSeeder::class);
+         $this->call(TutorialSectionsTableSeeder::class);
 //         $this->call(OldUsersTableSeeder::class);
     }
 }

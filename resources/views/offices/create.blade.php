@@ -16,50 +16,44 @@
 
 @section('content')
     <div class="container">
-        <div class="row row-cards">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-header"><a href="{{ route('offices.index') }}" class="mr-2"><i class="fe fe-arrow-left-circle"></i></a>
+                    Crear Oficina</h1>
+            </div>
             <div class="col-sm-12">
                 <form action="{{ route('offices.store') }}" enctype="multipart/form-data" class="card" method="post">
-                    <div class="card-header">
-                        <h3 class="card-title">Crear oficina</h3>
-                    </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Nombre de Oficina" value="{{ old('name') }}">
+                        <fieldset class="form-fieldset">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Nombre:</label>
+                                        <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Nombre de oficina..." value="{{ old('name') }}">
+                                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="description" class="form-label">Descripción:</label>
+                                        <input type="text" name="description" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Descripcion de oficina..." value="{{ old('description') }}">
+                                        <div class="invalid-feedback">{{ $errors->first('description') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="logo" class="form-label">Logo:</label>
+                                        <input type="file" name="logo" class="form-control-file" placeholder="Logo" value="{{ old('logo') }}">
+                                        @if ($errors->has('logo'))
+                                            <p class="text-danger mt-1">{{ $errors->first('logo') }}</p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-
-                            @if ($errors->has('name'))
-                                <strong>{{ $errors->first('name') }}</strong>
-                            @endif
-
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <textarea type="text" rows="4" cols="150" name="description" placeholder="Descripcion" value="{{ old('description') }}">
-                                    </textarea>
-                                </div>
-                            </div>
-
-                            @if ($errors->has('description'))
-                                <strong>{{ $errors->first('description') }}</strong>
-                            @endif
-
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <span class="form-label"> Logo </span>
-                                    <input type="file" name="logo" class="form-control-file" placeholder="Logo" value="{{ old('logo') }}">
-                                </div>
-                            </div>
-                        </div>
+                        </fieldset>
                     </div>
-
                     <div class="card-footer text-right">
-                        <a href="{{ route('offices.index') }}" class="btn btn-warning"
+                        <a href="{{ route('offices.index') }}" class="btn btn-secondary"
                            onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
                         <span class="m-1"></span>
                         <button type="submit" class="btn btn-primary">Crear</button>

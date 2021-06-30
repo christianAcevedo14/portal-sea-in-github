@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Document;
-use App\Http\Requests\StoreOffice;
 use App\Office;
 use Illuminate\Http\Request;
 
@@ -20,11 +19,13 @@ class OfficeController extends Controller
         $offices = Office::orderBy('name')->get();
         return view('offices.index', compact('offices'));
     }
+
     public function create()
     {
         return view('offices.create');
     }
-    public function store(StoreOffice $office)
+
+    public function store()
     {
         $data = request()->validate([
             'name' => 'required',
@@ -40,22 +41,43 @@ class OfficeController extends Controller
                 'logo' => $imagePath
             ]);
 
-
-
         return redirect()->route('offices.index');
     }
 
-//    public function show(Office $office)
-//    {
-//
-//        return view('offices.show', compact('office'));
-//    }
+    public function show(Office $office)
+    {
+        return redirect()->route('offices.edit', $office);
+    }
 
     public function edit(Office $office)
     {
-        $documents = Document::all();
 
-        return view('offices.edit', compact('office', 'documents'));
+        return view('offices.edit', compact('office'));
 
+    }
+
+    public function update(Office $office, Request $request)
+    {
+
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'logo' => ''
+        ]);
+
+        if(request('logo')){
+            $imagePath ='/storage/' . request('logo')->store('img','public');
+          \Illuminate\Support\Facades\File::delete(public_path() . '/' . $office->logo);
+
+            $office->update(array_merge(
+                $data,
+                ['logo' => $imagePath,]
+            ));
+        }
+        else{
+            $office->update($data);
+        }
+
+        return redirect()->route('documents.index', $office)->with('notification', 'La oficina fue editada exitosamente.');
     }
 }

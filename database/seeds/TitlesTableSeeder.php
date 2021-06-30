@@ -44,10 +44,17 @@ class TitlesTableSeeder extends Seeder
             ['id' => 41, 'description' => 'Especialista en Educación en Computadoras'],
             ['id' => 42, 'description' => 'Decano Asociado y Subdirector del SEA'],
             ['id' => 45, 'description' => 'Administrador Edificio Huyke'],
-            ['id' => 46, 'description' => 'Directores de Departamente'],
+            ['id' => 46, 'description' => 'Directores de Departamento'],
             ['id' => 47, 'description' => 'Líder de Área Programática (CFC)'],
             ['id' => 48, 'description' => 'Líder de Área Programática (4H)'],
-            ['id' => 49, 'description' => 'Líder de Área Programática (DRC)']
+            ['id' => 49, 'description' => 'Líder de Área Programática (DRC)'],
+
+            ['id' => 50, 'description' => 'Coordinador(a) PIA'],
+            ['id' => 51, 'description' => 'Ingenería Agrícola'],
+            ['id' => 52, 'description' => 'Educador en CFC - Ciencias de la Familia y el Consumidor - PIA'],
+            ['id' => 53, 'description' => 'Coordinador(a) de Medios Educativos e Información (MEI)'],
+            ['id' => 54, 'description' => 'Coordinador(a) Plaguicidas'],
+            ['id' => 55, 'description' => 'Decana Asociada de Facultad de Ciencias Agrícolas'],
         ];
 
         foreach ($titles as $title)
