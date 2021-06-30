@@ -25,7 +25,7 @@ class DocumentController extends Controller
      */
     public function index(Office $office)
     {
-        $documents = Document::all();
+        $documents = Document::orderBy('name')->get();
 
         return view('documents.index', compact('office', 'documents'));
     }

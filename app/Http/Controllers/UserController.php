@@ -39,8 +39,8 @@ class UserController extends Controller
     public function create()
     {
         $apps = App::select('id', 'name')->get();
-        $titles = Title::select('id', 'description')->get();
-        $programmatic_units = ProgrammaticUnit::select('id', 'description')->get();
+        $titles = Title::select('id', 'description')->orderBy('description')->get();
+        $programmatic_units = ProgrammaticUnit::select('id', 'description')->orderBy('description')->get();
         return view('users.create', compact('apps', 'titles', 'programmatic_units'));
     }
 
