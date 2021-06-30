@@ -16,51 +16,68 @@
 
 @section('content')
     <div class="container">
-
-        <div class="row row-cards">
-            <div class="col-sm-12">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="page-header"><a href="{{ route('documents.index', [$office]) }}" class="mr-2"><i class="fe fe-arrow-left-circle"></i></a>
+                    Añadir Documento</h1>
+            </div>
+            <div class="col-12">
                 <form action="{{ route('documents.store', $office) }}" enctype="multipart/form-data" class="card" method="post">
-                    <div class="card-header">
-                        <h3 class="card-title">Añadir documento a {{ $office->name }}</h3>
-                    </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Nombre de documento" value="{{ old('name') }}">
+                        <fieldset class="form-fieldset">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Nombre:</label>
+                                        <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Nombre del documento..."
+                                               value="{{ old('name') }}">
+                                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="description" class="form-label">Descripción:</label>
+                                        <input type="text" name="description" class="form-control @if($errors->has('description')) is-invalid @endif" placeholder="Descripción del documento..."
+                                               value="{{ old('description') }}">
+                                        <div class="invalid-feedback">{{ $errors->first('description') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="file" class="form-label">Url:</label>
+                                        <input type="text" name="file" class="form-control @if($errors->has('file')) is-invalid @endif" placeholder="Url del documento..."
+                                               value="{{ old('file') }}">
+                                        <div class="invalid-feedback">{{ $errors->first('file') }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="form-label">¿Es un documento descargable (.doc, .pdf, etc.)?</div>
+                                        <div class="custom-controls-stacked">
+                                            <label class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio"
+                                                       class="custom-control-input @if($errors->has('downloadable')) is-invalid @endif"
+                                                       name="downloadable"
+                                                       value="1" {{ (old('downloadable') == '1') ? 'checked' : '' }}>
+                                                <span class="custom-control-label">Sí</span>
+                                            </label>
+                                            <label class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio"
+                                                       class="custom-control-input @if($errors->has('downloadable')) is-invalid @endif"
+                                                       name="downloadable"
+                                                       value="0" {{ (old('downloadable') == '0') ? 'checked' : '' }}>
+                                                <span class="custom-control-label">No</span>
+                                            </label>
+                                            <div class="is-invalid"
+                                                 style="color:#cd201f; font-size: 87.5%;">{{ $errors->first('retired') }}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            @if ($errors->has('name'))
-                                <strong>{{ $errors->first('name') }}</strong>
-                            @endif
-
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <textarea type="text" rows="4" cols="150" name="description" placeholder="Descripcion" value="{{ old('description') }}">
-                                    </textarea>
-                                </div>
-                            </div>
-
-                            @if ($errors->has('description'))
-                                <strong>{{ $errors->first('description') }}</strong>
-                            @endif
-
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <span class="form-label"> documento </span>
-                                    <input type="file" name="file" class="form-control-file" placeholder="documento" value="{{ old('file') }}">
-                                </div>
-                            </div>
-                        </div>
+                        </fieldset>
                     </div>
-
                     <div class="card-footer text-right">
-                        <a href="{{ route('offices.show', $office_class = $office) }}" class="btn btn-warning"
+                        <a href="{{ route('documents.index', [$office]) }}" class="btn btn-secondary"
                            onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
                         <span class="m-1"></span>
                         <button type="submit" class="btn btn-primary">Crear</button>

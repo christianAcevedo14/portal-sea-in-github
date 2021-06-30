@@ -6,7 +6,7 @@ use App\User;
 
 class NotificationsRepository
 {
-    public function notifySupervisor($plan, $isOtherAdmin)
+    public function notifySupervisor($plan, $isOtherAdmin, $informe)
     {
         $administrators = [];
         if(!$isOtherAdmin){
@@ -14,7 +14,13 @@ class NotificationsRepository
                 $administrators = User::pean()->get();
             }
             elseif (auth()->user()->supervisedByAssocDean) {
-                $administrators = User::assocDean()->get();
+                if($informe !== null){
+                    if($informe->program_id === 18){
+                        $administrators = User::assocDean()->get();
+                    }
+                } else {
+                    $administrators = User::assocDean()->get();
+                }
             }
             elseif (auth()->user()->supervisedByAuxDean) {
                 $administrators = User::auxDean()->get();
@@ -29,13 +35,17 @@ class NotificationsRepository
                 $administrators = User::agricultura()->get();
             }
             else {
-                $administrators = User::where('supervised_region', 'like', $plan->user->region . '00%')->orWhere('programmatic_unit_id', 'like', $plan->user->region . '00%')->coordinators()->get();
+                $administrators = User::where('supervised_region', 'like', $plan->user->region)->orWhere('programmatic_unit_id', 'like', $plan->user->region . '00%')->coordinators()->get();
             }
         } else {
-
-            if ($plan->user->region === "6") {
-                if(!($plan->user->unit === 691 || $plan->user->unit === 695)){
-                    $administrators = User::where('supervised_region', 'like', $plan->user->region . '00%')->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
+            //verify if its an informe
+            if ($informe !== null) {
+                if($informe->program_id !== 18 && $plan->user->region === 600){
+                    $administrators = User::where('supervised_region', 'like', $plan->user->region)->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
+                }
+            } elseif($plan->user->region === 600){
+                if (!($plan->user->unit === 691 || $plan->user->unit === 695)) {
+                    $administrators = User::where('supervised_region', 'like', $plan->user->region)->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
                 }
             }
 

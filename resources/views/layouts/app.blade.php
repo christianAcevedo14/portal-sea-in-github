@@ -84,21 +84,21 @@
             /*color: white;*/
             cursor: pointer;
             padding: 15px;
-            border-radius: 4px;
+            border-radius: 15px;
             opacity: 0;
             transition: .5s ease;
         }
 
-        .sea-lg {
-            visibility: hidden;
-            font-size: 1px;
+        /* check if the screen size is at least 770px */
+        @media only screen and (max-width: 770px) {
+            #sea_brand {
+           display: none;
+            }
         }
 
-        /* check if the screen size is at least 770px */
-        @media only screen and (min-width: 770px) {
-            .md-lg {
-                visibility: visible;
-                font-size: 18px;
+        @media print {
+            .modal-body {
+                overflow: visible !important;
             }
         }
 
@@ -111,6 +111,40 @@
             left: 100%;
             margin-top: -1px;
         }
+
+        .pulse-button {
+            box-shadow: 0 0 0 0 rgba(38, 143, 255, 0.5);
+            -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+            animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+
+        .pulse-button:hover
+        {
+            -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+        }
+
+        .form-control , .form-fieldset , .form-group , .custom-select , .card , .dropdown-menu , .modal-content , .btn , .alert {
+            border-radius: 15px;
+        }
+
+        .stamp {
+            border-radius: 10px;
+        }
+
+        .fade {
+            backdrop-filter: blur(5px);
+        }
+
+        .nounderline {
+            text-decoration: none !important
+        }
+
+        @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+        @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 
         /*#myBtn:hover {*/
         /*    background-color: #2d89f0;*/
@@ -127,7 +161,7 @@
                     <div class="d-flex">
                         <a class="header-brand" href="/home">
                             <img src="{{ asset('demo/brand/portal.png') }}" class="header-brand-img" alt="portal logo">
-                            <label class="text-center text-black sea-lg md-lg" style="height: 10px">| Servicio de Extensión Agrícola </label>
+                            <label id="sea_brand" class="text-center text-black md-lg" style="height: 8px">| Servicio de Extensión Agrícola </label>
                         </a>
                         <div class="d-flex order-lg-2 ml-auto">
                             <notifications></notifications>
@@ -146,12 +180,15 @@
                 </div>
             </div>
             <div class="my-3 my-md-5">
-                <button onclick="topFunction()" id="myBtn" class="btn btn-primary" title="Go to top"><span class="fe fe-arrow-up-circle"></span></button>
+                <button onclick="topFunction()" id="myBtn" class="btn btn-primary" title="Regresar Arriba"><span class="fe fe-arrow-up-circle"></span></button>
                 @yield('content')
             </div>
         </div>
         {{--footer--}}
     </div>
+    @yield('custom-scripts')
+    <!-- App.js -->
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- Dashboard Core -->
     {{--<script src="{{ asset('assets/js/dashboard.js') }}"></script>--}}
     <!-- c3.js Charts Plugin -->
@@ -160,11 +197,44 @@
     <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
-    <!-- App.js -->
-    <script src="{{ mix('js/app.js') }}"></script>
-    @yield('custom-scripts')
     <script>
         let timeoutID;
+        let langOpt = {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros.",
+            "sZeroRecords": "No se encontraron resultados.",
+            "sEmptyTable": "Ningún dato disponible en esta tabla.",
+            "sInfo": "Mostrando registros del _START_ al _END_ de _TOTAL_.",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de 0.",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+        }
+        let dtOpts = {
+            // dom: 'lfrtip<"clear">B',
+            // buttons: [
+            //     'copy', 'csv', 'pdf'
+            // ],
+            // responsive: true,
+            // processing: true,
+            retrieve: true,
+            language: langOpt,
+        }
 
         function setup() {
             this.addEventListener("mousemove", resetTimer, false);
@@ -232,6 +302,7 @@
                 e.stopPropagation();
                 e.preventDefault();
             });
+            $("#resetPassModal").modal('show');
         });
 
     </script>

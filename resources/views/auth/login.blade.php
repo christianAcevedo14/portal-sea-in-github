@@ -7,7 +7,7 @@
                 <div class="col col-login mx-auto">
                     <div class="text-center mb-6">
                         <img src="{{ asset('demo/brand/portal.png') }}" class="h-6" alt="">
-                        <label class="text-center text-black mt-3">| Servicio de Extensión Agrícola </label>
+                        <label class="text-center text-black mt-3 pl-2 border-left"><strong>Servicio de Extensión Agrícola </strong></label>
                     </div>
                     <form class="card" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf

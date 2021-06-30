@@ -5,6 +5,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Swal from 'sweetalert2'
+import VueRouter from 'vue-router'
+import VueProgressBar from 'vue-progressbar'
+import VueApexCharts from 'vue-apexcharts'
+import { Form, HasError, AlertError } from 'vform'
+import moment from 'moment';
 import Dashboard from "../../../Modules/Sise/Resources/assets/js/components/Dashboard";
 import Program from "../../../Modules/Sise/Resources/assets/js/components/Program";
 import Matter from "../../../Modules/Sise/Resources/assets/js/components/Matter";
@@ -31,15 +37,11 @@ import FPPC from "../../../Modules/Sise/Resources/assets/js/components/FPPC";
 import Profile from "./components/Profile";
 import Tutorial from "./components/Tutorial";
 import AccessDenied from "./components/AccessDenied";
-import Swal from 'sweetalert2'
-import VueRouter from 'vue-router'
-import VueProgressBar from 'vue-progressbar'
-import { Form, HasError, AlertError } from 'vform'
-import moment from 'moment';
 import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/ApproveRequestedMonths";
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
 import MiProgreso from "../../../Modules/Sise/Resources/assets/js/components/MiProgreso";
+
 import Dashboard4h from "../../../Modules/Club4H/Resources/assets/js/components/Dashboard4h.vue";
 import Club from "../../../Modules/Club4H/Resources/assets/js/components/Club.vue";
 import Category from "../../../Modules/Club4H/Resources/assets/js/components/Category.vue";
@@ -50,6 +52,9 @@ import assignProject from "../../../Modules/Club4H/Resources/assets/js/component
 import Participant from "../../../Modules/Club4H/Resources/assets/js/components/Participant.vue";
 import ShowParticipant from "../../../Modules/Club4H/Resources/assets/js/components/showParticipant.vue";
 
+import Manual from "../../../Modules/Sise/Resources/assets/js/components/Manual";
+
+
 /*let moment = require('moment');
 moment().format();
 */
@@ -57,6 +62,16 @@ moment.locale('es');
 
 //Vue.use(require('vue-moment'));
 require('./bootstrap');
+
+/** DataTables references */
+// require( 'jszip' );
+// require( 'pdfmake' );
+// require( 'datatables.net-bs4' );
+// require( 'datatables.net-buttons-bs4' )
+// require( 'datatables.net-buttons/js/buttons.html5.js' );
+// require( 'datatables.net-fixedheader-bs4' );
+// require( 'datatables.net-responsive-bs4' );
+
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
@@ -88,6 +103,9 @@ const Toast = Swal.mixin({
 window.Toast = Toast;
 window.Fire = new Vue();
 
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -115,6 +133,7 @@ const routes = [
     { path: '/sise/program', component: Program },
     { path: '/sise/informes_index', component: InformesIndex},
     { path: '/sise/mi_progreso', component: MiProgreso},
+    { path: '/sise/manual', component: Manual},
     { path: '/sise/approve_requested_months', component: ApproveRequestedMonths},
     { path: '/sise/requested_months', component: UserRequestedMonths},
     { path: '/sise/approve_informes', name: 'ApproveInformes', props: true, component: ApproveInformes},
@@ -184,6 +203,8 @@ Vue.directive('tooltip', function(el,binding){
         placement: binding.arg,
         trigger: 'hover',
         boundary: 'viewpoint',
+        hideOnTargetClick: true,
+        autoHide: true,
     })
 });
 
@@ -198,6 +219,7 @@ Vue.directive('tooltip', function(el,binding){
         axiosInterceptor: null,
         minDate: '',
         maxDate: '',
+        dateRanges: {},
     },
 
     mounted() {
@@ -222,20 +244,31 @@ Vue.directive('tooltip', function(el,binding){
         load(){
             this.isLoading = true;
         },
+
         finishLoad(){
             this.isLoading = false;
         },
+
         searchit(){
             setTimeout(() => {
                 Fire.$emit('searching');
-            }, 800);
+            }, 1200);
             // console.log("searching...");
             // Fire.$emit('searching');
         },
+
         dateRange() {
-            //Year needs to be updated dynamically according to current FY
-            sessionStorage.minDate = moment("2020-10-01").format("YYYY-MM-DD");
-            sessionStorage.maxDate = moment("2021-02-28").format("YYYY-MM-DD");
+            let domain = window.location.protocol + '//' + window.location.hostname;
+            axios.get(`${domain}/sise/dateRange`).then(response => {
+                this.dateRanges = response.data;
+
+                this.minDate = this.dateRanges[0].date;
+                this.maxDate = this.dateRanges[1].date;
+
+                //Year needs to be updated dynamically according to current FY
+                sessionStorage.minDate = moment(this.minDate).format("YYYY-MM-DD");
+                sessionStorage.maxDate = moment(this.maxDate).format("YYYY-MM-DD");
+            });
         },
 
         closeRequests(){
