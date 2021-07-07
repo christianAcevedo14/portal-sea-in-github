@@ -27,7 +27,10 @@
                         <div class="col-10 offset-2">
                             <div class="alert alert-icon alert-danger alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert"></button>
-                                <i class="fe fe-trash-2 mr-2" aria-hidden="true"></i> {{ session()->get('errors') }}
+                                <i class="fe fe-info mr-2" aria-hidden="true"></i>
+                                @foreach($errors->all() as $error)
+                                   <li> {{ $error }} </li>
+                                @endforeach
                             </div>
                         </div>
                     @endif
