@@ -36,6 +36,17 @@
     <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+    <style>
+
+        .form-control , .form-fieldset , .form-group , .custom-select , .card , .dropdown-menu , .modal-content , .btn , .alert {
+            border-radius: 15px;
+        }
+
+        .nounderline {
+            text-decoration: none !important
+        }
+
+    </style>
 </head>
 <body class="">
 <div class="page">

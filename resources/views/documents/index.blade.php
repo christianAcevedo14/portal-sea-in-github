@@ -26,10 +26,9 @@
             </div>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-status bg-blue-light"></div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-9 col-md-8 col-sm-12">
+                            <div class="col-lg-10 col-md-8 col-sm-12">
                                 <h1 class="page-header">
                                     <a href="{{ route('offices.index') }}" class="mr-2"><i
                                             class="fe fe-arrow-left-circle"></i></a>
@@ -42,9 +41,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-sm-12">
+                            <div class="col-lg-2 col-md-4 col-sm-12 text-center">
                                 @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
-                                <a href="{{ route('offices.edit', [$office]) }}" class="btn btn-sm btn-pill btn-primary mt-2 float-right">
+                                <a href="{{ route('offices.edit', [$office]) }}" class="btn btn-sm btn-pill btn-primary mt-2 w-75">
                                     <span class="text-white" style="font-size:17px"><i
                                             class="fe fe-edit pr-1"></i>Editar</span>
                                 </a>
@@ -74,9 +73,7 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Descripcion</th>
-                                    @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                                     <th scope="col">Acciones</th>
-                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -88,15 +85,15 @@
                                             </a>
                                         </td>
                                         <td>{{ $document->description }}</td>
-                                        @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
-                                        <td>
-                                            {{--                                        <a href="{{ $document->file }}" role="button" class="btn btn-info btn-pill"--}}
-                                            {{--                                           target="_blank">--}}
-                                            {{--                                            <i class="fa fa-download"></i>--}}
-                                            {{--                                        </a>--}}
 
+                                        <td>
+                                            <a href="{{ $document->file }}" role="button" class="btn btn-info btn-pill m-1"
+                                               target="_blank" title="Descargar">
+                                                <i class="fa fa-download"></i>
+                                            </a>
+                                            @if(auth()->user()->title_id === 1 || auth()->user()->title_id === 4)
                                             <a href="{{ route('documents.edit', [$office,$document]) }}"
-                                               class="btn btn-sm btn-pill btn-primary" title="Editar"><i
+                                               class="btn btn-sm btn-pill btn-primary m-1" title="Editar"><i
                                                     class="fe fe-edit"></i></a>
                                             <br>
                                             <form action="{{ route('documents.destroy', [$office,$document]) }}"
@@ -104,11 +101,11 @@
                                                   onsubmit="return confirm('¿Está seguro que desea eliminar el documento?');">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="delete" class="w-0">
-                                                <button class="btn btn-sm btn-pill btn-danger"><i
+                                                <button class="btn btn-sm btn-pill btn-danger m-1"><i
                                                         class="fe fe-trash-2"></i></button>
                                             </form>
+                                            @endif
                                         </td>
-                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

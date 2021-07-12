@@ -54,7 +54,7 @@
                     <div class="row">
                         <div class="col-12 my-4">
                             <a href="https://meet.google.com/hze-outc-csd" target="_blank">
-                                <img src="/assets/images/logos/google-meet-logo.png" alt="Google Meet Logo" width="120" height="100" title="Visitar Ventana">
+                                <img src="/assets/images/logos/google-meet-logo.png" alt="Google Meet Logo" width="120" height="120" title="Visitar Ventana">
                             </a>
                         </div>
                         <div class="col-12 my-5">
