@@ -41,7 +41,19 @@ import ApproveRequestedMonths from "../../../Modules/Sise/Resources/assets/js/co
 import UserRequestedMonths from "../../../Modules/Sise/Resources/assets/js/components/UserRequestedMonths";
 import FiscalYearButton from "../../../Modules/Sise/Resources/assets/js/components/FiscalYearButton";
 import MiProgreso from "../../../Modules/Sise/Resources/assets/js/components/MiProgreso";
+
+import Dashboard4h from "../../../Modules/Club4H/Resources/assets/js/components/Dashboard4h.vue";
+import Club from "../../../Modules/Club4H/Resources/assets/js/components/Club.vue";
+import Category from "../../../Modules/Club4H/Resources/assets/js/components/Category.vue";
+import Interest from "../../../Modules/Club4H/Resources/assets/js/components/Interest.vue";
+import Event from "../../../Modules/Club4H/Resources/assets/js/components/Event.vue";
+import Project from "../../../Modules/Club4H/Resources/assets/js/components/Project.vue";
+import assignProject from "../../../Modules/Club4H/Resources/assets/js/components/assignProject.vue";
+import Participant from "../../../Modules/Club4H/Resources/assets/js/components/Participant.vue";
+import ShowParticipant from "../../../Modules/Club4H/Resources/assets/js/components/showParticipant.vue";
+
 import Manual from "../../../Modules/Sise/Resources/assets/js/components/Manual";
+
 
 /*let moment = require('moment');
 moment().format();
@@ -144,7 +156,16 @@ const routes = [
     { path: '/sise/course', component: Course },
     { path: '/sise/plan', name: 'Plan', props: true,  component: Plan },
     { path: '/sise/*', component: Dashboard },
-    { path: '/*', component: Dashboard },
+    { path: '/4h/assignProject', component: assignProject},
+    { path: '/4h/showParticipant', name: 'ShowParticipant', component: ShowParticipant, props: true},
+    { path: '/4h/participant', component: Participant},
+    { path: '/4h/project', component: Project},
+    { path: '/4h/interest', component: Interest},
+    { path: '/4h/event', component: Event},
+    { path: '/4h/club', component: Club},
+    { path: '/4h/category', component: Category},
+    { path: '/4h*', component: Dashboard4h},
+    { path: '/*', component: Dashboard }
 ];
 const router = new VueRouter({
     mode: 'history',
