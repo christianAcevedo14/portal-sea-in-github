@@ -40,7 +40,8 @@ class NotificationsRepository
         } else {
             //verify if its an informe
             if ($informe !== null) {
-                if($informe->program_id !== 18 && $plan->user->region === 600){
+                //$plan->user->id !== 168 - Evita que Dir TMAG reciba notificaciones de id=168
+                if($informe->program_id !== 18 && $plan->user->region === 600 && $plan->user->id !== 168){
                     $administrators = User::where('supervised_region', 'like', $plan->user->region)->orWhere('programmatic_unit_id', 'like', $plan->user->unit)->directors()->get();
                 }
             } elseif($plan->user->region === 600){
