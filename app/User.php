@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Modules\Cfc\Entities\Participant;
 use Modules\Cfc\Entities\Project;
 use Modules\Cfc\Entities\PurposeVisit;
+use Modules\Club4H\Entities\ProjectUser;
 use Modules\Sise\Entities\AccessRequest;
 use Modules\Sise\Entities\FederalProgramPersonContact;
 use Modules\Sise\Entities\Historia;
@@ -58,7 +59,7 @@ class User extends Authenticatable
 
     function scopeAgents($query)
     {
-        return $query->where('title_id', 2);
+        return $query->whereIn('title_id', [2, 12]);
     }
 
     function scopeCfc($query)
