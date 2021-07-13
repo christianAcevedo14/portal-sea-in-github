@@ -11,6 +11,9 @@ use App\User;
 use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Validator;
+use Illuminate\Support\MessageBag;
+
 
 class UserController extends Controller
 {
@@ -152,6 +155,13 @@ class UserController extends Controller
 
                 }
 
+            } else {
+
+                $errorMessages = new MessageBag;
+                $errorMessages->add('current_password','La contraseña actual fue ingresada incorrectamente');
+
+                return back()->withErrors($errorMessages);
+
             }
 
         } else {
@@ -183,6 +193,30 @@ class UserController extends Controller
         }
 
         return back()->with('notification', 'Contraseña actualizada exitosamente.');
+    }
+
+    private function validation(Request $request){
+        $validator = Validator::make($request, [
+            'new_password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            'confirm_password' => 'required|same:new_password|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+        ],
+            [
+                'new_password.required' => 'Debe escribir una contraseña.',
+                'new_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                'new_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                'new_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
+
+                'confirm_password.required' => 'Debe escribir una contraseña.',
+                'confirm_password.alpha_num' => 'Contraseña debe contener solo letras y números.',
+                'confirm_password.same' => 'Las contraseñas deben coincidir.',
+                'confirm_password.min' => 'Contraseña debe contener más de 8 caracteres.',
+                'confirm_password.regex' => 'Contraseña debe contener al menos una letra mayúscula, una minúscula y un número.',
+            ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        }
     }
 
     /**
