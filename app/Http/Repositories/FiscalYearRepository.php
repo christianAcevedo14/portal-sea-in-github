@@ -4,6 +4,7 @@ namespace App\Http\Repositories;
 
 
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class FiscalYearRepository
 {
@@ -18,7 +19,7 @@ class FiscalYearRepository
         /*$fyEnd = "11/30";
         $fyStart = "12/01";*/
         $fyEnd = "09/30";
-        $fyStart = "10/01";
+        $fyStart = "10/15";
 
         $date = strtotime($inputDate);
         $currentFiscalYear = strftime('%Y', $date);
