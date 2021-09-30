@@ -14,12 +14,19 @@ class FiscalYearRepository
          * Codigo para calcular el año fiscal corriente
          */
 
-
+//        $year = 2021; $month = 10; $day = 15;
+//
+//
+//
+//        $inputDate = Carbon::createFromDate($year, $month, $day);
         $inputDate = now();
         /*$fyEnd = "11/30";
         $fyStart = "12/01";*/
         $fyEnd = "09/30";
-        $fyStart = "10/15";
+        $fyStart = "10/01";
+
+        // durante este periodo se puede crear informes para el año fiscal anterior y no afectar la información
+        $gracePeriod = '10/15';
 
         $date = strtotime($inputDate);
         $currentFiscalYear = strftime('%Y', $date);
@@ -27,9 +34,12 @@ class FiscalYearRepository
 
 //        $fyenddate = strtotime($fyEnd . '/' . $inputyear);
 
-        $fystartdate = strtotime($fyStart . '/' . $inputyear);
+//        $fystartdate = strtotime($fyStart . '/' . $inputyear);
 
-        if ($date >= $fystartdate) {
+        $fyGracePeriod = strtotime($gracePeriod . '/' . $inputyear);
+
+
+        if ($date >= $fyGracePeriod) {
             $inputyear = intval($inputyear)+1;
             $currentFiscalYear = intval($currentFiscalYear)+1;
         }
