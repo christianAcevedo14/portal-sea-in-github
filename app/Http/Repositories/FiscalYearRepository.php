@@ -4,6 +4,7 @@ namespace App\Http\Repositories;
 
 
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class FiscalYearRepository
 {
@@ -12,7 +13,12 @@ class FiscalYearRepository
         /**
          * Codigo para calcular el año fiscal corriente
          */
-        $inputDate = now();
+
+        $year = 2021; $month = 10; $day = 1;
+
+
+
+        $inputDate = Carbon::createFromDate($year, $month, $day);;
         /*$fyEnd = "11/30";
         $fyStart = "12/01";*/
         $fyEnd = "09/30";
@@ -22,9 +28,11 @@ class FiscalYearRepository
         $currentFiscalYear = strftime('%Y', $date);
         $inputyear = strftime('%Y', $date);
 
-        $fyenddate = strtotime($fyEnd . '/' . $inputyear);
+//        $fyenddate = strtotime($fyEnd . '/' . $inputyear);
 
-        if ($date >= $fyenddate) {
+        $fystartdate = strtotime($fyStart . '/' . $inputyear);
+
+        if ($date >= $fystartdate) {
             $inputyear = intval($inputyear)+1;
             $currentFiscalYear = intval($currentFiscalYear)+1;
         }
