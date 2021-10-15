@@ -26,7 +26,7 @@ class FiscalYearRepository
         $fyStart = "10/01";
 
         // durante este periodo se puede crear informes para el año fiscal anterior y no afectar la información
-        $gracePeriod = '10/16';
+        $gracePeriod = '10/20';
 
         $date = strtotime($inputDate);
         $currentFiscalYear = strftime('%Y', $date);
