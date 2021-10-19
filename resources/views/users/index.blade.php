@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container">
-        @if(!(Auth::user()->isAdmin))
+        @if(!(Auth::user()->isAdmin || Auth::user()->isOPE))
             <access-denied></access-denied>
         @else
             <div class="row">
