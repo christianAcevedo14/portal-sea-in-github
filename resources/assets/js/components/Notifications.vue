@@ -11,7 +11,7 @@
         </a>
         <div v-if="notifications.length > 0" class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
             <span class="dropdown-item d-flex" href="#" v-for="notification in notifications">
-                <a :style="{ backgroundImage: 'url(' + notification.data.user_avatar + ')' }"
+                <a :style="{ backgroundImage: 'url(' + '/' + notification.data.user_avatar + ')' }"
                    class="avatar mr-1 align-self-center"></a>
                 <span class="ml-3">
                     <span class="message pt-1">{{ notification.data.message }}</span>
