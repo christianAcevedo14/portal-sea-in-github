@@ -221,12 +221,25 @@ class User extends Authenticatable
 
     public function getSupervisedByAssocDeanAttribute()
     {
-        return $this->title_id == 40 || $this->title_id == 26 || $this->title_id == 23 || $this->title_id == 15 || $this->title_id == 45;
+        return $this->title_id == 15 ||
+               $this->title_id == 23 ||
+               $this->title_id == 26 ||
+               $this->title_id == 40 ||
+               $this->title_id == 45 ||
+               $this->title_id == 54 ||
+               $this->user_id == 143;
     }
 
     public function getSupervisedByAuxDeanAttribute()
     {
-        return $this->title_id == 27 || $this->title_id == 47 || $this->title_id == 48 || $this->title_id == 49 || $this->title_id == 24 || $this->title_id == 53 || $this->title_id == 22 || $this->title_id == 50;
+        return $this->title_id == 22 ||
+               $this->title_id == 24 ||
+               $this->title_id == 27 ||
+               $this->title_id == 47 ||
+               $this->title_id == 48 ||
+               $this->title_id == 49 ||
+               $this->title_id == 50 ||
+               $this->title_id == 53;
     }
     public function getSupervisedByCFCAttribute()
     {
@@ -239,13 +252,22 @@ class User extends Authenticatable
 
     public function getSupervisedByAgriculturaAttribute()
     {
-        return $this->id == 168 || $this->title_id == 54;
+        return $this->id == 168;
     }
 
     public function getIsSupervisorAttribute()
     {
-        return $this->title_id == 46 || $this->title_id == 26 || $this->title_id == 16 || $this->title_id == 23 || $this->title_id == 24 || $this->title_id === 27
-            || $this->title_id == 42 || $this->title_id == 40 || $this->title_id == 47 || $this->title_id == 50 || $this->title_id == 55;
+        return $this->title_id == 16 ||
+               $this->title_id == 23 ||
+               $this->title_id == 24 ||
+               $this->title_id == 26 ||
+               $this->title_id == 27 ||
+               $this->title_id == 40 ||
+               $this->title_id == 42 ||
+               $this->title_id == 46 ||
+               $this->title_id == 47 ||
+               $this->title_id == 50 ||
+               $this->title_id == 55;
     }
 
     public function getRegionAttribute()
