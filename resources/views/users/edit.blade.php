@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @if(!(Auth::user()->id === $user->id || Auth::user()->isAdmin))
+    @if(!(Auth::user()->id === $user->id || Auth::user()->isAdmin || Auth::user()->isOpe))
         <access-denied></access-denied>
     @else
         <div class="container">
@@ -128,7 +128,7 @@
                                                 <div class="col-lg-6 col-sm-12">
                                                     <div class="form-group">
                                                         <select name="title_id" class="custom-select"
-                                                                @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                                @if(!(Auth::user()->isAdmin  || Auth::user()->isOpe)) disabled @endif>
                                                             <option selected>Título</option>
                                                             @foreach($titles as $title)
                                                                 <option
@@ -140,7 +140,7 @@
                                                 <div class="col-lg-6 col-sm-12">
                                                     <div class="form-group">
                                                         <select name="programmatic_unit_id" class="custom-select"
-                                                                @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                                @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                             <option selected>Unidad Programática</option>
                                                             @foreach($programmatic_units as $programmatic_unit)
                                                                 <option
@@ -166,11 +166,11 @@
                                                                placeholder="Email"
                                                                required
                                                                value="{{ old('email', $user->email) }}"
-                                                               @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row" @if(!(Auth::user()->isAdmin)) hidden @endif>
+                                            <div class="row" @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) hidden @endif>
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <div class="form-label">Aplicaciones autorizadas</div>
@@ -188,55 +188,55 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group" @if(!(Auth::user()->isAdmin)) hidden @endif>
+                                            <div class="form-group" @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) hidden @endif>
                                                 <div class="form-label">Región a supervisar</div>
                                                 <div class="custom-controls-stacked">
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value="100"
-                                                               {{ old('supervised_region', $user->supervised_region) === 100 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === 100 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">Arecibo</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value="200"
-                                                               {{ old('supervised_region', $user->supervised_region) === 200 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === 200 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">Caguas</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value="300"
-                                                               {{ old('supervised_region', $user->supervised_region) === 300 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === 300 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">Mayagüez</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value="400"
-                                                               {{ old('supervised_region', $user->supervised_region) === 400 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === 400 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">Ponce</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value="500"
-                                                               {{ old('supervised_region', $user->supervised_region) === 500 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === 500 ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">San Juan</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" class="custom-control-input"
                                                                name="supervised_region"
                                                                value=""
-                                                               {{ old('supervised_region', $user->supervised_region) === NULL ? 'checked' : '' }} @if(!(Auth::user()->isAdmin)) disabled @endif>
+                                                               {{ old('supervised_region', $user->supervised_region) === NULL ? 'checked' : '' }} @if(!(Auth::user()->isAdmin || Auth::user()->isOpe)) disabled @endif>
                                                         <span class="custom-control-label">Ninguna</span>
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="text-right pb-2">
-                                                @if(!(Auth::user()->isAdmin))
+                                                @if(!(Auth::user()->isAdmin || Auth::user()->isOpe))
                                                     <a href="{{ route('home') }}" class="btn btn-secondary"
                                                        onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
                                                 @else
@@ -312,7 +312,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="text-right pb-2">
-                                                        @if(!(Auth::user()->isAdmin))
+                                                        @if(!(Auth::user()->isAdmin || Auth::user()->isOpe))
                                                             <a href="{{ route('home') }}" class="btn btn-secondary"
                                                                onclick="return confirm('¿Está seguro que desea salir? Perderá toda la información no guardada.');">Cancelar</a>
                                                         @else
