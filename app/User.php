@@ -226,8 +226,7 @@ class User extends Authenticatable
                $this->title_id == 26 ||
                $this->title_id == 40 ||
                $this->title_id == 45 ||
-               $this->title_id == 54 ||
-               $this->user_id == 143;
+                $this->user_id == 143;
     }
 
     public function getSupervisedByAuxDeanAttribute()
@@ -238,12 +237,12 @@ class User extends Authenticatable
                $this->title_id == 47 ||
                $this->title_id == 48 ||
                $this->title_id == 49 ||
-               $this->title_id == 50 ||
                $this->title_id == 53;
     }
     public function getSupervisedByCFCAttribute()
     {
-        return $this->title_id == 16;
+        return $this->title_id == 16 ||
+               $this->title_id == 50;
     }
     public function getSupervisedByPIAAttribute()
     {
@@ -252,7 +251,8 @@ class User extends Authenticatable
 
     public function getSupervisedByAgriculturaAttribute()
     {
-        return $this->id == 168;
+        return  $this->id == 168    ||
+                $this->title_id == 54;
     }
 
     public function getIsSupervisorAttribute()
@@ -266,7 +266,6 @@ class User extends Authenticatable
                $this->title_id == 42 ||
                $this->title_id == 46 ||
                $this->title_id == 47 ||
-               $this->title_id == 50 ||
                $this->title_id == 55;
     }
 
