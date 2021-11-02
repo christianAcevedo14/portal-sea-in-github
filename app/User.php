@@ -231,7 +231,7 @@ class User extends Authenticatable
 
     public function getSupervisedByAuxDeanAttribute()
     {
-        return $this->title_id == 22 ||
+        return $this->title_id == 21 ||
                $this->title_id == 24 ||
                $this->title_id == 27 ||
                $this->title_id == 47 ||
