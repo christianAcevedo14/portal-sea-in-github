@@ -197,7 +197,8 @@ class User extends Authenticatable
 
     public function getIs4hAttribute()
     {
-        return $this->title_id == 48;
+        return $this->title_id == 48
+            || $this->user_id == 18;
     }
 
     public function getIsDRCAttribute()
