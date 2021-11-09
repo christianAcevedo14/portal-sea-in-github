@@ -197,7 +197,8 @@ class User extends Authenticatable
 
     public function getIs4hAttribute()
     {
-        return $this->title_id == 48;
+        return $this->title_id == 48
+            || $this->user_id == 18;
     }
 
     public function getIsDRCAttribute()
@@ -231,7 +232,7 @@ class User extends Authenticatable
 
     public function getSupervisedByAuxDeanAttribute()
     {
-        return $this->title_id == 22 ||
+        return $this->title_id == 21 ||
                $this->title_id == 24 ||
                $this->title_id == 27 ||
                $this->title_id == 47 ||
