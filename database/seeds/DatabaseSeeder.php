@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
          $this->call(ProgrammaticAreasTableSeeder::class);
          $this->call(TutorialAppsTableSeeder::class);
          $this->call(TutorialSectionsTableSeeder::class);
+         $this->call(RacesTableSeeder::class);
+         $this->call(GendersTableSeeder::class);
+         $this->call(ResidencesTableSeeder::class);
 //         $this->call(OldUsersTableSeeder::class);
     }
 }
