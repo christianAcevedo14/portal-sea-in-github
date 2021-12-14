@@ -30,6 +30,6 @@ class CreateRacesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('races');
+        Schema::connection('portal')->dropIfExists('races');
     }
 }

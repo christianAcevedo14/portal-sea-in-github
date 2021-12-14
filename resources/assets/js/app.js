@@ -158,13 +158,14 @@ const routes = [
     { path: '/sise/*', component: Dashboard },
     { path: '/4h/assignProject', component: assignProject},
     { path: '/4h/showParticipant', name: 'ShowParticipant', component: ShowParticipant, props: true},
-    { path: '/4h/participant', component: Participant},
+    { path: '/4h/participant', name: 'Participant', component: Participant},
     { path: '/4h/project', component: Project},
     { path: '/4h/interest', component: Interest},
     { path: '/4h/event', component: Event},
     { path: '/4h/club', component: Club},
     { path: '/4h/category', component: Category},
-    { path: '/4h*', component: Dashboard4h},
+    { path: '/4h/dashboard', component: Dashboard4h},
+    { path: '/4h*', component: Participant}, //acordar de cambiar a Dashboard4h
     { path: '/*', component: Dashboard }
 ];
 const router = new VueRouter({
