@@ -46,6 +46,8 @@ import Dashboard4h from "../../../Modules/Club4H/Resources/assets/js/components/
 import Club from "../../../Modules/Club4H/Resources/assets/js/components/Club.vue";
 import Category from "../../../Modules/Club4H/Resources/assets/js/components/Category.vue";
 import Interest from "../../../Modules/Club4H/Resources/assets/js/components/Interest.vue";
+import Emphasis from "../../../Modules/Club4H/Resources/assets/js/components/Emphasis.vue";
+import EventParticipant from "../../../Modules/Club4H/Resources/assets/js/components/EventParticipant.vue";
 import Event from "../../../Modules/Club4H/Resources/assets/js/components/Event.vue";
 import Project from "../../../Modules/Club4H/Resources/assets/js/components/Project.vue";
 import assignProject from "../../../Modules/Club4H/Resources/assets/js/components/assignProject.vue";
@@ -161,7 +163,9 @@ const routes = [
     { path: '/4h/participant', name: 'Participant', component: Participant},
     { path: '/4h/project', component: Project},
     { path: '/4h/interest', component: Interest},
+    { path: '/4h/emphasis', component: Emphasis},
     { path: '/4h/event', component: Event},
+    { path: '/4h/eventParticipant', component: EventParticipant},
     { path: '/4h/club', component: Club},
     { path: '/4h/category', component: Category},
     { path: '/4h/dashboard', component: Dashboard4h},
@@ -265,6 +269,7 @@ Vue.directive('tooltip', function(el,binding){
 
                 this.minDate = this.dateRanges[0].date;
                 this.maxDate = this.dateRanges[1].date;
+                console.log(this.dateRanges)
 
                 //Year needs to be updated dynamically according to current FY
                 sessionStorage.minDate = moment(this.minDate).format("YYYY-MM-DD");
