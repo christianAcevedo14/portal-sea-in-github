@@ -30,6 +30,6 @@ class CreateResidencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('residences');
+        Schema::connection('portal')->dropIfExists('residences');
     }
 }
