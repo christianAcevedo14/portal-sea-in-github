@@ -14,8 +14,8 @@ class RacesTableSeeder extends Seeder
     {
         $races = [
             ['id' => 1, 'description' => 'Caucásico'],
-            ['id' => 2, 'description' => 'Africano'],
-            ['id' => 3, 'description' => 'Latino'],
+            ['id' => 2, 'description' => 'Afrodescendiente '],
+            ['id' => 3, 'description' => 'Hispano'],
         ];
 
         foreach($races as $race)
