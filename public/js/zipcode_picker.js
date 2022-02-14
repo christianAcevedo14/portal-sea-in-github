@@ -13,7 +13,7 @@ function loadZips(select)
             dataType: 'json',
             beforeSend: function(){
                 zipcode_select.empty();
-                zipcode_select.append('<option selected disabled>Cargado...</option>');
+                zipcode_select.append('<option selected disabled>Cargando...</option>');
             },
             success:function(data) {
                 zipcode_select.empty();
