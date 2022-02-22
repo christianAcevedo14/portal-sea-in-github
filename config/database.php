@@ -159,6 +159,21 @@ return [
             'engine' => null,
         ],
 
+        'drc' => [
+            'driver' => 'mysql',
+            'host' => env('DRC_DB_HOST', '127.0.0.1'),
+            'port' => env('DRC_DB_PORT', '3306'),
+            'database' => env('DRC_DB_DATABASE', 'forge'),
+            'username' => env('DRC_DB_USERNAME', 'forge'),
+            'password' => env('DRC_DB_PASSWORD', ''),
+            'unix_socket' => env('DRC_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
     ],
 
     /*
