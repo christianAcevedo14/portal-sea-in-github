@@ -338,4 +338,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Historia::class);
     }
+
+    public function projectUser()
+    {
+        return $this->hasMany(ProjectUser::class);
+    }
 }
