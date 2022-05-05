@@ -198,7 +198,7 @@
                         <div class="alert alert-warning text-justify font-weight-bold">
                             <p> Usted está accediendo a un sistema con seguridad controlada. Al entrar, usted
                                 certifica que es un
-                                usuario autotizado del Servicio de Extensión Agrícola. </p>
+                                usuario autorizado del Servicio de Extensión Agrícola. </p>
 
                             <p>Cualquier acceso sin autorización estará sujeto a normas y reglamentaciones que rigen
                                 la política de
